@@ -21,10 +21,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function inicio()
-    {
-        return view('page.home');
-    }
+//    public function inicio()
+//    {
+//        return view('page.home');
+//    }
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['user', 'admin']);

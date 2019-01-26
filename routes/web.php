@@ -14,11 +14,16 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', [
-    'uses' => 'HomeController@home',
-    'as' => 'home_path',
-]);
+//Route::get('/', [
+//    'uses' => 'HomeController@home',
+//    'as' => 'home_path',
+//]);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as' => 'home_path',
+]);
