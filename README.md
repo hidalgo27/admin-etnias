@@ -1,2 +1,2 @@
-# etnias
-turismo vivencial
+# admin-etnias
+Admin Etnias
