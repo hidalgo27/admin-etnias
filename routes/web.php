@@ -55,3 +55,7 @@ Route::post('/admin/comunidad/editar', [
     'uses' => 'ComunidadController@editar',
     'as' => 'comunidad_editar_path',
 ]);
+Route::get('/admin/comunidad/editar/imagen/{filename}', [
+    'uses' => 'ComunidadController@getFoto',
+    'as' => 'comunidad_editar_imagen_path',
+]);

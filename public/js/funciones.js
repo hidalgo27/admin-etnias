@@ -39,4 +39,8 @@ function mostrar_distritos(provincia_id){
         });
     }
 }
+function borrar_foto_cliente(id){
+    // alert('hola:'+departamento_id);
+    $("#"+id).remove();
 
+}

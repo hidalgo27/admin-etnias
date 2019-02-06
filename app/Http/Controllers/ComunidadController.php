@@ -29,7 +29,8 @@ class ComunidadController extends Controller
     public function store(Request $request){
         $nombre=$request->input('nombre');
         $distrito_id=$request->input('distrito');
-        // $fotos=$request->file('foto');
+        $descripcion=$request->input('descripcion');
+        $fotos=$request->file('foto');
         $existencias=Comunidad::where('nombre',$nombre)->count();
         if(trim($distrito_id)==''||trim($distrito_id)=='0'){
             return redirect()->back()->with('error','escoja un departamento, provincia y distrito')->withInput();
@@ -40,20 +41,21 @@ class ComunidadController extends Controller
         else{
             $comunidad=new Comunidad();
             $comunidad->nombre=$nombre;
+            $comunidad->descripcion=$descripcion;
             $comunidad->distrito_id=$distrito_id;
             $comunidad->save();
-            // if(!empty($fotos)){
-            //     foreach($fotos as $foto){
-            //         $comunidadfoto = new ComunidadFoto();
-            //         $comunidadfoto->comunidad_id=$comunidad->id;
-            //         $comunidadfoto->save();
+            if(!empty($fotos)){
+                foreach($fotos as $foto){
+                    $comunidadfoto = new ComunidadFoto();
+                    $comunidadfoto->comunidad_id=$comunidad->id;
+                    $comunidadfoto->save();
 
-            //         $filename ='foto-'.$comunidadfoto->id.'.'.$foto->getClientOriginalExtension();
-            //         $comunidadfoto->imagen=$filename;
-            //         $comunidadfoto->save();
-            //         Storage::disk('comunidades')->put($filename,  File::get($foto));
-            //     }
-            // }
+                    $filename ='foto-'.$comunidadfoto->id.'.'.$foto->getClientOriginalExtension();
+                    $comunidadfoto->imagen=$filename;
+                    $comunidadfoto->save();
+                    Storage::disk('comunidades')->put($filename,  File::get($foto));
+                }
+            }
             return redirect()->route('comunidad_nuevo_path')->with('success','Datos guardados');
 
         }
@@ -76,13 +78,46 @@ class ComunidadController extends Controller
         $nombre=$request->input('nombre');
         $id=$request->input('id');
         $distrito_id=$request->input('distrito');
+        $descripcion=$request->input('descripcion');
+        $fotos=$request->file('foto');
+
+        $fotosExistentes=$request->input('fotos_');
+        // dd($fotosExistentes);
         if(trim($distrito_id)==''||trim($distrito_id)=='0'){
             return redirect()->back()->with('error','escoja un departamento, provincia y distrito')->withInput();
         }
         $comunidad=Comunidad::find($id);
         $comunidad->nombre=$nombre;
+        $comunidad->descripcion=$descripcion;
         $comunidad->distrito_id=$distrito_id;
         $comunidad->save();
+
+        // borramos de la db las fotos que han sido eliminadas por el usuario
+        if(count((array)$fotosExistentes)>0){
+            $fotos_existentes=ComunidadFoto::where('comunidad_id',$comunidad->id)->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if(!in_array($value->id,$fotosExistentes)){
+                    ComunidadFoto::find($value->id)->delete();
+                }
+            }
+        }
+        if(!empty($fotos)){
+            foreach($fotos as $foto){
+                $comunidadfoto = new ComunidadFoto();
+                $comunidadfoto->comunidad_id=$comunidad->id;
+                $comunidadfoto->save();
+
+                $filename ='foto-'.$comunidadfoto->id.'.'.$foto->getClientOriginalExtension();
+                $comunidadfoto->imagen=$filename;
+                $comunidadfoto->save();
+                Storage::disk('comunidades')->put($filename,  File::get($foto));
+            }
+        }
         return redirect()->route('comunidad_lista_path')->with('success','Datos editados');
+    }
+    public function getFoto($filename){
+        $file = Storage::disk('comunidades')->get($filename);
+        return response($file, 200);
     }
 }

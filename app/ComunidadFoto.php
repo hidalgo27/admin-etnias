@@ -10,6 +10,6 @@ class ComunidadFoto extends Model
     protected $table = "comunidad_foto";
     public function comunidad()
     {
-        return $this->belongsTo(ComunidadFoto::class, 'comunidad_id');
+        return $this->belongsTo(Comunidad::class, 'comunidad_id');
     }
 }

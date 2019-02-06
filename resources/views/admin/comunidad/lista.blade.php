@@ -56,7 +56,7 @@
                                             <!-- Modal -->
                                             <div class="modal fade" id="comunidadModal_{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
-                                                <form action="{{ route('comunidad_editar_path') }}" method="POST">
+                                                <form action="{{ route('comunidad_editar_path') }}" method="POST" method="POST" enctype="multipart/form-data">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Editar datos</h5>
@@ -65,43 +65,69 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label for="nombre">Nombre</label>
-                                                                <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Nombre de la comunidad" value="{{ $item->nombre }}">
+                                                            <div class="row">
+                                                                <div class="form-group col-12">
+                                                                    <label for="nombre">Nombre</label>
+                                                                    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Nombre de la comunidad" value="{{ $item->nombre }}">
+                                                                </div>
+                                                                <div class="form-group col-4">
+                                                                    <label for="departamento">Departamento</label>
+                                                                    <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias($(this).val());">
+                                                                        <option value="0">Escoja una opcion</option>
+                                                                        @foreach ($departamentos as $item_)
+                                                                            <option value="{{ $item->id }}" @if ($item_->id==$item->distrito->provincia->departamento->id)
+                                                                                selected
+                                                                            @endif>{{ $item_->departamento }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-4">
+                                                                    <label for="provincia">Provicia</label>
+                                                                    <select class="form-control" name="provincia" id="provincia" onchange="mostrar_distritos($(this).val());">
+                                                                        <option value="0">Escoja una opcion</option>
+                                                                        @foreach ($provincias as $item_)
+                                                                            <option value="{{ $item->id }}" @if ($item_->id==$item->distrito->provincia->id)
+                                                                                selected
+                                                                            @endif>{{ $item_->provincia }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div id="distrito_id" class="form-group col-4">
+                                                                    <label for="distrito">Distrito</label>
+                                                                    <select class="form-control" name="distrito" id="distrito">
+                                                                        <option value="0">Escoja una opcion</option>
+                                                                        @foreach ($distritos as $item_)
+                                                                            <option value="{{ $item->id }}" @if ($item_->id==$item->distrito->id)
+                                                                                selected
+                                                                            @endif>{{ $item_->distrito }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="descripcion">Descripcion</label>
+                                                                    <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                                </div>
+                                                                <div class="form-group col-12 text-center">
+                                                                        @foreach ($item->fotos as $foto)
+                                                                            @if (Storage::disk('comunidades')->has($foto->imagen))
+                                                                                <figure class="figure m-3" id="{{ $item->id.'_'.$foto->id }}">
+                                                                                    <img src="{{ route('comunidad_editar_imagen_path',$foto->imagen) }}" class="figure-img rounded" alt="A generic" width="200px" height="200px">
+                                                                                    <figcaption class="figure-caption text-right mt-0">
+                                                                                        <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_cliente('{{ $item->id.'_'.$foto->id }}')">
+                                                                                            <i class="fas fa-trash-alt"></i>
+                                                                                        </a>
+                                                                                    </figcaption>
+                                                                                    <input type="hidden" name="fotos_[]" value="{{ $foto->id }}">
+                                                                                </figure>
+                                                                            @endif
+                                                                        @endforeach
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                        <label for="foto">Foto</label>
+                                                                        <input type="file" name="foto[]" multiple class="form-control">
+                                                                    </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="departamento">Departamento</label>
-                                                                <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias($(this).val());">
-                                                                    <option value="0">Escoja una opcion</option>
-                                                                    @foreach ($departamentos as $item_)
-                                                                        <option value="{{ $item->id }}" @if ($item_->id==$item->distrito->provincia->departamento->id)
-                                                                            selected
-                                                                        @endif>{{ $item_->departamento }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="provincia">Provicia</label>
-                                                                <select class="form-control" name="provincia" id="provincia" onchange="mostrar_distritos($(this).val());">
-                                                                    <option value="0">Escoja una opcion</option>
-                                                                    @foreach ($provincias as $item_)
-                                                                        <option value="{{ $item->id }}" @if ($item_->id==$item->distrito->provincia->id)
-                                                                            selected
-                                                                        @endif>{{ $item_->provincia }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div id="distrito_id" class="form-group">
-                                                                <label for="distrito">Distrito</label>
-                                                                <select class="form-control" name="distrito" id="distrito">
-                                                                    <option value="0">Escoja una opcion</option>
-                                                                    @foreach ($distritos as $item_)
-                                                                        <option value="{{ $item->id }}" @if ($item_->id==$item->distrito->id)
-                                                                            selected
-                                                                        @endif>{{ $item_->distrito }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
+
                                                         </div>
                                                         <div class="modal-footer text-right">
                                                             {{ csrf_field() }}
