@@ -59,3 +59,16 @@ Route::get('/admin/comunidad/editar/imagen/{filename}', [
     'uses' => 'ComunidadController@getFoto',
     'as' => 'comunidad_editar_imagen_path',
 ]);
+// rutas para actividades
+Route::get('/admin/actividad/nuevo', [
+    'uses' => 'ActividadController@nuevo',
+    'as' => 'actividad_nuevo_path',
+]);
+Route::post('/admin/actividad/nuevo', [
+    'uses' => 'ActividadController@store',
+    'as' => 'actividad_store_path',
+]);
+Route::get('/admin/actividad/lista', [
+    'uses' => 'ActividadController@getActividades',
+    'as' => 'actividad_lista_path',
+]);
