@@ -39,7 +39,7 @@
                                     $i=1;
                                 @endphp
                                 @foreach ($comunidades as $item)
-                                    <tr>
+                                    <tr id="row_lista_comunidades_{{ $item->id }}">
                                         <td>{{ $i }}</td>
                                         <td>
                                             {{ $item->distrito->provincia->departamento->departamento }},
@@ -139,7 +139,7 @@
                                                 </form>
                                             </div>
                                             </div>
-                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="#" class="btn btn-danger" onclick="eliminar('{{ $item->id }}')"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     @php

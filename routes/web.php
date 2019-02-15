@@ -59,6 +59,11 @@ Route::get('/admin/comunidad/editar/imagen/{filename}', [
     'uses' => 'ComunidadController@getFoto',
     'as' => 'comunidad_editar_imagen_path',
 ]);
+Route::get('/admin/comunidad/delete/{id}', [
+    'uses' => 'ComunidadController@getDelete',
+    'as' => 'comunidad.lista.delete',
+]);
+
 // rutas para actividades
 Route::get('/admin/actividad/nuevo', [
     'uses' => 'ActividadController@nuevo',
@@ -71,4 +76,8 @@ Route::post('/admin/actividad/nuevo', [
 Route::get('/admin/actividad/lista', [
     'uses' => 'ActividadController@getActividades',
     'as' => 'actividad_lista_path',
+]);
+Route::get('/admin/actividad/delete/{id}', [
+    'uses' => 'ActividadController@getDelete',
+    'as' => 'actividad.lista.delete',
 ]);

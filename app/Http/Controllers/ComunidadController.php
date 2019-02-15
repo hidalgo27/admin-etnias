@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Departamento;
 use App\Provincia;
 use App\Distrito;
+// use Alert;
 
 class ComunidadController extends Controller
 {
@@ -56,6 +57,7 @@ class ComunidadController extends Controller
                     Storage::disk('comunidades')->put($filename,  File::get($foto));
                 }
             }
+            // Alert()->success('Datos guardados.')->autoclose(3000);
             return redirect()->route('comunidad_nuevo_path')->with('success','Datos guardados');
 
         }
@@ -119,5 +121,11 @@ class ComunidadController extends Controller
     public function getFoto($filename){
         $file = Storage::disk('comunidades')->get($filename);
         return response($file, 200);
+    }
+    public function getDelete($id){
+        if(Comunidad::destroy($id))
+            return 1;
+        else
+            return 1;
     }
 }

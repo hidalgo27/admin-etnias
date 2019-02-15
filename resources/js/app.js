@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// import Swal from 'sweetalert2';
+window.Swal = require('sweetalert2');
+
 
 import $ from 'jquery';
 window.$ = window.jQuery = $;
