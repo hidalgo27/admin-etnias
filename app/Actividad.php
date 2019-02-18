@@ -10,10 +10,14 @@ class Actividad extends Model
     protected $table = "actividad";
     public function fotos()
     {
-        return $this->hasMany(ComunidadFoto::class, 'comunidad_id');
+        return $this->hasMany(ActividadFoto::class, 'actividad_id');
     }
-    public function distrito()
+    public function precios()
     {
-        return $this->belongsTo(Distrito::class, 'distrito_id');
+        return $this->hasMany(ActividadPrecio::class, 'actividad_id');
+    }
+    public function asociacion()
+    {
+        return $this->belongsTo(Asociacion::class, 'asociacion_id');
     }
 }

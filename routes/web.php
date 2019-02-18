@@ -43,11 +43,11 @@ Route::get('/admin/comunidad/lista', [
     'uses' => 'ComunidadController@getComunidades',
     'as' => 'comunidad_lista_path',
 ]);
-Route::post('admin/comunidad/mostrar-provincias', [
+Route::post('admin/{servicio}/mostrar-provincias', [
     'uses' => 'ComunidadController@mostrarProvincias',
     'as' => 'comunidad_mostrar_provincias_path',
 ]);
-Route::post('admin/comunidad/mostrar-distritos', [
+Route::post('admin/{servicio}/mostrar-distritos', [
     'uses' => 'ComunidadController@mostrarDistritos',
     'as' => 'comunidad_mostrar_distritos_path',
 ]);
@@ -63,21 +63,57 @@ Route::get('/admin/comunidad/delete/{id}', [
     'uses' => 'ComunidadController@getDelete',
     'as' => 'comunidad.lista.delete',
 ]);
-
-// rutas para actividades
-Route::get('/admin/actividad/nuevo', [
-    'uses' => 'ActividadController@nuevo',
-    'as' => 'actividad_nuevo_path',
+// RUTAS PARA ASOCIACION
+Route::get('/admin/asociacion/lista', [
+    'uses' => 'AsociacionController@lista',
+    'as' => 'asociacion.lista',
 ]);
-Route::post('/admin/actividad/nuevo', [
-    'uses' => 'ActividadController@store',
-    'as' => 'actividad_store_path',
+Route::get('/admin/asociacion/nuevo', [
+    'uses' => 'AsociacionController@nuevo',
+    'as' => 'asociacion.nuevo',
 ]);
-Route::get('/admin/actividad/lista', [
-    'uses' => 'ActividadController@getActividades',
-    'as' => 'actividad_lista_path',
+Route::post('/admin/asociacion/nuevo', [
+    'uses' => 'AsociacionController@store',
+    'as' => 'asociacion.store',
 ]);
-Route::get('/admin/actividad/delete/{id}', [
-    'uses' => 'ActividadController@getDelete',
-    'as' => 'actividad.lista.delete',
+Route::post('admin/{servicio}/mostrar-comunidades', [
+    'uses' => 'AsociacionController@mostrarComunidades',
+    'as' => 'comunidad.mostrar.comunidades',
+]);
+Route::post('admin/comunidad/mostrar-provincias', [
+    'uses' => 'ComunidadController@mostrarProvincias',
+    'as' => 'comunidad_mostrar_provincias_path',
+]);
+Route::post('admin/comunidad/mostrar-distritos', [
+    'uses' => 'ComunidadController@mostrarDistritos',
+    'as' => 'comunidad_mostrar_distritos_path',
+]);
+Route::post('/admin/asociacion/editar', [
+    'uses' => 'AsociacionController@editar',
+    'as' => 'asociacion.editar',
+]);
+Route::get('/admin/asociacion/editar/imagen/{filename}', [
+    'uses' => 'AsociacionController@getFoto',
+    'as' => 'asociacion.editar.imagen',
+]);
+Route::get('/admin/asociacion/delete/{id}', [
+    'uses' => 'AsociacionController@getDelete',
+    'as' => 'asociacion.delete',
+]);
+// rutas para servicios(actividades, comidas, hospedaje, transporte, otros_servicios)
+Route::get('/admin/servicios/lista', [
+    'uses' => 'ServiciosController@lista',
+    'as' => 'servicios.lista',
+]);
+Route::get('/admin/servicios/nuevo', [
+    'uses' => 'ServiciosController@nuevo',
+    'as' => 'servicios.nuevo',
+]);
+Route::get('/admin/servicios/buscar/{ruc_rs}', [
+    'uses' => 'ServiciosController@buscar_asociacion',
+    'as' => 'servicios.buscar_asociacion',
+]);
+Route::post('/admin/servicios/nuevo', [
+    'uses' => 'ServiciosController@store',
+    'as' => 'servicios.store',
 ]);

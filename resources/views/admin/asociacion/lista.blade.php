@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-                <li class="breadcrumb-item active" aria-current="page">COMUNIDADES</li>
+                <li class="breadcrumb-item active" aria-current="page">ASOCIACIONES</li>
             </ol>
         </nav>
     </div>
@@ -17,10 +17,10 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-9">
-                                <b class="text-danger text-15">LISTA DE COMUNIDADES</b>
+                                <b class="text-danger text-15">LISTA DE ASOCIACIONES</b>
                             </div>
                             <div class="col-3 text-right">
-                                <a href="{{ route('comunidad_nuevo_path') }}" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i> AGREGAR COMUNIDAD</a>
+                                <a href="{{ route('asociacion.nuevo') }}" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i> AGREGAR ASOCIACION</a>
                             </div>
                         </div>
                     </div>
@@ -29,8 +29,11 @@
                             <thead >
                                 <tr>
                                     <th>#</th>
-                                    <th>LOCALIZACION</th>
-                                    <th>NOMBRE</th>
+                                    <th>DEPARTAMENTO</th>
+                                    <th>PROVINCIA</th>
+                                    <th>DISTRITO</th>
+                                    <th>RUC</th>
+                                    <th>RAZON SOCIAL</th>
                                     <th>OPERACIONES</th>
                                 </tr>
                             </thead>
@@ -38,25 +41,30 @@
                                 @php
                                     $i=1;
                                 @endphp
-                                @foreach ($comunidades as $item)
-                                    <tr id="row_lista_comunidades_{{ $item->id }}">
+                                @foreach ($asociaciones as $item)
+                                    <tr id="row_lista_asociaciones_{{ $item->id }}">
                                         <td>{{ $i }}</td>
                                         <td>
-                                            {{ $item->distrito->provincia->departamento->departamento }},
-                                            {{ $item->distrito->provincia->provincia }},
-                                            {{ $item->distrito->distrito }}
+                                            {{ $item->comunidad->distrito->provincia->departamento->departamento }}
                                         </td>
+                                        <td>
+                                            {{ $item->comunidad->distrito->provincia->provincia }}
+                                        </td>
+                                        <td>
+                                            {{ $item->comunidad->distrito->distrito }}
+                                        </td>
+                                        <td>{{ $item->ruc }}</td>
                                         <td>{{ $item->nombre }}</td>
                                         <td>
                                             <!-- Button trigger modal -->
-                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#comunidadModal_{{ $item->id }}">
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#asociacionModal_{{ $item->id }}">
                                                     <i class="fas fa-edit"></i>
                                             </a>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="comunidadModal_{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="asociacionModal_{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
-                                                <form action="{{ route('comunidad_editar_path') }}" method="POST" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ route('asociacion.editar') }}" method="POST" method="POST" enctype="multipart/form-data">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Editar datos</h5>
@@ -67,15 +75,35 @@
                                                         <div class="modal-body">
                                                             <div class="row">
                                                                 <div class="form-group col-12">
+                                                                    <label for="ruc">Ruc</label>
+                                                                    <input type="text" class="form-control" id="ruc" name="ruc" aria-describedby="ruc" placeholder="Ruc" value="{{ $item->ruc }}">
+                                                                </div>
+                                                                <div class="form-group col-12">
                                                                     <label for="nombre">Nombre</label>
                                                                     <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Nombre de la comunidad" value="{{ $item->nombre }}">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="contacto">Contacto</label>
+                                                                    <input type="text" class="form-control" id="contacto" name="contacto" aria-describedby="contacto" placeholder="contacto" value="{{ $item->contacto }}">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="celular">Celular</label>
+                                                                    <input type="text" class="form-control" id="celular" name="celular" aria-describedby="celular" placeholder="celular" value="{{ $item->celular }}">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="email">Email</label>
+                                                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="email" value="{{ $item->email }}">
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="direccion">Direccion</label>
+                                                                    <input type="text" class="form-control" id="direccion" name="direccion" aria-describedby="direccion" placeholder="direccion" value="{{ $item->direccion }}">
                                                                 </div>
                                                                 <div class="form-group col-4">
                                                                     <label for="departamento">Departamento</label>
                                                                     <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias($(this).val());">
                                                                         <option value="0">Escoja una opcion</option>
                                                                         @foreach ($departamentos as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->distrito->provincia->departamento->id)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia->departamento->id)
                                                                                 selected
                                                                             @endif>{{ $item_->departamento }}</option>
                                                                         @endforeach
@@ -85,8 +113,8 @@
                                                                     <label for="provincia">Provicia</label>
                                                                     <select class="form-control" name="provincia" id="provincia" onchange="mostrar_distritos($(this).val());">
                                                                         <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($provincias as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->distrito->provincia->id)
+                                                                        @foreach ($provincias->where('departamento_id',$item->comunidad->distrito->provincia->departamento->id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia->id)
                                                                                 selected
                                                                             @endif>{{ $item_->provincia }}</option>
                                                                         @endforeach
@@ -94,26 +122,33 @@
                                                                 </div>
                                                                 <div id="distrito_id" class="form-group col-4">
                                                                     <label for="distrito">Distrito</label>
-                                                                    <select class="form-control" name="distrito" id="distrito">
+                                                                    <select class="form-control" name="distrito" id="distrito" onchange="mostrar_comunidades($(this).val(),'{{ $item->id }}');">
                                                                         <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($distritos as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->distrito->id)
+                                                                        @foreach ($distritos->where('provincia_id',$item->comunidad->distrito->provincia->id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->id)
                                                                                 selected
                                                                             @endif>{{ $item_->distrito }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-                                                                <div class="form-group col-12">
-                                                                    <label for="descripcion">Descripcion</label>
-                                                                    <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                                <div id="distrito_id" class="form-group col-4">
+                                                                    <label for="comunidad">comunidad</label>
+                                                                    <select class="form-control" name="comunidad" id="comunidad_{{ $item->id }}">
+                                                                        <option value="0">Escoja una opcion</option>
+                                                                        @foreach ($comunidades->where('distrito_id',$item->comunidad->distrito->id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->id)
+                                                                                selected
+                                                                            @endif>{{ $item_->nombre }}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group col-12 text-center">
                                                                         @foreach ($item->fotos as $foto)
-                                                                            @if (Storage::disk('comunidades')->has($foto->imagen))
+                                                                            @if (Storage::disk('asociaciones')->has($foto->imagen))
                                                                                 <figure class="figure m-3" id="{{ $item->id.'_'.$foto->id }}">
-                                                                                    <img src="{{ route('comunidad_editar_imagen_path',$foto->imagen) }}" class="figure-img rounded" alt="A generic" width="200px" height="200px">
+                                                                                    <img src="{{ route('asociacion.editar.imagen',$foto->imagen) }}" class="figure-img rounded" alt="A generic" width="200px" height="200px">
                                                                                     <figcaption class="figure-caption text-right mt-0">
-                                                                                        <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_cliente('{{ $item->id.'_'.$foto->id }}')">
+                                                                                        <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_asociacion('{{ $item->id.'_'.$foto->id }}')">
                                                                                             <i class="fas fa-trash-alt"></i>
                                                                                         </a>
                                                                                     </figcaption>
@@ -139,7 +174,7 @@
                                                 </form>
                                             </div>
                                             </div>
-                                            <a href="#" class="btn btn-danger" onclick="eliminar('{{ $item->id }}')"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="#" class="btn btn-danger" onclick="eliminar_asociacion('{{ $item->id }}')"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     @php

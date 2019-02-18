@@ -87,7 +87,10 @@
                             <a class="nav-link item-titulo active" href="{{ route('comunidad_lista_path') }}">COMUNIDADES</a>
                           </li>
                           <li class="nav-item item-menu">
-                            <a class="nav-link item-titulo" href="#">ACTIVIDADES</a>
+                            <a class="nav-link item-titulo" href="{{ route('asociacion.lista') }}">ASOCIACION</a>
+                          </li>
+                          <li class="nav-item item-menu">
+                            <a class="nav-link item-titulo" href="{{ route('servicios.nuevo') }}">SERVIVIOS</a>
                           </li>
                           <li class="nav-item item-menu">
                             <a class="nav-link item-titulo" href="#">SERVIVIOS</a>
