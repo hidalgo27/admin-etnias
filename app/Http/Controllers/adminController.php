@@ -12,4 +12,8 @@ class adminController extends Controller
 
         return view('admin.index');
     }
+    public function destroy(){
+        // auth()->guard('admin')->logout();
+        return redirect()->route('admin_index_path');
+    }
 }

@@ -20,7 +20,10 @@
 //]);
 
 Auth::routes();
-
+Route::get('/logout',[
+    'uses' => 'adminController@destroy',
+    'as' => 'logout_path',
+]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', [
