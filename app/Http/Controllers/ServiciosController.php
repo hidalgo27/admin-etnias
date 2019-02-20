@@ -23,10 +23,7 @@ class ServiciosController extends Controller
         return view('admin.servicios.buscar-asociacion',compact('asociacion','ruc_rs'));
     }
     public function actividad_store(Request $request){
-
-
-        $asociacion_id=$request->input('asociacion_id');
-        // return $asociacion_id;
+        $asociacion_id=$request->input('actividad_asociacion_id');
         $titulo=strtolower(trim($request->input('titulo')));
         $descripcion=$request->input('descripcion');
         $fotos=$request->file('foto');
@@ -35,10 +32,12 @@ class ServiciosController extends Controller
         $maximo=$request->input('maximo');
         $precio=$request->input('precio');
         $buscar_actividad=Asociacion::FindOrFail($asociacion_id);
-        // return dd($request->all());
 
+        // return response()->json(['aa'=>$request->all()]);
         if(empty($buscar_actividad)){
-
+            return response()->json(['nombre_clase'=>'alert alert-danger alert-dismissible fade show','mensaje'=>'<strong>Oops!</strong>La asociacion no existe <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>']);
         }
         else{
             $actividad=new Actividad();
@@ -68,8 +67,11 @@ class ServiciosController extends Controller
                 $actividad_precio->save();
 
             }
-        }
 
+            return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad guardada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>']);
+        }
     }
 
 }

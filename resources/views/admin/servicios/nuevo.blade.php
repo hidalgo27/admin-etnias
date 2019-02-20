@@ -43,6 +43,11 @@
                                     </div>
                                 </div>
                                 <div id="asociacion" class="col-12">
+                                    <input type="hidden" name="actividad_asociacion_id" id="actividad_asociacion_id" value="" form="form_actividad">
+                                    <input type="hidden" name="comidas_asociacion_id" id="comidas_asociacion_id" value="" form="form_comidas">
+                                    <input type="hidden" name="hospedaje_asociacion_id" id="hospedaje_asociacion_id" value="" form="form_hospedaje">
+                                    <input type="hidden" name="transporte_asociacion_id" id="transporte_asociacion_id" value="" form="form_transporte">
+                                    <input type="hidden" name="servicios_asociacion_id" id="servicios_asociacion_id" value="" form="form_servicios">
 
                                 </div>
                                 <div class="col-12">
@@ -128,9 +133,10 @@
                                                 </table>
                                                 <div class="col-12">
                                                     {{ csrf_field() }}
-                                                    <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos()"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
+                                                <div class="col-12" id="rpt_form_actividad"></div>
                                             </form>
 
                                         </div>
@@ -142,11 +148,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 text-right">
-                            {{ csrf_field() }}
-                            <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> GUARDAR</button>
-                            <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

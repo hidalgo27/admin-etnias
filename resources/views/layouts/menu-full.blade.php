@@ -1,7 +1,7 @@
 @if (!isset($hotel_proveedor_id))
   @php
       $hotel_proveedor_id=0;
-  @endphp    
+  @endphp
 @endif
 
 
@@ -10,7 +10,7 @@
     {{-- rutas para la base de datos --}}
     <li data-toggle="collapse" data-target="#operaciones" class="collapsed">
         <a href="#" class="bg-dark text-white"><i class="fas fa-database"></i> BASE DE DATOS </a>
-    </li>  
+    </li>
     <ul class="sub-menu collapse menu2 @if(
       (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
@@ -27,24 +27,17 @@
       </li>
     </ul>
     {{-- rutas para la base de datos --}}
-    <li data-toggle="collapse" data-target="#operaciones" class="collapsed">
+    <li data-toggle="collapse" data-target="#reservas" class="collapsed">
       <a href="#" class="bg-danger text-white"><i class="fas fa-swatchbook"></i> RESERVAS </a>
-  </li>  
+  </li>
   <ul class="sub-menu collapse menu2 @if(
-    (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
-    (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
-    (url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista'))
-    ) show @endif" id="operaciones">
+    (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))
+    ) show @endif" id="reservas">
     <li data-toggle="collapse" class="active1">
-      <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">COMUNIDADES</a>
+      <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">RESERVAS</a>
     </li>
-    <li data-toggle="collapse" class="active1">
-      <a class="@if(url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo')) active @endif" href="{{route('asociacion.lista')}}"> ASOCIACIONES</a>
-    </li>
-    <li data-toggle="collapse" class="active1">
-      <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.nuevo')}}">SERVICIOS</a>
-    </li>
+
   </ul>
-  
+
   </ul>
  </div>

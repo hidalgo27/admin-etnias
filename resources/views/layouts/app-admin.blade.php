@@ -66,12 +66,5 @@
             </div>
         </div>
     </div>
-    <script>
-        $('.toast').toast(option);
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        </script>
 </body>
 </html>

@@ -212,23 +212,125 @@ function borrar_precio_actividad(pos){
     $('#row_actividad_precios_'+pos).remove();
 
 }
-function guardar_actividad(){
+// function guardar_actividad(){
+//     $.ajaxSetup({
+//         headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//     });
+//     $.ajax({
+//         type:'post',
+//         url: $("#form_actividad").attr('action'),
+//         method: $("#form_actividad").attr('method'),
+//         data: $("#form_actividad").serialize(),
+//         // dataType:'json',
+//         // async:false,
+//         processData: false,
+//         contentType: false,
+//         success:function(data){
+//             alert('rpta:'+data);
+//         }
+//         });
+// }
+function enviar_datos(){
+    if($('#actividad_asociacion_id').val()==''){
+        $('#ruc_rs').focus();
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Ingrese un numero de ruc, razon social o nombre',
+          })
+        return false;
+    }
+    if($('#titulo').val().trim()==''){
+        $('#titulo').focus();
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Ingrese el titulo',
+          })
+        return false;
+    }
+    if($('#descripcion').val().trim()==''){
+        $('#descripcion').focus();
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Ingrese una descripcion',
+          })
+        return false;
+    }
+    // $("input[name='foto[]']").each(function(indice, elemento) {
+    //     if($(elemento).val()==''){
+    //         $(elemento).focus();
+    //         Swal.fire(
+    //             'Good job!',
+    //             'You clicked the button!',
+    //             'success'
+    //           )
+    //         return false;
+    //     }
+    // });
+    var minimo=0;
+    $("input[name='minimo[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            minimo++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var maximo=0;
+    $("input[name='maximo[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            maximo++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var precio=0;
+    $("input[name='precio[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            precio++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
     $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     $.ajax({
-        type:'post',
         url: $("#form_actividad").attr('action'),
         method: $("#form_actividad").attr('method'),
-        data: $("#form_actividad").serialize(),
-        // dataType:'json',
-        // async:false,
+        data:new FormData($("#form_actividad")[0]),
+        dataType:'json',
+        contentType:false,
+        cache:false,
         processData: false,
-        contentType: false,
+        beforeSend: function() {
+            $('#rpt_form_actividad').html('');
+            $('#rpt_form_actividad').html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+        },
         success:function(data){
-            alert('rpta:'+data);
+            $('#rpt_form_actividad').html(data.mensaje);
+            $('#rpt_form_actividad').addClass(data.nombre_clase);
+            $("#form_actividad")[0].reset();
         }
         });
 }
