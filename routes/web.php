@@ -114,6 +114,6 @@ Route::get('/admin/servicios/buscar/{ruc_rs}', [
     'as' => 'servicios.buscar_asociacion',
 ]);
 Route::post('/admin/servicios/nuevo', [
-    'uses' => 'ServiciosController@store',
-    'as' => 'servicios.store',
+    'uses' => 'ServiciosController@actividad_store',
+    'as' => 'servicios.actividad.store',
 ]);

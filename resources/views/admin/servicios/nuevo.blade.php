@@ -57,7 +57,7 @@
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-actividades" role="tabpanel" aria-labelledby="nav-actividades-tab">
-                                            <form class="card card-body" action="">
+                                            <form id="form_actividad" class="card card-body" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
@@ -67,7 +67,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Titulo</div>
                                                         </div>
-                                                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo">
+                                                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -85,7 +85,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Fotos</div>
                                                         </div>
-                                                        <input type="file" class="form-control" name="foto" id="foto" multiple>
+                                                        <input type="file" name="foto[]" multiple class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12">
@@ -102,31 +102,35 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody id="actividad_precios">
-                                                        <tr id="row_actividad_precios_0">
+                                                        <tr id="row_actividad_precios_1">
                                                             <td>
-                                                                <select class="form-control" name="categoria" id="categoria">
+                                                                <select class="form-control" name="categoria[]" id="categoria" required>
                                                                     <option value="Nacional">Nacional</option>
                                                                     <option value="Extranjero">Extranjero</option>
                                                                     <option value="Agencia">Agencia</option>
                                                                 </select>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="number" min="0" name="minimo" id="minimo">
+                                                                <input class="form-control" type="number" min="0" name="minimo[]" id="minimo" required>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="number" min="0" name="maximo" id="maximo">
+                                                                <input class="form-control" type="number" min="0" name="maximo[]" id="maximo" required>
                                                             </td>
                                                             <td>
-                                                                <input class="form-control" type="number" min="0" name="precio" id="precio">
+                                                                <input class="form-control" type="number" min="0" name="precio[]" id="precio" required>
                                                             </td>
                                                             <td>
-                                                                <button class="btn btn-danger" onclick="borrar_precio_actividad()"><i class="fas fa-trash-alt"></i></button>
+                                                                <button class="btn btn-danger d-none" type="button" onclick="borrar_precio_actividad()" disabled><i class="fas fa-trash-alt"></i></button>
                                                                 <button class="btn btn-success" type="button" onclick="agregar_precio_actividad()"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-
+                                                <div class="col-12">
+                                                    {{ csrf_field() }}
+                                                    <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                </div>
                                             </form>
 
                                         </div>

@@ -181,11 +181,54 @@ function buscar_asociacion(ruc_rs){
          });
     }
 }
+var nro_hijos_actividad=1;
 function agregar_precio_actividad(){
-    $('#actividad_precios').append('');
+    nro_hijos_actividad++;
+    var cadena='<tr id="row_actividad_precios_'+nro_hijos_actividad+'">'+
+    '<td>'+
+    '<select class="form-control" name="categoria[]" id="categoria">'+
+        '<option value="Nacional">Nacional</option>'+
+        '<option value="Extranjero">Extranjero</option>'+
+        '<option value="Agencia">Agencia</option>'+
+    '</select>'+
+    '</td>'+
+    '<td>'+
+        '<input class="form-control" type="number" min="0" name="minimo[]" id="minimo">'+
+    '</td>'+
+    '<td>'+
+        '<input class="form-control" type="number" min="0" name="maximo[]" id="maximo">'+
+    '</td>'+
+    '<td>'+
+        '<input class="form-control" type="number" min="0" name="precio[]" id="precio">'+
+    '</td>'+
+    '<td>'+
+        '<button class="btn btn-danger" type="button" onclick="borrar_precio_actividad('+nro_hijos_actividad+')"><i class="fas fa-trash-alt"></i></button>'+
+        '<button class="btn btn-success d-none" type="button" onclick="agregar_precio_actividad()"><i class="fas fa-plus"></i></button>'+
+    '</td>'+
+'</tr>';
+    $('#actividad_precios').append(cadena);
+}
+function borrar_precio_actividad(pos){
+    $('#row_actividad_precios_'+pos).remove();
 
 }
-function borrar_precio_actividad(){
-    $('#actividad_precios').append('');
-
+function guardar_actividad(){
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type:'post',
+        url: $("#form_actividad").attr('action'),
+        method: $("#form_actividad").attr('method'),
+        data: $("#form_actividad").serialize(),
+        // dataType:'json',
+        // async:false,
+        processData: false,
+        contentType: false,
+        success:function(data){
+            alert('rpta:'+data);
+        }
+        });
 }
