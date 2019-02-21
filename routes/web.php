@@ -116,7 +116,25 @@ Route::get('/admin/servicios/buscar/{ruc_rs}', [
     'uses' => 'ServiciosController@buscar_asociacion',
     'as' => 'servicios.buscar_asociacion',
 ]);
-Route::post('/admin/servicios/store', [
-    'uses' => 'ServiciosController@actividad_store',
+Route::post('/admin/actividades/store', [
+    'uses' => 'ServiciosController@store',
     'as' => 'servicios.actividad.store',
 ]);
+Route::post('/admin/comidas/store', [
+    'uses' => 'ServiciosController@store',
+    'as' => 'servicios.comidas.store',
+]);
+Route::post('/admin/hospedaje/store', [
+    'uses' => 'ServiciosController@store',
+    'as' => 'servicios.hospedaje.store',
+]);
+Route::post('/admin/transporte/store', [
+    'uses' => 'ServiciosController@store',
+    'as' => 'servicios.transporte.store',
+]);
+Route::post('/admin/servicio/store', [
+    'uses' => 'ServiciosController@store',
+    'as' => 'servicios.servicio.store',
+]);
+
+

@@ -10,6 +10,6 @@ class ActividadFoto extends Model
     protected $table = "actividad_foto";
     public function actividad()
     {
-        return $this->belongsTo(ActividadadFoto::class, 'actividad_id');
+        return $this->belongsTo(Actividad::class, 'actividad_id');
     }
 }

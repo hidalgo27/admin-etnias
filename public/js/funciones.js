@@ -181,10 +181,34 @@ function buscar_asociacion(ruc_rs){
          });
     }
 }
-var nro_hijos_actividad=1;
-function agregar_precio_actividad(){
-    nro_hijos_actividad++;
-    var cadena='<tr id="row_actividad_precios_'+nro_hijos_actividad+'">'+
+var nro_hijos_acti=1;
+var nro_hijos_comi=1;
+var nro_hijos_hosp=1;
+var nro_hijos_tran=1;
+var nro_hijos_serv=1;
+function agregar_precio(attributo){
+    var valor=0;
+    if(attributo=='a'){
+        nro_hijos_acti++;
+        valor=nro_hijos_acti;
+    }
+    if(attributo=='c'){
+        nro_hijos_comi++;
+        valor=nro_hijos_comi;
+    }
+    if(attributo=='h'){
+        nro_hijos_hosp++;
+        valor=nro_hijos_hosp;
+    }
+    if(attributo=='t'){
+        nro_hijos_tran++;
+        valor=nro_hijos_tran;
+    }
+    if(attributo=='s'){
+        nro_hijos_serv++;
+        valor=nro_hijos_serv;
+    }
+    var cadena='<tr id="row_'+attributo+'_precios_'+valor+'">'+
     '<td>'+
     '<select class="form-control" name="categoria[]" id="categoria">'+
         '<option value="Nacional">Nacional</option>'+
@@ -193,23 +217,23 @@ function agregar_precio_actividad(){
     '</select>'+
     '</td>'+
     '<td>'+
-        '<input class="form-control" type="number" min="0" name="minimo[]" id="minimo">'+
+        '<input class="form-control" type="number" min="0" name="minimo_'+attributo+'[]" id="minimo">'+
     '</td>'+
     '<td>'+
-        '<input class="form-control" type="number" min="0" name="maximo[]" id="maximo">'+
+        '<input class="form-control" type="number" min="0" name="maximo_'+attributo+'[]" id="maximo">'+
     '</td>'+
     '<td>'+
-        '<input class="form-control" type="number" min="0" name="precio[]" id="precio">'+
+        '<input class="form-control" type="number" min="0" name="precio_'+attributo+'[]" id="precio">'+
     '</td>'+
     '<td>'+
-        '<button class="btn btn-danger" type="button" onclick="borrar_precio_actividad('+nro_hijos_actividad+')"><i class="fas fa-trash-alt"></i></button>'+
-        '<button class="btn btn-success d-none" type="button" onclick="agregar_precio_actividad()"><i class="fas fa-plus"></i></button>'+
+        '<button class="btn btn-danger" type="button" onclick="borrar_precio(\''+valor+'\',\''+attributo+'\')"><i class="fas fa-trash-alt"></i></button>'+
+        '<button class="btn btn-success d-none" type="button" onclick="agregar_precio(\''+attributo+'\')"><i class="fas fa-plus"></i></button>'+
     '</td>'+
 '</tr>';
-    $('#actividad_precios').append(cadena);
+    $('#'+attributo+'_precios').append(cadena);
 }
-function borrar_precio_actividad(pos){
-    $('#row_actividad_precios_'+pos).remove();
+function borrar_precio(pos,attributo){
+    $('#row_'+attributo+'_precios_'+pos).remove();
 
 }
 // function guardar_actividad(){
@@ -232,8 +256,8 @@ function borrar_precio_actividad(pos){
 //         }
 //         });
 // }
-function enviar_datos(){
-    if($('#actividad_asociacion_id').val()==''){
+function enviar_datos(attributo){
+    if($('#'+attributo+'_asociacion_id').val()==''){
         $('#ruc_rs').focus();
         Swal.fire({
             type: 'error',
@@ -242,8 +266,8 @@ function enviar_datos(){
           })
         return false;
     }
-    if($('#titulo').val().trim()==''){
-        $('#titulo').focus();
+    if($('#titulo_'+attributo).val().trim()==''){
+        $('#titulo_'+attributo).focus();
         Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -251,8 +275,8 @@ function enviar_datos(){
           })
         return false;
     }
-    if($('#descripcion').val().trim()==''){
-        $('#descripcion').focus();
+    if($('#descripcion_'+attributo).val().trim()==''){
+        $('#descripcion_'+attributo).focus();
         Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -272,7 +296,7 @@ function enviar_datos(){
     //     }
     // });
     var minimo=0;
-    $("input[name='minimo[]']").each(function(indice, elemento) {
+    $("input[name='minimo_"+attributo+"[]']").each(function(indice, elemento) {
         if(!$.isNumeric($(elemento).val())){
             minimo++;
             $(elemento).focus();
@@ -285,7 +309,7 @@ function enviar_datos(){
         }
     });
     var maximo=0;
-    $("input[name='maximo[]']").each(function(indice, elemento) {
+    $("input[name='maximo_"+attributo+"[]']").each(function(indice, elemento) {
         if(!$.isNumeric($(elemento).val())){
             maximo++;
             $(elemento).focus();
@@ -298,7 +322,7 @@ function enviar_datos(){
         }
     });
     var precio=0;
-    $("input[name='precio[]']").each(function(indice, elemento) {
+    $("input[name='precio_"+attributo+"[]']").each(function(indice, elemento) {
         if(!$.isNumeric($(elemento).val())){
             precio++;
             $(elemento).focus();
@@ -316,21 +340,21 @@ function enviar_datos(){
         }
     });
     $.ajax({
-        url: $("#form_actividad").attr('action'),
-        method: $("#form_actividad").attr('method'),
-        data:new FormData($("#form_actividad")[0]),
+        url: $("#form_"+attributo).attr('action'),
+        method: $("#form_"+attributo).attr('method'),
+        data:new FormData($("#form_"+attributo)[0]),
         dataType:'json',
         contentType:false,
         cache:false,
         processData: false,
         beforeSend: function() {
-            $('#rpt_form_actividad').html('');
-            $('#rpt_form_actividad').html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+            $('#rpt_form_'+attributo).html('');
+            $('#rpt_form_'+attributo).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
         },
         success:function(data){
-            $('#rpt_form_actividad').html(data.mensaje);
-            $('#rpt_form_actividad').addClass(data.nombre_clase);
-            $("#form_actividad")[0].reset();
+            $('#rpt_form_'+attributo).html(data.mensaje);
+            $('#rpt_form_'+attributo).addClass(data.nombre_clase);
+            $("#form_"+attributo)[0].reset();
         }
         });
 }
