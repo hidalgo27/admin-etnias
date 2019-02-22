@@ -112,7 +112,7 @@ Route::get('/admin/servicios/nuevo', [
     'uses' => 'ServiciosController@nuevo',
     'as' => 'servicios.nuevo',
 ]);
-Route::get('/admin/servicios/buscar/{ruc_rs}', [
+Route::get('/admin/asociacion/buscar/{ruc_rs}', [
     'uses' => 'ServiciosController@buscar_asociacion',
     'as' => 'servicios.buscar_asociacion',
 ]);
@@ -137,4 +137,11 @@ Route::post('/admin/servicio/store', [
     'as' => 'servicios.servicio.store',
 ]);
 
-
+Route::get('/admin/servicios/buscar/{ruc_rs}', [
+    'uses' => 'ServiciosController@buscar_servicios',
+    'as' => 'servicios.buscar_servicios',
+]);
+Route::get('/admin/mostar/imagen/{filename}/{storage}', [
+    'uses' => 'ServiciosController@showFoto',
+    'as' => 'servicio.show.imagen',
+]);

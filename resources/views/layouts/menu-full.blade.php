@@ -23,7 +23,7 @@
         <a class="@if(url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo')) active @endif" href="{{route('asociacion.lista')}}"> ASOCIACIONES</a>
       </li>
       <li data-toggle="collapse" class="active1">
-        <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.nuevo')}}">SERVICIOS</a>
+        <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.lista')}}">SERVICIOS</a>
       </li>
     </ul>
     {{-- rutas para la base de datos --}}

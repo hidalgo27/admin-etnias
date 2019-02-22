@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Comida;
+use App\Servicio;
 use App\Actividad;
+use App\Hospedaje;
 use App\Asociacion;
 use App\ComidaFoto;
+use App\Transporte;
 use App\ComidaPrecio;
 use App\ActividadFoto;
 use App\ActividadPrecio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use App\Hospedaje;
 
 class ServiciosController extends Controller
 {
@@ -210,5 +212,22 @@ class ServiciosController extends Controller
               </button>']);
             }
         }
+    }
+    public function lista(){
+        return view('admin.servicios.lista');
+    }
+    public function buscar_servicios($ruc_rs){
+        $asociacion=Asociacion::where('ruc',$ruc_rs)->orwhere('nombre','like','%'.$ruc_rs.'%')->first();
+        $actividades=Actividad::where('asociacion_id',$asociacion->id)->get();
+        $comidas=Comida::where('asociacion_id',$asociacion->id)->get();
+        $hospedajes=Hospedaje::where('asociacion_id',$asociacion->id)->get();
+        $transporte=Transporte::where('asociacion_id',$asociacion->id)->get();
+        $servicios=Servicio::where('asociacion_id',$asociacion->id)->get();
+
+        return view('admin.servicios.buscar-servicios',compact('asociacion','actividades','comidas','hospedajes','transporte','servicios'));
+    }
+    public function showFoto($filename,$storage){
+        $file = Storage::disk($storage)->get($filename);
+        return response($file, 200);
     }
 }

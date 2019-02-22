@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">SERVICIOS</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('servicios.lista') }}">SERVICIOS</a></li>
                 <li class="breadcrumb-item active" aria-current="page">NUEVO</li>
             </ol>
         </nav>

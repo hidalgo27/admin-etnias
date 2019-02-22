@@ -172,7 +172,7 @@ function buscar_asociacion(ruc_rs){
         });
         $.ajax({
             type:'get',
-            url:'/admin/servicios/buscar/'+valor,
+            url:'/admin/asociacion/buscar/'+valor,
             // data:{id:id},
             success:function(data){
                 $('#asociacion').html('');
@@ -357,4 +357,23 @@ function enviar_datos(attributo){
             $("#form_"+attributo)[0].reset();
         }
         });
+}
+function buscar_servicios(ruc_rs){
+    var valor=$.trim(ruc_rs);
+    if(valor.length>0){
+        $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type:'get',
+            url:'/admin/servicios/buscar/'+valor,
+            // data:{id:id},
+            success:function(data){
+                $('#servicios').html('');
+                $('#servicios').html(data);
+            }
+         });
+    }
 }
