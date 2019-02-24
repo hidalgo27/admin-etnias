@@ -145,3 +145,11 @@ Route::get('/admin/mostar/imagen/{filename}/{storage}', [
     'uses' => 'ServiciosController@showFoto',
     'as' => 'servicio.show.imagen',
 ]);
+Route::post('/admin/actividades/edit', [
+    'uses' => 'ServiciosController@edit',
+    'as' => 'servicios.actividad.edit',
+]);
+Route::get('/admin/servicio/delete/{id}/{atributo}', [
+    'uses' => 'ServiciosController@getDelete',
+    'as' => 'servicio.lista.delete',
+]);

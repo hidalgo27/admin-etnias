@@ -35,10 +35,10 @@ class ServiciosController extends Controller
         $titulo=strtolower(trim($request->input('titulo')));
         $descripcion=$request->input('descripcion');
         $fotos=$request->file('foto');
-        $categoria=$request->input('categoria');
-        $minimo=$request->input('minimo_'.$attributo);
-        $maximo=$request->input('maximo_'.$attributo);
-        $precio=$request->input('precio_'.$attributo);
+        $categoria=$request->input('categoria_n');
+        $minimo=$request->input('minimo_'.$attributo.'_n_0');
+        $maximo=$request->input('maximo_'.$attributo.'_n_0');
+        $precio=$request->input('precio_'.$attributo.'_n_0');
         $buscar_asociacion= Asociacion::FindOrFail($asociacion_id);
         if(empty($buscar_asociacion)){
             return response()->json(['nombre_clase'=>'alert alert-danger alert-dismissible fade show','mensaje'=>'<strong>Oops!</strong>La asociacion no existe <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -221,13 +221,423 @@ class ServiciosController extends Controller
         $actividades=Actividad::where('asociacion_id',$asociacion->id)->get();
         $comidas=Comida::where('asociacion_id',$asociacion->id)->get();
         $hospedajes=Hospedaje::where('asociacion_id',$asociacion->id)->get();
-        $transporte=Transporte::where('asociacion_id',$asociacion->id)->get();
+        $transportes=Transporte::where('asociacion_id',$asociacion->id)->get();
         $servicios=Servicio::where('asociacion_id',$asociacion->id)->get();
 
-        return view('admin.servicios.buscar-servicios',compact('asociacion','actividades','comidas','hospedajes','transporte','servicios'));
+        return view('admin.servicios.buscar-servicios',compact('asociacion','actividades','comidas','hospedajes','transportes','servicios'));
     }
     public function showFoto($filename,$storage){
         $file = Storage::disk($storage)->get($filename);
         return response($file, 200);
+    }
+    public function edit(Request $request){
+        $attributo=$request->input('attributo');
+        $id=$request->input('id');
+        // $v_asociacion_id=$attributo.'_asociacion_id';
+        // $asociacion_id=$request->input('id');
+
+        $titulo=strtolower(trim($request->input('titulo')));
+        $descripcion=$request->input('descripcion');
+        $fotos=$request->file('foto');
+        $fotos_e=$request->file('fotos');
+        $categoria_n=$request->input('categoria_n');
+        $minimo_n=$request->input('minimo_'.$attributo.'_n_'.$id);
+        $maximo_n=$request->input('maximo_'.$attributo.'_n_'.$id);
+        $precio_n=$request->input('precio_'.$attributo.'-n_'.$id);
+
+        $precio_id_e=$request->input('precio_id_e');
+        $categoria_e=$request->input('categoria_e');
+        $minimo_e=$request->input('minimo_'.$attributo.'_e_'.$id);
+        $maximo_e=$request->input('maximo_'.$attributo.'_e_'.$id);
+        $precio_e=$request->input('precio_'.$attributo.'_e_'.$id);
+        // $buscar_asociacion= Asociacion::FindOrFail($asociacion_id);
+        // if(empty($buscar_asociacion)){
+        //     return response()->json(['nombre_clase'=>'alert alert-danger alert-dismissible fade show','mensaje'=>'<strong>Oops!</strong>La asociacion no existe <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //     <span aria-hidden="true">&times;</span>
+        //   </button>']);
+        // }
+        // else{
+            if($attributo=='a'){
+                $actividad=Actividad::FindOrFail($id);
+                $actividad->titulo=$titulo;
+                $actividad->descripcion=$descripcion;
+                $actividad->save();
+                if(!empty($fotos_e)){
+                    $fotitos=ActividadFoto::where('actividad_id',$id)->get();
+                    foreach($fotitos as $fotito){
+                        if(!in_array($fotito->id,$fotos_e)){
+                            $temp=ActividadFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    ActividadFoto::where('actividad_id',$id)->delete();
+                }
+
+                if(!empty($fotos)){
+                    foreach($fotos as $foto){
+                        $actividadfoto = new ActividadFoto();
+                        $actividadfoto->actividad_id=$actividad->id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->save();
+                        Storage::disk('actividades')->put($filename,  File::get($foto));
+                    }
+                }
+                if(!empty($precio_id_e)){
+                    $precios=ActividadPrecio::where('actividad_id',$id)->get();
+                    foreach($precios as $precio){
+                        if(!in_array($precio->id,$precio_id_e)){
+                            $actividad_precio=ActividadPrecio::findOrfail($precio->id);
+                            $actividad_precio->delete();
+                        }
+                        else{
+                            foreach($precio_id_e as $key => $value){
+                                if($value==$precio->id){
+                                    $actividad_precio=ActividadPrecio::findOrfail($precio->id);
+                                    $actividad_precio->categoria=$categoria_e[$key];
+                                    $actividad_precio->min=$minimo_e[$key];
+                                    $actividad_precio->max=$maximo_e[$key];
+                                    $actividad_precio->precio=$precio_e[$key];
+                                    $actividad_precio->save();
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    ActividadPrecio::where('actividad_id',$id)->delete();
+                }
+                if(!empty($categoria_n)){
+                    foreach ($categoria_n as $key => $value) {
+                        $actividad_precio=new ActividadPrecio();
+                        $actividad_precio->categoria=$value;
+                        $actividad_precio->min=$minimo_n[$key];
+                        $actividad_precio->max=$maximo_n[$key];
+                        $actividad_precio->precio=$precio_n[$key];
+                        $actividad_precio->actividad_id=$id;
+                        $actividad_precio->save();
+                    }
+                }
+
+                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+            }
+            else if($attributo=='c'){
+                $actividad=Comida::FindOrFail($id);
+                $actividad->titulo=$titulo;
+                $actividad->descripcion=$descripcion;
+                $actividad->save();
+                if(!empty($fotos_e)){
+                    $fotitos=ComidaFoto::where('comida_id',$id)->get();
+                    foreach($fotitos as $fotito){
+                        if(!in_array($fotito->id,$fotos_e)){
+                            $temp=ComidaFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    ComidaFoto::where('comida_id',$id)->delete();
+                }
+
+                if(!empty($fotos)){
+                    foreach($fotos as $foto){
+                        $actividadfoto = new ComidaFoto();
+                        $actividadfoto->actividad_id=$id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->save();
+                        Storage::disk('comidas')->put($filename,  File::get($foto));
+                    }
+                }
+                if(!empty($precio_id_e)){
+                    $precios=ComidaPrecio::where('comida_id',$id)->get();
+                    foreach($precios as $precio){
+                        if(!in_array($precio->id,$precio_id_e)){
+                            $actividad_precio=ComidaPrecio::findOrfail($precio->id);
+                            $actividad_precio->delete();
+                        }
+                        else{
+                            foreach($precio_id_e as $key => $value){
+                                if($value==$precio->id){
+                                    $actividad_precio=ComidaPrecio::findOrfail($precio->id);
+                                    $actividad_precio->categoria=$categoria_e[$key];
+                                    $actividad_precio->min=$minimo_e[$key];
+                                    $actividad_precio->max=$maximo_e[$key];
+                                    $actividad_precio->precio=$precio_e[$key];
+                                    $actividad_precio->save();
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    ComidaPrecio::where('comida_id',$id)->delete();
+                }
+                if(!empty($categoria_n)){
+                    foreach ($categoria_n as $key => $value) {
+                        $actividad_precio=new ComidaPrecio();
+                        $actividad_precio->categoria=$value;
+                        $actividad_precio->min=$minimo_n[$key];
+                        $actividad_precio->max=$maximo_n[$key];
+                        $actividad_precio->precio=$precio_n[$key];
+                        $actividad_precio->comida_id=$id;
+                        $actividad_precio->save();
+                    }
+                }
+                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+            }
+            else if($attributo=='h'){
+                $actividad=Hospedaje::FindOrFail($id);
+                $actividad->titulo=$titulo;
+                $actividad->descripcion=$descripcion;
+                $actividad->save();
+                if(!empty($fotos_e)){
+                    $fotitos=HospedajeFoto::where('hospedaje_id',$id)->get();
+                    foreach($fotitos as $fotito){
+                        if(!in_array($fotito->id,$fotos_e)){
+                            $temp=HospedajeFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    HospedajeFoto::where('hospedaje_id',$id)->delete();
+                }
+
+                if(!empty($fotos)){
+                    foreach($fotos as $foto){
+                        $actividadfoto = new HospedajeFoto();
+                        $actividadfoto->hospedaje_id=$id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->save();
+                        Storage::disk('actividades')->put($filename,  File::get($foto));
+                    }
+                }
+                if(!empty($precio_id_e)){
+                    $precios=HospedajePrecio::where('hospedaje_id',$id)->get();
+                    foreach($precios as $precio){
+                        if(!in_array($precio->id,$precio_id_e)){
+                            $actividad_precio=HospedajePrecio::findOrfail($precio->id);
+                            $actividad_precio->delete();
+                        }
+                        else{
+                            foreach($precio_id_e as $key => $value){
+                                if($value==$precio->id){
+                                    $actividad_precio=HospedajePrecio::findOrfail($precio->id);
+                                    $actividad_precio->categoria=$categoria_e[$key];
+                                    $actividad_precio->min=$minimo_e[$key];
+                                    $actividad_precio->max=$maximo_e[$key];
+                                    $actividad_precio->precio=$precio_e[$key];
+                                    $actividad_precio->save();
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    HospedajePrecio::where('hospedaje_id',$id)->delete();
+                }
+                if(!empty($categoria_n)){
+                    foreach ($categoria_n as $key => $value) {
+                        $actividad_precio=new HospedajePrecio();
+                        $actividad_precio->categoria=$value;
+                        $actividad_precio->min=$minimo_n[$key];
+                        $actividad_precio->max=$maximo_n[$key];
+                        $actividad_precio->precio=$precio_n[$key];
+                        $actividad_precio->hospedaje_id=$id;
+                        $actividad_precio->save();
+                    }
+                }
+
+                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+            }
+            else if($attributo=='t'){
+                $actividad=Transporte::FindOrFail($id);
+                $actividad->titulo=$titulo;
+                $actividad->descripcion=$descripcion;
+                $actividad->save();
+                if(!empty($fotos_e)){
+                    $fotitos=TransporteFoto::where('transporte_id',$id)->get();
+                    foreach($fotitos as $fotito){
+                        if(!in_array($fotito->id,$fotos_e)){
+                            $temp=TransporteFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    TransporteFoto::where('transporte_id',$id)->delete();
+                }
+
+                if(!empty($fotos)){
+                    foreach($fotos as $foto){
+                        $actividadfoto = new TransporteFoto();
+                        $actividadfoto->actividad_id=$transporte_id->id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->save();
+                        Storage::disk('transportes')->put($filename,  File::get($foto));
+                    }
+                }
+                if(!empty($precio_id_e)){
+                    $precios=TransportePrecio::where('transporte_id',$id)->get();
+                    foreach($precios as $precio){
+                        if(!in_array($precio->id,$precio_id_e)){
+                            $actividad_precio=TransportePrecio::findOrfail($precio->id);
+                            $actividad_precio->delete();
+                        }
+                        else{
+                            foreach($precio_id_e as $key => $value){
+                                if($value==$precio->id){
+                                    $actividad_precio=TransportePrecio::findOrfail($precio->id);
+                                    $actividad_precio->categoria=$categoria_e[$key];
+                                    $actividad_precio->min=$minimo_e[$key];
+                                    $actividad_precio->max=$maximo_e[$key];
+                                    $actividad_precio->precio=$precio_e[$key];
+                                    $actividad_precio->save();
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    TransportePrecio::where('transporte_id',$id)->delete();
+                }
+                if(!empty($categoria_n)){
+                    foreach ($categoria_n as $key => $value) {
+                        $actividad_precio=new TransportePrecio();
+                        $actividad_precio->categoria=$value;
+                        $actividad_precio->min=$minimo_n[$key];
+                        $actividad_precio->max=$maximo_n[$key];
+                        $actividad_precio->precio=$precio_n[$key];
+                        $actividad_precio->transporte_id=$id;
+                        $actividad_precio->save();
+                    }
+                }
+
+                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Transporte editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+            }
+            else if($attributo=='s'){
+                $actividad=Servicio::FindOrFail($id);
+                $actividad->titulo=$titulo;
+                $actividad->descripcion=$descripcion;
+                $actividad->save();
+                if(!empty($fotos_e)){
+                    $fotitos=ServicioFoto::where('servicio_id',$id)->get();
+                    foreach($fotitos as $fotito){
+                        if(!in_array($fotito->id,$fotos_e)){
+                            $temp=ServicioFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    ServicioFoto::where('servicio_id',$id)->delete();
+                }
+
+                if(!empty($fotos)){
+                    foreach($fotos as $foto){
+                        $actividadfoto = new ServicioFoto();
+                        $actividadfoto->servicio_id=$id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->save();
+                        Storage::disk('servicios')->put($filename,  File::get($foto));
+                    }
+                }
+                if(!empty($precio_id_e)){
+                    $precios=ServicioPrecio::where('servicio_id',$id)->get();
+                    foreach($precios as $precio){
+                        if(!in_array($precio->id,$precio_id_e)){
+                            $actividad_precio=ServicioPrecio::findOrfail($precio->id);
+                            $actividad_precio->delete();
+                        }
+                        else{
+                            foreach($precio_id_e as $key => $value){
+                                if($value==$precio->id){
+                                    $actividad_precio=ServicioPrecio::findOrfail($precio->id);
+                                    $actividad_precio->categoria=$categoria_e[$key];
+                                    $actividad_precio->min=$minimo_e[$key];
+                                    $actividad_precio->max=$maximo_e[$key];
+                                    $actividad_precio->precio=$precio_e[$key];
+                                    $actividad_precio->save();
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    ServicioPrecio::where('servicio_id',$id)->delete();
+                }
+                if(!empty($categoria_n)){
+                    foreach ($categoria_n as $key => $value) {
+                        $actividad_precio=new ServicioPrecio();
+                        $actividad_precio->categoria=$value;
+                        $actividad_precio->min=$minimo_n[$key];
+                        $actividad_precio->max=$maximo_n[$key];
+                        $actividad_precio->precio=$precio_n[$key];
+                        $actividad_precio->servicio_id=$id;
+                        $actividad_precio->save();
+                    }
+                }
+
+                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Servicio editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+            }
+        // }
+    }
+    public function getDelete($id,$atributo){
+        if($atributo=='a'){
+            if( Actividad::destroy($id))
+                return 1;
+            else
+                return 0;
+        }
+        if($atributo=='c'){
+            if( Comida::destroy($id))
+                return 1;
+            else
+                return 0;
+        }
+        if($atributo=='h'){
+            if( Hospedaje::destroy($id))
+                return 1;
+            else
+                return 0;
+        }
+        if($atributo=='t'){
+            if( Transporte::destroy($id))
+                return 1;
+            else
+                return 0;
+        }
+        if($atributo=='s'){
+            if( Servicio::destroy($id))
+                return 1;
+            else
+                return 0;
+        }
     }
 }

@@ -181,59 +181,42 @@ function buscar_asociacion(ruc_rs){
          });
     }
 }
-var nro_hijos_acti=1;
-var nro_hijos_comi=1;
-var nro_hijos_hosp=1;
-var nro_hijos_tran=1;
-var nro_hijos_serv=1;
-function agregar_precio(attributo){
-    var valor=0;
-    if(attributo=='a'){
-        nro_hijos_acti++;
-        valor=nro_hijos_acti;
-    }
-    if(attributo=='c'){
-        nro_hijos_comi++;
-        valor=nro_hijos_comi;
-    }
-    if(attributo=='h'){
-        nro_hijos_hosp++;
-        valor=nro_hijos_hosp;
-    }
-    if(attributo=='t'){
-        nro_hijos_tran++;
-        valor=nro_hijos_tran;
-    }
-    if(attributo=='s'){
-        nro_hijos_serv++;
-        valor=nro_hijos_serv;
-    }
-    var cadena='<tr id="row_'+attributo+'_precios_'+valor+'">'+
+// var nro_hijos_acti=1;
+// var nro_hijos_comi=1;
+// var nro_hijos_hosp=1;
+// var nro_hijos_tran=1;
+// var nro_hijos_serv=1;
+function agregar_precio(valor1,valor2){
+
+    var valor=$('#cantidad_precios_'+valor1+'_'+valor2).val();
+    valor++
+    $('#cantidad_precios_'+valor1+'_'+valor2).val(valor);
+    var cadena='<tr id="row_'+valor1+'_precios_'+valor2+'_'+valor+'">'+
     '<td>'+
-    '<select class="form-control" name="categoria[]" id="categoria">'+
+    '<select class="form-control" name="categoria_n[]" id="categoria">'+
         '<option value="Nacional">Nacional</option>'+
         '<option value="Extranjero">Extranjero</option>'+
         '<option value="Agencia">Agencia</option>'+
     '</select>'+
     '</td>'+
     '<td>'+
-        '<input class="form-control" type="number" min="0" name="minimo_'+attributo+'[]" id="minimo">'+
+        '<input class="form-control" type="number" min="0" name="minimo_'+valor1+'_n_'+valor2+'[]" id="minimo">'+
     '</td>'+
     '<td>'+
-        '<input class="form-control" type="number" min="0" name="maximo_'+attributo+'[]" id="maximo">'+
+        '<input class="form-control" type="number" min="0" name="maximo_'+valor1+'_n_'+valor2+'[]" id="maximo">'+
     '</td>'+
     '<td>'+
-        '<input class="form-control" type="number" min="0" name="precio_'+attributo+'[]" id="precio">'+
+        '<input class="form-control" type="number" min="0" name="precio_'+valor1+'_n_'+valor2+'[]" id="precio">'+
     '</td>'+
     '<td>'+
-        '<button class="btn btn-danger" type="button" onclick="borrar_precio(\''+valor+'\',\''+attributo+'\')"><i class="fas fa-trash-alt"></i></button>'+
-        '<button class="btn btn-success d-none" type="button" onclick="agregar_precio(\''+attributo+'\')"><i class="fas fa-plus"></i></button>'+
+        '<button class="btn btn-danger" type="button" onclick="borrar_precio(\''+valor1+'\',\''+valor2+'\',\''+valor+'\')"><i class="fas fa-trash-alt"></i></button>'+
+        '<button class="btn btn-success d-none" type="button" onclick="agregar_precio(\''+valor1+'\')"><i class="fas fa-plus"></i></button>'+
     '</td>'+
 '</tr>';
-    $('#'+attributo+'_precios').append(cadena);
+    $('#'+valor1+'_precios_'+valor2).append(cadena);
 }
-function borrar_precio(pos,attributo){
-    $('#row_'+attributo+'_precios_'+pos).remove();
+function borrar_precio(valor1,valor2,valor3){
+    $('#row_'+valor1+'_precios_'+valor2+'_'+valor3).remove();
 
 }
 // function guardar_actividad(){
@@ -256,8 +239,8 @@ function borrar_precio(pos,attributo){
 //         }
 //         });
 // }
-function enviar_datos(attributo){
-    if($('#'+attributo+'_asociacion_id').val()==''){
+function enviar_datos(valor1,valor2){
+    if($('#'+valor1+'_asociacion_id').val()==''){
         $('#ruc_rs').focus();
         Swal.fire({
             type: 'error',
@@ -266,8 +249,8 @@ function enviar_datos(attributo){
           })
         return false;
     }
-    if($('#titulo_'+attributo).val().trim()==''){
-        $('#titulo_'+attributo).focus();
+    if($('#titulo_'+valor1+'_'+valor2).val().trim()==''){
+        $('#titulo_'+valor1+'_'+valor2).focus();
         Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -275,8 +258,8 @@ function enviar_datos(attributo){
           })
         return false;
     }
-    if($('#descripcion_'+attributo).val().trim()==''){
-        $('#descripcion_'+attributo).focus();
+    if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){
+        $('#descripcion_'+valor1+'_'+valor2).focus();
         Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -296,7 +279,7 @@ function enviar_datos(attributo){
     //     }
     // });
     var minimo=0;
-    $("input[name='minimo_"+attributo+"[]']").each(function(indice, elemento) {
+    $("input[name='minimo_"+valor1+'_'+valor2+"[]']").each(function(indice, elemento) {
         if(!$.isNumeric($(elemento).val())){
             minimo++;
             $(elemento).focus();
@@ -309,7 +292,7 @@ function enviar_datos(attributo){
         }
     });
     var maximo=0;
-    $("input[name='maximo_"+attributo+"[]']").each(function(indice, elemento) {
+    $("input[name='maximo_"+valor1+'_'+valor2+"[]']").each(function(indice, elemento) {
         if(!$.isNumeric($(elemento).val())){
             maximo++;
             $(elemento).focus();
@@ -322,7 +305,7 @@ function enviar_datos(attributo){
         }
     });
     var precio=0;
-    $("input[name='precio_"+attributo+"[]']").each(function(indice, elemento) {
+    $("input[name='precio_"+valor1+'_'+valor2+"[]']").each(function(indice, elemento) {
         if(!$.isNumeric($(elemento).val())){
             precio++;
             $(elemento).focus();
@@ -340,21 +323,21 @@ function enviar_datos(attributo){
         }
     });
     $.ajax({
-        url: $("#form_"+attributo).attr('action'),
-        method: $("#form_"+attributo).attr('method'),
-        data:new FormData($("#form_"+attributo)[0]),
+        url: $("#form_"+valor1+'_'+valor2).attr('action'),
+        method: $("#form_"+valor1+'_'+valor2).attr('method'),
+        data:new FormData($("#form_"+valor1+'_'+valor2)[0]),
         dataType:'json',
         contentType:false,
         cache:false,
         processData: false,
         beforeSend: function() {
-            $('#rpt_form_'+attributo).html('');
-            $('#rpt_form_'+attributo).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+            $('#rpt_form_'+valor1+'_'+valor2).html('');
+            $('#rpt_form_'+valor1+'_'+valor2).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
         },
         success:function(data){
-            $('#rpt_form_'+attributo).html(data.mensaje);
-            $('#rpt_form_'+attributo).addClass(data.nombre_clase);
-            $("#form_"+attributo)[0].reset();
+            $('#rpt_form_'+valor1+'_'+valor2).html(data.mensaje);
+            $('#rpt_form_'+valor1+'_'+valor2).addClass(data.nombre_clase);
+            $("#form_"+valor1+'_'+valor2)[0].reset();
         }
         });
 }
@@ -376,4 +359,188 @@ function buscar_servicios(ruc_rs){
             }
          });
     }
+}
+function enviar_datos_editar(valor1,valor2){
+    if($('#'+valor1+'_asociacion_id').val()==''){
+        $('#ruc_rs').focus();
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Ingrese un numero de ruc, razon social o nombre',
+          })
+        return false;
+    }
+    if($('#titulo_'+valor1+'_'+valor2).val().trim()==''){
+        $('#titulo_'+valor1+'_'+valor2).focus();
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Ingrese el titulo',
+          })
+        return false;
+    }
+    if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){
+        $('#descripcion_'+valor1+'_'+valor2).focus();
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Ingrese una descripcion',
+          })
+        return false;
+    }
+    // $("input[name='foto[]']").each(function(indice, elemento) {
+    //     if($(elemento).val()==''){
+    //         $(elemento).focus();
+    //         Swal.fire(
+    //             'Good job!',
+    //             'You clicked the button!',
+    //             'success'
+    //           )
+    //         return false;
+    //     }
+    // });
+    var minimo=0;
+    $("input[name='minimo_"+valor1+'_'+valor2.replace("e", "n")+"[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            minimo++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var maximo=0;
+    $("input[name='maximo_"+valor1+'_'+valor2.replace("e", "n")+"[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            maximo++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var precio=0;
+    $("input[name='precio_"+valor1+'_'+valor2.replace("e", "n")+"[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            precio++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var minimo=0;
+    $("input[name='minimo_"+valor1+'_'+valor2+"[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            minimo++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var maximo=0;
+    $("input[name='maximo_"+valor1+'_'+valor2+"[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            maximo++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    var precio=0;
+    $("input[name='precio_"+valor1+'_'+valor2+"[]']").each(function(indice, elemento) {
+        if(!$.isNumeric($(elemento).val())){
+            precio++;
+            $(elemento).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese un valor numerico',
+            })
+            return false;
+        }
+    });
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: $("#form_"+valor1+'_'+valor2).attr('action'),
+        method: $("#form_"+valor1+'_'+valor2).attr('method'),
+        data:new FormData($("#form_"+valor1+'_'+valor2)[0]),
+        dataType:'json',
+        contentType:false,
+        cache:false,
+        processData: false,
+        beforeSend: function() {
+            $('#rpt_form_'+valor1+'_'+valor2).html('');
+            $('#rpt_form_'+valor1+'_'+valor2).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+        },
+        success:function(data){
+            $('#rpt_form_'+valor1+'_'+valor2).html(data.mensaje);
+            $('#rpt_form_'+valor1+'_'+valor2).addClass(data.nombre_clase);
+            $("#form_"+valor1+'_'+valor2)[0].reset();
+        }
+        });
+}
+function borrar_servicio(id,atributo){
+
+    Swal.fire({
+        title: 'MENSAJE DEL SISTEMA',
+        text: "¿Estas seguro de borrar el servicio?",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText:'No, cancelar'
+      }).then((result) => {
+        if (result.value) {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:'get',
+                url:'/admin/servicio/delete/'+id+'/'+atributo,
+                // data:{id:id},
+                success:function(data){
+                    if(data==1){
+                        Swal.fire(
+                            'Borrado!',
+                            'El servicio ha sido borrada.',
+                            'success'
+                        );
+                        $('#servicio_'+id).fadeOut();
+                    }
+                    else if(data==0){
+                        Swal.fire(
+                            'Error!',
+                            'Subo un error al borrar el servicio.',
+                            'danger'
+                        )
+                    }
+                }
+             });
+        }
+      })
 }
