@@ -544,3 +544,13 @@ function borrar_servicio(id,atributo){
         }
       })
 }
+
+function filtro_reserva(campo,columna){
+    $('#codigo_'+columna).addClass('d-none');
+    $('#nombre_'+columna).addClass('d-none');
+    $('#fechas_'+columna).addClass('d-none');
+    $('#mes_anio_'+columna).addClass('d-none');
+
+    $('#'+campo+'_'+columna).removeClass('d-none');
+
+}

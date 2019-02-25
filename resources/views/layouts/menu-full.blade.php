@@ -31,10 +31,10 @@
       <a href="#" class="bg-danger text-white"><i class="fas fa-swatchbook"></i> RESERVAS </a>
   </li>
   <ul class="sub-menu collapse menu2 @if(
-    (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))
+    (url()->current()==route('reserva.lista')||url()->current()==route('comunidad_nuevo_path'))
     ) show @endif" id="reservas">
     <li data-toggle="collapse" class="active1">
-      <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">RESERVAS</a>
+      <a class="@if(url()->current()==route('reserva.lista')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('reserva.lista')}}">RESERVAS</a>
     </li>
 
   </ul>

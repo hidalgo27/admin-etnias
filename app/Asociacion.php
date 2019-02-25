@@ -20,4 +20,8 @@ class Asociacion extends Model
     {
         return $this->hasMany(Actividad::class, 'asociacion_id');
     }
+    public function reserva_actividad()
+    {
+        return $this->hasMany(ReservaActividad::class, 'asociacion_id');
+    }
 }

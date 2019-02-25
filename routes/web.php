@@ -153,3 +153,12 @@ Route::get('/admin/servicio/delete/{id}/{atributo}', [
     'uses' => 'ServiciosController@getDelete',
     'as' => 'servicio.lista.delete',
 ]);
+Route::get('/admin/reserva', [
+    'uses' => 'ReservaController@lista',
+    'as' => 'reserva.lista',
+]);
+
+Route::get('/admin/reserva/detalle/{id}', [
+    'uses' => 'ReservaController@detalle',
+    'as' => 'reserva.detalle',
+]);

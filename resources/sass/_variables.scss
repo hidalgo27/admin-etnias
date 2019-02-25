@@ -207,7 +207,7 @@ body {
   color: #fff;
   background: #f9a825;
 }
-  
+
   .menu1{
     list-style-type: none;
     padding: 0;
@@ -230,4 +230,13 @@ body {
   }
   .menu2 li a.active{
     background: #e4e4e4 !important;
+  }
+
+
+  .reserva-caja{
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding-top: 5px;
+      background: #e0e0e0;
+      border-bottom: 1px solid rgb(136, 136, 136);
   }

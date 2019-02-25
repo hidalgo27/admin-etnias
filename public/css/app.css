@@ -1730,6 +1730,14 @@ a[aria-expanded=true] {
   background: #e4e4e4 !important;
 }
 
+.reserva-caja {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  background: #e0e0e0;
+  border-bottom: 1px solid #888888;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
