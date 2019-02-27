@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reserva;
+use App\ReservaActividad;
+use App\ReservaTransporte;
+use App\ReservaServicio;
 
 class ReservaController extends Controller
 {
@@ -57,6 +60,60 @@ class ReservaController extends Controller
     public function detalle($reserva_id){
         $reserva=Reserva::findOrFail($reserva_id);
         return view('admin.reserva.detalle',compact('reserva'));
+    }
+    public function confirmar($tipo_servicio,$grupo_id,$estado){
+        // try {
+            //code...
 
+            if($tipo_servicio=='actividad'){
+                $temp=ReservaActividad::find($grupo_id);
+                $temp->estado=$estado;
+                $temp->save();
+            }
+            if($tipo_servicio=='comida'){
+                $temp=ReservaComida::find($grupo_id);
+                $temp->estado=$estado;
+                $temp->save();
+            }
+            if($tipo_servicio=='hospedaje'){
+                $temp=ReservaHospedaje::find($grupo_id);
+                $temp->estado=$estado;
+                $temp->save();
+            }
+            if($tipo_servicio=='transporte'){
+                $temp=ReservaTransporte::find($grupo_id);
+                $temp->estado=$estado;
+                $temp->save();
+            }
+            if($tipo_servicio=='servicio'){
+                $temp=ReservaServicio::find($grupo_id);
+                $temp->estado=$estado;
+                $temp->save();
+            }
+            if($estado==1){
+                $estado_rpt=0;
+                $clase_span='badge-success';
+                $estado_span='Confirmado';
+                $clase_confirmar='btn-danger';
+                $estado_confirmar='Cancelar';
+            }
+            elseif($estado==0){
+                $estado_rpt=1;
+                $clase_span='badge-dark';
+                $estado_span='Pendiente';
+                $clase_confirmar='btn-primary';
+                $estado_confirmar='Confirmar';
+            }
+
+            return response()->json(['rpt'=>'1',
+                                    'estado'=>$estado,
+                                    'clase_span'=>$clase_span,
+                                    'estado_span'=>$estado_span,
+                                    'clase_confirmar'=>$clase_confirmar,
+                                    'estado_confirmar'=>$estado_confirmar]);
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        //     return response()->json(['rpt'=>'0']);
+        // }
     }
 }

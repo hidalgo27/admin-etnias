@@ -12,4 +12,8 @@ class ReservaServicio extends Model
     {
         return $this->belongsTo(Reserva::class, 'reserva_id');
     }
+    public function asociacion()
+    {
+        return $this->belongsTo(Asociacion::class, 'asociacion_id');
+    }
 }

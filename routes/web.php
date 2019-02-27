@@ -162,3 +162,9 @@ Route::get('/admin/reserva/detalle/{id}', [
     'uses' => 'ReservaController@detalle',
     'as' => 'reserva.detalle',
 ]);
+
+Route::get('/admin/reserva/grupo/confirmar/{tipo_servicio}/{grupo_id}/{estado}', [
+    'uses' => 'ReservaController@confirmar',
+    'as' => 'reserva.detalle.confirmar',
+]);
+

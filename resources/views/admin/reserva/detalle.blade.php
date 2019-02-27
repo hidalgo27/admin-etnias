@@ -108,31 +108,138 @@
                                         <th>SUBTOTAL</th>
                                         <th>ASOCIACION</th>
                                         <th>ESTADO</th>
+                                        <th>OPERACIONES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($reserva->actividades as $actividad)
-                                       <tr>
-                                            <td>{{ $actividad->titulo }}</td>
-                                            <td>{{ $reserva->nro_pax }}</td>
-                                            <td>{{ $actividad->precio }}</td>
-                                            <td>{{ $reserva->nro_pax*$actividad->precio }}</td>
-                                            <td>
-                                                {{ $actividad->asociacion->ruc }}
-                                                {{ $actividad->asociacion->nombre }}
-                                                {{ $actividad->asociacion->contacto }}
-                                            </td>
-                                            <td>
-                                                @if ($actividad->estado==0)
-                                                    <span class="badge badge-dark">Pendiente</span>
-                                                @elseif($actividad->estado==1)
-                                                    <span class="badge badge-success">Tomado</span>
-                                                @elseif($actividad->estado==2)
-                                                    <span class="badge badge-danger">Anulado</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @if ($reserva->actividades)
+                                        @foreach ($reserva->actividades as $actividad)
+                                        <tr>
+                                                <td><i class="fas fa-map text-primary"></i> {{ $actividad->titulo }}</td>
+                                                <td>{{ $reserva->nro_pax }}</td>
+                                                <td>{{ $actividad->precio }}</td>
+                                                <td>{{ $reserva->nro_pax*$actividad->precio }}</td>
+                                                <td>
+                                                    {{ $actividad->asociacion->ruc }}
+                                                    {{ $actividad->asociacion->nombre }}
+                                                    {{ $actividad->asociacion->contacto }}
+                                                </td>
+                                                <td>
+                                                    @if ($actividad->estado==0)
+                                                        <span class="badge badge-dark" id="estado_span_actividad_{{ $actividad->id }}">Pendiente</span>
+                                                    @elseif($actividad->estado==1)
+                                                        <span class="badge badge-success" id="estado_span_actividad_{{ $actividad->id }}">Confirmado</span>
+                                                    @elseif($actividad->estado==2)
+                                                        <span class="badge badge-danger" id="estado_span_actividad_{{ $actividad->id }}">Anulado</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <input type="hidden" id="estado_actividad_{{ $actividad->id }}" value="{{ $actividad->estado }}">
+                                                    @if ($actividad->estado==0)
+                                                        <button class="btn btn-primary" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Confirmar</button>
+                                                    @elseif($actividad->estado==1)
+                                                        <button class="btn btn-danger" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Cancelar</button>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    @if ($reserva->comidas)
+                                        @foreach ($reserva->comidas as $valor)
+                                        <tr>
+                                                <td><i class="fas fa-utensils text-danger"></i> {{ $valor->titulo }}</td>
+                                                <td>{{ $reserva->nro_pax }}</td>
+                                                <td>{{ $valor->precio }}</td>
+                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                                <td>
+                                                    {{ $valor->asociacion->ruc }}
+                                                    {{ $valor->asociacion->nombre }}
+                                                    {{ $valor->asociacion->contacto }}
+                                                </td>
+                                                <td>
+                                                    @if ($valor->estado==0)
+                                                        <span class="badge badge-dark">Pendiente</span>
+                                                    @elseif($valor->estado==1)
+                                                        <span class="badge badge-success">Tomado</span>
+                                                    @elseif($valor->estado==2)
+                                                        <span class="badge badge-danger">Anulado</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    @if ($reserva->hospedaje)
+                                        @foreach ($reserva->hospedaje as $valor)
+                                            <tr>
+                                                <td><i class="fas fa-bed"></i> {{ $valor->titulo }}</td>
+                                                <td>{{ $reserva->nro_pax }}</td>
+                                                <td>{{ $valor->precio }}</td>
+                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                                <td>
+                                                    {{ $valor->asociacion->ruc }}
+                                                    {{ $valor->asociacion->nombre }}
+                                                    {{ $valor->asociacion->contacto }}
+                                                </td>
+                                                <td>
+                                                    @if ($valor->estado==0)
+                                                        <span class="badge badge-dark">Pendiente</span>
+                                                    @elseif($valor->estado==1)
+                                                        <span class="badge badge-success">Tomado</span>
+                                                    @elseif($valor->estado==2)
+                                                        <span class="badge badge-danger">Anulado</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    @if ($reserva->transporte)
+                                        @foreach ($reserva->transporte as $valor)
+                                            <tr>
+                                                <td><i class="fas fa-bus"></i> {{ $valor->titulo }}</td>
+                                                <td>{{ $reserva->nro_pax }}</td>
+                                                <td>{{ $valor->precio }}</td>
+                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                                <td>
+                                                    {{ $valor->asociacion->ruc }}
+                                                    {{ $valor->asociacion->nombre }}
+                                                    {{ $valor->asociacion->contacto }}
+                                                </td>
+                                                <td>
+                                                    @if ($valor->estado==0)
+                                                        <span class="badge badge-dark">Pendiente</span>
+                                                    @elseif($valor->estado==1)
+                                                        <span class="badge badge-success">Tomado</span>
+                                                    @elseif($valor->estado==2)
+                                                        <span class="badge badge-danger">Anulado</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    @if ($reserva->servicio)
+                                        @foreach ($reserva->servicio as $valor)
+                                            <tr>
+                                                <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
+                                                <td>{{ $reserva->nro_pax }}</td>
+                                                <td>{{ $valor->precio }}</td>
+                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                                <td>
+                                                    {{ $valor->asociacion->ruc }}
+                                                    {{ $valor->asociacion->nombre }}
+                                                    {{ $valor->asociacion->contacto }}
+                                                </td>
+                                                <td>
+                                                    @if ($valor->estado==0)
+                                                        <span class="badge badge-dark">Pendiente</span>
+                                                    @elseif($valor->estado==1)
+                                                        <span class="badge badge-success">Tomado</span>
+                                                    @elseif($valor->estado==2)
+                                                        <span class="badge badge-danger">Anulado</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
 

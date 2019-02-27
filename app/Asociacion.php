@@ -24,4 +24,20 @@ class Asociacion extends Model
     {
         return $this->hasMany(ReservaActividad::class, 'asociacion_id');
     }
+    public function reserva_comida()
+    {
+        return $this->hasMany(ReservaComida::class, 'asociacion_id');
+    }
+    public function reserva_hospedaje()
+    {
+        return $this->hasMany(ReservaHospedaje::class, 'asociacion_id');
+    }
+    public function reserva_transporte()
+    {
+        return $this->hasMany(ReservaTransporte::class, 'asociacion_id');
+    }
+    public function reserva_servicio()
+    {
+        return $this->hasMany(ReservaServicio::class, 'asociacion_id');
+    }
 }
