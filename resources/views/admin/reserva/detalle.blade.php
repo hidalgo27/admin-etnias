@@ -77,6 +77,7 @@
                                 <th>COMENTARIOS</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             @foreach ($reserva->clientes as $cliente)
                                 @php
@@ -99,150 +100,287 @@
                     </table>
                 </div>
                 <div class="col-12">
-                        <table class="table table-striped table-hover table-sm">
-                                <thead>
-                                    <tr>
-                                        <th>TITULO</th>
-                                        <th>PAX</th>
-                                        <th>P.U.</th>
-                                        <th>SUBTOTAL</th>
-                                        <th>ASOCIACION</th>
-                                        <th>ESTADO</th>
-                                        <th>OPERACIONES</th>
+                    @php
+                        $total_asociacion=0;
+                        $total_transporte_externo=0;
+                        $total_guias=0;
+                        $nro_col_span=0;
+                        $total_comision=0;
+                    @endphp
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                            <tr class="bg-success text-white mb-0">
+                                <th>TITULO</th>
+                                <th>PAX</th>
+                                <th>P.U.</th>
+                                <th>SUBTOTAL</th>
+                                @foreach ($comisiones as $item)
+                                    @php
+                                        $nro_col_span++;
+                                    @endphp
+                                <th>{{ $item->concepto }} ({{ $item->porcentaje }}%)</th>
+                                @endforeach
+                                <th>ASOCIACION</th>
+                                <th>ESTADO</th>
+                                <th>OPERACIONES</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr class="bg-dark text-white"><th colspan="{{ 7+$nro_col_span }}">ACTIVIDADES</th></tr>
+                        </thead>
+                        <tbody>
+                            @if ($reserva->actividades)
+                                @foreach ($reserva->actividades as $actividad)
+                                @php
+                                    $total_asociacion+=$reserva->nro_pax*$actividad->precio;
+                                @endphp
+                                <tr>
+                                        <td><i class="fas fa-map text-primary"></i> {{ $actividad->titulo }}</td>
+                                        <td>{{ $reserva->nro_pax }}</td>
+                                        <td>{{ $actividad->precio }}</td>
+                                        <td>{{ $reserva->nro_pax*$actividad->precio }}</td>
+                                        @foreach ($comisiones as $item)
+                                            @php
+                                                $total_comision+=$reserva->nro_pax*$actividad->precio*($item->porcentaje/100);
+                                            @endphp
+                                            <td>{{ $reserva->nro_pax*$actividad->precio*($item->porcentaje/100) }}</td>
+                                        @endforeach
+                                        <td>
+                                            {{ $actividad->asociacion->ruc }}
+                                            {{ $actividad->asociacion->nombre }}
+                                            {{ $actividad->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($actividad->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_actividad_{{ $actividad->id }}">Pendiente</span>
+                                            @elseif($actividad->estado==1)
+                                                <span class="badge badge-success" id="estado_span_actividad_{{ $actividad->id }}">Confirmado</span>
+                                            @elseif($actividad->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_actividad_{{ $actividad->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_actividad_{{ $actividad->id }}" value="{{ $actividad->estado }}">
+                                            @if ($actividad->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Confirmar</button>
+                                            @elseif($actividad->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @if ($reserva->actividades)
-                                        @foreach ($reserva->actividades as $actividad)
-                                        <tr>
-                                                <td><i class="fas fa-map text-primary"></i> {{ $actividad->titulo }}</td>
-                                                <td>{{ $reserva->nro_pax }}</td>
-                                                <td>{{ $actividad->precio }}</td>
-                                                <td>{{ $reserva->nro_pax*$actividad->precio }}</td>
-                                                <td>
-                                                    {{ $actividad->asociacion->ruc }}
-                                                    {{ $actividad->asociacion->nombre }}
-                                                    {{ $actividad->asociacion->contacto }}
-                                                </td>
-                                                <td>
-                                                    @if ($actividad->estado==0)
-                                                        <span class="badge badge-dark" id="estado_span_actividad_{{ $actividad->id }}">Pendiente</span>
-                                                    @elseif($actividad->estado==1)
-                                                        <span class="badge badge-success" id="estado_span_actividad_{{ $actividad->id }}">Confirmado</span>
-                                                    @elseif($actividad->estado==2)
-                                                        <span class="badge badge-danger" id="estado_span_actividad_{{ $actividad->id }}">Anulado</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <input type="hidden" id="estado_actividad_{{ $actividad->id }}" value="{{ $actividad->estado }}">
-                                                    @if ($actividad->estado==0)
-                                                        <button class="btn btn-primary" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Confirmar</button>
-                                                    @elseif($actividad->estado==1)
-                                                        <button class="btn btn-danger" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Cancelar</button>
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                @endforeach
+                            @endif
+                            @if ($reserva->comidas)
+                                @foreach ($reserva->comidas as $valor)
+                                @php
+                                    $total_asociacion+=$reserva->nro_pax*$valor->precio;
+                                @endphp
+                                <tr>
+                                        <td><i class="fas fa-utensils text-danger"></i> {{ $valor->titulo }}</td>
+                                        <td>{{ $reserva->nro_pax }}</td>
+                                        <td>{{ $valor->precio }}</td>
+                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                        @foreach ($comisiones as $item)
+                                            @php
+                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
+                                            @endphp
+                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
                                         @endforeach
-                                    @endif
-                                    @if ($reserva->comidas)
-                                        @foreach ($reserva->comidas as $valor)
-                                        <tr>
-                                                <td><i class="fas fa-utensils text-danger"></i> {{ $valor->titulo }}</td>
-                                                <td>{{ $reserva->nro_pax }}</td>
-                                                <td>{{ $valor->precio }}</td>
-                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                                <td>
-                                                    {{ $valor->asociacion->ruc }}
-                                                    {{ $valor->asociacion->nombre }}
-                                                    {{ $valor->asociacion->contacto }}
-                                                </td>
-                                                <td>
-                                                    @if ($valor->estado==0)
-                                                        <span class="badge badge-dark">Pendiente</span>
-                                                    @elseif($valor->estado==1)
-                                                        <span class="badge badge-success">Tomado</span>
-                                                    @elseif($valor->estado==2)
-                                                        <span class="badge badge-danger">Anulado</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                        <td>
+                                            {{ $valor->asociacion->ruc }}
+                                            {{ $valor->asociacion->nombre }}
+                                            {{ $valor->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($valor->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_comida_{{ $valor->id }}">Pendiente</span>
+                                            @elseif($valor->estado==1)
+                                                <span class="badge badge-success" id="estado_span_comida_{{ $valor->id }}">Confirmado</span>
+                                            @elseif($valor->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_comida_{{ $valor->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_comida_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            @if ($valor->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Confirmar</button>
+                                            @elseif($valor->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            @if ($reserva->hospedaje)
+                                @foreach ($reserva->hospedaje as $valor)
+                                @php
+                                    $total_asociacion+=$reserva->nro_pax*$valor->precio;
+                                @endphp
+                                    <tr>
+                                        <td><i class="fas fa-bed"></i> {{ $valor->titulo }}</td>
+                                        <td>{{ $reserva->nro_pax }}</td>
+                                        <td>{{ $valor->precio }}</td>
+                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                        @foreach ($comisiones as $item)
+                                            @php
+                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
+                                            @endphp
+                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
                                         @endforeach
-                                    @endif
-                                    @if ($reserva->hospedaje)
-                                        @foreach ($reserva->hospedaje as $valor)
-                                            <tr>
-                                                <td><i class="fas fa-bed"></i> {{ $valor->titulo }}</td>
-                                                <td>{{ $reserva->nro_pax }}</td>
-                                                <td>{{ $valor->precio }}</td>
-                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                                <td>
-                                                    {{ $valor->asociacion->ruc }}
-                                                    {{ $valor->asociacion->nombre }}
-                                                    {{ $valor->asociacion->contacto }}
-                                                </td>
-                                                <td>
-                                                    @if ($valor->estado==0)
-                                                        <span class="badge badge-dark">Pendiente</span>
-                                                    @elseif($valor->estado==1)
-                                                        <span class="badge badge-success">Tomado</span>
-                                                    @elseif($valor->estado==2)
-                                                        <span class="badge badge-danger">Anulado</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                        <td>
+                                            {{ $valor->asociacion->ruc }}
+                                            {{ $valor->asociacion->nombre }}
+                                            {{ $valor->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($valor->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_hospedaje_{{ $valor->id }}">Pendiente</span>
+                                            @elseif($valor->estado==1)
+                                                <span class="badge badge-success" id="estado_span_hospedaje_{{ $valor->id }}">Confirmado</span>
+                                            @elseif($valor->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_hospedaje_{{ $valor->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_hospedaje_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            @if ($valor->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Confirmar</button>
+                                            @elseif($valor->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            @if ($reserva->transporte)
+                                @foreach ($reserva->transporte as $valor)
+                                @php
+                                    $total_asociacion+=$reserva->nro_pax*$valor->precio;
+                                @endphp
+                                    <tr>
+                                        <td><i class="fas fa-bus"></i> {{ $valor->titulo }}</td>
+                                        <td>{{ $reserva->nro_pax }}</td>
+                                        <td>{{ $valor->precio }}</td>
+                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                        @foreach ($comisiones as $item)
+                                            @php
+                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
+                                            @endphp
+                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
                                         @endforeach
-                                    @endif
-                                    @if ($reserva->transporte)
-                                        @foreach ($reserva->transporte as $valor)
-                                            <tr>
-                                                <td><i class="fas fa-bus"></i> {{ $valor->titulo }}</td>
-                                                <td>{{ $reserva->nro_pax }}</td>
-                                                <td>{{ $valor->precio }}</td>
-                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                                <td>
-                                                    {{ $valor->asociacion->ruc }}
-                                                    {{ $valor->asociacion->nombre }}
-                                                    {{ $valor->asociacion->contacto }}
-                                                </td>
-                                                <td>
-                                                    @if ($valor->estado==0)
-                                                        <span class="badge badge-dark">Pendiente</span>
-                                                    @elseif($valor->estado==1)
-                                                        <span class="badge badge-success">Tomado</span>
-                                                    @elseif($valor->estado==2)
-                                                        <span class="badge badge-danger">Anulado</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
+                                        <td>
+                                            {{ $valor->asociacion->ruc }}
+                                            {{ $valor->asociacion->nombre }}
+                                            {{ $valor->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($valor->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_transporte_{{ $valor->id }}">Pendiente</span>
+                                            @elseif($valor->estado==1)
+                                                <span class="badge badge-success" id="estado_span_transporte_{{ $valor->id }}">Confirmado</span>
+                                            @elseif($valor->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_transporte_{{ $valor->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_transporte_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            @if ($valor->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_transporte_{{ $valor->id }}" onclick="confirmar('transporte','{{ $valor->id }}',$('#estado_transporte_{{ $valor->id }}').val())">Confirmar</button>
+                                            @elseif($valor->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_transporte_{{ $valor->id }}" onclick="confirmar('transporte','{{ $valor->id }}',$('#estado_transporte_{{ $valor->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            @if ($reserva->servicio)
+                                @foreach ($reserva->servicio as $valor)
+                                @php
+                                    $total_asociacion+=$reserva->nro_pax*$valor->precio;
+                                @endphp
+                                    <tr>
+                                        <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
+                                        <td>{{ $reserva->nro_pax }}</td>
+                                        <td>{{ $valor->precio }}</td>
+                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                        @foreach ($comisiones as $item)
+                                            @php
+                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
+                                            @endphp
+                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
                                         @endforeach
-                                    @endif
-                                    @if ($reserva->servicio)
-                                        @foreach ($reserva->servicio as $valor)
-                                            <tr>
-                                                <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
-                                                <td>{{ $reserva->nro_pax }}</td>
-                                                <td>{{ $valor->precio }}</td>
-                                                <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                                <td>
-                                                    {{ $valor->asociacion->ruc }}
-                                                    {{ $valor->asociacion->nombre }}
-                                                    {{ $valor->asociacion->contacto }}
-                                                </td>
-                                                <td>
-                                                    @if ($valor->estado==0)
-                                                        <span class="badge badge-dark">Pendiente</span>
-                                                    @elseif($valor->estado==1)
-                                                        <span class="badge badge-success">Tomado</span>
-                                                    @elseif($valor->estado==2)
-                                                        <span class="badge badge-danger">Anulado</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
+                                        <td>
+                                            {{ $valor->asociacion->ruc }}
+                                            {{ $valor->asociacion->nombre }}
+                                            {{ $valor->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($valor->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_servicio_{{ $valor->id }}">Pendiente</span>
+                                            @elseif($valor->estado==1)
+                                                <span class="badge badge-success" id="estado_span_servicio_{{ $valor->id }}">Confirmado</span>
+                                            @elseif($valor->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_servicio_{{ $valor->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_servicio_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            @if ($valor->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Confirmar</button>
+                                            @elseif($valor->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
+                                        <td colspan="{{ $nro_col_span }}"> <b><sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
+                                        <td><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
+                                    </tr>
+                            @if ($reserva->transporte_externo)
+                            <thead>
+                                <tr class="bg-dark text-white"><th colspan="7">TRANSPORTE EXTERNO</th></tr>
+                            </thead>
+                                @foreach ($reserva->transporte_externo as $valor)
+                                @php
+                                    $total_transporte_externo+=$reserva->nro_pax*$valor->precio;
+                                @endphp
+                                    <tr>
+                                        <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
+                                        <td>{{ $reserva->nro_pax }}</td>
+                                        <td>{{ $valor->precio }}</td>
+                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                        <td>
+                                            {{ $valor->asociacion->ruc }}
+                                            {{ $valor->asociacion->nombre }}
+                                            {{ $valor->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($valor->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_servicio_{{ $valor->id }}">Pendiente</span>
+                                            @elseif($valor->estado==1)
+                                                <span class="badge badge-success" id="estado_span_servicio_{{ $valor->id }}">Confirmado</span>
+                                            @elseif($valor->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_servicio_{{ $valor->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_servicio_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            @if ($valor->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Confirmar</button>
+                                            @elseif($valor->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
 
+                        </tbody>
+                    </table>
                 </div>
         </div>
     </div>

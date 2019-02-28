@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Reserva;
-use App\ReservaActividad;
-use App\ReservaTransporte;
+use App\ReservaComida;
 use App\ReservaServicio;
+use App\ReservaActividad;
+use App\ReservaHospedaje;
+use App\ReservaTransporte;
+use Illuminate\Http\Request;
+use App\Comision;
 
 class ReservaController extends Controller
 {
@@ -59,7 +62,8 @@ class ReservaController extends Controller
     }
     public function detalle($reserva_id){
         $reserva=Reserva::findOrFail($reserva_id);
-        return view('admin.reserva.detalle',compact('reserva'));
+        $comisiones=Comision::get();
+        return view('admin.reserva.detalle',compact('reserva','comisiones'));
     }
     public function confirmar($tipo_servicio,$grupo_id,$estado){
         // try {
