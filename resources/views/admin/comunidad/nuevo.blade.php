@@ -67,7 +67,6 @@
                                         <input type="file" name="foto[]" multiple class="form-control">
                                     </div>
                                 </div>
-
                             </div>
                             <div class="col-12 text-right">
                                 {{ csrf_field() }}

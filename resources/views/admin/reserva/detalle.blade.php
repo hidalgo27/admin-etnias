@@ -114,19 +114,14 @@
                                 <th>PAX</th>
                                 <th>P.U.</th>
                                 <th>SUBTOTAL</th>
-                                @foreach ($comisiones as $item)
-                                    @php
-                                        $nro_col_span++;
-                                    @endphp
-                                <th>{{ $item->concepto }} ({{ $item->porcentaje }}%)</th>
-                                @endforeach
+                                <th>COMISION(%)</th>
                                 <th>ASOCIACION</th>
                                 <th>ESTADO</th>
                                 <th>OPERACIONES</th>
                             </tr>
                         </thead>
                         <thead>
-                            <tr class="bg-dark text-white"><th colspan="{{ 7+$nro_col_span }}">ACTIVIDADES</th></tr>
+                            <tr class="bg-dark text-white"><th colspan="8">ACTIVIDADES</th></tr>
                         </thead>
                         <tbody>
                             @if ($reserva->actividades)
@@ -136,15 +131,13 @@
                                 @endphp
                                 <tr>
                                         <td><i class="fas fa-map text-primary"></i> {{ $actividad->titulo }}</td>
-                                        <td>{{ $reserva->nro_pax }}</td>
-                                        <td>{{ $actividad->precio }}</td>
-                                        <td>{{ $reserva->nro_pax*$actividad->precio }}</td>
-                                        @foreach ($comisiones as $item)
-                                            @php
-                                                $total_comision+=$reserva->nro_pax*$actividad->precio*($item->porcentaje/100);
-                                            @endphp
-                                            <td>{{ $reserva->nro_pax*$actividad->precio*($item->porcentaje/100) }}</td>
-                                        @endforeach
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($actividad->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$actividad->precio,2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*$actividad->precio*($actividad->asociacion->comision/100);
+                                        @endphp
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$actividad->precio*($actividad->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
                                         <td>
                                             {{ $actividad->asociacion->ruc }}
                                             {{ $actividad->asociacion->nombre }}
@@ -177,15 +170,13 @@
                                 @endphp
                                 <tr>
                                         <td><i class="fas fa-utensils text-danger"></i> {{ $valor->titulo }}</td>
-                                        <td>{{ $reserva->nro_pax }}</td>
-                                        <td>{{ $valor->precio }}</td>
-                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                        @foreach ($comisiones as $item)
-                                            @php
-                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
-                                            @endphp
-                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
-                                        @endforeach
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
+                                        @endphp
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
@@ -218,15 +209,13 @@
                                 @endphp
                                     <tr>
                                         <td><i class="fas fa-bed"></i> {{ $valor->titulo }}</td>
-                                        <td>{{ $reserva->nro_pax }}</td>
-                                        <td>{{ $valor->precio }}</td>
-                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                        @foreach ($comisiones as $item)
-                                            @php
-                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
-                                            @endphp
-                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
-                                        @endforeach
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
+                                        @endphp
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
@@ -259,15 +248,13 @@
                                 @endphp
                                     <tr>
                                         <td><i class="fas fa-bus"></i> {{ $valor->titulo }}</td>
-                                        <td>{{ $reserva->nro_pax }}</td>
-                                        <td>{{ $valor->precio }}</td>
-                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                        @foreach ($comisiones as $item)
-                                            @php
-                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
-                                            @endphp
-                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
-                                        @endforeach
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
+                                        @endphp
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
@@ -300,15 +287,14 @@
                                 @endphp
                                     <tr>
                                         <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
-                                        <td>{{ $reserva->nro_pax }}</td>
-                                        <td>{{ $valor->precio }}</td>
-                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
-                                        @foreach ($comisiones as $item)
-                                            @php
-                                                $total_comision+=$reserva->nro_pax*$valor->precio*($item->porcentaje/100);
-                                            @endphp
-                                            <td>{{ $reserva->nro_pax*$valor->precio*($item->porcentaje/100) }}</td>
-                                        @endforeach
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
+                                        @endphp
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
+
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
@@ -336,9 +322,9 @@
                             @endif
                                     <tr>
                                         <td colspan="3"></td>
-                                        <td><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
-                                        <td colspan="{{ $nro_col_span }}"> <b><sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
-                                        <td><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
+                                        <td class="text-right"><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
+                                        <td class="text-right" colspan="{{ $nro_col_span }}"> <b><sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
+                                        <td class="text-left"><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
                                     </tr>
                             @if ($reserva->transporte_externo)
                             <thead>
@@ -350,9 +336,9 @@
                                 @endphp
                                     <tr>
                                         <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
-                                        <td>{{ $reserva->nro_pax }}</td>
-                                        <td>{{ $valor->precio }}</td>
-                                        <td>{{ $reserva->nro_pax*$valor->precio }}</td>
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}

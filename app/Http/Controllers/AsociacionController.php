@@ -47,6 +47,7 @@ class AsociacionController extends Controller
         $email=$request->input('email');
         $direccion=$request->input('direccion');
         $comunidad_id=$request->input('comunidad');
+        $comision=$request->input('comision');
         $fotos=$request->file('foto');
         $existencias=Asociacion::where('nombre',$ruc)->count();
         if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
@@ -63,6 +64,7 @@ class AsociacionController extends Controller
             $asociacion->celular=$celular;
             $asociacion->email=$email;
             $asociacion->direccion=$direccion;
+            $asociacion->comision=$comision;
             $asociacion->comunidad_id=$comunidad_id;
             $asociacion->save();
             if(!empty($fotos)){
@@ -102,6 +104,8 @@ class AsociacionController extends Controller
         $celular=$request->input('celular');
         $email=$request->input('email');
         $direccion=$request->input('direccion');
+
+        $comision=$request->input('comision');
         $comunidad_id=$request->input('comunidad');
         $fotos=$request->file('foto');
 
@@ -119,6 +123,7 @@ class AsociacionController extends Controller
         $asociacion->celular=$celular;
         $asociacion->email=$email;
         $asociacion->direccion=$direccion;
+        $asociacion->comision=$comision;
         $asociacion->comunidad_id=$comunidad_id;
         $asociacion->save();
 
