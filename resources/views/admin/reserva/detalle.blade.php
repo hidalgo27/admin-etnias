@@ -364,7 +364,44 @@
                                     </tr>
                                 @endforeach
                             @endif
-
+                            @if ($reserva->guia)
+                            <thead>
+                                <tr class="bg-dark text-white"><th colspan="7">GUIADO</th></tr>
+                            </thead>
+                                @foreach ($reserva->guia as $valor)
+                                @php
+                                    $total_transporte_guia+=$reserva->nro_pax*$valor->precio;
+                                @endphp
+                                    <tr>
+                                        <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
+                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        <td>
+                                            {{ $valor->asociacion->ruc }}
+                                            {{ $valor->asociacion->nombre }}
+                                            {{ $valor->asociacion->contacto }}
+                                        </td>
+                                        <td>
+                                            @if ($valor->estado==0)
+                                                <span class="badge badge-dark" id="estado_span_guia_{{ $valor->id }}">Pendiente</span>
+                                            @elseif($valor->estado==1)
+                                                <span class="badge badge-success" id="estado_span_guia_{{ $valor->id }}">Confirmado</span>
+                                            @elseif($valor->estado==2)
+                                                <span class="badge badge-danger" id="estado_span_guia_{{ $valor->id }}">Anulado</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <input type="hidden" id="estado_guia_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            @if ($valor->estado==0)
+                                                <button class="btn btn-primary" id="confirmar_guia_{{ $valor->id }}" onclick="confirmar('guia','{{ $valor->id }}',$('#estado_guia_{{ $valor->id }}').val())">Confirmar</button>
+                                            @elseif($valor->estado==1)
+                                                <button class="btn btn-danger" id="confirmar_guia_{{ $valor->id }}" onclick="confirmar('guia','{{ $valor->id }}',$('#estado_guia_{{ $valor->id }}').val())">Cancelar</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
