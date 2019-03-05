@@ -258,6 +258,15 @@ function enviar_datos(valor1,valor2){
           })
         return false;
     }
+    // if($('#categoria_'+valor1+'_'+valor2).val().trim()==''){
+    //     $('#categoria_'+valor1+'_'+valor2).focus();
+    //     Swal.fire({
+    //         type: 'error',
+    //         title: 'Oops...',
+    //         text: 'Ingrese la categoria',
+    //       })
+    //     return false;
+    // }
     if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){
         $('#descripcion_'+valor1+'_'+valor2).focus();
         Swal.fire({
@@ -379,6 +388,15 @@ function enviar_datos_editar(valor1,valor2){
           })
         return false;
     }
+    // if($('#categoria_'+valor1+'_'+valor2).val().trim()==''){
+    //     $('#categoria_'+valor1+'_'+valor2).focus();
+    //     Swal.fire({
+    //         type: 'error',
+    //         title: 'Oops...',
+    //         text: 'Ingrese la categoria',
+    //       })
+    //     return false;
+    // }
     if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){
         $('#descripcion_'+valor1+'_'+valor2).focus();
         Swal.fire({

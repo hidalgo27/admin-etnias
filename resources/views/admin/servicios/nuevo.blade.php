@@ -62,11 +62,11 @@
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-actividades" role="tabpanel" aria-labelledby="nav-actividades-tab">
-                                            <form id="form_a_0" class="card card-body" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="form_a_0" class="card card-body px-0" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
-                                                <div class="col-9 my-1">
+                                                <div class="col-8 my-1">
                                                     <label class="sr-only" for="inlineFormInputGroupUsername">Titulo</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -75,13 +75,17 @@
                                                         <input type="text" class="form-control" id="titulo_a_0" name="titulo" placeholder="Titulo" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 my-1">
+                                                <div class="col-4 my-1">
                                                     <label class="sr-only" for="inlineFormInputGroupUsername">Categoria</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Categoria</div>
                                                         </div>
-                                                        <input type="text" class="form-control" id="categoria_a_0" name="categoria" placeholder="Titulo" required>
+                                                        <select name="categoria" id="categoria_a_0" class="form-control">
+                                                            @foreach ($categorias as $item)
+                                                                <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">

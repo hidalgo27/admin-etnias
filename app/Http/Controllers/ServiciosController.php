@@ -15,14 +15,15 @@ use App\ActividadPrecio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Categoria;
 
 class ServiciosController extends Controller
 {
     //
     public function nuevo(Request $request){
 
-
-        return view('admin.servicios.nuevo');
+        $categorias=Categoria::get();
+        return view('admin.servicios.nuevo',compact('categorias'));
     }
     public function buscar_asociacion($ruc_rs){
         $asociacion=Asociacion::where('ruc',$ruc_rs)->orwhere('nombre','like','%'.$ruc_rs.'%')->first();
@@ -33,6 +34,7 @@ class ServiciosController extends Controller
         $v_asociacion_id=$attributo.'_asociacion_id';
         $asociacion_id=$request->input($v_asociacion_id);
         $titulo=strtolower(trim($request->input('titulo')));
+        $categoria=$request->input('categoria');
         $descripcion=$request->input('descripcion');
         $fotos=$request->file('foto');
         $categoria=$request->input('categoria_n');
@@ -49,6 +51,7 @@ class ServiciosController extends Controller
             if($attributo=='a'){
                 $actividad=new Actividad();
                 $actividad->titulo=$titulo;
+                $actividad->categoria=$categoria;
                 $actividad->descripcion=$descripcion;
                 $actividad->asociacion_id=$asociacion_id;
                 $actividad->save();
@@ -223,8 +226,9 @@ class ServiciosController extends Controller
         $hospedajes=Hospedaje::where('asociacion_id',$asociacion->id)->get();
         $transportes=Transporte::where('asociacion_id',$asociacion->id)->get();
         $servicios=Servicio::where('asociacion_id',$asociacion->id)->get();
+        $categorias=Categoria::get();
 
-        return view('admin.servicios.buscar-servicios',compact('asociacion','actividades','comidas','hospedajes','transportes','servicios'));
+        return view('admin.servicios.buscar-servicios',compact('asociacion','actividades','comidas','hospedajes','transportes','servicios','categorias'));
     }
     public function showFoto($filename,$storage){
         $file = Storage::disk($storage)->get($filename);
@@ -236,6 +240,7 @@ class ServiciosController extends Controller
         // $v_asociacion_id=$attributo.'_asociacion_id';
         // $asociacion_id=$request->input('id');
 
+        $categoria=$request->input('categoria');
         $titulo=strtolower(trim($request->input('titulo')));
         $descripcion=$request->input('descripcion');
         $fotos=$request->file('foto');
@@ -260,6 +265,7 @@ class ServiciosController extends Controller
             if($attributo=='a'){
                 $actividad=Actividad::FindOrFail($id);
                 $actividad->titulo=$titulo;
+                $actividad->categoria=$categoria;
                 $actividad->descripcion=$descripcion;
                 $actividad->save();
                 if(!empty($fotos_e)){

@@ -142,17 +142,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-                                                                <div id="distrito_id" class="form-group col-4">
-                                                                    <label for="comunidad">comision</label>
-                                                                    <select class="form-control" name="comunidad" id="comunidad_{{ $item->id }}">
-                                                                        <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($comunidades->where('distrito_id',$item->comunidad->distrito->id) as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->id)
-                                                                                selected
-                                                                            @endif>{{ $item_->nombre }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
+                                                                
                                                                 <div class="form-group col-2">
                                                                     <label for="comision">Comision(%)</label>
                                                                     <input type="number" class="form-control" id="comision" name="comision" value="{{ $item->comision }}" step="0.01" min="0" max="100">

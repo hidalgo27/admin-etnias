@@ -67,6 +67,20 @@
                                                     <input type="text" class="form-control" id="titulo_a_e_{{ $item->id }}" name="titulo" placeholder="Titulo" required value="{{ $item->titulo }}">
                                                 </div>
                                             </div>
+
+                                            <div class="col-12 my-1">
+                                                <label class="sr-only" for="categoria">Categoria</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">Categoria</div>
+                                                    </div>
+                                                    <select class="form-control" name="categoria" id="categoria_t_e_{{ $item->id }}">
+                                                        @foreach ($categorias as $cate)
+                                                            <option value="{{ $cate->nombre }}" @if ($cate->nombre== $item->categoria) selected @endif >{{ $cate->nombre}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="col-12 my-1">
                                                 <label class="sr-only" for="inlineFormInputGroupUsername">Descripcion</label>
                                                 <div class="input-group">
@@ -527,7 +541,7 @@
                                     <div class="modal-body">
                                         <form id="form_t_e_{{ $item->id }}" class="card card-body" action="{{ route('servicios.actividad.edit') }}" method="POST" enctype="multipart/form-data">
                                             <div class="form-group col-12">
-                                                <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
+                                                <b class="text-15 text-success">PASO 1: DATOS GENERALES1</b>
                                             </div>
                                             <div class="col-12 my-1">
                                                 <label class="sr-only" for="inlineFormInputGroupUsername">Titulo</label>
