@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Reserva;
+use App\Comision;
 use App\ReservaComida;
 use App\ReservaServicio;
 use App\ReservaActividad;
 use App\ReservaHospedaje;
 use App\ReservaTransporte;
+use App\TransporteExterno;
 use Illuminate\Http\Request;
-use App\Comision;
+use App\ReservaTransporteExterno;
 
 class ReservaController extends Controller
 {
@@ -63,7 +65,9 @@ class ReservaController extends Controller
     public function detalle($reserva_id){
         $reserva=Reserva::findOrFail($reserva_id);
         $comisiones=Comision::get();
-        return view('admin.reserva.detalle',compact('reserva','comisiones'));
+        $transporte_externo=TransporteExterno::get();
+
+        return view('admin.reserva.detalle',compact('reserva','comisiones','transporte_externo'));
     }
     public function confirmar($tipo_servicio,$grupo_id,$estado){
         // try {

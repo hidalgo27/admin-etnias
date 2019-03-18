@@ -109,6 +109,9 @@
                     @endphp
                     <table class="table table-striped table-hover table-sm">
                         <thead>
+                            <tr class="bg-dark text-white"><th colspan="8">ACTIVIDADES</th></tr>
+                        </thead>
+                        <thead>
                             <tr class="bg-success text-white mb-0">
                                 <th>TITULO</th>
                                 <th>PAX</th>
@@ -119,9 +122,6 @@
                                 <th>ESTADO</th>
                                 <th>OPERACIONES</th>
                             </tr>
-                        </thead>
-                        <thead>
-                            <tr class="bg-dark text-white"><th colspan="8">ACTIVIDADES</th></tr>
                         </thead>
                         <tbody>
                             @if ($reserva->actividades)
@@ -202,8 +202,8 @@
                                     </tr>
                                 @endforeach
                             @endif
-                            @if ($reserva->hospedaje)
-                                @foreach ($reserva->hospedaje as $valor)
+                            @if ($reserva->hospedajes)
+                                @foreach ($reserva->hospedajes as $valor)
                                 @php
                                     $total_asociacion+=$reserva->nro_pax*$valor->precio;
                                 @endphp
@@ -280,8 +280,8 @@
                                     </tr>
                                 @endforeach
                             @endif
-                            @if ($reserva->servicio)
-                                @foreach ($reserva->servicio as $valor)
+                            @if ($reserva->servicios)
+                                @foreach ($reserva->servicios as $valor)
                                 @php
                                     $total_asociacion+=$reserva->nro_pax*$valor->precio;
                                 @endphp
@@ -320,29 +320,77 @@
                                     </tr>
                                 @endforeach
                             @endif
-                                    <tr>
-                                        <td colspan="3"></td>
-                                        <td class="text-right"><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
-                                        <td class="text-right" colspan="{{ $nro_col_span }}"> <b><sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
-                                        <td class="text-left"><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
-                                    </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td class="text-right"><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
+                                <td class="text-right" colspan="{{ $nro_col_span }}"> <b><sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
+                                <td class="text-left"><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
+                            </tr>
+
                             @if ($reserva->transporte_externo)
                             <thead>
-                                <tr class="bg-dark text-white"><th colspan="7">TRANSPORTE EXTERNO</th></tr>
+                                <tr class="bg-dark text-white"><th colspan="8">TRANSPORTE EXTERNO</th></tr>
+                            </thead>
+                            <thead>
+                                <tr class="bg-success text-white mb-0">
+                                    <th>TITULO</th>
+                                    <th>PAX</th>
+                                    <th>P.U.</th>
+                                    <th>SUBTOTAL</th>
+                                    <th colspan="2">PROVEEDOR</th>
+                                    <th>ESTADO</th>
+                                    <th>OPERACIONES</th>
+                                </tr>
                             </thead>
                                 @foreach ($reserva->transporte_externo as $valor)
                                 @php
                                     $total_transporte_externo+=$reserva->nro_pax*$valor->precio;
                                 @endphp
                                     <tr>
-                                        <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
-                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
+                                        <td><i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span><span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span></td>
+                                        <td class="text-center">{{ $valor->pax }}</td>
+                                        <td class="text-right">{{ number_format($valor->precio/$valor->pax,2) }}</td>
                                         <td class="text-right">{{ number_format($valor->precio,2) }}</td>
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
-                                        <td>
-                                            {{ $valor->asociacion->ruc }}
-                                            {{ $valor->asociacion->nombre }}
-                                            {{ $valor->asociacion->contacto }}
+                                        <td colspan="2">
+                                            @if($valor->asociacion)
+                                                {{ $valor->asociacion->ruc }}
+                                                {{ $valor->asociacion->nombre }}
+                                                {{ $valor->asociacion->contacto }}
+                                            @else
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus"></i> Proveedor</button>
+
+                                                <!-- Modal -->
+                                                <div id="myModal" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog  modal-lg">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Agregar proveedor</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    {{--  @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max) as $transporte_externo_)  --}}
+                                                                    @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max) as $transporte_externo_)
+                                                                        @foreach ($transporte_externo_->transporte_externo_proveedor as $transporte_externo_proveedor)
+                                                                        <div class="col-6">
+                                                                                <label class="alert alert-primary text-dark" for="proveedor_{{ 12 }}">
+                                                                                    <input type="radio" name="proveedor" id="proveedor_{{ 12 }}" value="12">
+                                                                                    {{ $transporte_externo_proveedor->proveedor->nombre_comercial }}  <sup>$</sup>{{ $transporte_externo_proveedor->precio }}
+                                                                                </label>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    @endforeach
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </td>
                                         <td>
                                             @if ($valor->estado==0)

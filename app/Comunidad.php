@@ -16,8 +16,12 @@ class Comunidad extends Model
     {
         return $this->belongsTo(Distrito::class, 'distrito_id');
     }
-    public function comunidad()
+    public function asociaciones()
     {
         return $this->hasMany(Asociacion::class, 'asociacion_id');
+    }
+    public function transporte_externo()
+    {
+        return $this->hasMany(TransporteExterno::class, 'comunidad_id');
     }
 }
