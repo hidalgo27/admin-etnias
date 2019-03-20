@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-                <li class="breadcrumb-item active" aria-current="page">PROVEEDORES</li>
+                <li class="breadcrumb-item active" aria-current="page">ASOCIACIONES</li>
             </ol>
         </nav>
     </div>
@@ -17,7 +17,7 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-9">
-                                <b class="text-danger text-15">LISTA DE PROVEEDORES</b>
+                                <b class="text-danger text-15">LISTA DE ASOCIACIONES</b>
                             </div>
                             <div class="col-3 text-right">
                                 <a href="{{ route('asociacion.nuevo') }}" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i> AGREGAR ASOCIACION</a>
@@ -41,17 +41,17 @@
                                 @php
                                     $i=1;
                                 @endphp
-                                @foreach ($proveedores as $item)
+                                @foreach ($asociaciones as $item)
                                     <tr id="row_lista_asociaciones_{{ $item->id }}">
                                         <td>{{ $i }}</td>
                                         <td>
-                                            {{ $item->departamento->departamento }}
+                                            {{ $item->comunidad->distrito->provincia->departamento->departamento }}
                                         </td>
                                         <td>
-                                            {{ $item->provincia->provincia }}
+                                            {{ $item->comunidad->distrito->provincia->provincia }}
                                         </td>
                                         <td>
-                                            {{ $item->distrito }}
+                                            {{ $item->comunidad->distrito->distrito }}
                                         </td>
                                         <td>{{ $item->ruc }}</td>
                                         <td>{{ $item->nombre }}</td>
@@ -79,39 +79,31 @@
                                                                     <input type="text" class="form-control" id="ruc" name="ruc" aria-describedby="ruc" placeholder="Ruc" value="{{ $item->ruc }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
-                                                                    <label for="razon_social">Razon Social</label>
-                                                                    <input type="text" class="form-control" id="razon_social" name="razon_social" aria-describedby="razon_social" placeholder="Razon social" value="{{ $item->razon_social }}">
+                                                                    <label for="nombre">Nombre</label>
+                                                                    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Nombre de la comunidad" value="{{ $item->nombre }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
-                                                                    <label for="nombre_comercial">Nombre Comercial</label>
-                                                                    <input type="text" class="form-control" id="nombre_comercial" name="nombre_comercial" aria-describedby="nombre_comercial" placeholder="Nombre comercial" value="{{ $item->nombre_comercial }}">
+                                                                    <label for="contacto">Contacto</label>
+                                                                    <input type="text" class="form-control" id="contacto" name="contacto" aria-describedby="contacto" placeholder="contacto" value="{{ $item->contacto }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
                                                                     <label for="celular">Celular</label>
-                                                                    <input type="text" class="form-control" id="celular" name="celular" aria-describedby="celular" placeholder="Celular" value="{{ $item->celular }}">
-                                                                </div>
-                                                                <div class="form-group col-12">
-                                                                    <label for="direccion">Direccion</label>
-                                                                    <input type="text" class="form-control" id="direccion" name="direccion" aria-describedby="direccion" placeholder="Direccion" value="{{ $item->direccion }}">
+                                                                    <input type="text" class="form-control" id="celular" name="celular" aria-describedby="celular" placeholder="celular" value="{{ $item->celular }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
                                                                     <label for="email">Email</label>
                                                                     <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="email" value="{{ $item->email }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
-                                                                    <label for="cta_corriente">Cta corriente</label>
-                                                                    <input type="text" class="form-control" id="cta_corriente" name="cta_corriente" aria-describedby="cta_corriente" placeholder="Cta. corriente" value="{{ $item->banco_nro_cta_corriente }}">
-                                                                </div>
-                                                                <div class="form-group col-12">
-                                                                    <label for="cta_cci">Cta interbancaria</label>
-                                                                    <input type="text" class="form-control" id="cta_cci" name="cta_cci" aria-describedby="cta_cci" placeholder="Cta. interbancaria" value="{{ $item->banco_nro_cta_cci }}">
+                                                                    <label for="direccion">Direccion</label>
+                                                                    <input type="text" class="form-control" id="direccion" name="direccion" aria-describedby="direccion" placeholder="direccion" value="{{ $item->direccion }}">
                                                                 </div>
                                                                 <div class="form-group col-4">
                                                                     <label for="departamento">Departamento</label>
                                                                     <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias($(this).val());">
                                                                         <option value="0">Escoja una opcion</option>
                                                                         @foreach ($departamentos as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->departamento_id)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia->departamento->id)
                                                                                 selected
                                                                             @endif>{{ $item_->departamento }}</option>
                                                                         @endforeach
@@ -121,8 +113,8 @@
                                                                     <label for="provincia">Provicia</label>
                                                                     <select class="form-control" name="provincia" id="provincia" onchange="mostrar_distritos($(this).val());">
                                                                         <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($provincias->where('departamento_id',$item->departamento_id) as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->provincia_id)
+                                                                        @foreach ($provincias->where('departamento_id',$item->comunidad->distrito->provincia->departamento->id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia->id)
                                                                                 selected
                                                                             @endif>{{ $item_->provincia }}</option>
                                                                         @endforeach
@@ -132,8 +124,8 @@
                                                                     <label for="distrito">Distrito</label>
                                                                     <select class="form-control" name="distrito" id="distrito" onchange="mostrar_comunidades($(this).val(),'{{ $item->id }}');">
                                                                         <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($distritos->where('provincia_id',$item->provincia_id) as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->distrito_id)
+                                                                        @foreach ($distritos->where('provincia_id',$item->comunidad->distrito->provincia->id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->id)
                                                                                 selected
                                                                             @endif>{{ $item_->distrito }}</option>
                                                                         @endforeach
@@ -150,7 +142,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
-
+                                                                
                                                                 <div class="form-group col-2">
                                                                     <label for="comision">Comision(%)</label>
                                                                     <input type="number" class="form-control" id="comision" name="comision" value="{{ $item->comision }}" step="0.01" min="0" max="100">

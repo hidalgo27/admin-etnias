@@ -168,3 +168,8 @@ Route::get('/admin/reserva/grupo/confirmar/{tipo_servicio}/{grupo_id}/{estado}',
     'as' => 'reserva.detalle.confirmar',
 ]);
 
+// RUTAS PARA PROVEEDOR
+Route::get('/admin/proveedor/lista', [
+    'uses' => 'ProveedorController@lista',
+    'as' => 'proveedor.lista',
+]);
