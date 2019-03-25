@@ -17,18 +17,30 @@
                     <div class="col-12">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-transporte-tab" data-toggle="tab" href="#nav-transporte" role="tab" aria-controls="nav-transporte" aria-selected="true"><i class="fas fa-bus"></i> TRANSPORTE</a>
-                                <a class="nav-item nav-link" id="nav-guia-tab" data-toggle="tab" href="#nav-guia" role="tab" aria-controls="nav-guia" aria-selected="false"><i class="fas fa-flag"></i> GUIA</a>
+                                @php
+                                    $active='active';
+                                @endphp
+                                @foreach ($tipo_servicios as $tipo_servicio)
+                                    <a class="nav-item nav-link {{$active}}" id="nav-{{$tipo_servicio->id}}-tab" data-toggle="tab" href="#nav-{{$tipo_servicio->id}}" role="tab" aria-controls="nav-{{$tipo_servicio->id}}" aria-selected="true">{!! $tipo_servicio->icono !!} {{$tipo_servicio->nombre}}</a>
+                                    @php
+                                        $active='';
+                                    @endphp
+                                @endforeach
+                                {{-- <a class="nav-item nav-link" id="nav-guia-tab" data-toggle="tab" href="#nav-guia" role="tab" aria-controls="nav-guia" aria-selected="false"><i class="fas fa-flag"></i> GUIA</a> --}}
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-transporte" role="tabpanel" aria-labelledby="nav-transporte-tab">
+                            @php
+                                $active='active';
+                            @endphp
+                            @foreach ($tipo_servicios as $tipo_servicio)
+                            <div class="tab-pane fade show {{$active}}" id="nav-{{$tipo_servicio->id}}" role="tabpanel" aria-labelledby="nav-{{$tipo_servicio->id}}-tab">
                                 <div class="row mt-2">
                                     <div class="col-9">
-                                        <b class="text-danger text-15">LISTA DE TRANSPORTE</b>
+                                        <b class="text-danger text-15">LISTA DE {{$tipo_servicio->nombre}}</b>
                                     </div>
                                     <div class="col-3 text-right">
-                                        <a href="{{ route('proveedor.nuevo','TRANSPORTE') }}" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i> AGREGAR</a>
+                                        <a href="{{ route('proveedor.nuevo',$tipo_servicio->nombre) }}" class="btn btn-info text-white"><i class="fas fa-plus-circle"></i> AGREGAR</a>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -49,7 +61,7 @@
                                                 @php
                                                     $i=1;
                                                 @endphp
-                                                @foreach ($proveedores->where('categoria','TRANSPORTE') as $item)
+                                                @foreach ($proveedores->where('categoria',$tipo_servicio->nombre) as $item)
                                                     <tr id="row_lista_asociaciones_{{ $item->id }}">
                                                         <td>{{ $i }}</td>
                                                         <td>
@@ -187,6 +199,10 @@
                                     </div>
                                 </div>
                             </div>
+                                @php
+                                    $active='';
+                                @endphp
+                            @endforeach
                         </div>
                     </div>
                 </div>

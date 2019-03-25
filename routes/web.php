@@ -185,3 +185,21 @@ Route::post('/admin/proveedor/editar', [
     'uses' => 'ProveedorController@editar',
     'as' => 'proveedor.editar',
 ]);
+
+// RUTAS PARA SERVICIOS
+Route::get('/admin/servicio/lista', [
+    'uses' => 'ProveedorController@lista',
+    'as' => 'proveedor.lista',
+]);
+Route::get('/admin/proveedor/nuevo/{rol}', [
+    'uses' => 'ProveedorController@nuevo',
+    'as' => 'proveedor.nuevo',
+]);
+Route::post('/admin/proveedor/nuevo', [
+    'uses' => 'ProveedorController@store',
+    'as' => 'proveedor.store',
+]);
+Route::post('/admin/proveedor/editar', [
+    'uses' => 'ProveedorController@editar',
+    'as' => 'proveedor.editar',
+]);

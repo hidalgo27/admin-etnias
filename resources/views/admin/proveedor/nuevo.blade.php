@@ -16,7 +16,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <b class="text-primary text-15">NUEVA ASOCIACION</b>
+                    <b class="text-primary text-15">NUEVO PROVEEDOR DE {{$categoria}}</b>
                     </div>
                     <div class="col-12">
                         <form action="{{ route('proveedor.store') }}" method="POST" enctype="multipart/form-data">
@@ -102,9 +102,9 @@
                             </div>
                             <div class="col-12 text-right">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="categoria" value="{{ $rol }}">
+                                <input type="hidden" name="categoria" value="{{ $categoria }}">
                                 <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> GUARDAR</button>
-                                <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                <a href="{{ route('proveedor.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                             </div>
                         </form>
                     </div>

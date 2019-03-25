@@ -8,6 +8,7 @@ use App\Proveedor;
 use App\Provincia;
 use App\Departamento;
 use Illuminate\Http\Request;
+use App\TipoServicio;
 
 class ProveedorController extends Controller
 {
@@ -18,13 +19,14 @@ class ProveedorController extends Controller
         $distritos =Distrito::get();
         $comunidades = Comunidad::get();
         $proveedores=Proveedor::get();
-        return view('admin.proveedor.lista',compact('proveedores','departamentos','provincias','distritos','comunidades'));
+        $tipo_servicios=TipoServicio::get();
+        return view('admin.proveedor.lista',compact('proveedores','departamentos','provincias','distritos','comunidades','tipo_servicios'));
     }
-    public function nuevo($rol){
+    public function nuevo($categoria){
         $departamentos =Departamento::get();
         $provincias =Provincia::get();
         $distritos =Distrito::get();
-        return view('admin.proveedor.nuevo',compact('departamentos','provincias','distritos','rol'));
+        return view('admin.proveedor.nuevo',compact('departamentos','provincias','distritos','categoria'));
     }
     public function mostrarComunidades(Request $request){
         if($request->ajax()){
@@ -57,7 +59,7 @@ class ProveedorController extends Controller
         }
         else{
             $proveedor=new Proveedor();
-            $proveedor->rol=$rol;
+            $proveedor->categoria=$categoria;
             $proveedor->ruc=$ruc;
             $proveedor->razon_social=$razon_social;
             $proveedor->nombre_comercial=$nombre_comercial;
@@ -72,7 +74,7 @@ class ProveedorController extends Controller
             $proveedor->distrito_id=$distrito_id;
             $proveedor->save();
             // Alert()->success('Datos guardados.')->autoclose(3000);
-            return redirect()->route('proveedor.nuevo')->with('success','Datos guardados');
+            return redirect()->route('proveedor.nuevo',$categoria)->with('success','Datos guardados');
 
         }
     }
