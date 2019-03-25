@@ -173,3 +173,15 @@ Route::get('/admin/proveedor/lista', [
     'uses' => 'ProveedorController@lista',
     'as' => 'proveedor.lista',
 ]);
+Route::get('/admin/proveedor/nuevo/{rol}', [
+    'uses' => 'ProveedorController@nuevo',
+    'as' => 'proveedor.nuevo',
+]);
+Route::post('/admin/proveedor/nuevo', [
+    'uses' => 'ProveedorController@store',
+    'as' => 'proveedor.store',
+]);
+Route::post('/admin/proveedor/editar', [
+    'uses' => 'ProveedorController@editar',
+    'as' => 'proveedor.editar',
+]);

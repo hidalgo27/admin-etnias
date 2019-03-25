@@ -16,4 +16,8 @@ class Provincia extends Model
     {
         return $this->hasMany(Distrito::class, 'provincia_id');
     }
+    public function proveedores()
+    {
+        return $this->hasMany(Proveedor::class, 'provincia_id');
+    }
 }

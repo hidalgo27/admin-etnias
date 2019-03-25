@@ -12,7 +12,7 @@ class Departamento extends Model
     {
         return $this->hasMany(Provincia::class, 'departamento_id');
     }
-    public function proveedor()
+    public function proveedores()
     {
         return $this->hasMany(Proveedor::class, 'departamento_id');
     }

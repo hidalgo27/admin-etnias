@@ -14,14 +14,14 @@ class Proveedor extends Model
     }
     public function departamento()
     {
-        return $this->hasMany(Departamento::class, 'departamento_id');
+        return $this->belongsTo(Departamento::class, 'departamento_id');
     }
     public function provincia()
     {
-        return $this->hasMany(Provincia::class, 'provincia_id');
+        return $this->belongsTo(Provincia::class, 'provincia_id');
     }
     public function distrito()
     {
-        return $this->hasMany(Distrito::class, 'distrito_id');
+        return $this->belongsTo(Distrito::class, 'distrito_id');
     }
 }

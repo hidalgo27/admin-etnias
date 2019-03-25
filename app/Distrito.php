@@ -16,4 +16,8 @@ class Distrito extends Model
     {
         return $this->hasMany(Comunidad::class, 'distrito_id');
     }
+    public function proveedores()
+    {
+        return $this->hasMany(Proveedor::class, 'distrito_id');
+    }
 }
