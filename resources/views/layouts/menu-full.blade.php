@@ -19,7 +19,8 @@
       (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
       (url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista'))||
-      (url()->current()==route('proveedor.nuevo','{{ $rol }}')||url()->current()==route('proveedor.lista'))
+      (url()->current()==route('proveedor.nuevo','{{ $rol }}')||url()->current()==route('proveedor.lista'))||
+      (url()->current()==route('producto.nuevo','{{ $rol }}')||url()->current()==route('producto.lista'))
       ) show @endif" id="operaciones">
       <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">COMUNIDADES</a>
@@ -28,14 +29,14 @@
         <a class="@if(url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo')) active @endif" href="{{route('asociacion.lista')}}"> ASOCIACIONES</a>
       </li>
       <li data-toggle="collapse" class="active1">
-        <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.lista')}}">PRODUCTOS</a>
+        <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.lista')}}">SERVICIOS</a>
       </li>
       <hr>
       <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('proveedor.nuevo','{{ $rol }}')||url()->current()==route('proveedor.lista')) active @endif" href="{{route('proveedor.lista')}}">PROVEEDORES</a>
       </li>
       <li data-toggle="collapse" class="active1">
-        <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.lista')}}">SERVICIOS</a>
+        <a class="@if(url()->current()==route('producto.nuevo','{{ $rol }}')||url()->current()==route('producto.lista')) active @endif" href="{{route('producto.lista')}}">PRODUCTOS</a>
       </li>
     </ul>
     {{-- rutas para la base de datos --}}

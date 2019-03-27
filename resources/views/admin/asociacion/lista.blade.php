@@ -41,17 +41,17 @@
                                 @php
                                     $i=1;
                                 @endphp
-                                @foreach ($proveedores as $item)
+                                @foreach ($asociaciones as $item)
                                     <tr id="row_lista_asociaciones_{{ $item->id }}">
                                         <td>{{ $i }}</td>
                                         <td>
-                                            {{ $item->departamento->departamento }}
+                                            {{ $item->comunidad->distrito->provincia->departamento->departamento }}
                                         </td>
                                         <td>
-                                            {{ $item->provincia->provincia }}
+                                            {{ $item->comunidad->distrito->provincia->provincia }}
                                         </td>
                                         <td>
-                                            {{ $item->distrito }}
+                                            {{ $item->comunidad->distrito->distrito }}
                                         </td>
                                         <td>{{ $item->ruc }}</td>
                                         <td>{{ $item->nombre }}</td>
@@ -79,12 +79,12 @@
                                                                     <input type="text" class="form-control" id="ruc" name="ruc" aria-describedby="ruc" placeholder="Ruc" value="{{ $item->ruc }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
-                                                                    <label for="razon_social">Razon Social</label>
-                                                                    <input type="text" class="form-control" id="razon_social" name="razon_social" aria-describedby="razon_social" placeholder="Razon social" value="{{ $item->razon_social }}">
+                                                                    <label for="nombre">Nombre</label>
+                                                                    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Nombre comercial" value="{{ $item->nombre }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
-                                                                    <label for="nombre_comercial">Nombre Comercial</label>
-                                                                    <input type="text" class="form-control" id="nombre_comercial" name="nombre_comercial" aria-describedby="nombre_comercial" placeholder="Nombre comercial" value="{{ $item->nombre_comercial }}">
+                                                                    <label for="contacto">Contacto</label>
+                                                                    <input type="text" class="form-control" id="contacto" name="contacto" aria-describedby="contacto" placeholder="contacto" value="{{ $item->contacto }}">
                                                                 </div>
                                                                 <div class="form-group col-12">
                                                                     <label for="celular">Celular</label>
@@ -97,14 +97,6 @@
                                                                 <div class="form-group col-12">
                                                                     <label for="email">Email</label>
                                                                     <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="email" value="{{ $item->email }}">
-                                                                </div>
-                                                                <div class="form-group col-12">
-                                                                    <label for="cta_corriente">Cta corriente</label>
-                                                                    <input type="text" class="form-control" id="cta_corriente" name="cta_corriente" aria-describedby="cta_corriente" placeholder="Cta. corriente" value="{{ $item->banco_nro_cta_corriente }}">
-                                                                </div>
-                                                                <div class="form-group col-12">
-                                                                    <label for="cta_cci">Cta interbancaria</label>
-                                                                    <input type="text" class="form-control" id="cta_cci" name="cta_cci" aria-describedby="cta_cci" placeholder="Cta. interbancaria" value="{{ $item->banco_nro_cta_cci }}">
                                                                 </div>
                                                                 <div class="form-group col-4">
                                                                     <label for="departamento">Departamento</label>

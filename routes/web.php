@@ -186,20 +186,16 @@ Route::post('/admin/proveedor/editar', [
     'as' => 'proveedor.editar',
 ]);
 
-// RUTAS PARA SERVICIOS
-Route::get('/admin/servicio/lista', [
-    'uses' => 'ProveedorController@lista',
-    'as' => 'proveedor.lista',
+// rutas para productos
+Route::get('/admin/producto/lista', [
+    'uses' => 'ProductosController@lista',
+    'as' => 'producto.lista',
 ]);
-Route::get('/admin/proveedor/nuevo/{rol}', [
-    'uses' => 'ProveedorController@nuevo',
-    'as' => 'proveedor.nuevo',
+Route::get('/admin/producto/nuevo/{rol}', [
+    'uses' => 'ProductosController@nuevo',
+    'as' => 'producto.nuevo',
 ]);
-Route::post('/admin/proveedor/nuevo', [
-    'uses' => 'ProveedorController@store',
-    'as' => 'proveedor.store',
-]);
-Route::post('/admin/proveedor/editar', [
-    'uses' => 'ProveedorController@editar',
-    'as' => 'proveedor.editar',
+Route::post('/admin/producto/mostrar-proveedores', [
+    'uses' => 'ProductosController@mostrar_proveedores',
+    'as' => 'mostrar.proveedores.nuevo',
 ]);

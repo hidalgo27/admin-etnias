@@ -84,7 +84,7 @@
                                             <option value="0">Escoja una opcion</option>
                                         </select>
                                     </div>
-                                    <div id="distrito_id" class="form-group col-2">
+                                    <div  class="form-group col-2">
                                         <label for="comision">Comision</label>
                                         <input class="form-control" type="number" name="comision" id="comision" value="" min="0" max="100" step="0.01" required>
                                     </div>

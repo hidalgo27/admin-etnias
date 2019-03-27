@@ -634,6 +634,8 @@ function mostrar_provincias_servicios(departamento_id){
             $("select[name='provincia'").html(data.options);
         }
         });
+
+    mostrar_proveedores(departamento_id);
     }
 }
 function mostrar_distritos_servicios(provincia_id){
@@ -676,4 +678,60 @@ function mostrar_comunidades_servicios(distrito_id,asociacion_id){
         }
         });
     }
+}
+
+function mostrar_proveedores(departamento_id){
+    // alert('hola:'+departamento_id);
+    console.log('departamento_id:'+departamento_id);
+    if(departamento_id>0){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+        type:'POST',
+        url:'../mostrar-proveedores',
+        data:{departamento_id:departamento_id},
+        beforeSend: function() {
+            $("#lista_proveedores").html('');
+            $("#lista_proveedores").html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+        },
+        success:function(data){
+
+            $("#lista_proveedores").html('');
+            $("#lista_proveedores").html(data);
+        }
+        });
+
+    }
+}
+var nro_proves=0;
+function pasar_datos(clase){
+   var resultArray = [];
+//    $("input[name='proveedor_id[]']").each(function () {
+//     resultArray.push($(this).val());
+//    });
+   resultArray=$("input[name='proveedor_id[]']").map(function(){ return this.value }).get();
+console.log('resultArray:'+resultArray);
+   $("input[name='proveedor[]']").each(function (index) {
+        if($(this).is(':checked')){
+            var valor=$(this).val();
+            valor=valor.split('_');
+            console.log('in array:'+jQuery.inArray( valor[0], resultArray ));
+            if (jQuery.inArray( valor[0], resultArray ) == -1 ) {
+                nro_proves++;
+                var cadena='<div id="lista_proveedores_save_'+nro_proves+'" class="row">'+
+                            '<div class="col-7 ">'+valor[1]+'</div>'+
+                            '<div class="col-3 px-0 mx-0"><input type="hidden" name="proveedor_id[]" value="'+valor[0]+'"><input class="form-control" type="number" name="precio[]" min="0" step="0.01"></div>'+
+                            '<div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save(\''+nro_proves+'\')"><i class="fas fa-trash"></i></button></div>'+
+                        '</div>';
+                $('#lista_proveedores_save').append(cadena);
+            }
+        }
+    });
+
+}
+function borrar_proveedor_save(valor){
+    $('#lista_proveedores_save_'+valor).remove();
 }
