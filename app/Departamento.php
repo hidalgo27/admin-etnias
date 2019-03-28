@@ -16,4 +16,8 @@ class Departamento extends Model
     {
         return $this->hasMany(Proveedor::class, 'departamento_id');
     }
+    public function guia()
+    {
+        return $this->hasMany(Guia::class, 'departamento_id');
+    }
 }

@@ -12,6 +12,10 @@ class Proveedor extends Model
     {
         return $this->hasMany(TransporteExternoProveedor::class, 'transporte_externo_id');
     }
+    public function guia_proveedor()
+    {
+        return $this->hasMany(GuiaProveedor::class, 'guia_id');
+    }
     public function departamento()
     {
         return $this->belongsTo(Departamento::class, 'departamento_id');

@@ -199,3 +199,7 @@ Route::post('/admin/producto/mostrar-proveedores', [
     'uses' => 'ProductosController@mostrar_proveedores',
     'as' => 'mostrar.proveedores.nuevo',
 ]);
+Route::post('/admin/producto/nuevo', [
+    'uses' => 'ProductosController@store',
+    'as' => 'producto.store',
+]);

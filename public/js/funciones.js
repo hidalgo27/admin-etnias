@@ -616,7 +616,7 @@ function confirmar(tipo_servicio,grupo_id,estado){
      });
 }
 
-function mostrar_provincias_servicios(departamento_id){
+function mostrar_provincias_servicios(departamento_id,categoria){
     // alert('hola:'+departamento_id);
     console.log('departamento_id:'+departamento_id);
     if(departamento_id>0){
@@ -635,7 +635,7 @@ function mostrar_provincias_servicios(departamento_id){
         }
         });
 
-    mostrar_proveedores(departamento_id);
+    mostrar_proveedores(departamento_id,categoria);
     }
 }
 function mostrar_distritos_servicios(provincia_id){
@@ -680,7 +680,7 @@ function mostrar_comunidades_servicios(distrito_id,asociacion_id){
     }
 }
 
-function mostrar_proveedores(departamento_id){
+function mostrar_proveedores(departamento_id,categoria){
     // alert('hola:'+departamento_id);
     console.log('departamento_id:'+departamento_id);
     if(departamento_id>0){
@@ -692,7 +692,7 @@ function mostrar_proveedores(departamento_id){
         $.ajax({
         type:'POST',
         url:'../mostrar-proveedores',
-        data:{departamento_id:departamento_id},
+        data:{departamento_id:departamento_id,categoria:categoria},
         beforeSend: function() {
             $("#lista_proveedores").html('');
             $("#lista_proveedores").html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
@@ -723,7 +723,7 @@ console.log('resultArray:'+resultArray);
                 nro_proves++;
                 var cadena='<div id="lista_proveedores_save_'+nro_proves+'" class="row">'+
                             '<div class="col-7 ">'+valor[1]+'</div>'+
-                            '<div class="col-3 px-0 mx-0"><input type="hidden" name="proveedor_id[]" value="'+valor[0]+'"><input class="form-control" type="number" name="precio[]" min="0" step="0.01"></div>'+
+                            '<div class="col-3 px-0 mx-0"><input type="hidden" name="proveedor_id[]" value="'+valor[0]+'"><input class="form-control" type="number" name="precio_proveedor[]" min="0" step="0.01"></div>'+
                             '<div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save(\''+nro_proves+'\')"><i class="fas fa-trash"></i></button></div>'+
                         '</div>';
                 $('#lista_proveedores_save').append(cadena);
