@@ -63,9 +63,12 @@ class ComunidadController extends Controller
         }
     }
     public function mostrarProvincias(Request $request){
+
+        $categoria_id=$request->categoria_id;
+        $producto_id=$request->producto_id;
         if($request->ajax()){
             $provincias = Provincia::where('departamento_id',$request->departamento_id)->get();
-            $data = view('admin.comunidad.mostrar-provincias-ajax',compact('provincias'))->render();
+            $data = view('admin.comunidad.mostrar-provincias-ajax',compact('provincias','categoria_id','producto_id'))->render();
             return \Response::json(['options'=>$data]);
         }
     }

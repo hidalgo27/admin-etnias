@@ -616,7 +616,7 @@ function confirmar(tipo_servicio,grupo_id,estado){
      });
 }
 
-function mostrar_provincias_servicios(departamento_id,categoria){
+function mostrar_provincias_servicios(departamento_id,categoria,categoria_id,producto_id){
     // alert('hola:'+departamento_id);
     console.log('departamento_id:'+departamento_id);
     if(departamento_id>0){
@@ -632,10 +632,13 @@ function mostrar_provincias_servicios(departamento_id,categoria){
         success:function(data){
             $("select[name='provincia'").html('');
             $("select[name='provincia'").html(data.options);
+            
+            // $('#provincia_'+categoria_id+'_'+producto_id).html('');
+            // $('#provincia_'+categoria_id+'_'+producto_id).html(data.options);
         }
         });
 
-    mostrar_proveedores(departamento_id,categoria);
+    mostrar_proveedores(departamento_id,categoria,categoria_id,producto_id);
     }
 }
 function mostrar_distritos_servicios(provincia_id){
@@ -680,7 +683,7 @@ function mostrar_comunidades_servicios(distrito_id,asociacion_id){
     }
 }
 
-function mostrar_proveedores(departamento_id,categoria){
+function mostrar_proveedores(departamento_id,categoria,categoria_id,producto_id){
     // alert('hola:'+departamento_id);
     console.log('departamento_id:'+departamento_id);
     if(departamento_id>0){
@@ -692,46 +695,206 @@ function mostrar_proveedores(departamento_id,categoria){
         $.ajax({
         type:'POST',
         url:'../mostrar-proveedores',
-        data:{departamento_id:departamento_id,categoria:categoria},
+        data:{departamento_id:departamento_id,categoria:categoria,categoria_id:categoria_id,producto_id:producto_id},
         beforeSend: function() {
             $("#lista_proveedores").html('');
             $("#lista_proveedores").html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
         },
         success:function(data){
 
-            $("#lista_proveedores").html('');
-            $("#lista_proveedores").html(data);
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('');
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html(data);
         }
         });
 
     }
 }
 var nro_proves=0;
-function pasar_datos(clase){
+function pasar_datos(clase,categoria_id,producto_id){
    var resultArray = [];
 //    $("input[name='proveedor_id[]']").each(function () {
 //     resultArray.push($(this).val());
 //    });
-   resultArray=$("input[name='proveedor_id[]']").map(function(){ return this.value }).get();
+var proveedor_id='c_proveedor_id_'+categoria_id+'_'+producto_id;
+var proveedor='proveedor_'+categoria_id+'_'+producto_id;
+   resultArray=$("input[class='"+proveedor_id+"']").map(function(){ return this.value }).get();
 console.log('resultArray:'+resultArray);
-   $("input[name='proveedor[]']").each(function (index) {
+   $("input[name='"+proveedor+"[]']").each(function (index) {
+       console.log('entro el checbox');
         if($(this).is(':checked')){
             var valor=$(this).val();
             valor=valor.split('_');
             console.log('in array:'+jQuery.inArray( valor[0], resultArray ));
-            if (jQuery.inArray( valor[0], resultArray ) == -1 ) {
-                nro_proves++;
-                var cadena='<div id="lista_proveedores_save_'+nro_proves+'" class="row">'+
-                            '<div class="col-7 ">'+valor[1]+'</div>'+
-                            '<div class="col-3 px-0 mx-0"><input type="hidden" name="proveedor_id[]" value="'+valor[0]+'"><input class="form-control" type="number" name="precio_proveedor[]" min="0" step="0.01"></div>'+
-                            '<div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save(\''+nro_proves+'\')"><i class="fas fa-trash"></i></button></div>'+
-                        '</div>';
-                $('#lista_proveedores_save').append(cadena);
+            if(resultArray==''){
+                var cadena='<div id="lista_proveedores_saved_'+categoria_id+'_'+producto_id+'_'+valor[0]+'" class="row">'+
+                '<div class="col-7 ">'+valor[1]+'</div>'+
+                '<div class="col-3 px-0 mx-0"><input class="'+proveedor_id+'" type="hidden" name="proveedor_id_a[]" value="'+valor[0]+'"><input type="hidden" name="proveedor_id[]" value="'+valor[0]+'"><input class="form-control" type="number" name="precio_proveedor[]" min="0" step="0.01"></div>'+
+                '<div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save(\''+categoria_id+'\',\''+producto_id+'\',\''+valor[0]+'\')"><i class="fas fa-trash"></i></button></div>'+
+            '</div>';
+    $('#lista_proveedores_save_'+categoria_id+'_'+producto_id).append(cadena);
+            }
+            else{
+                if (jQuery.inArray( valor[0], resultArray ) == -1 ) {
+                    nro_proves++;
+                    var cadena='<div id="lista_proveedores_saved_'+categoria_id+'_'+producto_id+'_'+valor[0]+'" class="row">'+
+                                '<div class="col-7 ">'+valor[1]+'</div>'+
+                                '<div class="col-3 px-0 mx-0"><input class="'+proveedor_id+'" type="hidden" name="proveedor_id_a[]" value="'+valor[0]+'"><input  type="hidden" name="proveedor_id[]" value="'+valor[0]+'"><input class="form-control" type="number" name="precio_proveedor[]" min="0" step="0.01"></div>'+
+                                '<div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save(\''+categoria_id+'\',\''+producto_id+'\',\''+valor[0]+'\')"><i class="fas fa-trash"></i></button></div>'+
+                            '</div>';
+                    $('#lista_proveedores_save_'+categoria_id+'_'+producto_id).append(cadena);
+                }
             }
         }
     });
 
 }
-function borrar_proveedor_save(valor){
-    $('#lista_proveedores_save_'+valor).remove();
+function borrar_proveedor_save(valor1,valor2,valor3){
+    $('#lista_proveedores_saved_'+valor1+'_'+valor2+'_'+valor3).remove();
+}
+
+function eliminar_producto(id,categoria,categoria_id){
+
+    Swal.fire({
+        title: 'MENSAJE DEL SISTEMA',
+        text: "¿Estas seguro de borrar el producto?",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText:'No, cancelar'
+      }).then((result) => {
+        if (result.value) {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:'get',
+                url:'/admin/producto/delete/'+id+'/'+categoria,
+                // data:{id:id},
+                success:function(data){
+                    if(data==1){
+                        Swal.fire(
+                            'Borrado!',
+                            'El producto ha sido borrada.',
+                            'success'
+                        );
+                        $('#row_lista_productos_'+id+'_'+categoria_id).remove();
+                    }
+                    else if(data==0){
+                        Swal.fire(
+                            'Error!',
+                            'Subo un error al borrar el producto.',
+                            'danger'
+                        )
+                    }
+                }
+             });
+        }
+      })
+}
+
+function mostrar_provincias_productos(departamento_id,categoria,categoria_id,producto_id){
+    // alert('hola:'+departamento_id);
+    console.log('departamento_id:'+departamento_id);
+    if(departamento_id>0){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+        type:'POST',
+        url:'/admin/comunidad/mostrar-provincias',
+        data:{departamento_id:departamento_id,categoria_id:categoria_id,producto_id:producto_id},
+        success:function(data){
+            // $("select[id='provincia'").html('');
+            // $("select[id='provincia'").html(data.options);
+            $('#provincia_'+categoria_id+'_'+producto_id).html('');
+            $('#provincia_'+categoria_id+'_'+producto_id).html(data.options);
+            
+        }
+        });
+
+    mostrar_proveedores_productos(departamento_id,categoria,categoria_id,producto_id);
+    }
+}
+function mostrar_distritos_productos(provincia_id,categoria_id,producto_id){
+    // alert('hola:'+departamento_id);
+    console.log('departamento_id:'+provincia_id);
+    if(provincia_id>0){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+        type:'POST',
+        url:'/admin/comunidad/mostrar-distritos',
+        data:{provincia_id:provincia_id},
+        success:function(data){
+            // $("select[name='distrito'").html('');
+            // $("select[name='distrito'").html(data.options);
+            
+            $('#distrito_'+categoria_id+'_'+producto_id).html('');
+            $('#distrito_'+categoria_id+'_'+producto_id).html(data.options);
+        }
+        });
+    }
+}
+function mostrar_comunidades_productos(distrito_id,asociacion_id,categoria_id,producto_id){
+    // alert('hola:'+departamento_id);
+    console.log('distrito_id:'+distrito_id);
+    if(distrito_id>0){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+        type:'POST',
+        url:'/admin/comunidad/mostrar-comunidades',
+        data:{distrito_id:distrito_id},
+        success:function(data){
+
+            // $("#comunidad_"+asociacion_id).html('');
+            // $("#comunidad_"+asociacion_id).html(data.options);
+            
+            $('#comunidad_'+categoria_id+'_'+producto_id).html('');
+            $('#comunidad_'+categoria_id+'_'+producto_id).html(data.options);
+        }
+        });
+    }
+}
+function mostrar_proveedores_productos(departamento_id,categoria,categoria_id,producto_id){
+    // alert('hola:'+departamento_id);
+    console.log('departamento_id:'+departamento_id);
+    if(departamento_id>0){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+        type:'POST',
+        url:'/admin/producto/mostrar-proveedores',
+        data:{departamento_id:departamento_id,categoria:categoria,categoria_id:categoria_id,producto_id:producto_id},
+        beforeSend: function() {
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('');
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('<div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>');
+        },
+        success:function(data){
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('');
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html(data);
+        }
+        });
+
+    }
+}
+
+
+function borrar_proveedor_save_d(valor1,valor2,valor3){
+    $('#lista_proveedores_saved_'+valor1+'_'+valor2+'_'+valor3).remove();
 }

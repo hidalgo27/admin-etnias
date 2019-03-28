@@ -15,6 +15,6 @@ class TransporteExternoProveedor extends Model
     }
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class, 'transporte_externo_id');
+        return $this->belongsTo(Proveedor::class, 'proveedor_id');
     }
 }

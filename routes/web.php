@@ -173,7 +173,7 @@ Route::get('/admin/proveedor/lista', [
     'uses' => 'ProveedorController@lista',
     'as' => 'proveedor.lista',
 ]);
-Route::get('/admin/proveedor/nuevo/{rol}', [
+Route::get('/admin/proveedor/nuevo/{categoria}', [
     'uses' => 'ProveedorController@nuevo',
     'as' => 'proveedor.nuevo',
 ]);
@@ -191,7 +191,7 @@ Route::get('/admin/producto/lista', [
     'uses' => 'ProductosController@lista',
     'as' => 'producto.lista',
 ]);
-Route::get('/admin/producto/nuevo/{rol}', [
+Route::get('/admin/producto/nuevo/{categoria}', [
     'uses' => 'ProductosController@nuevo',
     'as' => 'producto.nuevo',
 ]);
@@ -202,4 +202,12 @@ Route::post('/admin/producto/mostrar-proveedores', [
 Route::post('/admin/producto/nuevo', [
     'uses' => 'ProductosController@store',
     'as' => 'producto.store',
+]);
+Route::post('/admin/producto/editar', [
+    'uses' => 'ProductosController@editar',
+    'as' => 'producto.editar',
+]);
+Route::get('/admin/producto/delete/{id}/{categoria}', [
+    'uses' => 'ProductosController@getDelete',
+    'as' => 'producto.delete',
 ]);

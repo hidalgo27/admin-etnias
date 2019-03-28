@@ -32,7 +32,7 @@
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label for="departamento">Departamento</label>
-                                                <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias_servicios($(this).val(),'{{ $categoria }}');" required >
+                                                <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias_servicios($(this).val(),'{{ $categoria }}','0','0');" required >
                                                     <option value="0">Escoja una opcion</option>
                                                     @foreach ($departamentos as $item)
                                                         <option value="{{ $item->id }}" @if ($item->id==old('departamento'))
@@ -121,23 +121,23 @@
                                             <div class="col-4">
                                                 <div class="row">
                                                     <div class="col-12"><p class="text-primary text-15">Lista de proveedores</p></div>
-                                                    <div id="lista_proveedores" class="col-12">
-                                                        @foreach ($proveedores as $proveedor)
+                                                    <div id="lista_proveedores_0_0" class="col-12">
+                                                        {{-- @foreach ($proveedores as $proveedor)
                                                             <div class="form-check text-primary">
-                                                                <input class="form-check-input" type="checkbox" value="{{ $proveedor->id }}_{{ $proveedor->nombre_comercial }}" name="proveedor[]" id="proveedor_{{ $proveedor->id }}">
+                                                                <input class="form-check-input" type="checkbox" value="{{ $proveedor->id }}_{{ $proveedor->nombre_comercial }}" name="proveedor_0_0[]" id="proveedor_{{ $proveedor->id }}">
                                                                 <label class="form-check-label" for="proveedor_{{ $proveedor->id }}">
                                                                   {{ $proveedor->nombre_comercial }}
                                                                 </label>
                                                             </div>
-                                                        @endforeach
+                                                        @endforeach --}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-1"><button type="button" class="btn btn-primary" onclick="pasar_datos('proveedor')"><i class="fas fa-arrow-alt-circle-right"></i></button> </div>
+                                            <div class="col-1"><button type="button" class="btn btn-primary" onclick="pasar_datos('proveedor','0','0')"><i class="fas fa-arrow-alt-circle-right"></i></button> </div>
                                             <div class="col-7">
                                                 <div class="row">
                                                     <div class="col-12"><p class="text-primary text-15">Lista de proveedores</p></div>
-                                                    <div class="col-12" id="lista_proveedores_save">
+                                                    <div class="col-12" id="lista_proveedores_save_0_0">
                                                         {{--  <div id="lista_proveedores_save_1" class="row">
                                                             <div class="col-7 ">Proveedor</div>
                                                             <div class="col-3 px-0 mx-0">

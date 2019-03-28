@@ -8,7 +8,7 @@ class Guia extends Model
 {
     //
     protected $table = "guia";
-    public function guia()
+    public function departamento()
     {
         return $this->belongsTo(Departamento::class, 'departamento_id');
     }

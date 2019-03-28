@@ -23,7 +23,9 @@ class ProductosController extends Controller
         $comunidades = Comunidad::get();
         $proveedores=Proveedor::get();
         $tipo_servicios=TipoServicio::get();
-        return view('admin.producto.lista',compact('proveedores','departamentos','provincias','distritos','comunidades','tipo_servicios'));
+        $transportes_externo=TransporteExterno::get();
+        $guias=Guia::get();
+        return view('admin.producto.lista',compact('proveedores','departamentos','provincias','distritos','comunidades','tipo_servicios','transportes_externo','guias'));
     }
     public function nuevo($categoria){
         $departamentos =Departamento::get();
@@ -127,55 +129,146 @@ class ProductosController extends Controller
         $file = Storage::disk('asociaciones')->get($filename);
         return response($file, 200);
     }
-    public function getDelete($id){
-        if(Asociacion::destroy($id))
-            return 1;
-        else
-            return 1;
+    public function getDelete($id,$categoria){
+        if($categoria=='TRANSPORTE'){
+            if(TransporteExterno::destroy($id))
+                return 1;
+            else
+                return 1;
+        }    
+        elseif($categoria=='GUIA'){
+            if(Guia::destroy($id))
+                return 1;
+            else
+                return 1;
+            
+        }
     }
     public function editar(Request $request){
-
+        
         $id=$request->input('id');
-        $rol=$request->input('rol');
-        $ruc=$request->input('ruc');
-        $razon_social=$request->input('razon_social');
-        $nombre_comercial=$request->input('nombre_comercial');
-        $telefono=$request->input('telefono');
-        $celular=$request->input('celular');
-        $email=$request->input('email');
-        $direccion=$request->input('direccion');
-        $plazo=$request->input('plazo');
-        $desci=$request->input('desci');
+        $comunidad_id=$request->input('comunidad');
         $departamento_id=$request->input('departamento');
-        $provincia_id=$request->input('provincia');
-        $distrito_id=$request->input('distrito');
+        $categoria=$request->input('categoria');
+        $idioma=$request->input('idioma');
+        $ruta_salida=$request->input('ruta_salida');
+        $ruta_llegada=$request->input('ruta_llegada');
+        $min=$request->input('min');
+        $max=$request->input('max');
+        $precio=$request->input('precio');
+        $tipo_producto=$request->input('tipo_producto');
+        $rol=$request->input('rol');
 
-        // dd($fotosExistentes);
-        if(trim($distrito_id)==''||trim($distrito_id)=='0'){
-            return redirect()->back()->with('error','escoja un departamento, provincia, distrito y comunidad')->withInput();
+        // Listado de productos pro proveedor
+        $proveedor_id=$request->input('proveedor_id');
+        $precio_proveedor=$request->input('precio_proveedor');
+        
+        // listado de productos por proveedor en db
+        $proveedor_id_d=$request->input('proveedor_id_d');
+        $precio_proveedor_d=$request->input('precio_d');
+
+        if($rol=='TRANSPORTE'){
+            if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
+                return redirect()->back()->with('error','escoja un departamento, provincia,distrito y comunidad')->withInput();
+            }
+            
+            $temp= TransporteExterno::find($id);
+            $temp->codigo='001';
+            $temp->nombre='001';
+            $temp->categoria=$categoria;
+            $temp->ruta_salida=$ruta_salida;
+            $temp->ruta_llegada=$ruta_llegada;
+            $temp->min=$min;
+            $temp->max=$max;
+            $temp->precio=$precio;
+            $temp->s_p=$tipo_producto;
+            $temp->comunidad_id=$comunidad_id;
+            $temp->save();
+
+            if($proveedor_id_d){
+                $transporte_prooveedor=TransporteExternoProveedor::where('transporte_externo_id',$id)->get();
+                foreach ($transporte_prooveedor as $key => $value) {
+                    if(!in_array($value->id,$proveedor_id_d)){
+                        $temp_=TransporteExternoProveedor::find($value->id);
+                        $temp_->delete();
+                    }
+                    else{
+                        $objeto=TransporteExternoProveedor::find($value->id);
+                        $objeto->precio=$precio_proveedor_d[$key];
+                        $objeto->save();
+                    }
+                }
+            }
+            else{
+                TransporteExternoProveedor::where('transporte_externo_id',$id)->delete();
+            }
+            if($proveedor_id){
+                if($precio_proveedor){    
+                    foreach($proveedor_id as $key => $value){
+                        $objeto=new TransporteExternoProveedor();
+                        $objeto->precio=$precio_proveedor[$key];
+                        $objeto->transporte_externo_id=$temp->id;
+                        $objeto->proveedor_id=$value;
+                        $objeto->save();
+                    }
+                }
+            }
+            return redirect()->route('producto.lista')->with('success','Datos guardados');            
         }
+        elseif($rol=='GUIA'){
+            if(trim($departamento_id)==''||trim($departamento_id)=='0'){
+                return redirect()->back()->with('error','escoja un departamento,')->withInput();
+            }
+           
+            $temp= Guia::find($id);
+            $temp->codigo='001';
+            $temp->nombre='001';
+            $temp->idioma=$idioma;
+            $temp->min=$min;
+            $temp->max=$max;
+            $temp->precio=$precio;
+            $temp->s_p=$tipo_producto;
+            $temp->departamento_id=$departamento_id;
+            $temp->save();
 
-        $proveedor=Proveedor::findorfail($id);
-        $proveedor->ruc=$ruc;
-        $proveedor->razon_social=$razon_social;
-        $proveedor->nombre_comercial=$nombre_comercial;
-        $proveedor->direccion=$direccion;
-        $proveedor->telefono=$telefono;
-        $proveedor->celular=$celular;
-        $proveedor->email=$email;
-        $proveedor->plazo=$plazo;
-        $proveedor->desci=$desci;
-        $proveedor->departamento_id=$departamento_id;
-        $proveedor->provincia_id=$provincia_id;
-        $proveedor->distrito_id=$distrito_id;
-        $proveedor->save();
-        return redirect()->route('proveedor.lista')->with('success','Datos editados');
+            if($proveedor_id_d){
+                $guia_prooveedor=GuiaProveedor::where('guia_id',$id)->get();
+                foreach ($guia_prooveedor as $key => $value) {
+                    if(!in_array($value->id,$proveedor_id_d)){
+                        $temp_=GuiaProveedor::find($value->id);
+                        $temp_->delete();
+                    }
+                    else{
+                        $objeto=GuiaProveedor::find($value->id);
+                        $objeto->precio=$precio_proveedor_d[$key];
+                        $objeto->save();
+                    }
+                }
+            }
+            else{
+                GuiaProveedor::where('guia_id',$id)->delete();
+            }
+            if($proveedor_id){    
+                if($precio_proveedor){   
+                    foreach($proveedor_id as $key => $value){
+                        $objeto=new GuiaProveedor();
+                        $objeto->precio=$precio_proveedor[$key];
+                        $objeto->guia_id=$temp->id;
+                        $objeto->proveedor_id=$value;
+                        $objeto->save();
+                    }
+                }
+            }
+            return redirect()->route('producto.lista')->with('success','Datos guardados');                
+        }
     }
 
     public function mostrar_proveedores(Request $request){
         $departamento_id=$request->input('departamento_id');
+        $categoria_id=$request->input('categoria_id');
+        $producto_id=$request->input('producto_id');
         $categoria=$request->input('categoria');
         $proveedores=Proveedor::where('departamento_id',$departamento_id)->where('categoria',$categoria)->get();
-        return view('admin.producto.lista-proveedores',compact('proveedores'));
+        return view('admin.producto.lista-proveedores',compact('proveedores','categoria_id','producto_id'));
     }
 }
