@@ -34,7 +34,7 @@ use Carbon\Carbon;
                         {{ $fecha_llegada->format('d-m-Y')}}</b>
                 </div>
                 <div class="col-12">
-                    <b>DATOS DEL PASAJERO</b>
+                    <b>DATOS DE LOS PASAJEROS</b>
                     <table class="table table-striped table-hover table-sm">
                         <thead>
                             <tr>
@@ -166,9 +166,9 @@ use Carbon\Carbon;
                                         <td>
                                             <input type="hidden" id="estado_actividad_{{ $actividad->id }}" value="{{ $actividad->estado }}">
                                             @if ($actividad->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Confirmar</button>
                                             @elseif($actividad->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -205,9 +205,9 @@ use Carbon\Carbon;
                                         <td>
                                             <input type="hidden" id="estado_comida_{{ $valor->id }}" value="{{ $valor->estado }}">
                                             @if ($valor->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Confirmar</button>
                                             @elseif($valor->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -244,9 +244,9 @@ use Carbon\Carbon;
                                         <td>
                                             <input type="hidden" id="estado_hospedaje_{{ $valor->id }}" value="{{ $valor->estado }}">
                                             @if ($valor->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Confirmar</button>
                                             @elseif($valor->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -283,9 +283,9 @@ use Carbon\Carbon;
                                         <td>
                                             <input type="hidden" id="estado_transporte_{{ $valor->id }}" value="{{ $valor->estado }}">
                                             @if ($valor->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_transporte_{{ $valor->id }}" onclick="confirmar('transporte','{{ $valor->id }}',$('#estado_transporte_{{ $valor->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_transporte_{{ $valor->id }}" onclick="confirmar('transporte','{{ $valor->id }}',$('#estado_transporte_{{ $valor->id }}').val())">Confirmar</button>
                                             @elseif($valor->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_transporte_{{ $valor->id }}" onclick="confirmar('transporte','{{ $valor->id }}',$('#estado_transporte_{{ $valor->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_transporte_{{ $valor->id }}" onclick="confirmar('transporte','{{ $valor->id }}',$('#estado_transporte_{{ $valor->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
@@ -323,40 +323,49 @@ use Carbon\Carbon;
                                         <td>
                                             <input type="hidden" id="estado_servicio_{{ $valor->id }}" value="{{ $valor->estado }}">
                                             @if ($valor->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Confirmar</button>
                                             @elseif($valor->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
                                 @endforeach
                             @endif
                             <tr>
-                                <td colspan="3"></td>
+                                <td colspan="3"><b>TOTAL</b></td>
                                 <td class="text-right"><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
-                                <td class="text-right" colspan="{{ $nro_col_span }}"> <b><sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
+                                <td class="text-right" colspan="{{ $nro_col_span }}"> <b>+ <sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
                                 <td class="text-left"><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
                             </tr>
-
+                            @php
+                                $total_transporte_externo=0;
+                            @endphp
                             @if ($reserva->transporte_externo)
-                            <thead>
-                                <tr class="bg-dark text-white"><th colspan="8">TRANSPORTE EXTERNO</th></tr>
-                            </thead>
-                            <thead>
-                                <tr class="bg-secondary text-white mb-0">
-                                    <th>TITULO</th>
-                                    <th>PAX</th>
-                                    <th>P.U.</th>
-                                    <th>SUBTOTAL</th>
-                                    <th colspan="2">PROVEEDOR</th>
-                                    <th>ESTADO</th>
-                                    <th>OPERACIONES</th>
-                                </tr>
-                            </thead>
+                                <thead>
+                                    <tr class="bg-dark text-white"><th colspan="8">TRANSPORTE EXTERNO</th></tr>
+                                </thead>
+                                <thead>
+                                    <tr class="bg-secondary text-white mb-0">
+                                        <th>TITULO</th>
+                                        <th>PAX</th>
+                                        <th>P.U.</th>
+                                        <th>SUBTOTAL</th>
+                                        <th colspan="2">PROVEEDOR</th>
+                                        <th>ESTADO</th>
+                                        <th>OPERACIONES</th>
+                                    </tr>
+                                </thead>
                                 @foreach ($reserva->transporte_externo as $valor)
-                                @php
-                                    $total_transporte_externo+=$valor->pax*$valor->precio;
-                                @endphp
+                                    @if ($valor->s_p=='PRIVADO')
+                                        @php
+                                            $total_transporte_externo+=$valor->precio*$valor->pax;
+                                        @endphp
+                                    @elseif ($valor->s_p=='COMPARTIDO')
+                                        @php
+                                            $total_transporte_externo+=$valor->precio;
+                                        @endphp
+                                    @endif
+                                
                                     <tr>
                                         <td>
                                             <i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
@@ -378,177 +387,327 @@ use Carbon\Carbon;
                                         </td>
 
                                         <td colspan="2">
-                                            @if($valor->proveedir_id>0)
-                                            @else
-                                                <div class="row">
-                                                    <div id="rpt_proveedor_{{ $valor->id }}" class="col-5 text-12"></div>
-                                                    <div id="rpt_precio_pago_{{ $valor->id }}" class="col-2 text-12 px-0"></div>
-                                                    <div id="rpt_fecha_pago_{{ $valor->id }}" class="col-3 text-12 px-0"></div>
-                                                    <div class="col-2">
-                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{ $valor->id }}"><i class="fas fa-plus"></i></button>
-                                                        <!-- Modal -->
-                                                        <div id="myModal_{{ $valor->id }}" class="modal fade" role="dialog">
-                                                            <div class="modal-dialog  modal-lg">
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header bg-primary text-white">
-                                                                            <h4 class="modal-title">Agregar proveedor</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <div class="row">
+                                                @if ($valor->proveedor_id>0)
+                                                    @php
+                                                        $objeto=$proveedores->where('id',$valor->proveedor_id)->first();
+                                                    @endphp    
+                                                @endif
+                                                <div id="rpt_proveedor_TRANSPORTE_{{ $valor->id }}" class="col-5 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
+                                                <div id="rpt_precio_pago_TRANSPORTE_{{ $valor->id }}" class="col-2  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
+                                                <div id="rpt_fecha_pago_TRANSPORTE_{{ $valor->id }}" class="col-3  px-0">@if($valor->proveedor_id>0) {{$valor->fecha_pago}} @else Sin fecha @endif</div>
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{ $valor->id }}"><i class="fas fa-plus"></i></button>
+                                                    <!-- Modal -->
+                                                    <div id="myModal_{{ $valor->id }}" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog  modal-lg">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bg-primary text-white">
+                                                                        <h4 class="modal-title">Agregar proveedor</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="row">
-                                                                            <div class="col-12 text-20">
-                                                                                <i class="fas fa-bus"></i>
-                                                                                <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span>
-                                                                                <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span>
-                                                                                <span class="badge badge-primary">{{ $valor->s_p }}</span>
-                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format($valor->precio,2) }}</span>
-                                                                            <hr>
-                                                                            </div>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-12 text-20">
+                                                                            <i class="fas fa-bus"></i>
+                                                                            <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span>
+                                                                            <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span>
+                                                                            <span class="badge badge-primary">{{ $valor->s_p }}</span>
+                                                                            <span class="badge badge-success"><sup>S/.</sup>{{ number_format($valor->precio,2) }}</span>
+                                                                        <hr>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <b class="text-18">Lista de proveedores</b>
-                                                                            </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <b class="text-18">Lista de proveedores</b>
+                                                                        </div>
 
-                                                                            <div class="col-12">
-                                                                                <table class="table table-bordered table-condensed table-hover table-sm">
-                                                                                    <thead>
+                                                                        <div class="col-12">
+                                                                            <table class="table table-bordered table-condensed table-hover table-sm">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>PROVEEDOR</th>
+                                                                                        <th>COSTO</th>
+                                                                                        <th>PLAZO</th>
+                                                                                        <th>FECHA DE PAGO</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max)->where('s_p',$valor->s_p) as $transporte_externo_)
+                                                                                        @foreach ($transporte_externo_->transporte_externo_proveedor as $transporte_externo_proveedor)
                                                                                         <tr>
-                                                                                            <th>PROVEEDOR</th>
-                                                                                            <th>COSTO</th>
-                                                                                            <th>PLAZO</th>
-                                                                                            <th>FECHA DE PAGO</th>
+                                                                                            <td>
+                                                                                                <label for="proveedor_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}">
+                                                                                                    <input type="radio" name="proveedor_{{ $valor->id }}[]" id="proveedor_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->id }}" onchange="proveedor_escojido('{{ $transporte_externo_proveedor->proveedor->id }}')">
+                                                                                                    {{ $transporte_externo_proveedor->proveedor->nombre_comercial }}
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td style="width:120px">
+                                                                                                @if ($valor->s_p=='PRIVADO')
+                                                                                                    @php
+                                                                                                        $precio_proveedor=number_format($transporte_externo_proveedor->precio*$valor->pax,2);
+                                                                                                    @endphp
+                                                                                                @elseif ($valor->s_p=='COMPARTIDO')
+                                                                                                @php
+                                                                                                    $precio_proveedor=number_format($transporte_externo_proveedor->precio,2);
+                                                                                                @endphp
+                                                                                                @endif
+                                                                                                <input class="form-control" type="hidden" name="proveedor_nombre_" id="proveedor_nombre_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->nombre_comercial }}">
+                                                                                                <input class="form-control" type="number" name="precio_pago" id="precio_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $precio_proveedor }}">
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{ $transporte_externo_proveedor->proveedor->plazo }}
+                                                                                                {{ $transporte_externo_proveedor->proveedor->desci }}
+                                                                                            </td>
+                                                                                            <td style="width:100px">
+                                                                                                @php
+                                                                                                    $fecha = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
+                                                                                                @endphp
+                                                                                                @if ($transporte_externo_proveedor->proveedor->desci=='ANTES')
+                                                                                                    @php
+                                                                                                        $fecha->subDays($transporte_externo_proveedor->proveedor->plazo);
+                                                                                                    @endphp
+                                                                                                @elseif ($transporte_externo_proveedor->proveedor->desci=='DESPUES')
+                                                                                                    @php
+                                                                                                        $fecha->addDays($transporte_externo_proveedor->proveedor->plazo);
+                                                                                                    @endphp
+                                                                                                @endif
+                                                                                                <input class="form-control" type="date" name="fecha_pago" id="fecha_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $fecha->format('Y-m-d') }}">
+                                                                                            </td>
                                                                                         </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max)->where('s_p',$valor->s_p) as $transporte_externo_)
-                                                                                            @foreach ($transporte_externo_->transporte_externo_proveedor as $transporte_externo_proveedor)
-                                                                                            <tr>
-                                                                                                <td>
-                                                                                                    <label for="proveedor_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}">
-                                                                                                        <input type="radio" name="proveedor_{{ $valor->id }}[]" id="proveedor_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->id }}" onchange="proveedor_escojido('{{ $transporte_externo_proveedor->proveedor->id }}')">
-                                                                                                        {{ $transporte_externo_proveedor->proveedor->nombre_comercial }}
-                                                                                                    </label>
-                                                                                                </td>
-                                                                                                <td style="width:120px">
-                                                                                                    @if ($valor->s_p=='PRIVADO')
-                                                                                                        @php
-                                                                                                            $precio_proveedor=number_format($transporte_externo_proveedor->precio*$valor->pax,2);
-                                                                                                        @endphp
-                                                                                                    @elseif ($valor->s_p=='COMPARTIDO')
-                                                                                                    @php
-                                                                                                        $precio_proveedor=number_format($transporte_externo_proveedor->precio,2);
-                                                                                                    @endphp
-                                                                                                    @endif
-                                                                                                    <input class="form-control" type="hidden" name="proveedor_nombre_" id="proveedor_nombre_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->nombre_comercial }}">
-                                                                                                    <input class="form-control" type="number" name="precio_pago" id="precio_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $precio_proveedor }}">
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    {{ $transporte_externo_proveedor->proveedor->plazo }}
-                                                                                                    {{ $transporte_externo_proveedor->proveedor->desci }}
-                                                                                                </td>
-                                                                                                <td style="width:100px">
-                                                                                                    @php
-                                                                                                        $fecha = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
-                                                                                                    @endphp
-                                                                                                    @if ($transporte_externo_proveedor->proveedor->desci=='ANTES')
-                                                                                                        @php
-                                                                                                            $fecha->subDays($transporte_externo_proveedor->proveedor->plazo);
-                                                                                                        @endphp
-                                                                                                    @elseif ($transporte_externo_proveedor->proveedor->desci=='DESPUES')
-                                                                                                        @php
-                                                                                                            $fecha->addDays($transporte_externo_proveedor->proveedor->plazo);
-                                                                                                        @endphp
-                                                                                                    @endif
-                                                                                                    <input class="form-control" type="date" name="fecha_pago" id="fecha_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $fecha->format('Y-m-d') }}">
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            @endforeach
                                                                                         @endforeach
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
+                                                                                    @endforeach
+                                                                                </tbody>
+                                                                            </table>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div id="rpt_{{ $valor->id }}" class="col-12">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div id="rpt_{{ $valor->id }}" class="col-12">
 
-                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-primary" onclick="escojer_proveedor('{{ $valor->id }}')" >Escojer</button>
-                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" onclick="escojer_proveedor('{{ $valor->id }}','TRANSPORTE')" >Escojer</button>
+                                                                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
-                                            @endif
 
+                                            </div>
                                         </td>
                                         <td>
                                             @if ($valor->estado==0)
-                                                <span class="badge badge-dark" id="estado_span_servicio_{{ $valor->id }}">Pendiente</span>
+                                                <span class="badge badge-dark" id="estado_span_TRANSPORTE_{{ $valor->id }}">Pendiente</span>
                                             @elseif($valor->estado==1)
-                                                <span class="badge badge-success" id="estado_span_servicio_{{ $valor->id }}">Confirmado</span>
+                                                <span class="badge badge-success" id="estado_span_TRANSPORTE_{{ $valor->id }}">Confirmado</span>
                                             @elseif($valor->estado==2)
-                                                <span class="badge badge-danger" id="estado_span_servicio_{{ $valor->id }}">Anulado</span>
+                                                <span class="badge badge-danger" id="estado_span_TRANSPORTE_{{ $valor->id }}">Anulado</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <input type="hidden" id="estado_servicio_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            <input type="hidden" id="estado_TRANSPORTE_{{ $valor->id }}" value="{{ $valor->estado }}">
                                             @if ($valor->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_TRANSPORTE_{{ $valor->id }}" onclick="confirmar_t_g('TRANSPORTE','{{ $valor->id }}',$('#estado_TRANSPORTE_{{ $valor->id }}').val())">Confirmar</button>
                                             @elseif($valor->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_servicio_{{ $valor->id }}" onclick="confirmar('servicio','{{ $valor->id }}',$('#estado_servicio_{{ $valor->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_TRANSPORTE_{{ $valor->id }}" onclick="confirmar('TRANSPORTE','{{ $valor->id }}',$('#estado_TRANSPORTE_{{ $valor->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
                                 @endforeach
+                                <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_transporte_externo,2)}}</b></td></tr>  
                             @endif
+                            @php
+                                $total_guia=0;
+                            @endphp
                             @if ($reserva->guia)
-                            <thead>
-                                <tr class="bg-dark text-white"><th colspan="7">GUIADO</th></tr>
-                            </thead>
+                                <thead>
+                                    <tr class="bg-dark text-white"><th colspan="8">GUIADO</th></tr>
+                                </thead>
+                                <thead>
+                                    <tr class="bg-secondary text-white mb-0">
+                                        <th>TITULO</th>
+                                        <th>PAX</th>
+                                        <th>P.U.</th>
+                                        <th>SUBTOTAL</th>
+                                        <th colspan="2">PROVEEDOR</th>
+                                        <th>ESTADO</th>
+                                        <th>OPERACIONES</th>
+                                    </tr>
+                                </thead>
                                 @foreach ($reserva->guia as $valor)
-                                @php
-                                    $total_transporte_guia+=$reserva->nro_pax*$valor->precio;
-                                @endphp
+                                    @if ($valor->s_p=='PRIVADO')
+                                        @php
+                                            $total_guia+=$valor->precio*$valor->pax;
+                                        @endphp
+                                    @elseif ($valor->s_p=='COMPARTIDO')
+                                        @php
+                                            $total_guia+=$valor->precio;
+                                        @endphp
+                                    @endif
+                                
                                     <tr>
-                                        <td><i class="fas fa-concierge-bell"></i> {{ $valor->titulo }}</td>
-                                        <td class="text-center">{{ $reserva->nro_pax }}</td>
-                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
                                         <td>
-                                            {{ $valor->asociacion->ruc }}
-                                            {{ $valor->asociacion->nombre }}
-                                            {{ $valor->asociacion->contacto }}
+                                            <i class="fas fa-flag"></i> <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
+                                        </td>
+                                        <td class="text-center">{{ $valor->pax }}</td>
+                                        <td class="text-right">
+                                            @if ($valor->s_p=='PRIVADO')
+                                                {{ number_format($valor->precio,2) }}
+                                            @elseif ($valor->s_p=='COMPARTIDO')
+                                            {{ number_format($valor->precio/$valor->pax,2) }}
+                                            @endif
+                                        </td>
+                                        <td class="text-right">
+                                            @if ($valor->s_p=='PRIVADO')
+                                                {{ number_format($valor->precio*$valor->pax,2) }}
+                                            @elseif ($valor->s_p=='COMPARTIDO')
+                                            {{ number_format($valor->precio,2) }}
+                                            @endif
+                                        </td>
+
+                                        <td colspan="2">
+                                            <div class="row">
+                                                @if ($valor->proveedor_id>0)
+                                                    @php
+                                                        $objeto=$proveedores->where('id',$valor->proveedor_id)->first();
+                                                    @endphp    
+                                                @endif
+                                                <div id="rpt_proveedor_GUIA_{{ $valor->id }}" class="col-5 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
+                                                <div id="rpt_precio_pago_GUIA_{{ $valor->id }}" class="col-2  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
+                                                <div id="rpt_fecha_pago_GUIA_{{ $valor->id }}" class="col-3  px-0">@if($valor->proveedor_id>0) {{$valor->fecha_pago}} @else Sin fecha @endif</div>
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_g_{{ $valor->id }}"><i class="fas fa-plus"></i></button>
+                                                    <!-- Modal -->
+                                                    <div id="myModal_g_{{ $valor->id }}" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog  modal-lg">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bg-primary text-white">
+                                                                        <h4 class="modal-title">Agregar proveedor</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-12 text-20">
+                                                                            <i class="fas fa-flag"></i>
+                                                                            <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span>
+                                                                            <span class="badge badge-primary">{{ $valor->s_p }}</span>
+                                                                            <span class="badge badge-success"><sup>S/.</sup>{{ number_format($valor->precio,2) }}</span>
+                                                                        <hr>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <b class="text-18">Lista de proveedores</b>
+                                                                        </div>
+
+                                                                        <div class="col-12">
+                                                                            <table class="table table-bordered table-condensed table-hover table-sm">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>PROVEEDOR</th>
+                                                                                        <th>COSTO</th>
+                                                                                        <th>PLAZO</th>
+                                                                                        <th>FECHA DE PAGO</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    @foreach ($guiado->where('departamento_id',$valor->departamento_id)->where('idioma',$valor->idioma)->where('min',$valor->min)->where('max',$valor->max)->where('s_p',$valor->s_p) as $guia)
+                                                                                        @foreach ($guia->guia_proveedor as $guia_proveedor)
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <label for="proveedor_{{ $valor->id }}_{{ $guia_proveedor->proveedor->id }}">
+                                                                                                    <input type="radio" name="proveedor_{{ $valor->id }}[]" id="proveedor_{{ $valor->id }}_{{ $guia->proveedor->id }}" value="{{ $guia->proveedor->id }}" onchange="proveedor_escojido('{{ $guia->proveedor->id }}')">
+                                                                                                    {{ $guia->proveedor->nombre_comercial }}
+                                                                                                </label>
+                                                                                            </td>
+                                                                                            <td style="width:120px">
+                                                                                                @if ($valor->s_p=='PRIVADO')
+                                                                                                    @php
+                                                                                                        $precio_proveedor=number_format($guia_proveedor->precio*$valor->pax,2);
+                                                                                                    @endphp
+                                                                                                @elseif ($valor->s_p=='COMPARTIDO')
+                                                                                                @php
+                                                                                                    $precio_proveedor=number_format($guia_proveedor->precio,2);
+                                                                                                @endphp
+                                                                                                @endif
+                                                                                                <input class="form-control" type="hidden" name="proveedor_nombre_" id="proveedor_nombre_{{ $valor->id }}_{{ $guia_proveedor->proveedor->id }}" value="{{ $guia_proveedor->proveedor->nombre_comercial }}">
+                                                                                                <input class="form-control" type="number" name="precio_pago" id="precio_pago_{{ $valor->id }}_{{ $guia_proveedor->proveedor->id }}" value="{{ $precio_proveedor }}">
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                {{ $guia_proveedor->proveedor->plazo }}
+                                                                                                {{ $guia_proveedor->proveedor->desci }}
+                                                                                            </td>
+                                                                                            <td style="width:100px">
+                                                                                                @php
+                                                                                                    $fecha = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
+                                                                                                @endphp
+                                                                                                @if ($guia_proveedor->proveedor->desci=='ANTES')
+                                                                                                    @php
+                                                                                                        $fecha->subDays($guia_proveedor->proveedor->plazo);
+                                                                                                    @endphp
+                                                                                                @elseif ($guia_proveedor->proveedor->desci=='DESPUES')
+                                                                                                    @php
+                                                                                                        $fecha->addDays($guia_proveedor->proveedor->plazo);
+                                                                                                    @endphp
+                                                                                                @endif
+                                                                                                <input class="form-control" type="date" name="fecha_pago" id="fecha_pago_{{ $valor->id }}_{{ $guia_proveedor->proveedor->id }}" value="{{ $fecha->format('Y-m-d') }}">
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        @endforeach
+                                                                                    @endforeach
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div id="rpt_{{ $valor->id }}" class="col-12">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" onclick="escojer_proveedor('{{ $valor->id }}','GUIA')" >Escojer</button>
+                                                                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </td>
                                         <td>
                                             @if ($valor->estado==0)
-                                                <span class="badge badge-dark" id="estado_span_guia_{{ $valor->id }}">Pendiente</span>
+                                                <span class="badge badge-dark" id="estado_span_GUIA_{{ $valor->id }}">Pendiente</span>
                                             @elseif($valor->estado==1)
-                                                <span class="badge badge-success" id="estado_span_guia_{{ $valor->id }}">Confirmado</span>
+                                                <span class="badge badge-success" id="estado_span_GUIA_{{ $valor->id }}">Confirmado</span>
                                             @elseif($valor->estado==2)
-                                                <span class="badge badge-danger" id="estado_span_guia_{{ $valor->id }}">Anulado</span>
+                                                <span class="badge badge-danger" id="estado_span_GUIA_{{ $valor->id }}">Anulado</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <input type="hidden" id="estado_guia_{{ $valor->id }}" value="{{ $valor->estado }}">
+                                            <input type="hidden" id="estado_GUIA_{{ $valor->id }}" value="{{ $valor->estado }}">
                                             @if ($valor->estado==0)
-                                                <button class="btn btn-primary" id="confirmar_guia_{{ $valor->id }}" onclick="confirmar('guia','{{ $valor->id }}',$('#estado_guia_{{ $valor->id }}').val())">Confirmar</button>
+                                                <button class="btn btn-primary btn-sm" id="confirmar_GUIA_{{ $valor->id }}" onclick="confirmar_t_g('GUIA','{{ $valor->id }}',$('#estado_GUIA_{{ $valor->id }}').val())">Confirmar</button>
                                             @elseif($valor->estado==1)
-                                                <button class="btn btn-danger" id="confirmar_guia_{{ $valor->id }}" onclick="confirmar('guia','{{ $valor->id }}',$('#estado_guia_{{ $valor->id }}').val())">Cancelar</button>
+                                                <button class="btn btn-danger btn-sm" id="confirmar_GUIA_{{ $valor->id }}" onclick="confirmar('GUIA','{{ $valor->id }}',$('#estado_GUIA_{{ $valor->id }}').val())">Cancelar</button>
                                             @endif
                                         </td>
                                     </tr>
                                 @endforeach
+                                <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_guia,2)}}</b></td></tr>  
                             @endif
                         </tbody>
+                        <tfoot>
+                            <tr class="bg-dark text-white"><th colspan="3"><b class="text-success text-18"> GRAN TOTAL</b></th><th colspan="5"><b class="text-success text-18">{{number_format($total_asociacion+$total_comision+$total_transporte_externo+$total_guia,2)}}</b></th></tr>
+                        </tfoot>
                     </table>
                 </div>
         </div>

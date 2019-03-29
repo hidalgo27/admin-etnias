@@ -36,4 +36,8 @@ class Reserva extends Model
     {
         return $this->hasMany(ReservaTransporteExterno::class, 'reserva_id');
     }
+    public function guia()
+    {
+        return $this->hasMany(ReservaGuia::class, 'reserva_id');
+    }
 }

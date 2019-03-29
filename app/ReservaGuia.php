@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ReservaTransporteExterno extends Model
+class ReservaGuia extends Model
 {
     //
-    protected $table = "reserva_transporte_externo";
+    protected $table = "reserva_guia";
     public function reserva()
     {
         return $this->belongsTo(Reserva::class, 'reserva_id');
     }
-    
 }

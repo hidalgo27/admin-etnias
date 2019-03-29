@@ -168,6 +168,11 @@ Route::get('/admin/reserva/grupo/confirmar/{tipo_servicio}/{grupo_id}/{estado}',
     'as' => 'reserva.detalle.confirmar',
 ]);
 
+Route::post('/admin/reserva/escojer-proveedor', [
+    'uses' => 'ReservaController@escojer_proveedor',
+    'as' => 'reserva.detalle.escojer.proveedor',
+]);
+
 // RUTAS PARA PROVEEDOR
 Route::get('/admin/proveedor/lista', [
     'uses' => 'ProveedorController@lista',
@@ -211,3 +216,4 @@ Route::get('/admin/producto/delete/{id}/{categoria}', [
     'uses' => 'ProductosController@getDelete',
     'as' => 'producto.delete',
 ]);
+

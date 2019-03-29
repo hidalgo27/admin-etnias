@@ -902,17 +902,85 @@ var proveedor_id_t_g=0;
 function proveedor_escojido(valor1){
     proveedor_id_t_g=valor1;
 }
-function escojer_proveedor(valor1){
+function escojer_proveedor(valor1,rol){
     console.log('valor1:'+valor1+',valor2:'+proveedor_id_t_g);
     var proveedor_nombre_pago=$('#proveedor_nombre_'+valor1+'_'+proveedor_id_t_g).val();
     var proveedor_id_pago=$('#proveedor_'+valor1+'_'+proveedor_id_t_g).val();
     var precio_pago=$('#precio_pago_'+valor1+'_'+proveedor_id_t_g).val();
     var fecha_pago=$('#fecha_pago_'+valor1+'_'+proveedor_id_t_g).val();
+    console.log('proveedor_nombre_pago:'+proveedor_nombre_pago+',proveedor_id_pago:'+proveedor_id_pago+',precio_pago:'+precio_pago+',fecha_pago:'+fecha_pago);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+    type:'POST',
+    url:'/admin/reserva/escojer-proveedor',
+    data:{transporte_externo_guia_id:valor1,proveedor_id_pago:proveedor_id_pago,precio_pago:precio_pago,fecha_pago:fecha_pago,rol:rol},
+    beforeSend: function(data1) {
+        console.log('data1:'+data1);
+        $("#rpt_"+valor1).html('');
+        $("#rpt_"+valor1).html('<div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>');
+        $('#rpt_proveedor_'+valor1).html('');
+        $('#rpt_precio_pago_'+valor1).html('');
+        $('#rpt_fecha_pago_'+valor1).html('');   
+    },
+    success:function(data){
+        console.log(data.rpt);
+        if(data.rpt=='1'){
+            $('#rpt_proveedor_'+valor1).html(proveedor_nombre_pago);
+            $('#rpt_precio_pago_'+valor1).html(precio_pago);
+            $('#rpt_fecha_pago_'+valor1).html(fecha_pago);
+            $('#rpt_'+valor1).html('');
+            $('#rpt_'+valor1).html('<span class="text-success">Proveedor escojido correctamente!</span>');
+        }
+        else if(data.rpt=='0'){
+            $('#rpt_'+valor1).html('');
+            $('#rpt_'+valor1).html('<span class="text-danger">Upps! Vuelva a intentarlo.</span>');
+        }
+    }
+    });  
+}
+function confirmar_t_g(tipo_servicio,grupo_id,estado){
+    console.log('tipo_servicio:'+tipo_servicio+',grupo_id:'+grupo_id+',estado:'+estado);
+    if(estado==0)
+        estado=1;
+    else if(estado==1)
+        estado=0;
 
-    $('#rpt_proveedor_'+valor1).html(proveedor_nombre_pago);
-    $('#rpt_precio_pago_'+valor1).html(precio_pago);
-    $('#rpt_fecha_pago_'+valor1).html(fecha_pago);
-    $('#rpt_'+valor1).html('');
-    $('#rpt_'+valor1).html('<span class="text-success">Proveedor escojido! </span>');
+    console.log('tipo_servicio:'+tipo_servicio+',grupo_id:'+grupo_id+',estado:'+estado);
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type:'get',
+        url:'/admin/reserva/grupo/confirmar/'+tipo_servicio+'/'+grupo_id+'/'+estado,
+        // data:{id:id},
+        success:function(data){
+            console.log(data);
+            if(data.rpt==1){
+                $('#estado_'+tipo_servicio+'_'+grupo_id).val(data.estado);
 
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-dark');
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-success');
+                $('#confirmar_'+tipo_servicio+'_'+grupo_id).removeClass('btn-primary');
+                $('#confirmar_'+tipo_servicio+'_'+grupo_id).removeClass('btn-danger');
+
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).addClass(data.clase_span);
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).html(data.estado_span);
+                $('#confirmar_'+tipo_servicio+'_'+grupo_id).addClass(data.clase_confirmar);
+                $('#confirmar_'+tipo_servicio+'_'+grupo_id).html(data.estado_confirmar);
+            }
+            else if(data.rpt==0){
+                Swal.fire(
+                    'Upps!',
+                    'Subo un error, vuelva a intentarlo.',
+                    'error'
+                )
+            }
+        }
+     });
 }
