@@ -632,7 +632,7 @@ function mostrar_provincias_servicios(departamento_id,categoria,categoria_id,pro
         success:function(data){
             $("select[name='provincia'").html('');
             $("select[name='provincia'").html(data.options);
-            
+
             // $('#provincia_'+categoria_id+'_'+producto_id).html('');
             // $('#provincia_'+categoria_id+'_'+producto_id).html(data.options);
         }
@@ -814,7 +814,7 @@ function mostrar_provincias_productos(departamento_id,categoria,categoria_id,pro
             // $("select[id='provincia'").html(data.options);
             $('#provincia_'+categoria_id+'_'+producto_id).html('');
             $('#provincia_'+categoria_id+'_'+producto_id).html(data.options);
-            
+
         }
         });
 
@@ -837,7 +837,7 @@ function mostrar_distritos_productos(provincia_id,categoria_id,producto_id){
         success:function(data){
             // $("select[name='distrito'").html('');
             // $("select[name='distrito'").html(data.options);
-            
+
             $('#distrito_'+categoria_id+'_'+producto_id).html('');
             $('#distrito_'+categoria_id+'_'+producto_id).html(data.options);
         }
@@ -861,7 +861,7 @@ function mostrar_comunidades_productos(distrito_id,asociacion_id,categoria_id,pr
 
             // $("#comunidad_"+asociacion_id).html('');
             // $("#comunidad_"+asociacion_id).html(data.options);
-            
+
             $('#comunidad_'+categoria_id+'_'+producto_id).html('');
             $('#comunidad_'+categoria_id+'_'+producto_id).html(data.options);
         }
@@ -897,4 +897,22 @@ function mostrar_proveedores_productos(departamento_id,categoria,categoria_id,pr
 
 function borrar_proveedor_save_d(valor1,valor2,valor3){
     $('#lista_proveedores_saved_'+valor1+'_'+valor2+'_'+valor3).remove();
+}
+var proveedor_id_t_g=0;
+function proveedor_escojido(valor1){
+    proveedor_id_t_g=valor1;
+}
+function escojer_proveedor(valor1){
+    console.log('valor1:'+valor1+',valor2:'+proveedor_id_t_g);
+    var proveedor_nombre_pago=$('#proveedor_nombre_'+valor1+'_'+proveedor_id_t_g).val();
+    var proveedor_id_pago=$('#proveedor_'+valor1+'_'+proveedor_id_t_g).val();
+    var precio_pago=$('#precio_pago_'+valor1+'_'+proveedor_id_t_g).val();
+    var fecha_pago=$('#fecha_pago_'+valor1+'_'+proveedor_id_t_g).val();
+
+    $('#rpt_proveedor_'+valor1).html(proveedor_nombre_pago);
+    $('#rpt_precio_pago_'+valor1).html(precio_pago);
+    $('#rpt_fecha_pago_'+valor1).html(fecha_pago);
+    $('#rpt_'+valor1).html('');
+    $('#rpt_'+valor1).html('<span class="text-success">Proveedor escojido! </span>');
+
 }

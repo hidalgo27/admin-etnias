@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-2">
-                                        <table class="table table-bordered table-hover table-striped">
+                                        <table class="table table-bordered table-hover table-striped table-condensed table-sm text-12">
                                             <thead >
                                                 <tr>
                                                     <th>#</th>
@@ -92,9 +92,9 @@
                                                             <td><b class="text-success"><sup>$</sup> {{ number_format($item->precio,2) }}</b></td>
                                                             <td>
                                                                 @if ($item->transporte_externo_proveedor->count()==0)
-                                                                <span class="text-danger">{{ $item->transporte_externo_proveedor->count() }} <i class="fas fa-male"></i></span>                                                       
+                                                                <span class="text-danger">{{ $item->transporte_externo_proveedor->count() }} <i class="fas fa-male"></i></span>
                                                                 @elseif($item->transporte_externo_proveedor->count()>0)
-                                                                <span class="text-primary">{{ $item->transporte_externo_proveedor->count() }} <i class="fas fa-male"></i></span>    
+                                                                <span class="text-primary">{{ $item->transporte_externo_proveedor->count() }} <i class="fas fa-male"></i></span>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -250,7 +250,7 @@
                                                                                                                         <input class="form-control" type="number" name="precio_d[]" min="0" step="0.01" value="{{$te_proveedor->precio}}">
                                                                                                                         </div>
                                                                                                                     <div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save_d('{{$tipo_servicio->id}}','{{$item->id}}','{{$te_proveedor->proveedor_id}}')"><i class="fas fa-trash"></i></button></div>
-                                                                                                                    </div> 
+                                                                                                                    </div>
                                                                                                                 @endforeach
                                                                                                             </div>
                                                                                                         </div>
@@ -288,15 +288,15 @@
                                                                 {!! $item->departamento->departamento !!}
                                                             </td>
                                                             <td><i class="fas fa-flag text-primary"></i>{{ $item->idioma }}</td>
-                                                            <td>{{ $item->categoria }}</td>
+
                                                             <td><i class="fas fa-user-plus text-primary"></i>[{{ $item->min }}-{{$item->max}}]</td>
                                                             <td>{{ $item->s_p }}</td>
                                                             <td><b class="text-success"><sup>$</sup> {{ number_format($item->precio,2) }}</b></td>
                                                             <td>
                                                                 @if ($item->guia_proveedor->count()==0)
-                                                                <span class="text-danger">{{ $item->guia_proveedor->count() }} <i class="fas fa-male"></i></span>                                                       
+                                                                <span class="text-danger">{{ $item->guia_proveedor->count() }} <i class="fas fa-male"></i></span>
                                                                 @elseif($item->guia_proveedor->count()>0)
-                                                                <span class="text-primary">{{ $item->guia_proveedor->count() }} <i class="fas fa-male"></i></span>    
+                                                                <span class="text-primary">{{ $item->guia_proveedor->count() }} <i class="fas fa-male"></i></span>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -446,7 +446,7 @@
                                                                                                                         <input class="form-control" type="number" name="precio_d[]" min="0" step="0.01" value="{{$te_proveedor->precio}}">
                                                                                                                         </div>
                                                                                                                     <div class="col-2 px-0 mx-0"><button type="button" class="btn btn-danger" onclick="borrar_proveedor_save_d('{{$tipo_servicio->id}}','{{$item->id}}','{{$te_proveedor->proveedor_id}}')"><i class="fas fa-trash"></i></button></div>
-                                                                                                                    </div> 
+                                                                                                                    </div>
                                                                                                                 @endforeach
                                                                                                             </div>
                                                                                                         </div>

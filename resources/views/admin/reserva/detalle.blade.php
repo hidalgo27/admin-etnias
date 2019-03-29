@@ -1,6 +1,9 @@
 @extends('layouts.app-admin')
 
 @section('content')
+@php
+use Carbon\Carbon;
+@endphp
 <div class="row">
     <div class="col-12">
         <nav aria-label="breadcrumb">
@@ -19,8 +22,16 @@
                     Codigo: <b class="text-success">{{ $reserva->codigo }}</b> |
                     Titulo: <b class="text-success">{{ $reserva->nombre }}</b> |
                     Nro. Pax.: <b class="text-success">{{ $reserva->nro_pax }}</b> |
-                    Fecha Reserva: <b class="text-success">{{ $reserva->fecha_reserva }}</b> |
-                    Fecha Llegada: <b class="text-success">{{ $reserva->fecha_llegada }}</b>
+                    Fecha Reserva: <b class="text-success">
+                    @php
+                        $fecha_reserva = Carbon::createFromFormat("Y-m-d H:i:s", $reserva->fecha_reserva);
+                    @endphp
+                        {{ $fecha_reserva->format('d-m-Y H:i:s') }}</b> |
+                    Fecha Llegada: <b class="text-success">
+                    @php
+                        $fecha_llegada = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
+                    @endphp
+                        {{ $fecha_llegada->format('d-m-Y')}}</b>
                 </div>
                 <div class="col-12">
                     <b>DATOS DEL PASAJERO</b>
@@ -112,7 +123,7 @@
                             <tr class="bg-dark text-white"><th colspan="8">ACTIVIDADES</th></tr>
                         </thead>
                         <thead>
-                            <tr class="bg-success text-white mb-0">
+                            <tr class="bg-secondary text-white mb-0">
                                 <th>TITULO</th>
                                 <th>PAX</th>
                                 <th>P.U.</th>
@@ -332,7 +343,7 @@
                                 <tr class="bg-dark text-white"><th colspan="8">TRANSPORTE EXTERNO</th></tr>
                             </thead>
                             <thead>
-                                <tr class="bg-success text-white mb-0">
+                                <tr class="bg-secondary text-white mb-0">
                                     <th>TITULO</th>
                                     <th>PAX</th>
                                     <th>P.U.</th>
@@ -344,53 +355,140 @@
                             </thead>
                                 @foreach ($reserva->transporte_externo as $valor)
                                 @php
-                                    $total_transporte_externo+=$reserva->nro_pax*$valor->precio;
+                                    $total_transporte_externo+=$valor->pax*$valor->precio;
                                 @endphp
                                     <tr>
-                                        <td><i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span><span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span></td>
+                                        <td>
+                                            <i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
+                                        </td>
                                         <td class="text-center">{{ $valor->pax }}</td>
-                                        <td class="text-right">{{ number_format($valor->precio/$valor->pax,2) }}</td>
-                                        <td class="text-right">{{ number_format($valor->precio,2) }}</td>
+                                        <td class="text-right">
+                                            @if ($valor->s_p=='PRIVADO')
+                                                {{ number_format($valor->precio,2) }}
+                                            @elseif ($valor->s_p=='COMPARTIDO')
+                                            {{ number_format($valor->precio/$valor->pax,2) }}
+                                            @endif
+                                        </td>
+                                        <td class="text-right">
+                                            @if ($valor->s_p=='PRIVADO')
+                                                {{ number_format($valor->precio*$valor->pax,2) }}
+                                            @elseif ($valor->s_p=='COMPARTIDO')
+                                            {{ number_format($valor->precio,2) }}
+                                            @endif
+                                        </td>
+
                                         <td colspan="2">
-                                            @if($valor->asociacion)
-                                                {{ $valor->asociacion->ruc }}
-                                                {{ $valor->asociacion->nombre }}
-                                                {{ $valor->asociacion->contacto }}
+                                            @if($valor->proveedir_id>0)
                                             @else
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus"></i> Proveedor</button>
+                                                <div class="row">
+                                                    <div id="rpt_proveedor_{{ $valor->id }}" class="col-5 text-12"></div>
+                                                    <div id="rpt_precio_pago_{{ $valor->id }}" class="col-2 text-12 px-0"></div>
+                                                    <div id="rpt_fecha_pago_{{ $valor->id }}" class="col-3 text-12 px-0"></div>
+                                                    <div class="col-2">
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{ $valor->id }}"><i class="fas fa-plus"></i></button>
+                                                        <!-- Modal -->
+                                                        <div id="myModal_{{ $valor->id }}" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog  modal-lg">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header bg-primary text-white">
+                                                                            <h4 class="modal-title">Agregar proveedor</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                                                <!-- Modal -->
-                                                <div id="myModal" class="modal fade" role="dialog">
-                                                    <div class="modal-dialog  modal-lg">
-                                                        <!-- Modal content-->
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                <h4 class="modal-title">Agregar proveedor</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="row">
-                                                                    {{--  @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max) as $transporte_externo_)  --}}
-                                                                    @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max) as $transporte_externo_)
-                                                                        @foreach ($transporte_externo_->transporte_externo_proveedor as $transporte_externo_proveedor)
-                                                                        <div class="col-6">
-                                                                                <label class="alert alert-primary text-dark" for="proveedor_{{ 12 }}">
-                                                                                    <input type="radio" name="proveedor" id="proveedor_{{ 12 }}" value="12">
-                                                                                    {{ $transporte_externo_proveedor->proveedor->nombre_comercial }}  <sup>$</sup>{{ $transporte_externo_proveedor->precio }}
-                                                                                </label>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-12 text-20">
+                                                                                <i class="fas fa-bus"></i>
+                                                                                <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span>
+                                                                                <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span>
+                                                                                <span class="badge badge-primary">{{ $valor->s_p }}</span>
+                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format($valor->precio,2) }}</span>
+                                                                            <hr>
                                                                             </div>
-                                                                        @endforeach
-                                                                    @endforeach
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <b class="text-18">Lista de proveedores</b>
+                                                                            </div>
 
+                                                                            <div class="col-12">
+                                                                                <table class="table table-bordered table-condensed table-hover table-sm">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>PROVEEDOR</th>
+                                                                                            <th>COSTO</th>
+                                                                                            <th>PLAZO</th>
+                                                                                            <th>FECHA DE PAGO</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        @foreach ($transporte_externo->where('comunidad_id',$valor->comunidad_id)->where('categoria',$valor->categoria)->where('ruta_salida',$valor->ruta_salida)->where('ruta_llegada',$valor->ruta_llegada)->where('min',$valor->min)->where('max',$valor->max)->where('s_p',$valor->s_p) as $transporte_externo_)
+                                                                                            @foreach ($transporte_externo_->transporte_externo_proveedor as $transporte_externo_proveedor)
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <label for="proveedor_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}">
+                                                                                                        <input type="radio" name="proveedor_{{ $valor->id }}[]" id="proveedor_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->id }}" onchange="proveedor_escojido('{{ $transporte_externo_proveedor->proveedor->id }}')">
+                                                                                                        {{ $transporte_externo_proveedor->proveedor->nombre_comercial }}
+                                                                                                    </label>
+                                                                                                </td>
+                                                                                                <td style="width:120px">
+                                                                                                    @if ($valor->s_p=='PRIVADO')
+                                                                                                        @php
+                                                                                                            $precio_proveedor=number_format($transporte_externo_proveedor->precio*$valor->pax,2);
+                                                                                                        @endphp
+                                                                                                    @elseif ($valor->s_p=='COMPARTIDO')
+                                                                                                    @php
+                                                                                                        $precio_proveedor=number_format($transporte_externo_proveedor->precio,2);
+                                                                                                    @endphp
+                                                                                                    @endif
+                                                                                                    <input class="form-control" type="hidden" name="proveedor_nombre_" id="proveedor_nombre_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->nombre_comercial }}">
+                                                                                                    <input class="form-control" type="number" name="precio_pago" id="precio_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $precio_proveedor }}">
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    {{ $transporte_externo_proveedor->proveedor->plazo }}
+                                                                                                    {{ $transporte_externo_proveedor->proveedor->desci }}
+                                                                                                </td>
+                                                                                                <td style="width:100px">
+                                                                                                    @php
+                                                                                                        $fecha = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
+                                                                                                    @endphp
+                                                                                                    @if ($transporte_externo_proveedor->proveedor->desci=='ANTES')
+                                                                                                        @php
+                                                                                                            $fecha->subDays($transporte_externo_proveedor->proveedor->plazo);
+                                                                                                        @endphp
+                                                                                                    @elseif ($transporte_externo_proveedor->proveedor->desci=='DESPUES')
+                                                                                                        @php
+                                                                                                            $fecha->addDays($transporte_externo_proveedor->proveedor->plazo);
+                                                                                                        @endphp
+                                                                                                    @endif
+                                                                                                    <input class="form-control" type="date" name="fecha_pago" id="fecha_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $fecha->format('Y-m-d') }}">
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            @endforeach
+                                                                                        @endforeach
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div id="rpt_{{ $valor->id }}" class="col-12">
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" onclick="escojer_proveedor('{{ $valor->id }}')" >Escojer</button>
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             @endif
+
                                         </td>
                                         <td>
                                             @if ($valor->estado==0)
