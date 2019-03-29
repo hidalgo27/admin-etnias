@@ -76,7 +76,7 @@ use Carbon\Carbon;
                     <table class="table table-striped table-hover table-sm">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>#</th> 
                                 <th>NOMBRE</th>
                                 <th>APELLIDOS</th>
                                 <th>GENERO</th>
