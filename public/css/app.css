@@ -1762,6 +1762,10 @@ a[aria-expanded=true] {
   font-size: 20px;
 }
 
+.bg-advertencia {
+  background: #ffc3be;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors

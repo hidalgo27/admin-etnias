@@ -19,11 +19,32 @@ class ReservaController extends Controller
 {
     //
     public function lista(){
-        $reservas_new=Reserva::where('estado','0')->get();
+        $reservas_new=Reserva::where(function($query){
+            $query->WhereHas('actividades',function($q){
+                $q->where('estado','0');
+            });
+            $query->WhereHas('comidas',function($q){
+                $q->where('estado','0');
+            });
+            $query->WhereHas('hospedajes',function($q){
+                $q->where('estado','0');
+            });
+            $query->WhereHas('transporte',function($q){
+                $q->where('estado','0');
+            });
+            $query->WhereHas('servicios',function($q){
+                $q->where('estado','0');
+            });
+            $query->WhereHas('transporte_externo',function($q){
+                $q->where('estado','0');
+            });
+            $query->WhereHas('guia',function($q){
+                $q->where('estado','0');
+            });
+        })->get();
+
+
         $reservas_current=Reserva::where(function($query){
-            $query->where('estado','1');
-        })
-        ->where(function($query){
             $query->WhereHas('actividades',function($q){
                 $q->where('estado','0');
             });
@@ -39,28 +60,62 @@ class ReservaController extends Controller
             $query->orWhereHas('servicios',function($q){
                 $q->where('estado','0');
             });
+            $query->orWhereHas('transporte_externo',function($q){
+                $q->where('estado','0');
+            });
+            $query->orWhereHas('guia',function($q){
+                $q->where('estado','0');
+            });
         })->get();
 
-        $reservas_close=Reserva::where(function($query){
-            $query->where('estado','1');
-        })
-        ->where(function($query){
-            $query->WhereHas('actividades',function($q){
-                $q->where('estado','1');
-            });
-            $query->WhereHas('comidas',function($q){
-                $q->where('estado','1');
-            });
-            $query->WhereHas('hospedajes',function($q){
-                $q->where('estado','1');
-            });
-            $query->WhereHas('transporte',function($q){
-                $q->where('estado','1');
-            });
-            $query->WhereHas('servicios',function($q){
-                $q->where('estado','1');
-            });
-        })->get();
+        // $reservas_close=Reserva::WhereHas('actividades',function($q){
+        //         $q->where('estado','1');
+        //     })
+        //     ->WhereHas('comidas',function($q){
+        //         $q->where('estado','1');
+        //     })
+        //     ->WhereHas('hospedajes',function($q){
+        //         $q->where('estado','1');
+        //     })
+        //     ->WhereHas('transporte',function($q){
+        //         $q->where('estado','1');
+        //     })
+        //     // ->WhereHas('servicios',function($q){
+        //     //     $q->where('estado','1');
+        //     // })
+        //     // ->WhereHas('transporte_externo',function($q){
+        //     //     $q->where('estado','1');
+        //     // })
+        //     // ->WhereHas('guia',function($q){
+        //     //     $q->where('estado','1');
+        //     // })
+        //     ->get();
+
+            // $reservas_close=Reserva::with([
+            //     "actividades"=>function($q){
+            //         $q->where('estado','1');
+            //     },
+            //     "comidas"=>function($q){
+            //         $q->where('estado','1');
+            //     },
+            //     "hospedajes"=>function($q){
+            //         $q->where('estado','1');
+            //     },
+            //     "transporte"=>function($q){
+            //         $q->where('estado','1');
+            //     },
+            //     "servicios"=>function($q){
+            //         $q->where('estado','1');
+            //     },
+            //     "transporte_externo"=>function($q){
+            //         $q->where('estado','1');
+            //     },
+            //     "guia"=>function($q){
+            //         $q->where('estado','1');
+            //     }
+            // ])->get();
+            $reservas_close=Reserva::get();
+        // dd($reservas_close);
         return view('admin.reserva.lista',compact('reservas_new','reservas_current','reservas_close'));
     }
     public function detalle($reserva_id){
@@ -153,8 +208,8 @@ class ReservaController extends Controller
                 if($rexterna->save())
                     return response()->json(['rpt'=>'1']);
                 else
-                    return response()->json(['rpt'=>'0']);    
-                
+                    return response()->json(['rpt'=>'0']);
+
             }
             else if($rol=='GUIA'){
                 $gexterna=GuiaTransporteExterno::find($transporte_externo_guia_id);
@@ -164,12 +219,22 @@ class ReservaController extends Controller
                 if($gexterna->save())
                     return response()->json(['rpt'=>'1']);
                 else
-                    return response()->json(['rpt'=>'0']);    
+                    return response()->json(['rpt'=>'0']);
             }
-            
+
         // } catch (\Throwable $th) {
         //     //throw $th;
         //     return response()->json(['rpt'=>'0']);
         // }
     }
+
+    public function getReserva(Request $request){
+        $valor=$request->input('valor');
+        // return response()->json([$request->all()]);
+        if(trim($valor)!=''){
+        $reserva=Reserva::where('codigo',$valor)->orwhere('nombre','like',"%$valor%")->get();
+            return view('admin.reserva.get-busqueda',compact('reserva'));
+        }
+    }
+
 }

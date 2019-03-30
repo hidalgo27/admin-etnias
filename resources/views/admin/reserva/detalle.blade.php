@@ -71,12 +71,12 @@ use Carbon\Carbon;
                         </tbody>
                     </table>
                 </div>
-                <div class="col-12">
+                <div class="col-12 d-none">
                     <b>PAGOS DEL PASAJERO</b>
                     <table class="table table-striped table-hover table-sm">
                         <thead>
                             <tr>
-                                <th>#</th> 
+                                <th>#</th>
                                 <th>NOMBRE</th>
                                 <th>APELLIDOS</th>
                                 <th>GENERO</th>
@@ -365,7 +365,7 @@ use Carbon\Carbon;
                                             $total_transporte_externo+=$valor->precio;
                                         @endphp
                                     @endif
-                                
+
                                     <tr>
                                         <td>
                                             <i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
@@ -391,7 +391,7 @@ use Carbon\Carbon;
                                                 @if ($valor->proveedor_id>0)
                                                     @php
                                                         $objeto=$proveedores->where('id',$valor->proveedor_id)->first();
-                                                    @endphp    
+                                                    @endphp
                                                 @endif
                                                 <div id="rpt_proveedor_TRANSPORTE_{{ $valor->id }}" class="col-5 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
                                                 <div id="rpt_precio_pago_TRANSPORTE_{{ $valor->id }}" class="col-2  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
@@ -519,7 +519,7 @@ use Carbon\Carbon;
                                         </td>
                                     </tr>
                                 @endforeach
-                                <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_transporte_externo,2)}}</b></td></tr>  
+                                <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_transporte_externo,2)}}</b></td></tr>
                             @endif
                             @php
                                 $total_guia=0;
@@ -549,7 +549,7 @@ use Carbon\Carbon;
                                             $total_guia+=$valor->precio;
                                         @endphp
                                     @endif
-                                
+
                                     <tr>
                                         <td>
                                             <i class="fas fa-flag"></i> <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
@@ -575,7 +575,7 @@ use Carbon\Carbon;
                                                 @if ($valor->proveedor_id>0)
                                                     @php
                                                         $objeto=$proveedores->where('id',$valor->proveedor_id)->first();
-                                                    @endphp    
+                                                    @endphp
                                                 @endif
                                                 <div id="rpt_proveedor_GUIA_{{ $valor->id }}" class="col-5 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
                                                 <div id="rpt_precio_pago_GUIA_{{ $valor->id }}" class="col-2  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
@@ -702,7 +702,7 @@ use Carbon\Carbon;
                                         </td>
                                     </tr>
                                 @endforeach
-                                <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_guia,2)}}</b></td></tr>  
+                                <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_guia,2)}}</b></td></tr>
                             @endif
                         </tbody>
                         <tfoot>

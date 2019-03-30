@@ -172,7 +172,10 @@ Route::post('/admin/reserva/escojer-proveedor', [
     'uses' => 'ReservaController@escojer_proveedor',
     'as' => 'reserva.detalle.escojer.proveedor',
 ]);
-
+Route::post('/admin/reserva/get-reserva', [
+    'uses' => 'ReservaController@getReserva',
+    'as' => 'reserva.get',
+]);
 // RUTAS PARA PROVEEDOR
 Route::get('/admin/proveedor/lista', [
     'uses' => 'ProveedorController@lista',

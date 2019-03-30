@@ -922,16 +922,16 @@ function escojer_proveedor(valor1,rol){
         console.log('data1:'+data1);
         $("#rpt_"+valor1).html('');
         $("#rpt_"+valor1).html('<div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>');
-        $('#rpt_proveedor_'+valor1).html('');
-        $('#rpt_precio_pago_'+valor1).html('');
-        $('#rpt_fecha_pago_'+valor1).html('');   
+        $('#rpt_proveedor_'+rol+'_'+valor1).html('');
+        $('#rpt_precio_pago_'+rol+'_'+valor1).html('');
+        $('#rpt_fecha_pago_'+rol+'_'+valor1).html('');
     },
     success:function(data){
         console.log(data.rpt);
         if(data.rpt=='1'){
-            $('#rpt_proveedor_'+valor1).html(proveedor_nombre_pago);
-            $('#rpt_precio_pago_'+valor1).html(precio_pago);
-            $('#rpt_fecha_pago_'+valor1).html(fecha_pago);
+            $('#rpt_proveedor_'+rol+'_'+valor1).html(proveedor_nombre_pago);
+            $('#rpt_precio_pago_'+rol+'_'+valor1).html(precio_pago);
+            $('#rpt_fecha_pago_'+rol+'_'+valor1).html(fecha_pago);
             $('#rpt_'+valor1).html('');
             $('#rpt_'+valor1).html('<span class="text-success">Proveedor escojido correctamente!</span>');
         }
@@ -940,7 +940,7 @@ function escojer_proveedor(valor1,rol){
             $('#rpt_'+valor1).html('<span class="text-danger">Upps! Vuelva a intentarlo.</span>');
         }
     }
-    });  
+    });
 }
 function confirmar_t_g(tipo_servicio,grupo_id,estado){
     console.log('tipo_servicio:'+tipo_servicio+',grupo_id:'+grupo_id+',estado:'+estado);
@@ -983,4 +983,22 @@ function confirmar_t_g(tipo_servicio,grupo_id,estado){
             }
         }
      });
+}
+function buscar_reserva(valorcito){
+console.log(valorcito);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+    type:'POST',
+    url:'../admin/reserva/get-reserva',
+    data:{valor:valorcito},
+    success:function(data){
+        $("#rpt").html('');
+        $("#rpt").html(data);
+
+    }
+    });
 }
