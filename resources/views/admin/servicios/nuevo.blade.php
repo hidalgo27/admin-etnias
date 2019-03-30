@@ -62,52 +62,108 @@
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-actividades" role="tabpanel" aria-labelledby="nav-actividades-tab">
-                                            <form id="form_a_0" class="card card-body px-0" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
-                                                <div class="form-group col-12">
-                                                    <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
-                                                </div>
-                                                <div class="col-8 my-1">
-                                                    <label class="sr-only" for="inlineFormInputGroupUsername">Titulo</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Titulo</div>
-                                                        </div>
-                                                        <input type="text" class="form-control" id="titulo_a_0" name="titulo" placeholder="Titulo" required>
+                                            <form id="form_a_0" class="card card-body px-1" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
+                                                <div class="row"> 
+                                                    <div class="form-group col-12">
+                                                        <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                     </div>
-                                                </div>
-                                                <div class="col-4 my-1">
-                                                    <label class="sr-only" for="inlineFormInputGroupUsername">Categoria</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Categoria</div>
+                                                    <div class="col-8 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Titulo</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Titulo</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="titulo_a_0" name="titulo" placeholder="Titulo" required>
                                                         </div>
-                                                        <select name="categoria" id="categoria_a_0" class="form-control">
-                                                            @foreach ($categorias as $item)
-                                                                <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
-                                                            @endforeach
-                                                        </select>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 my-1">
-                                                    <label class="sr-only" for="inlineFormInputGroupUsername">Descripcion</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Descripcion</div>
+                                                    <div class="col-4 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Categoria</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Categoria</div>
+                                                            </div>
+                                                            <select name="categoria_" id="categoria_a_0" class="form-control">
+                                                                @foreach ($categorias as $item)
+                                                                    <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <textarea class="form-control" name="descripcion" id="descripcion_a_0" cols="30" rows="10"></textarea>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 my-1">
-                                                    <label class="sr-only" for="inlineFormInputGroupUsername">Fotos</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Fotos</div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Descripcion</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Descripcion</div>
+                                                            </div>
+                                                            <textarea class="form-control" name="descripcion" id="descripcion_a_0" cols="30" rows="10"></textarea>
                                                         </div>
-                                                        <input type="file" name="foto[]" multiple class="form-control">
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-12">
-                                                    <b class="text-15 text-success">PASO 2: PRECIOS</b>
+                                                    <div class="col-6 my-1">
+                                                        <label class="sr-only" for="duracion_a_0">Duracion</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Duracion</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="duracion_a_0" name="duracion" placeholder="Duracion" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 my-1">
+                                                        <label class="sr-only" for="periodo_a_0">Periodo</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Periodo</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="periodo_a_0" name="periodo" placeholder="periodo" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="incluye_a_0">incluye</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">incluye</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="incluye_a_0" name="incluye" placeholder="Ropa típica, almuerzo típico." required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="no_incluye_a_0">No incluye</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">No incluye</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="no_incluye_a_0" name="no_incluye" placeholder="Transporte a la comunidad." required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="disponible_a_0">Idioma disponible</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Idioma disponible</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="disponible_a_0" name="disponible" placeholder="Ingles, Español" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="recomendaciones_a_0">Recomendaciones</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Recomendaciones</div>
+                                                            </div>
+                                                            <textarea class="form-control" name="recomendaciones" id="recomendaciones_a_0" cols="30" rows="10"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Fotos</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Fotos</div>
+                                                            </div>
+                                                            <input type="file" name="foto[]" multiple class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-12">
+                                                        <b class="text-15 text-success">PASO 2: PRECIOS</b>
+                                                    </div>
                                                 </div>
                                                 <table class="table table-hover table-responsive table-striped">
                                                     <thead>

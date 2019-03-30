@@ -58,6 +58,14 @@
                                             <option value="0">Escoja una opcion</option>
                                         </select>
                                     </div>
+                                    <div class="form-group col-6">
+                                        <label for="altura">Altura</label>
+                                        <input type="text" class="form-control" id="altura" name="altura" value="{{ old('altura') }}" aria-describedby="altura" placeholder="3420 msnm" required>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="distancia">Distancia</label>
+                                        <input type="text" class="form-control" id="distancia" name="distancia" value="{{ old('distancia') }}" aria-describedby="distancia" placeholder="2 horas de la ciudad del Cusco" required>
+                                    </div>
                                     <div class="form-group col-12">
                                         <label for="descripcion">Descripcion</label>
                                         <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10">{{ old('nombre') }}</textarea>

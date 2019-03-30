@@ -220,3 +220,16 @@ Route::get('/admin/producto/delete/{id}/{categoria}', [
     'as' => 'producto.delete',
 ]);
 
+// rutas poara operaciones
+Route::get('/admin/operaciones/{f1}/{f2}', [
+    'uses' => 'OperacionesController@lista',
+    'as' => 'operaciones.lista',
+]);
+Route::post('/admin/operaciones/', [
+    'uses' => 'OperacionesController@lista_post',
+    'as' => 'operaciones.post.lista',
+]);
+Route::post('/admin/servicio/calendario', [
+    'uses' => 'ServiciosController@add_calendario',
+    'as' => 'servicios.calendario.add',
+]);

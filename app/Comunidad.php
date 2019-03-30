@@ -18,7 +18,7 @@ class Comunidad extends Model
     }
     public function asociaciones()
     {
-        return $this->hasMany(Asociacion::class, 'asociacion_id');
+        return $this->hasMany(Asociacion::class, 'comunidad_id');
     }
     public function transporte_externo()
     {

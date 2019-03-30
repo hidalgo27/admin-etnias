@@ -31,6 +31,8 @@ class ComunidadController extends Controller
         $nombre=$request->input('nombre');
         $distrito_id=$request->input('distrito');
         $descripcion=$request->input('descripcion');
+        $altura=$request->input('altura');
+        $distancia=$request->input('distancia');
         $fotos=$request->file('foto');
         $existencias=Comunidad::where('nombre',$nombre)->count();
         if(trim($distrito_id)==''||trim($distrito_id)=='0'){
@@ -44,6 +46,8 @@ class ComunidadController extends Controller
             $comunidad->nombre=$nombre;
             $comunidad->descripcion=$descripcion;
             $comunidad->distrito_id=$distrito_id;
+            $comunidad->altura=$altura;
+            $comunidad->distancia=$distancia;
             $comunidad->save();
             if(!empty($fotos)){
                 foreach($fotos as $foto){
@@ -85,7 +89,9 @@ class ComunidadController extends Controller
         $distrito_id=$request->input('distrito');
         $descripcion=$request->input('descripcion');
         $fotos=$request->file('foto');
-
+        $altura=$request->input('altura');
+        $distancia=$request->input('distancia');
+        
         $fotosExistentes=$request->input('fotos_');
         // dd($fotosExistentes);
         if(trim($distrito_id)==''||trim($distrito_id)=='0'){
@@ -95,6 +101,8 @@ class ComunidadController extends Controller
         $comunidad->nombre=$nombre;
         $comunidad->descripcion=$descripcion;
         $comunidad->distrito_id=$distrito_id;
+        $comunidad->altura=$altura;
+        $comunidad->distancia=$distancia;
         $comunidad->save();
 
         // borramos de la db las fotos que han sido eliminadas por el usuario

@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Categoria;
+use App\ActividadDisponible;
 
 class ServiciosController extends Controller
 {
@@ -34,8 +35,14 @@ class ServiciosController extends Controller
         $v_asociacion_id=$attributo.'_asociacion_id';
         $asociacion_id=$request->input($v_asociacion_id);
         $titulo=strtolower(trim($request->input('titulo')));
-        $categoria=$request->input('categoria');
-        $descripcion=$request->input('descripcion');
+        $categoria_=$request->input('categoria_');
+        $descripcion=$request->input('descripcion');        
+        $duracion=$request->input('duracion');
+        $periodo=$request->input('periodo');
+        $incluye=$request->input('incluye');
+        $no_incluye=$request->input('no_incluye');
+        $disponible=$request->input('disponible');
+        
         $fotos=$request->file('foto');
         $categoria=$request->input('categoria_n');
         $minimo=$request->input('minimo_'.$attributo.'_n_0');
@@ -51,8 +58,13 @@ class ServiciosController extends Controller
             if($attributo=='a'){
                 $actividad=new Actividad();
                 $actividad->titulo=$titulo;
-                $actividad->categoria=$categoria;
+                $actividad->categoria=$categoria_;
                 $actividad->descripcion=$descripcion;
+                $actividad->duracion=$duracion;
+                $actividad->periodo=$periodo;
+                $actividad->incluye=$incluye;
+                $actividad->no_incluye=$no_incluye;
+                $actividad->disponible=$disponible;
                 $actividad->asociacion_id=$asociacion_id;
                 $actividad->save();
                 if(!empty($fotos)){
@@ -240,12 +252,18 @@ class ServiciosController extends Controller
         // $v_asociacion_id=$attributo.'_asociacion_id';
         // $asociacion_id=$request->input('id');
 
-        $categoria=$request->input('categoria');
+        $categoria_=$request->input('categoria_');
         $titulo=strtolower(trim($request->input('titulo')));
         $descripcion=$request->input('descripcion');
         $fotos=$request->file('foto');
         $fotos_e=$request->file('fotos');
         $categoria_n=$request->input('categoria_n');
+        $duracion=$request->input('duracion');
+        $periodo=$request->input('periodo');
+        $incluye=$request->input('incluye');
+        $no_incluye=$request->input('no_incluye');
+        $disponible=$request->input('disponible');
+
         $minimo_n=$request->input('minimo_'.$attributo.'_n_'.$id);
         $maximo_n=$request->input('maximo_'.$attributo.'_n_'.$id);
         $precio_n=$request->input('precio_'.$attributo.'-n_'.$id);
@@ -265,8 +283,13 @@ class ServiciosController extends Controller
             if($attributo=='a'){
                 $actividad=Actividad::FindOrFail($id);
                 $actividad->titulo=$titulo;
-                $actividad->categoria=$categoria;
+                $actividad->categoria=$categoria_;
                 $actividad->descripcion=$descripcion;
+                $actividad->duracion=$duracion;
+                $actividad->periodo=$periodo;
+                $actividad->incluye=$incluye;
+                $actividad->no_incluye=$no_incluye;
+                $actividad->disponible=$disponible;
                 $actividad->save();
                 if(!empty($fotos_e)){
                     $fotitos=ActividadFoto::where('actividad_id',$id)->get();
@@ -645,5 +668,29 @@ class ServiciosController extends Controller
             else
                 return 0;
         }
+    }
+
+    public function add_calendario(Request $request){
+        $cantidad=$request->input('cantidad');
+        $fecha=$request->input('fecha');
+        $id=$request->input('id');
+
+        $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$fecha)->get();
+        if($existe->count()==0){
+            $temp=new ActividadDisponible();
+            $temp->cantidad=$cantidad;
+            $temp->fecha=$fecha;
+            $temp->estado='0';
+            $temp->actividad_id=$id;
+            $temp->save();
+            $disponibilidad=ActividadDisponible::where('actividad_id',$id)->get();
+            return view('admin.servicios.calendario',compact('disponibilidad','id'));
+        }
+        else
+        return '1';
+        
+        // return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Servicio editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //         <span aria-hidden="true">&times;</span>
+        //       </button>']);
     }
 }

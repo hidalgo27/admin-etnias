@@ -19,54 +19,54 @@ class ReservaController extends Controller
 {
     //
     public function lista(){
-        $reservas_new=Reserva::where(function($query){
-            $query->WhereHas('actividades',function($q){
-                $q->where('estado','0');
-            });
-            $query->WhereHas('comidas',function($q){
-                $q->where('estado','0');
-            });
-            $query->WhereHas('hospedajes',function($q){
-                $q->where('estado','0');
-            });
-            $query->WhereHas('transporte',function($q){
-                $q->where('estado','0');
-            });
-            $query->WhereHas('servicios',function($q){
-                $q->where('estado','0');
-            });
-            $query->WhereHas('transporte_externo',function($q){
-                $q->where('estado','0');
-            });
-            $query->WhereHas('guia',function($q){
-                $q->where('estado','0');
-            });
-        })->get();
+        // $reservas_new=Reserva::where(function($query){
+        //     $query->WhereHas('actividades',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->WhereHas('comidas',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->WhereHas('hospedajes',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->WhereHas('transporte',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->WhereHas('servicios',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->WhereHas('transporte_externo',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->WhereHas('guia',function($q){
+        //         $q->where('estado','0');
+        //     });
+        // })->get();
 
 
-        $reservas_current=Reserva::where(function($query){
-            $query->WhereHas('actividades',function($q){
-                $q->where('estado','0');
-            });
-            $query->orWhereHas('comidas',function($q){
-                $q->where('estado','0');
-            });
-            $query->orWhereHas('hospedajes',function($q){
-                $q->where('estado','0');
-            });
-            $query->orWhereHas('transporte',function($q){
-                $q->where('estado','0');
-            });
-            $query->orWhereHas('servicios',function($q){
-                $q->where('estado','0');
-            });
-            $query->orWhereHas('transporte_externo',function($q){
-                $q->where('estado','0');
-            });
-            $query->orWhereHas('guia',function($q){
-                $q->where('estado','0');
-            });
-        })->get();
+        // $reservas_current=Reserva::where(function($query){
+        //     $query->WhereHas('actividades',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->orWhereHas('comidas',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->orWhereHas('hospedajes',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->orWhereHas('transporte',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->orWhereHas('servicios',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->orWhereHas('transporte_externo',function($q){
+        //         $q->where('estado','0');
+        //     });
+        //     $query->orWhereHas('guia',function($q){
+        //         $q->where('estado','0');
+        //     });
+        // })->get();
 
         // $reservas_close=Reserva::WhereHas('actividades',function($q){
         //         $q->where('estado','1');
@@ -124,7 +124,7 @@ class ReservaController extends Controller
         $transporte_externo=TransporteExterno::get();
         $guia=Guia::get();
         $proveedores=Proveedor::get();
-        return view('admin.reserva.detalle',compact('reserva','comisiones','transporte_externo','guia','proveedores'));
+        return view('admin.reserva.detalle',compact('reserva','comisiones','transporte_externo','guia','proveedores','reserva_id'));
     }
     public function confirmar($tipo_servicio,$grupo_id,$estado){
         // try {

@@ -11,6 +11,7 @@ window.Vue = require('vue');
 // import Swal from 'sweetalert2';
 window.Swal = require('sweetalert2');
 
+// window.grunt = require('grunt');
 
 import $ from 'jquery';
 window.$ = window.jQuery = $;

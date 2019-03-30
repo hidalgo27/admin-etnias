@@ -20,4 +20,8 @@ class Actividad extends Model
     {
         return $this->belongsTo(Asociacion::class, 'asociacion_id');
     }
+    public function disponibilidad()
+    {
+        return $this->hasMany(ActividadDisponible::class, 'actividad_id');
+    }
 }

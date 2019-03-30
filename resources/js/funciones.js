@@ -1002,3 +1002,47 @@ console.log(valorcito);
     }
     });
 }
+
+
+
+
+function guardar_calendario(valor1){
+$.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+$.ajax({
+    url: $("#form_a_calendario_"+valor1).attr('action'),
+    method: $("#form_a_calendario_"+valor1).attr('method'),
+    data:$("#form_a_calendario_"+valor1).serialize(),
+    // dataType:'json',
+    // contentType:false,
+    // cache:false,
+    // processData: false,
+    // beforeSend: function() {
+    //     $('#rpt_form_'+valor1).html('');
+    //     $('#rpt_form_'+valor1).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+    //     $('#rpt_form_a_e_tabla_'+valor1).html('');
+    // },
+    success:function(data){
+        if(data.length==1){
+            $('#rpt_form_a_e_'+valor1).removeClass('text-success');
+            $('#rpt_form_a_e_'+valor1).addClass('text-danger');
+            $('#rpt_form_a_e_'+valor1).html('');
+            $('#rpt_form_a_e_'+valor1).html('');
+            $('#rpt_form_a_e_'+valor1).html('Vuelva a intentarlo');
+        }
+        else{
+            $('#rpt_form_a_e_'+valor1).removeClass('text-danger');
+            $('#rpt_form_a_e_'+valor1).addClass('text-success');
+            $('#rpt_form_a_e_'+valor1).html('');
+            $('#rpt_form_a_e_'+valor1).html('Fecha guardada correctamente');
+            $('#rpt_form_a_e_tabla_'+valor1).html('');
+            $('#rpt_form_a_e_tabla_'+valor1).html(data);
+            
+            $("#form_a_calendario_"+valor1)[0].reset();
+        }
+    }
+    });
+}
