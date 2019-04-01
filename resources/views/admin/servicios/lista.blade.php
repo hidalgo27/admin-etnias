@@ -32,6 +32,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div id="servicios" class="col-12 mt-2">
                         <table class="table table-bordered table-hover table-striped">
                             <thead >
@@ -57,5 +58,4 @@
         </div>
     </div>
 </div>
-
 @endsection

@@ -1,7 +1,3 @@
-@php
-use Calendar\Calendar;
-@endphp
-
 <div class="row">
     <div class="col-12">
         <div class="alert alert-primary">
@@ -272,9 +268,10 @@ use Calendar\Calendar;
                                                     <label class="sr-only" for="fecha">Fecha</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <div class="input-group-text">fecha</div>
+                                                            <div class="input-group-text">Fechas</div>
                                                         </div>
-                                                        <input type="date" class="form-control" id="fecha_a_e_{{ $item->id }}" name="fecha" placeholder="fecha" required value="{{ $item->titulo }}">
+                                                        <input type="text" id="fecha_a_e_{{ $item->id }}" name="fecha" class="form-control datepicker-here" data-position="right top" data-multiple-dates-separator=" - " data-range="true"  
+                                                         required>
                                                     </div>
                                                 </div>
                                                 <div class="col-2">
@@ -327,24 +324,65 @@ use Calendar\Calendar;
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-6">
+                                                        <input type="text" id="fecha_a_lista_{{ $item->id }}" name="fecha" class="form-control d-none">
+                                                        <script>
+                                                            var eventDates = [1, 10, 12, 22];
+                                                            var $promo = $('#fecha_a_lista_{{$item->id}}');
+                                                                $promo.datepicker({
+                                                                    language: 'en',
+                                                                    inline:true,
+                                                                    onRenderCell: function (date, cellType) {
+                                                                        var currentDate = date.getDate();
+                                                                        // Add extra element, if `eventDates` contains `currentDate`
+                                                                        if (cellType == 'day' && eventDates.indexOf(currentDate) != -1) {
+                                                                            return {
+                                                                                html:  '<span class="dp-note">'+currentDate+'</span>'
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    onSelect: function onSelect(fd, date) {
+                                                                        var title = '', content = ''
+                                                                        // If date with event is selected, show it
+                                                                        if (date && eventDates.indexOf(date.getDate()) != -1) {
+                                                                            title = fd;
+                                                                            // content = sentences[Math.floor(Math.random() * eventDates.length)];
+                                                                        }
+                                                                        $('#fecha_dato_{{$item->id}}').html(title)
+                                                                    }
+                                                                })
+                                                                // var currentDate = currentDate = new Date();
+                                                                // var currentDate = currentDate = new Date("2019-05-06");
 
-                                                    @foreach ($item->disponibilidad as $disponible)
-                                                        @php
-                                                            $lista[]=\Calendar::event(
-                                                                $disponible->cantidad.' Dias disponibles',
-                                                                true,
-                                                                new \DateTime($disponible->fecha),
-                                                                new \DateTime($disponible->fecha.' +1 day')
-                                                            );
-                                                        @endphp
-                                                    @endforeach
-                                                    @php
+                                                                // $promo.data('datepicker').selectDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 10))
+                                                                // $promo.data('datepicker').selectDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 12))
+                                                                
+                                                                // @foreach ($item->disponibilidad as $disponible)
+                                                                
+                                                                // var currentDate = currentDate = currentDate = new Date("{{$disponible->fecha}}");
+                                                                // $promo.data('datepicker').selectDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 15))
+                                                                
+                                                                // $promo.data('datepicker').selectDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 13);
+                                                                    // @php
+                                                                    //     $lista[]=\Calendar::event(
+                                                                    //         $disponible->cantidad.' Dias disponibles',
+                                                                    //         true,
+                                                                    //         new \DateTime($disponible->fecha),
+                                                                    //         new \DateTime($disponible->fecha.' +1 day')
+                                                                    //     );
+                                                                    // @endphp
+                                                                // @endforeach
+                                                        </script>
+                                                    
+                                                    {{-- @php
                                                         $calendar_details=\Calendar::addEvents($lista);
                                                     @endphp
                                                     {!! $calendar_details->calendar() !!}
 
-                                                    {!! $calendar_details->script() !!}
+                                                    {!! $calendar_details->script() !!}  --}}
+                                                </div>
+                                                <div class="col-6">
+                                                    <span id="fecha_dato_{{$item->id}}"></span>
                                                 </div>
                                             </div>
                                         </form>
