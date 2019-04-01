@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comida;
 use App\Servicio;
 use App\Actividad;
+use App\Categoria;
 use App\Hospedaje;
 use App\Asociacion;
 use App\ComidaFoto;
@@ -12,11 +13,11 @@ use App\Transporte;
 use App\ComidaPrecio;
 use App\ActividadFoto;
 use App\ActividadPrecio;
+use App\ActividadDisponible;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use App\Categoria;
-use App\ActividadDisponible;
+use MaddHatter\LaravelFullcalendar\Calendar;
 
 class ServiciosController extends Controller
 {
@@ -36,13 +37,13 @@ class ServiciosController extends Controller
         $asociacion_id=$request->input($v_asociacion_id);
         $titulo=strtolower(trim($request->input('titulo')));
         $categoria_=$request->input('categoria_');
-        $descripcion=$request->input('descripcion');        
+        $descripcion=$request->input('descripcion');
         $duracion=$request->input('duracion');
         $periodo=$request->input('periodo');
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
-        
+
         $fotos=$request->file('foto');
         $categoria=$request->input('categoria_n');
         $minimo=$request->input('minimo_'.$attributo.'_n_0');
@@ -688,7 +689,7 @@ class ServiciosController extends Controller
         }
         else
         return '1';
-        
+
         // return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Servicio editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         //         <span aria-hidden="true">&times;</span>
         //       </button>']);

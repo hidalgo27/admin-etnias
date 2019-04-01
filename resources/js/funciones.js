@@ -1003,9 +1003,6 @@ console.log(valorcito);
     });
 }
 
-
-
-
 function guardar_calendario(valor1){
 $.ajaxSetup({
     headers: {
@@ -1040,7 +1037,7 @@ $.ajax({
             $('#rpt_form_a_e_'+valor1).html('Fecha guardada correctamente');
             $('#rpt_form_a_e_tabla_'+valor1).html('');
             $('#rpt_form_a_e_tabla_'+valor1).html(data);
-            
+
             $("#form_a_calendario_"+valor1)[0].reset();
         }
     }
