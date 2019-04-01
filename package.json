@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "air-datepicker": "^2.2.3",
+    "@fullcalendar/core": "^4.0.1",
+    "@fullcalendar/daygrid": "^4.0.1",
     "grunt": "^1.0.4",
     "sweetalert2": "^8.0.7"
   }

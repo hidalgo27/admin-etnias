@@ -1,3 +1,7 @@
+@php
+use Calendar\Calendar;
+@endphp
+
 <div class="row">
     <div class="col-12">
         <div class="alert alert-primary">
@@ -55,7 +59,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form id="form_a_e_{{ $item->id }}" class="card card-body" action="{{ route('servicios.actividad.edit') }}" method="POST" enctype="multipart/form-data">
-                                            <div class="row"> 
+                                            <div class="row">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
@@ -251,7 +255,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form id="form_a_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add') }}" method="POST" enctype="multipart/form-data">
-                                            <div class="row"> 
+                                            <div class="row">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">DATOS GENERALES</b>
                                                 </div>
@@ -279,8 +283,8 @@
                                                     <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
                                                     <button class="btn btn-primary" type="button" onclick="guardar_calendario('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
                                                 </div>
-                                                
-                                            </div>                                           
+
+                                            </div>
                                             <div class="row">
                                                 <div id="rpt_form_a_e_tabla_{{ $item->id }}" class="col-12">
                                                     <div class="form-group col-12">
@@ -297,18 +301,18 @@
                                                             <tbody>
                                                                 @foreach ($item->disponibilidad as $disponible)
                                                                     <tr id="row_a_calendario_e{{ $item->id }}_e{{ $disponible->id }}">
-                                                                        
+
                                                                         <td>
-                                                                            {{$disponible->cantidad}}
+                                                                            {{ $disponible->cantidad}}
                                                                         </td>
                                                                         <td>
-                                                                            {{$disponible->fecha}}
+                                                                            {{ $disponible->fecha }}
                                                                         </td>
                                                                         <td>
                                                                             @if($disponible->estado=='1')
-                                                                                <span class="text-danger">Ocupado</span>    
+                                                                                <span class="text-danger">Ocupado</span>
                                                                             @else
-                                                                                <span class="text-success">Disponible</span>    
+                                                                                <span class="text-success">Disponible</span>
                                                                             @endif
                                                                         </td>
                                                                         <td>
@@ -319,11 +323,32 @@
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
-                                                
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+
+                                                    @foreach ($item->disponibilidad as $disponible)
+                                                        @php
+                                                            $lista[]=\Calendar::event(
+                                                                $disponible->cantidad.' Dias disponibles',
+                                                                true,
+                                                                new \DateTime($disponible->fecha),
+                                                                new \DateTime($disponible->fecha.' +1 day')
+                                                            );
+                                                        @endphp
+                                                    @endforeach
+                                                    @php
+                                                        $calendar_details=\Calendar::addEvents($lista);
+                                                    @endphp
+                                                    {!! $calendar_details->calendar() !!}
+
+                                                    {!! $calendar_details->script() !!}
                                                 </div>
                                             </div>
                                         </form>
-                                        
+
                                     </div>
                                     <div class="modal-footer d-none">
                                         <button type="button" class="btn btn-primary d-none">Guardar</button>
