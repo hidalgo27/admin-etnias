@@ -329,95 +329,54 @@
                                                         <script>
                                                            var eventDates_{{ $item->id }}=new Array();
                                                             @foreach($item->disponibilidad as $disponible)
-                                                            eventDates_{{ $item->id }}.push('{{ $disponible->fecha}}');
+                                                                eventDates_{{ $item->id }}.push('{{ $disponible->fecha}}');
                                                             @endforeach
-                                                            /*if(eventDates1.length>0){
-                                                            console.log('fechas del arreglo[{{ $item->id}}]:'+eventDates1);
-                                                            var $promo = $('#fecha_a_lista_{{ $item->id}}');
-                                                                $promo.datepicker({
-                                                                    language: 'en',
-                                                                    inline:true,
-                                                                    onRenderCell: function (date, cellType) {
-                                                                        var currentDate = date.getDate();
+                                                            console.log('eventDates:'+eventDates_{{ $item->id }});
+                                                            $picker = $('#fecha_a_lista_{{ $item->id}}');
+                                                            $content = $('#custom-cells-events');
+                                                            sentences = [];
 
-                                                                        var mes=date.getMonth()+1;
-                                                                        mes=mes < 10 ? '0'+mes : mes;
-                                                                        var dia=date.getDate();
-                                                                        dia=dia < 10 ? '0'+dia : dia;
-                                                                        var fecha=date.getFullYear()+'-'+mes+'-'+dia;
-
-                                                                        if (cellType == 'day' && eventDates1.indexOf(fecha) != -1) {
-                                                                            return {
-                                                                                html:  currentDate+'<span class="dp-note"></span>'
-                                                                            }
+                                                            $picker.datepicker({
+                                                                inline:true,
+                                                                language: 'en',
+                                                                onRenderCell: function (date, cellType) {
+                                                                    console.log('recorrido onRenderCell:{{ $item->id}}');
+                                                                    var currentDate = date.getDate();
+                                                                    var mes=date.getMonth()+1;
+                                                                    mes=mes < 10 ? '0'+mes : mes;
+                                                                    var dia=date.getDate();
+                                                                    dia=dia < 10 ? '0'+dia : dia;
+                                                                    var fecha=date.getFullYear()+'-'+mes+'-'+dia;
+                                                                    // Add extra element, if `eventDates` contains `currentDate`
+                                                                    if (cellType == 'day' && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
+                                                                        return {
+                                                                            html: '<span class="dp-note">'+currentDate+'</span>'
                                                                         }
-                                                                    },
-                                                                    onSelect: function onSelect(fd, date) {
-                                                                        var title = '', content = '';
-                                                                        var mes=date.getMonth()+1;
-                                                                        mes=mes < 10 ? '0'+mes : mes;
-                                                                        var dia=date.getDate();
-                                                                        dia=dia < 10 ? '0'+dia : dia;
-                                                                        var fecha1=date.getFullYear()+'-'+mes+'-'+dia;
-                                                                        if(date && eventDates1.indexOf(fecha1) != -1) {
-                                                                            title = fd;
-                                                                        }
-                                                                        $('#fecha_dato_{{$item->id}}').html(title)
                                                                     }
-                                                                })
-                                                            }*/
-                                                             /*eventDates = ['2019-04-01','2019-04-10','2019-04-12','2019-04-22'];*/
-                                                             console.log('eventDates:'+eventDates_{{ $item->id }});
-    $picker = $('#fecha_a_lista_{{ $item->id}}');
-    $content = $('#custom-cells-events');
-    sentences = [];
+                                                                },
+                                                                onSelect: function onSelect(fd, date) {
 
-$picker.datepicker({
-    inline:true,
-    language: 'en',
-    onRenderCell: function (date, cellType) {
-        console.log('recorrido onRenderCell:{{ $item->id}}');
-        var currentDate = date.getDate();
-        var mes=date.getMonth()+1;
-        mes=mes < 10 ? '0'+mes : mes;
-        var dia=date.getDate();
-        dia=dia < 10 ? '0'+dia : dia;
-        var fecha=date.getFullYear()+'-'+mes+'-'+dia;
-        // Add extra element, if `eventDates` contains `currentDate`
-        if (cellType == 'day' && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
-            return {
-                html: '<span class="dp-note">'+currentDate+'</span>'
-            }
-        }
-    },
-    onSelect: function onSelect(fd, date) {
+                                                                    console.log('recorrido onSelect:{{ $item->id}}');
+                                                                    var title = '', content = ''
+                                                                    // If date with event is selected, show it
+                                                                    var mes=date.getMonth()+1;
+                                                                    mes=mes < 10 ? '0'+mes : mes;
+                                                                    var dia=date.getDate();
+                                                                    dia=dia < 10 ? '0'+dia : dia;
+                                                                    var fecha=date.getFullYear()+'-'+mes+'-'+dia;
 
-        console.log('recorrido onSelect:{{ $item->id}}');
-        var title = '', content = ''
-        // If date with event is selected, show it
-        var mes=date.getMonth()+1;
-        mes=mes < 10 ? '0'+mes : mes;
-        var dia=date.getDate();
-        dia=dia < 10 ? '0'+dia : dia;
-        var fecha=date.getFullYear()+'-'+mes+'-'+dia;
-
-        if (date && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
-            title = fd;
-            content = sentences[Math.floor(Math.random() * eventDates_{{ $item->id }}.length)];
-        }
-        /*$('strong', $content).html(title)
-        $('p', $content).html(content)*/
-    }
-});
-
-// Select initial date from `eventDates`
-/*var currentDate = currentDate = new Date();
-$picker.data('datepicker').selectDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), 10))*/
+                                                                    if (date && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
+                                                                        title = fd;
+                                                                        content = sentences[Math.floor(Math.random() * eventDates_{{ $item->id }}.length)];
+                                                                    }
+                                                                    $('#edit_fecha_{{ $item->id }}').value(title);
+                                                                }
+                                                            });
                                                         </script>
 
                                                 </div>
                                                 <div class="col-6">
-                                                    <span id="fecha_dato_{{$item->id}}"></span>
+                                                    <input type="date" id="edit_fecha_{{ $item->id }}" class="form-control">
                                                 </div>
                                             </div>
                                         </form>
