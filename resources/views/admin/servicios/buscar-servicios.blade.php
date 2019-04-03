@@ -325,7 +325,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
-                                                        <input type="text" id="fecha_a_lista_{{ $item->id }}" name="fecha" class="form-control">
+                                                        <input type="text" id="fecha_a_lista_{{ $item->id }}" name="fecha" class="form-control datepicker-here" data-language='en'>
                                                         <script>
                                                            var eventDates_{{ $item->id }}=new Array();
                                                             @foreach($item->disponibilidad as $disponible)
@@ -333,12 +333,14 @@
                                                             @endforeach
                                                             console.log('eventDates:'+eventDates_{{ $item->id }});
                                                             $picker = $('#fecha_a_lista_{{ $item->id}}');
+                                                            {{--  $picker = $('.datepicker-here');  --}}
+
                                                             $content = $('#custom-cells-events');
                                                             sentences = [];
 
                                                             $picker.datepicker({
                                                                 inline:true,
-                                                                language: 'en',
+                                                                {{-- language: 'es', --}}
                                                                 onRenderCell: function (date, cellType) {
                                                                     console.log('recorrido onRenderCell:{{ $item->id}}');
                                                                     var currentDate = date.getDate();
@@ -355,8 +357,8 @@
                                                                     }
                                                                 },
                                                                 onSelect: function onSelect(fd, date) {
-
-                                                                    console.log('recorrido onSelect:{{ $item->id}}');
+                                                                    var fe=fd.split('/');
+                                                                    console.log('recorrido onSelect:{{ $item->id}}'+date+'_'+fd);
                                                                     var title = '', content = ''
                                                                     // If date with event is selected, show it
                                                                     var mes=date.getMonth()+1;
@@ -366,17 +368,28 @@
                                                                     var fecha=date.getFullYear()+'-'+mes+'-'+dia;
 
                                                                     if (date && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
-                                                                        title = fd;
+                                                                        title =fe[1]+'-'+fe[0]+'-'+fe[2];
                                                                         content = sentences[Math.floor(Math.random() * eventDates_{{ $item->id }}.length)];
                                                                     }
-                                                                    $('#edit_fecha_{{ $item->id }}').value(title);
+                                                                    $('#fecha_texto_{{ $item->id }}').html(title)
                                                                 }
                                                             });
                                                         </script>
 
                                                 </div>
-                                                <div class="col-6">
-                                                    <input type="date" id="edit_fecha_{{ $item->id }}" class="form-control">
+                                                <div id="edit_fecha_{{ $item->id }}" class="col-6">
+                                                    <div class="row">
+                                                        <div id="fecha_texto_{{ $item->id }}" class="col-9 px-0">
+                                                        </div>
+                                                        <div class="col-3 px-0">
+                                                            <div class="div">
+                                                                <div class="col-12 form-check-inline">
+                                                                    <button class="btn btn-primary" type="button" onclick="borrar_precio('a','e{{ $item->id }}','e{{ $disponible->id }}')"><i class="fas fa-save"></i></button>
+                                                                    <button class="btn btn-danger" type="button" onclick="borrar_fecha_dispo({{ $item->id }})"><i class="fas fa-trash-alt"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
