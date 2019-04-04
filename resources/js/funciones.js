@@ -1014,6 +1014,7 @@ $.ajax({
     method: $("#form_a_calendario_"+valor1).attr('method'),
     data:$("#form_a_calendario_"+valor1).serialize(),
     success:function(data){
+        console.log(data);
         if(data.length==1){
             $('#rpt_form_a_e_'+valor1).removeClass('text-success');
             $('#rpt_form_a_e_'+valor1).addClass('text-danger');
@@ -1030,10 +1031,44 @@ $.ajax({
             $('#rpt_form_a_e_tabla_'+valor1).html(data);
 
             $("#form_a_calendario_"+valor1)[0].reset();
+            $("#rpt_calendario_"+valor1).html(data);
         }
     }
     });
 }
+function guardar_calendario_2(valor1){
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: $("#form_a_calendario_"+valor1).attr('action'),
+        method: $("#form_a_calendario_"+valor1).attr('method'),
+        data:$("#form_a_calendario_"+valor1).serialize(),
+        success:function(data){
+            console.log(data);
+            if(data.length==1){
+                $('#rpt_form_a_e_'+valor1).removeClass('text-success');
+                $('#rpt_form_a_e_'+valor1).addClass('text-danger');
+                $('#rpt_form_a_e_'+valor1).html('');
+                $('#rpt_form_a_e_'+valor1).html('');
+                $('#rpt_form_a_e_'+valor1).html('Vuelva a intentarlo');
+            }
+            else{
+                $('#rpt_form_a_e_'+valor1).removeClass('text-danger');
+                $('#rpt_form_a_e_'+valor1).addClass('text-success');
+                $('#rpt_form_a_e_'+valor1).html('');
+                $('#rpt_form_a_e_'+valor1).html('Fecha guardada correctamente');
+                $('#rpt_form_a_e_tabla_'+valor1).html('');
+                $('#rpt_form_a_e_tabla_'+valor1).html(data);
+
+                $("#form_a_calendario_"+valor1)[0].reset();
+                $("#rpt_calendario_"+valor1).html(data);
+            }
+        }
+        });
+    }
 function borrar_fecha_dispo(actividad_id){
 var fecha=$('#fecha_texto_'+actividad_id).html();
 $.ajaxSetup({
@@ -1042,18 +1077,14 @@ $.ajaxSetup({
     }
 });
 $.ajax({
-    url: 'post',
-    method: '/admin/servicios/edit-calendario/eliminar',
+    type:'POST',
+    url:'/admin/servicios/calendario/eliminar',
     data:{actividad_id:actividad_id,fecha:fecha},
     success:function(data){
-        if(data.mensaje==1){
-        }
-        else{
-            $('#rpt_form_a_e_'+valor1).html('Fecha guardada correctamente');
-            $('#rpt_form_a_e_tabla_'+valor1).html('');
-            $('#rpt_form_a_e_tabla_'+valor1).html(data);
-
+        if(data.length>1){
+            $("#rpt_calendario_"+actividad_id).html(data);
         }
     }
-    });
+});
+
 }

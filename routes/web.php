@@ -112,6 +112,11 @@ Route::get('/admin/servicios/nuevo', [
     'uses' => 'ServiciosController@nuevo',
     'as' => 'servicios.nuevo',
 ]);
+Route::post('/admin/servicios/calendario/eliminar', [
+    'uses' => 'ServiciosController@calendario_eliminar',
+    'as' => 'servicios.calendario.eliminar',
+]);
+
 Route::get('/admin/asociacion/buscar/{ruc_rs}', [
     'uses' => 'ServiciosController@buscar_asociacion',
     'as' => 'servicios.buscar_asociacion',
@@ -232,4 +237,9 @@ Route::post('/admin/operaciones/', [
 Route::post('/admin/servicio/calendario', [
     'uses' => 'ServiciosController@add_calendario',
     'as' => 'servicios.calendario.add',
+]);
+
+Route::post('/admin/servicio/calendario-d', [
+    'uses' => 'ServiciosController@add_calendario_d',
+    'as' => 'servicios.calendario.add_2',
 ]);

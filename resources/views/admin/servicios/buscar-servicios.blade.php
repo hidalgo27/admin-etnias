@@ -250,149 +250,176 @@
                                     </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="form_a_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add') }}" method="POST" enctype="multipart/form-data">
-                                            <div class="row">
-                                                <div class="form-group col-12">
-                                                    <b class="text-15 text-success">DATOS GENERALES</b>
-                                                </div>
-                                                <div class="col-5 my-1">
-                                                    <label class="sr-only" for="cantidad">Cantidad</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Cantidad</div>
-                                                        </div>
-                                                        <input type="number" class="form-control" id="cantidad_a_e_{{ $item->id }}" name="cantidad" placeholder="Cantidad" required value="{{ $item->titulo }}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-5 my-1">
-                                                    <label class="sr-only" for="fecha">Fecha</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Fechas</div>
-                                                        </div>
-                                                        <input type="text" id="fecha_a_e_{{ $item->id }}" name="fecha" class="form-control datepicker-here" data-position="right top" data-multiple-dates-separator=" - " data-range="true"
-                                                         required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-2">
-                                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                                    {{ csrf_field() }}
-                                                    <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
-                                                    <button class="btn btn-primary" type="button" onclick="guardar_calendario('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <div id="rpt_form_a_e_tabla_{{ $item->id }}" class="col-12">
-                                                    <div class="form-group col-12">
-                                                        <b class="text-15 text-success">DATOS GENERALES</b>
-                                                    </div>
-                                                    <table class="table table-hover table-responsive table-striped">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Cantidad</th>
-                                                                    <th>Fecha</th>
-                                                                    <th>Operaciones</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($item->disponibilidad as $disponible)
-                                                                    <tr id="row_a_calendario_e{{ $item->id }}_e{{ $disponible->id }}">
-
-                                                                        <td>
-                                                                            {{ $disponible->cantidad}}
-                                                                        </td>
-                                                                        <td>
-                                                                            {{ $disponible->fecha }}
-                                                                        </td>
-                                                                        <td>
-                                                                            @if($disponible->estado=='1')
-                                                                                <span class="text-danger">Ocupado</span>
-                                                                            @else
-                                                                                <span class="text-success">Disponible</span>
-                                                                            @endif
-                                                                        </td>
-                                                                        <td>
-                                                                            <button class="btn btn-danger" type="button" onclick="borrar_precio('a','e{{ $item->id }}','e{{ $disponible->id }}')"><i class="fas fa-trash-alt"></i></button>
-                                                                            <button class="btn btn-success d-none" type="button" onclick="agregar_precio('a')"><i class="fas fa-plus"></i></button>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                        <input type="text" id="fecha_a_lista_{{ $item->id }}" name="fecha" class="form-control datepicker-here" data-language='en'>
-                                                        <script>
-                                                           var eventDates_{{ $item->id }}=new Array();
-                                                            @foreach($item->disponibilidad as $disponible)
-                                                                eventDates_{{ $item->id }}.push('{{ $disponible->fecha}}');
-                                                            @endforeach
-                                                            console.log('eventDates:'+eventDates_{{ $item->id }});
-                                                            $picker = $('#fecha_a_lista_{{ $item->id}}');
-                                                            {{--  $picker = $('.datepicker-here');  --}}
-
-                                                            $content = $('#custom-cells-events');
-                                                            sentences = [];
-
-                                                            $picker.datepicker({
-                                                                inline:true,
-                                                                {{-- language: 'es', --}}
-                                                                onRenderCell: function (date, cellType) {
-                                                                    console.log('recorrido onRenderCell:{{ $item->id}}');
-                                                                    var currentDate = date.getDate();
-                                                                    var mes=date.getMonth()+1;
-                                                                    mes=mes < 10 ? '0'+mes : mes;
-                                                                    var dia=date.getDate();
-                                                                    dia=dia < 10 ? '0'+dia : dia;
-                                                                    var fecha=date.getFullYear()+'-'+mes+'-'+dia;
-                                                                    // Add extra element, if `eventDates` contains `currentDate`
-                                                                    if (cellType == 'day' && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
-                                                                        return {
-                                                                            html: '<span class="dp-note">'+currentDate+'</span>'
-                                                                        }
-                                                                    }
-                                                                },
-                                                                onSelect: function onSelect(fd, date) {
-                                                                    var fe=fd.split('/');
-                                                                    console.log('recorrido onSelect:{{ $item->id}}'+date+'_'+fd);
-                                                                    var title = '', content = ''
-                                                                    // If date with event is selected, show it
-                                                                    var mes=date.getMonth()+1;
-                                                                    mes=mes < 10 ? '0'+mes : mes;
-                                                                    var dia=date.getDate();
-                                                                    dia=dia < 10 ? '0'+dia : dia;
-                                                                    var fecha=date.getFullYear()+'-'+mes+'-'+dia;
-
-                                                                    if (date && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
-                                                                        title =fe[1]+'-'+fe[0]+'-'+fe[2];
-                                                                        content = sentences[Math.floor(Math.random() * eventDates_{{ $item->id }}.length)];
-                                                                    }
-                                                                    $('#fecha_texto_{{ $item->id }}').html(title)
-                                                                }
-                                                            });
-                                                        </script>
-
-                                                </div>
-                                                <div id="edit_fecha_{{ $item->id }}" class="col-6">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <form id="form_a_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add') }}" method="POST" enctype="multipart/form-data">
                                                     <div class="row">
-                                                        <div id="fecha_texto_{{ $item->id }}" class="col-9 px-0">
+                                                        <div class="form-group col-12">
+                                                            <b class="text-15 text-success">Ingrese los dias hábiles</b>
                                                         </div>
-                                                        <div class="col-3 px-0">
-                                                            <div class="div">
-                                                                <div class="col-12 form-check-inline">
-                                                                    <button class="btn btn-primary" type="button" onclick="borrar_precio('a','e{{ $item->id }}','e{{ $disponible->id }}')"><i class="fas fa-save"></i></button>
-                                                                    <button class="btn btn-danger" type="button" onclick="borrar_fecha_dispo({{ $item->id }})"><i class="fas fa-trash-alt"></i></button>
+                                                        <div class="col-12 my-1">
+                                                            <label class="sr-only" for="cantidad">Cantidad</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text"># veces</div>
                                                                 </div>
+                                                                <input type="number" class="form-control" id="cantidad_a_e_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 my-1">
+                                                            <label class="sr-only" for="fecha">Fecha</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">Fechas</div>
+                                                                </div>
+                                                                <input type="text" id="fecha_a_e_{{ $item->id }}" name="fecha_add" data-range="true"
+                                                                data-multiple-dates-separator=","
+                                                                data-language="en"
+                                                                class="form-control datepicker-here" data-position="center top"  required>
+                                                                    <script>
+                                                                        $picker1 = $('#fecha_a_e_{{ $item->id}}');
+                                                                        $picker1.datepicker({
+                                                                            inline:true,
+                                                                            toggleSelected: false
+                                                                        });
+                                                                    </script>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                                            {{ csrf_field() }}
+                                                            <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
+                                                            <button class="btn btn-primary btn-block btn-lg" type="button" onclick="guardar_calendario('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-6">
+                                                <form id="form_a_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add_2') }}" method="POST" enctype="multipart/form-data">
+                                                    <div class="row">
+                                                        <div class="form-group col-12">
+                                                            <b class="text-15 text-danger">Ingrese el dia no hábil</b>
+                                                        </div>
+                                                        <div class="col-12 my-1">
+                                                            <label class="sr-only" for="cantidad">Cantidad</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text"># veces</div>
+                                                                </div>
+                                                                <input type="number" class="form-control" id="cantidad_a_de_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="0" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 my-1">
+                                                            <label class="sr-only" for="fecha">Fecha</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">Fechas</div>
+                                                                </div>
+                                                                <input type="text" id="fecha_a_de_{{ $item->id }}" name="fecha_d" data-range="false"
+                                                                data-multiple-dates-separator=","
+                                                                data-language="en"
+                                                                class="form-control datepicker-here" data-position="center top"  required>
+                                                                    <script>
+                                                                        $picker1 = $('#fecha_a_de_{{ $item->id}}');
+                                                                        $picker1.datepicker({
+                                                                            inline:true,
+                                                                            toggleSelected: false
+                                                                        });
+                                                                    </script>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                                            {{ csrf_field() }}
+                                                            <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
+                                                            <button class="btn btn-danger btn-block btn-lg" type="button" onclick="guardar_calendario_2('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="form-group col-12">
+                                                    <b class="text-15 text-success">Calendario de disponibilidad</b>
+                                                </div>
+                                                <div id="rpt_calendario_{{ $item->id }}" class="col-6">
+                                                <input type="text" id="fecha_a_lista_{{ $item->id }}" name="fecha" class="form-control datepicker-here d-none" data-language='en'>
+                                                <script>
+                                                    var eventDates_{{ $item->id }}=new Array();
+                                                    var eventDates_d_{{ $item->id }}=new Array();
+                                                    @foreach($item->disponibilidad as $disponible)
+                                                        if({{ $disponible->estado }}=='1'){
+                                                            eventDates_{{ $item->id }}.push('{{ $disponible->fecha}}');
+                                                        }
+                                                        else{
+                                                            eventDates_d_{{ $item->id }}.push('{{ $disponible->fecha}}');
+                                                        }
+                                                    @endforeach
+                                                    console.log('eventDates:'+eventDates_{{ $item->id }});
+                                                    $picker = $('#fecha_a_lista_{{ $item->id}}');
+                                                    {{--  $picker = $('.datepicker-here');  --}}
+
+                                                    $content = $('#custom-cells-events');
+                                                    sentences = [];
+
+                                                    $picker.datepicker({
+                                                        inline:true,
+                                                        {{-- language: 'es', --}}
+                                                        onRenderCell: function (date, cellType) {
+                                                            console.log('recorrido onRenderCell:{{ $item->id}}');
+                                                            var currentDate = date.getDate();
+                                                            var mes=date.getMonth()+1;
+                                                            mes=mes < 10 ? '0'+mes : mes;
+                                                            var dia=date.getDate();
+                                                            dia=dia < 10 ? '0'+dia : dia;
+                                                            var fecha=date.getFullYear()+'-'+mes+'-'+dia;
+                                                            // Add extra element, if `eventDates` contains `currentDate`
+                                                            if (cellType == 'day' && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
+                                                                return {
+                                                                    html: '<span class="dp-note">'+currentDate+'</span>'
+                                                                }
+                                                            }
+                                                            else if(cellType == 'day' && eventDates_d_{{ $item->id }}.indexOf(fecha) != -1){
+                                                                return {
+                                                                    html: '<span class="dp-note_2">'+currentDate+'</span>'
+                                                                }
+                                                            }
+                                                        },
+                                                        onSelect: function onSelect(fd, date) {
+                                                            var fe=fd.split('/');
+                                                            console.log('recorrido onSelect:{{ $item->id}}'+date+'_'+fd);
+                                                            var title = '', content = ''
+                                                            // If date with event is selected, show it
+                                                            var mes=date.getMonth()+1;
+                                                            mes=mes < 10 ? '0'+mes : mes;
+                                                            var dia=date.getDate();
+                                                            dia=dia < 10 ? '0'+dia : dia;
+                                                            var fecha=date.getFullYear()+'-'+mes+'-'+dia;
+
+                                                            if (date && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
+                                                                title =fe[1]+'-'+fe[0]+'-'+fe[2];
+                                                                content = sentences[Math.floor(Math.random() * eventDates_{{ $item->id }}.length)];
+                                                            }
+                                                            $('#fecha_texto_{{ $item->id }}').html(title)
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+                                            <div id="edit_fecha_{{ $item->id }}" class="col-6">
+                                                <div class="row">
+                                                    <div id="fecha_texto_{{ $item->id }}" class="col-9 px-0">
+                                                    </div>
+                                                    <div class="col-3 px-0">
+                                                        <div class="div">
+                                                            <div class="col-12 form-check-inline">
+                                                                <button class="btn btn-primary" type="button" onclick="edit_fecha_dispo({{ $item->id }})"><i class="fas fa-save"></i></button>
+                                                                <button class="btn btn-danger" type="button" onclick="borrar_fecha_dispo({{ $item->id }})"><i class="fas fa-trash-alt"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
 
                                     </div>
                                     <div class="modal-footer d-none">

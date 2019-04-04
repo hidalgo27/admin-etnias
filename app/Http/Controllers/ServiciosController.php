@@ -7,6 +7,7 @@ use App\Servicio;
 use App\Actividad;
 use App\Categoria;
 use App\Hospedaje;
+use Carbon\Carbon;
 use App\Asociacion;
 use App\ComidaFoto;
 use App\Transporte;
@@ -673,25 +674,110 @@ class ServiciosController extends Controller
 
     public function add_calendario(Request $request){
         $cantidad=$request->input('cantidad');
-        $fecha=$request->input('fecha');
-        $id=$request->input('id');
+        $fecha1=$request->input('fecha_add');
+        $fecha=explode(',',$fecha1);
+        $start = Carbon::createFromFormat('m/d/Y', $fecha[0]);
+        $end = Carbon::createFromFormat('m/d/Y', $fecha[1]);
 
-        $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$fecha)->get();
-        if($existe->count()==0){
-            $temp=new ActividadDisponible();
-            $temp->cantidad=$cantidad;
-            $temp->fecha=$fecha;
-            $temp->estado='0';
-            $temp->actividad_id=$id;
-            $temp->save();
-            $disponibilidad=ActividadDisponible::where('actividad_id',$id)->get();
-            return view('admin.servicios.calendario',compact('disponibilidad','id'));
+        $dates = [];
+
+        while ($start->lte($end)) {
+
+            $dates[] = $start->copy()->format('Y-m-d');
+
+            $start->addDay();
+        }
+
+        $id=$request->input('id');
+        if(count($dates)>0){
+            foreach ($dates as $key => $value) {
+                // return '.'.$value.'.';
+                // $f1=explode('/',$value);
+                // return $value;
+                // $f=$f1[2].'-'.$f1[0].'-'.$f1[1];
+                $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$value)->get();
+                if($existe->count()==0){
+                    $temp=new ActividadDisponible();
+                    $temp->cantidad=$cantidad;
+                    $temp->fecha=$value;
+                    $temp->estado='1';
+                    $temp->actividad_id=$id;
+                    $temp->save();
+                    $item=Actividad::find($id);
+                }
+            }
+            $item=Actividad::find($id);
+            return view('admin.servicios.calendario-actual',compact('item'));
         }
         else
-        return '1';
+            return '1';
 
         // return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Servicio editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         //         <span aria-hidden="true">&times;</span>
         //       </button>']);
+    }
+    public function add_calendario_d(Request $request){
+        $cantidad=$request->input('cantidad');
+        $fecha1=$request->input('fecha_d');
+        // $fecha=explode(',',$fecha1);
+        // $start = Carbon::createFromFormat('m/d/Y', $fecha[0]);
+        // $end = Carbon::createFromFormat('m/d/Y', $fecha[1]);
+
+        // $dates = [];
+
+        // while ($start->lte($end)) {
+
+        //     $dates[] = $start->copy()->format('Y-m-d');
+
+        //     $start->addDay();
+        // }
+
+        $id=$request->input('id');
+        if(strlen($fecha1)>0){
+            // foreach ($dates as $key => $value) {
+                // return '.'.$value.'.';
+                // $f1=explode('/',$value);
+                // return $value;
+                $f=$fecha1[2].'-'.$fecha1[0].'-'.$fecha1[1];
+                $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$f)->get();
+                if($existe->count()==0){
+                    $temp=new ActividadDisponible();
+                    $temp->cantidad=$cantidad;
+                    $temp->fecha=$f;
+                    $temp->estado='0';
+                    $temp->actividad_id=$id;
+                    $temp->save();
+                }
+                else{
+                    $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$f)->first();
+                    $existe->cantidad=0;
+                    $existe->estado='0';
+                    $existe->save();
+                }
+            // }
+            $item=Actividad::find($id);
+            return view('admin.servicios.calendario-actual',compact('item'));
+        }
+        else
+            return '1';
+
+        // return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Servicio editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //         <span aria-hidden="true">&times;</span>
+        //       </button>']);
+    }
+    public function calendario_eliminar(Request $request){
+        $actividad_id=$request->input('actividad_id');
+        $fecha_=$request->input('fecha');
+        $f=explode('-',$fecha_);
+        $fecha = $f[2].'-'.$f[1].'-'.$f[0];
+        $rpt=ActividadDisponible::where('actividad_id',$actividad_id)->where('fecha',$fecha)->delete();
+        if($rpt>0){
+            // return view('servicios..');
+            $item=Actividad::find($actividad_id);
+            return view('admin.servicios.calendario-actual',compact('item'));
+        }
+        else
+            return '0';
+
     }
 }

@@ -2339,6 +2339,15 @@ a[aria-expanded=true] {
   border: #000 0px solid;
 }
 
+.dp-note_2 {
+  background: #e40e0e;
+  min-width: 20px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 10px;
+  border: #000 0px solid;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
