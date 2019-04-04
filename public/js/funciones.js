@@ -249,24 +249,29 @@ function enviar_datos(valor1,valor2){
           })
         return false;
     }
-    if($('#titulo_'+valor1+'_'+valor2).val().trim()==''){
-        $('#titulo_'+valor1+'_'+valor2).focus();
-        Swal.fire({
-            type: 'error',
-            title: 'Oops...',
-            text: 'Ingrese el titulo',
-          })
-        return false;
+    if(valor1=='a'||valor1=='h'||valor1=='t'||valor1=='s'){
+        if($('#titulo_'+valor1+'_'+valor2).val().trim()==''){
+            $('#titulo_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese el titulo',
+            })
+            return false;
+        }
     }
-    // if($('#categoria_'+valor1+'_'+valor2).val().trim()==''){
-    //     $('#categoria_'+valor1+'_'+valor2).focus();
-    //     Swal.fire({
-    //         type: 'error',
-    //         title: 'Oops...',
-    //         text: 'Ingrese la categoria',
-    //       })
-    //     return false;
-    // }
+    if(valor1=='a'){
+        if($('#categoria_'+valor1+'_'+valor2).val().trim()==''){
+            $('#categoria_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese la categoria',
+            })
+            return false;
+        }
+    }
+    
     if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){
         $('#descripcion_'+valor1+'_'+valor2).focus();
         Swal.fire({
@@ -275,6 +280,62 @@ function enviar_datos(valor1,valor2){
             text: 'Ingrese una descripcion',
           })
         return false;
+    }
+    if(valor1=='a'){
+        if($('#duracion_'+valor1+'_'+valor2).val().trim()==''){
+            $('#duracion_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese la duracion',
+            })
+            return false;
+        }
+        if($('#periodo_'+valor1+'_'+valor2).val().trim()==''){
+            $('#periodo_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese el periodo',
+            })
+            return false;
+        }
+        if($('#incluye_'+valor1+'_'+valor2).val().trim()==''){
+            $('#incluye_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese lo que incluye',
+            })
+            return false;
+        }
+        if($('#no_incluye_'+valor1+'_'+valor2).val().trim()==''){
+            $('#no_incluye_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese lo que no incluye',
+            })
+            return false;
+        }
+        if($('#disponible_'+valor1+'_'+valor2).val().trim()==''){
+            $('#disponible_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese los idiomas disponbles',
+            })
+            return false;
+        }
+        if($('#recomendaciones_'+valor1+'_'+valor2).val().trim()==''){
+            $('#recomendaciones_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese las recomendaciones',
+            })
+            return false;
+        }
     }
     // $("input[name='foto[]']").each(function(indice, elemento) {
     //     if($(elemento).val()==''){
@@ -1043,9 +1104,9 @@ function guardar_calendario_2(valor1){
         }
     });
     $.ajax({
-        url: $("#form_a_calendario_"+valor1).attr('action'),
-        method: $("#form_a_calendario_"+valor1).attr('method'),
-        data:$("#form_a_calendario_"+valor1).serialize(),
+        url: $("#form_a_d_calendario_"+valor1).attr('action'),
+        method: $("#form_a_d_calendario_"+valor1).attr('method'),
+        data:$("#form_a_d_calendario_"+valor1).serialize(),
         success:function(data){
             console.log(data);
             if(data.length==1){
@@ -1063,7 +1124,7 @@ function guardar_calendario_2(valor1){
                 $('#rpt_form_a_e_tabla_'+valor1).html('');
                 $('#rpt_form_a_e_tabla_'+valor1).html(data);
 
-                $("#form_a_calendario_"+valor1)[0].reset();
+                $("#form_a_d_calendario_"+valor1)[0].reset();
                 $("#rpt_calendario_"+valor1).html(data);
             }
         }

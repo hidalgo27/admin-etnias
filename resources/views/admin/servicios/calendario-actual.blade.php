@@ -1,9 +1,16 @@
 <input type="text" id="fecha_a_lista_{{ $item->id }}" name="fecha" class="form-control datepicker-here d-none" data-language='en'>
 <script>
     var eventDates_{{ $item->id }}=new Array();
+    var eventDates_d_{{ $item->id }}=new Array();
     @foreach($item->disponibilidad as $disponible)
-        eventDates_{{ $item->id }}.push('{{ $disponible->fecha}}');
+        if({{ $disponible->estado }}=='1'){
+            eventDates_{{ $item->id }}.push('{{ $disponible->fecha}}');
+        }
+        else{
+            eventDates_d_{{ $item->id }}.push('{{ $disponible->fecha}}');
+        }
     @endforeach
+
     console.log('eventDates:'+eventDates_{{ $item->id }});
     $picker = $('#fecha_a_lista_{{ $item->id}}');
     {{--  $picker = $('.datepicker-here');  --}}
@@ -26,6 +33,11 @@
             if (cellType == 'day' && eventDates_{{ $item->id }}.indexOf(fecha) != -1) {
                 return {
                     html: '<span class="dp-note">'+currentDate+'</span>'
+                }
+            }
+            else if(cellType == 'day' && eventDates_d_{{ $item->id }}.indexOf(fecha) != -1){
+                return {
+                    html: '<span class="dp-note_2">'+currentDate+'</span>'
                 }
             }
         },

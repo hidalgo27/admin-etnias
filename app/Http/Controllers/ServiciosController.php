@@ -46,6 +46,7 @@ class ServiciosController extends Controller
         $disponible=$request->input('disponible');
 
         $fotos=$request->file('foto');
+        $foto_portada=$request->file('foto_portada');
         $categoria=$request->input('categoria_n');
         $minimo=$request->input('minimo_'.$attributo.'_n_0');
         $maximo=$request->input('maximo_'.$attributo.'_n_0');
@@ -69,6 +70,19 @@ class ServiciosController extends Controller
                 $actividad->disponible=$disponible;
                 $actividad->asociacion_id=$asociacion_id;
                 $actividad->save();
+                if(!empty($foto_portada)){
+                    
+                        $actividadfoto = new ActividadFoto();
+                        $actividadfoto->actividad_id=$actividad->id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto_portada->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->estado='1';
+                        $actividadfoto->save();
+                        Storage::disk('actividades')->put($filename,  File::get($foto_portada));
+                    
+                }
                 if(!empty($fotos)){
                     foreach($fotos as $foto){
                         $actividadfoto = new ActividadFoto();
@@ -77,10 +91,12 @@ class ServiciosController extends Controller
 
                         $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
                         $actividadfoto->imagen=$filename;
+                        $actividadfoto->estado='0';
                         $actividadfoto->save();
                         Storage::disk('actividades')->put($filename,  File::get($foto));
                     }
                 }
+                
                 foreach ($categoria as $key => $value) {
                     $actividad_precio=new ActividadPrecio();
                     $actividad_precio->categoria=$value;
@@ -257,8 +273,12 @@ class ServiciosController extends Controller
         $categoria_=$request->input('categoria_');
         $titulo=strtolower(trim($request->input('titulo')));
         $descripcion=$request->input('descripcion');
+        
+        $foto_portada=$request->file('foto_portada');
+        $foto_portada_e=$request->input('foto_portada_e');
+        
         $fotos=$request->file('foto');
-        $fotos_e=$request->file('fotos');
+        $fotos_e=$request->input('fotos_');
         $categoria_n=$request->input('categoria_n');
         $duracion=$request->input('duracion');
         $periodo=$request->input('periodo');
@@ -293,8 +313,38 @@ class ServiciosController extends Controller
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
                 $actividad->save();
+                //-- agregando foto de portada
+                if(!empty($foto_portada_e)){
+                    $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','1')->get();
+                    foreach($fotitos as $fotito){
+                        if(($fotito->id!=$foto_portada_e)){
+                            $temp=ActividadFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    ActividadFoto::where('actividad_id',$id)->where('estado','1')->delete();
+                }
+
+                if(!empty($foto_portada)){
+                    // foreach($foto_portada as $foto){
+                        ActividadFoto::where('actividad_id',$id)->where('estado','1')->delete();
+                        $actividadfoto = new ActividadFoto();
+                        $actividadfoto->actividad_id=$actividad->id;
+                        $actividadfoto->save();
+
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto_portada->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->estado='1'; 
+                        $actividadfoto->save();
+                        Storage::disk('actividades')->put($filename,  File::get($foto_portada));
+                    // }
+                }
+
+                //-- agrgando galeria de fotos
                 if(!empty($fotos_e)){
-                    $fotitos=ActividadFoto::where('actividad_id',$id)->get();
+                    $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','0')->get();
                     foreach($fotitos as $fotito){
                         if(!in_array($fotito->id,$fotos_e)){
                             $temp=ActividadFoto::findOrfail($fotito->id);
@@ -303,7 +353,7 @@ class ServiciosController extends Controller
                     }
                 }
                 else{
-                    ActividadFoto::where('actividad_id',$id)->delete();
+                    ActividadFoto::where('actividad_id',$id)->where('estado','0')->delete();
                 }
 
                 if(!empty($fotos)){
@@ -314,6 +364,7 @@ class ServiciosController extends Controller
 
                         $filename ='foto-'.$actividadfoto->id.'.'.$foto->getClientOriginalExtension();
                         $actividadfoto->imagen=$filename;
+                        $actividadfoto->estado='0';
                         $actividadfoto->save();
                         Storage::disk('actividades')->put($filename,  File::get($foto));
                     }
@@ -736,13 +787,14 @@ class ServiciosController extends Controller
         if(strlen($fecha1)>0){
             // foreach ($dates as $key => $value) {
                 // return '.'.$value.'.';
-                // $f1=explode('/',$value);
+                $f1=explode('/',$fecha1);
                 // return $value;
-                $f=$fecha1[2].'-'.$fecha1[0].'-'.$fecha1[1];
+                $f=$f1[2].'-'.$f1[0].'-'.$f1[1];
+                // return $f;
                 $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$f)->get();
                 if($existe->count()==0){
                     $temp=new ActividadDisponible();
-                    $temp->cantidad=$cantidad;
+                    $temp->cantidad='0';
                     $temp->fecha=$f;
                     $temp->estado='0';
                     $temp->actividad_id=$id;
@@ -750,7 +802,7 @@ class ServiciosController extends Controller
                 }
                 else{
                     $existe=ActividadDisponible::where('actividad_id',$id)->where('fecha',$f)->first();
-                    $existe->cantidad=0;
+                    $existe->cantidad='0';
                     $existe->estado='0';
                     $existe->save();
                 }

@@ -144,8 +144,34 @@
                                                         <textarea class="form-control" name="recomendaciones" id="recomendaciones_a_0" cols="30" rows="10">{{$item->recomendaciones}}</textarea>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-12 text-center">
-                                                    @foreach ($item->fotos as $foto)
+                                                <div class="form-group col-12 text-lef">
+                                                    <p><b>FOTO DE PORTADA</b></p>  
+                                                    @foreach ($item->fotos->where('estado','1') as $foto)
+                                                        @if (Storage::disk('actividades')->has($foto->imagen))
+                                                            <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
+                                                                <img src="{{ route('servicio.show.imagen',[$foto->imagen,'actividades']) }}" class="figure-img rounded" alt="A generic" width="180px" height="180px">
+                                                                <figcaption class="figure-caption text-right mt-0">
+                                                                    <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_asociacion('a_{{ $item->id.'_'.$foto->id }}')">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </a>
+                                                                </figcaption>
+                                                                <input type="hidden" name="foto_portada_e" value="{{ $foto->id }}">
+                                                            </figure>
+                                                        @endif
+                                                    @endforeach
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Portada</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Portada</div>
+                                                            </div>
+                                                            <input type="file" name="foto_portada"  class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 text-lef">
+                                                    <p><b>GALERIA DE FOTOS</b></p>
+                                                    @foreach ($item->fotos->where('estado','0') as $foto)
                                                         @if (Storage::disk('actividades')->has($foto->imagen))
                                                             <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
                                                                 <img src="{{ route('servicio.show.imagen',[$foto->imagen,'actividades']) }}" class="figure-img rounded" alt="A generic" width="180px" height="180px">
@@ -158,16 +184,17 @@
                                                             </figure>
                                                         @endif
                                                     @endforeach
-                                                </div>
-                                                <div class="col-12 my-1">
-                                                    <label class="sr-only" for="inlineFormInputGroupUsername">Fotos</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Fotos</div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Galeria de fotos</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Galeria de fotos</div>
+                                                            </div>
+                                                            <input type="file" name="foto[]" multiple class="form-control">
                                                         </div>
-                                                        <input type="file" name="foto[]" multiple class="form-control">
                                                     </div>
                                                 </div>
+                                                
                                                 <hr>
                                                 <div class="row mt-3">
                                                     <div class="form-group col-10">
@@ -295,7 +322,7 @@
                                                 </form>
                                             </div>
                                             <div class="col-6">
-                                                <form id="form_a_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add_2') }}" method="POST" enctype="multipart/form-data">
+                                                <form id="form_a_d_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add_2') }}" method="POST" enctype="multipart/form-data">
                                                     <div class="row">
                                                         <div class="form-group col-12">
                                                             <b class="text-15 text-danger">Ingrese el dia no hábil</b>

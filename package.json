@@ -21,14 +21,16 @@
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
+    "summernote": "^0.8.11",
     "sweetalert2": "^8.0.5",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.22"
   },
   "dependencies": {
-    "air-datepicker": "^2.2.3",
     "@fullcalendar/core": "^4.0.1",
     "@fullcalendar/daygrid": "^4.0.1",
+    "air-datepicker": "^2.2.3",
+    "codemirror": "^5.45.0",
     "grunt": "^1.0.4",
     "sweetalert2": "^8.0.7"
   }

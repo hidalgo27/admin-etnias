@@ -43,11 +43,11 @@
                                     </div>
                                 </div>
                                 <div id="asociacion" class="col-12">
-                                    <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="" form="form_a_0">
-                                    <input type="hidden" name="c_asociacion_id" id="c_asociacion_id" value="" form="form_c_0">
-                                    <input type="hidden" name="h_asociacion_id" id="h_asociacion_id" value="" form="form_h_0">
-                                    <input type="hidden" name="t_asociacion_id" id="t_asociacion_id" value="" form="form_t_0">
-                                    <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="" form="form_s_0">
+                                    <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="" form="form_a_n_0">
+                                    <input type="hidden" name="c_asociacion_id" id="c_asociacion_id" value="" form="form_c_n_0">
+                                    <input type="hidden" name="h_asociacion_id" id="h_asociacion_id" value="" form="form_h_n_0">
+                                    <input type="hidden" name="t_asociacion_id" id="t_asociacion_id" value="" form="form_t_n_0">
+                                    <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="" form="form_s_n_0">
 
                                 </div>
                                 <div class="col-12">
@@ -62,27 +62,27 @@
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-actividades" role="tabpanel" aria-labelledby="nav-actividades-tab">
-                                            <form id="form_a_0" class="card card-body px-1" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="form_a_n_0" class="card card-body px-1" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="row"> 
                                                     <div class="form-group col-12">
                                                         <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                     </div>
                                                     <div class="col-8 my-1">
-                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Titulo</label>
+                                                        <label class="sr-only" for="titulo_a_n_0">Titulo</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Titulo</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="titulo_a_0" name="titulo" placeholder="Titulo" required>
+                                                            <input type="text" class="form-control" id="titulo_a_n_0" name="titulo" placeholder="Titulo" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-4 my-1">
-                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Categoria</label>
+                                                        <label class="sr-only" for="categoria_a_n_0">Categoria</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Categoria</div>
                                                             </div>
-                                                            <select name="categoria_" id="categoria_a_0" class="form-control">
+                                                            <select name="categoria_" id="categoria_a_n_0" class="form-control">
                                                                 @foreach ($categorias as $item)
                                                                     <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
                                                                 @endforeach
@@ -90,73 +90,82 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
-                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Descripcion</label>
+                                                        <label class="sr-only" for="descripcion_a_n_0">Descripcion</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Descripcion</div>
                                                             </div>
-                                                            <textarea class="form-control" name="descripcion" id="descripcion_a_0" cols="30" rows="10"></textarea>
+                                                            <textarea class="form-control descripcion" name="descripcion" id="descripcion_a_n_0" cols="30" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 my-1">
-                                                        <label class="sr-only" for="duracion_a_0">Duracion</label>
+                                                        <label class="sr-only" for="duracion_a_n_0">Duracion</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Duracion</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="duracion_a_0" name="duracion" placeholder="Duracion" required>
+                                                            <input type="text" class="form-control" id="duracion_a_n_0" name="duracion" placeholder="Duracion" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 my-1">
-                                                        <label class="sr-only" for="periodo_a_0">Periodo</label>
+                                                        <label class="sr-only" for="periodo_a_n_0">Periodo</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Periodo</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="periodo_a_0" name="periodo" placeholder="periodo" required>
+                                                            <input type="text" class="form-control" id="periodo_a_n_0" name="periodo" placeholder="periodo" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
-                                                        <label class="sr-only" for="incluye_a_0">incluye</label>
+                                                        <label class="sr-only" for="incluye_a_n_0">incluye</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">incluye</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="incluye_a_0" name="incluye" placeholder="Ropa típica, almuerzo típico." required>
+                                                            <input type="text" class="form-control" id="incluye_a_n_0" name="incluye" placeholder="Ropa típica, almuerzo típico." required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
-                                                        <label class="sr-only" for="no_incluye_a_0">No incluye</label>
+                                                        <label class="sr-only" for="no_incluye_a_n_0">No incluye</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">No incluye</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="no_incluye_a_0" name="no_incluye" placeholder="Transporte a la comunidad." required>
+                                                            <input type="text" class="form-control" id="no_incluye_a_n_0" name="no_incluye" placeholder="Transporte a la comunidad." required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
-                                                        <label class="sr-only" for="disponible_a_0">Idioma disponible</label>
+                                                        <label class="sr-only" for="disponible_a_n_0">Idioma disponible</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Idioma disponible</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="disponible_a_0" name="disponible" placeholder="Ingles, Español" required>
+                                                            <input type="text" class="form-control" id="disponible_a_n_0" name="disponible" placeholder="Ingles, Español" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
-                                                        <label class="sr-only" for="recomendaciones_a_0">Recomendaciones</label>
+                                                        <label class="sr-only" for="recomendaciones_a_n_0">Recomendaciones</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Recomendaciones</div>
                                                             </div>
-                                                            <textarea class="form-control" name="recomendaciones" id="recomendaciones_a_0" cols="30" rows="10"></textarea>
+                                                            <textarea class="form-control" name="recomendaciones" id="recomendaciones_a_n_0" cols="30" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
-                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Fotos</label>
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Portada</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <div class="input-group-text">Fotos</div>
+                                                                <div class="input-group-text">Portada</div>
+                                                            </div>
+                                                            <input type="file" name="foto_portada" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Galeria de fotos</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Galeria de fotos</div>
                                                             </div>
                                                             <input type="file" name="foto[]" multiple class="form-control">
                                                         </div>
@@ -203,10 +212,10 @@
                                                 <div class="col-12">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="a">
-                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('a','0')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('a','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
-                                                <div class="col-12" id="rpt_form_a_0"></div>
+                                                <div class="col-12" id="rpt_form_a_n_0"></div>
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-comidas" role="tabpanel" aria-labelledby="nav-comidas-tab">
@@ -287,10 +296,10 @@
                                                 <div class="col-12">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="c">
-                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('c','0')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('c','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
-                                                <div class="col-12" id="rpt_form_c_0"></div>
+                                                <div class="col-12" id="rpt_form_c_n_0"></div>
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-hospedaje" role="tabpanel" aria-labelledby="nav-hospedaje-tab">
@@ -358,7 +367,7 @@
                                                             <td>
                                                                 <button class="btn btn-danger d-none" type="button" onclick="borrar_precio('h')" disabled><i class="fas fa-trash-alt"></i></button>
                                                                 <input type="hidden" id="cantidad_precios_h_0" value="1">
-                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('h','0')"><i class="fas fa-plus"></i></button>
+                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('h','n_0')"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -369,7 +378,7 @@
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('h','0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
-                                                <div class="col-12" id="rpt_form_h_0"></div>
+                                                <div class="col-12" id="rpt_form_h_n_0"></div>
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-transporte" role="tabpanel" aria-labelledby="nav-transporte-tab">
@@ -437,7 +446,7 @@
                                                             <td>
                                                                 <button class="btn btn-danger d-none" type="button" onclick="borrar_precio('t')" disabled><i class="fas fa-trash-alt"></i></button>
                                                                 <input type="hidden" id="cantidad_precios_t_0" value="1">
-                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('t','0')"><i class="fas fa-plus"></i></button>
+                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('t','n_0')"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -448,7 +457,7 @@
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('t','0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
-                                                <div class="col-12" id="rpt_form_t_0"></div>
+                                                <div class="col-12" id="rpt_form_t_n_0"></div>
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-servicios" role="tabpanel" aria-labelledby="nav-servicios-tab">
@@ -515,7 +524,7 @@
                                                             </td>
                                                             <td>
                                                                 <button class="btn btn-danger d-none" type="button" onclick="borrar_precio('s')" disabled><i class="fas fa-trash-alt"></i></button>
-                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('s','0')"><i class="fas fa-plus"></i></button>
+                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('s','n_0')"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -526,7 +535,7 @@
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('s','0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
-                                                <div class="col-12" id="rpt_form_s_0"></div>
+                                                <div class="col-12" id="rpt_form_s_n_0"></div>
                                             </form>
                                         </div>
                                     </div>

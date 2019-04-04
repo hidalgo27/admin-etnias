@@ -40,6 +40,15 @@ const app = new Vue({
     el: '#app'
 });
 $('.datepicker').datepicker();
+$(document).ready(function (){
+    $('.descripcion').summernote({
+        height: 150,   //set editable area's height
+        codemirror: { // codemirror options
+            theme: 'monokai'
+        }
+    });
+});
+
 
 
 
