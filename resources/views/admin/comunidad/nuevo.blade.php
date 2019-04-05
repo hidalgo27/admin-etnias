@@ -68,7 +68,11 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="descripcion">Descripcion</label>
-                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion" cols="30" rows="10">{{ old('nombre') }}</textarea>
+                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion" cols="30" rows="10">{{ old('descripcion') }}</textarea>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="historia">Historia</label>
+                                        <textarea class="form-control descripcion" name="historia" id="historia" cols="30" rows="10">{{ old('historia') }}</textarea>
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="foto">Portada</label>

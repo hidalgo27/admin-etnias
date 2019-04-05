@@ -115,6 +115,10 @@
                                                                     <label for="descripcion">Descripcion</label>
                                                                     <textarea class="form-control descripcion" name="descripcion" id="descripcion" cols="30" rows="10">{{ $item->descripcion }}</textarea>
                                                                 </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="historia">Historia</label>
+                                                                    <textarea class="form-control descripcion" name="historia" id="historia" cols="30" rows="10">{{ $item->historia }}</textarea>
+                                                                </div>
                                                                 <div class="row">
                                                                     <div class="col-12">
                                                                         <div class="form-group col-12 text-left">

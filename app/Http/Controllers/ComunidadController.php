@@ -31,6 +31,7 @@ class ComunidadController extends Controller
         $nombre=$request->input('nombre');
         $distrito_id=$request->input('distrito');
         $descripcion=$request->input('descripcion');
+        $historia=$request->input('historia');
         $altura=$request->input('altura');
         $distancia=$request->input('distancia');
         $portada=$request->file('portada');
@@ -46,6 +47,7 @@ class ComunidadController extends Controller
             $comunidad=new Comunidad();
             $comunidad->nombre=$nombre;
             $comunidad->descripcion=$descripcion;
+            $comunidad->historia=$historia;            
             $comunidad->distrito_id=$distrito_id;
             $comunidad->altura=$altura;
             $comunidad->distancia=$distancia;
@@ -103,6 +105,7 @@ class ComunidadController extends Controller
         $id=$request->input('id');
         $distrito_id=$request->input('distrito');
         $descripcion=$request->input('descripcion');
+        $historia=$request->input('historia');
         $portada_f=$request->file('portada_f');
         $portada=$request->input('portada');
         $fotos=$request->file('foto');
@@ -117,6 +120,7 @@ class ComunidadController extends Controller
         $comunidad=Comunidad::find($id);
         $comunidad->nombre=$nombre;
         $comunidad->descripcion=$descripcion;
+        $comunidad->historia=$historia;        
         $comunidad->distrito_id=$distrito_id;
         $comunidad->altura=$altura;
         $comunidad->distancia=$distancia;
