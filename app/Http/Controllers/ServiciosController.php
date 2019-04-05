@@ -12,8 +12,14 @@ use App\Asociacion;
 use App\ComidaFoto;
 use App\Transporte;
 use App\ComidaPrecio;
+use App\ServicioFoto;
 use App\ActividadFoto;
+use App\HospedajeFoto;
+use App\ServicioPrecio;
+use App\TransporteFoto;
 use App\ActividadPrecio;
+use App\HospedajePrecio;
+use App\TransportePrecio;
 use App\ActividadDisponible;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -171,7 +177,7 @@ class ServiciosController extends Controller
                     $hospedaje_precio->min=$minimo[$key];
                     $hospedaje_precio->max=$maximo[$key];
                     $hospedaje_precio->precio=$precio[$key];
-                    $hospedaje_precio->comida_id=$hospedaje->id;
+                    $hospedaje_precio->hospedaje_id=$hospedaje->id;
                     $hospedaje_precio->save();
 
                 }
@@ -204,7 +210,7 @@ class ServiciosController extends Controller
                     $transporte_precio->min=$minimo[$key];
                     $transporte_precio->max=$maximo[$key];
                     $transporte_precio->precio=$precio[$key];
-                    $transporte_precio->comida_id=$transporte->id;
+                    $transporte_precio->tansporte_id=$transporte->id;
                     $transporte_precio->save();
 
                 }
@@ -237,7 +243,7 @@ class ServiciosController extends Controller
                     $servicio_precio->min=$minimo[$key];
                     $servicio_precio->max=$maximo[$key];
                     $servicio_precio->precio=$precio[$key];
-                    $servicio_precio->comida_id=$servicio->id;
+                    $servicio_precio->servicio_id=$servicio->id;
                     $servicio_precio->save();
 
                 }

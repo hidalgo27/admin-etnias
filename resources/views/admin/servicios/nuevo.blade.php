@@ -219,7 +219,7 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-comidas" role="tabpanel" aria-labelledby="nav-comidas-tab">
-                                            <form id="form_c_0" class="card card-body" action="{{ route('servicios.comidas.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="form_c_n_0" class="card card-body" action="{{ route('servicios.comidas.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
@@ -229,7 +229,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Comida</div>
                                                         </div>
-                                                        <select class="form-control" name="titulo" id="titulo_c_0">
+                                                        <select class="form-control" name="titulo" id="titulo_c_n_0">
                                                             <option value="DESAYUNO">DESAYUNO</option>
                                                             <option value="ALMUERZO">ALMUERZO</option>
                                                             <option value="CENA">CENA</option>
@@ -242,7 +242,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_c_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_c_n_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -303,7 +303,7 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-hospedaje" role="tabpanel" aria-labelledby="nav-hospedaje-tab">
-                                            <form id="form_h_0" class="card card-body" action="{{ route('servicios.hospedaje.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="form_h_n_0" class="card card-body" action="{{ route('servicios.hospedaje.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
@@ -313,7 +313,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Titulo</div>
                                                         </div>
-                                                        <input type="text" name="titulo" id="titulo_h_0" class="form-control" value="PERNOCTE" disabled='disabled'>
+                                                        <input type="text" name="titulo" id="titulo_h_n_0" class="form-control" value="PERNOCTE" disabled='disabled'>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -322,7 +322,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_h_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_h_n_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -367,7 +367,7 @@
                                                             <td>
                                                                 <button class="btn btn-danger d-none" type="button" onclick="borrar_precio('h')" disabled><i class="fas fa-trash-alt"></i></button>
                                                                 <input type="hidden" id="cantidad_precios_h_0" value="1">
-                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('h','n_0')"><i class="fas fa-plus"></i></button>
+                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('h','0')"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -375,14 +375,14 @@
                                                 <div class="col-12">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="h">
-                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('h','0')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('h','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_h_n_0"></div>
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-transporte" role="tabpanel" aria-labelledby="nav-transporte-tab">
-                                            <form id="form_t_0" class="card card-body" action="{{ route('servicios.transporte.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="form_t_n_0" class="card card-body" action="{{ route('servicios.transporte.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
@@ -392,7 +392,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Ruta</div>
                                                         </div>
-                                                        <input type="text" name="titulo" id="titulo_t_0" class="form-control" placeholder="Hotel / Lugar donde queda la asociacion">
+                                                        <input type="text" name="titulo" id="titulo_t_n_0" class="form-control" placeholder="Hotel / Lugar donde queda la asociacion">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -401,7 +401,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_t_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_t_n_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -446,7 +446,7 @@
                                                             <td>
                                                                 <button class="btn btn-danger d-none" type="button" onclick="borrar_precio('t')" disabled><i class="fas fa-trash-alt"></i></button>
                                                                 <input type="hidden" id="cantidad_precios_t_0" value="1">
-                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('t','n_0')"><i class="fas fa-plus"></i></button>
+                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('t','0')"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -454,14 +454,14 @@
                                                 <div class="col-12">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="t">
-                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('t','0')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('t','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_t_n_0"></div>
                                             </form>
                                         </div>
                                         <div class="tab-pane fade" id="nav-servicios" role="tabpanel" aria-labelledby="nav-servicios-tab">
-                                            <form id="form_s_0" class="card card-body" action="{{ route('servicios.servicio.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form id="form_s_n_0" class="card card-body" action="{{ route('servicios.servicio.store') }}" method="POST" enctype="multipart/form-data">
                                                 <div class="form-group col-12">
                                                     <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                 </div>
@@ -471,7 +471,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Titulo</div>
                                                         </div>
-                                                        <input type="text" name="titulo" id="titulo_s_0" class="form-control" placeholder="Servicio adicional">
+                                                        <input type="text" name="titulo" id="titulo_s_n_0" class="form-control" placeholder="Servicio adicional">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -480,7 +480,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_s_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_s_n_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -524,7 +524,7 @@
                                                             </td>
                                                             <td>
                                                                 <button class="btn btn-danger d-none" type="button" onclick="borrar_precio('s')" disabled><i class="fas fa-trash-alt"></i></button>
-                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('s','n_0')"><i class="fas fa-plus"></i></button>
+                                                                <button class="btn btn-success" type="button" onclick="agregar_precio('s','0')"><i class="fas fa-plus"></i></button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -532,7 +532,7 @@
                                                 <div class="col-12">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="s">
-                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('s','0')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                    <button class="btn btn-primary" type="button" onclick="enviar_datos('s','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
                                                     <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_s_n_0"></div>
