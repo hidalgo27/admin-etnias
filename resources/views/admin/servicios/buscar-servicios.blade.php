@@ -36,7 +36,7 @@
                     <tr id="servicio_{{ $item->id }}">
                         <td>{{ $i }}</td>
                         <td>{{ $item->titulo }}</td>
-                        <td>{{ substr($item->descripcion,0,20) }}...</td>
+                        <td>{!! substr($item->descripcion,0,20) !!}...</td>
                         <td>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_actividad_{{ $item->id }}">
@@ -87,7 +87,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control" name="descripcion" id="descripcion_a_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_a_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-6 my-1">
@@ -114,8 +114,8 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">incluye</div>
                                                         </div>
-                                                        <input type="text" class="form-control" id="incluye_a_0" name="incluye" placeholder="Ropa típica, almuerzo típico."  value="{{$item->incluye}}" required>
-                                                    </div>
+                                                        <textarea class="form-control descripcion" name="incluye" id="incluye_a_0" cols="30" rows="10">{{$item->incluye}}</textarea>
+                                                   </div>
                                                 </div>
                                                 <div class="col-12 my-1">
                                                     <label class="sr-only" for="no_incluye_a_0">No incluye</label>
@@ -123,7 +123,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">No incluye</div>
                                                         </div>
-                                                        <input type="text" class="form-control" id="no_incluye_a_0" name="no_incluye" placeholder="Transporte a la comunidad."  value="{{$item->no_incluye}}" required>
+                                                        <textarea class="form-control descripcion" name="no_incluye" id="no_incluye_a_0" cols="30" rows="10">{{$item->no_incluye}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -139,13 +139,13 @@
                                                     <label class="sr-only" for="recomendaciones_a_0">Recomendaciones</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
-                                                            <div class="input-group-text">Recomendaciones</div>
+                                                            <div class="input-group-text">Recomen.</div>
                                                         </div>
-                                                        <textarea class="form-control" name="recomendaciones" id="recomendaciones_a_0" cols="30" rows="10">{{$item->recomendaciones}}</textarea>
+                                                        <textarea class="form-control descripcion" name="recomendaciones" id="recomendaciones_a_0" cols="30" rows="10">{{$item->recomendaciones}}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-12 text-lef">
-                                                    <p><b>FOTO DE PORTADA</b></p>  
+                                                    <p><b>FOTO DE PORTADA</b></p>
                                                     @foreach ($item->fotos->where('estado','1') as $foto)
                                                         @if (Storage::disk('actividades')->has($foto->imagen))
                                                             <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
@@ -194,7 +194,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <hr>
                                                 <div class="row mt-3">
                                                     <div class="form-group col-10">
@@ -522,7 +522,7 @@
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">Descripcion</div>
                                                     </div>
-                                                    <textarea class="form-control" name="descripcion" id="descripcion_c_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                    <textarea class="form-control descripcion" name="descripcion" id="descripcion_c_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 text-center">
@@ -679,7 +679,7 @@
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">Descripcion</div>
                                                     </div>
-                                                    <textarea class="form-control" name="descripcion" id="descripcion_h_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                    <textarea class="form-control descripcion" name="descripcion" id="descripcion_h_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 text-center">
@@ -836,7 +836,7 @@
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">Descripcion</div>
                                                     </div>
-                                                    <textarea class="form-control" name="descripcion" id="descripcion_t_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                    <textarea class="form-control descripcion" name="descripcion" id="descripcion_t_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 text-center">
@@ -993,7 +993,7 @@
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">Descripcion</div>
                                                     </div>
-                                                    <textarea class="form-control" name="descripcion" id="descripcion_s_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
+                                                    <textarea class="form-control descripcion" name="descripcion" id="descripcion_s_e_{{ $item->id }}" cols="30" rows="10">{{ $item->descripcion }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 text-center">
@@ -1093,3 +1093,15 @@
         </table>
     </div>
 </div>
+
+<script>
+    $(document).ready(function (){
+        $('.descripcion').summernote({
+            height: 150,   //set editable area's height
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+    });
+
+</script>

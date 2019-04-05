@@ -68,10 +68,14 @@
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="descripcion">Descripcion</label>
-                                        <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10">{{ old('nombre') }}</textarea>
+                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion" cols="30" rows="10">{{ old('nombre') }}</textarea>
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="foto">Foto</label>
+                                        <label for="foto">Portada</label>
+                                        <input type="file" name="portada" class="form-control">
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="foto">Galeria de fotos</label>
                                         <input type="file" name="foto[]" multiple class="form-control">
                                     </div>
                                 </div>

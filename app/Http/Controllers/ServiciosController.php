@@ -44,6 +44,7 @@ class ServiciosController extends Controller
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
+        $recomendaciones=$request->input('recomendaciones');
 
         $fotos=$request->file('foto');
         $foto_portada=$request->file('foto_portada');
@@ -68,10 +69,11 @@ class ServiciosController extends Controller
                 $actividad->incluye=$incluye;
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
+                $actividad->recomendaciones=$recomendaciones;
                 $actividad->asociacion_id=$asociacion_id;
                 $actividad->save();
                 if(!empty($foto_portada)){
-                    
+
                         $actividadfoto = new ActividadFoto();
                         $actividadfoto->actividad_id=$actividad->id;
                         $actividadfoto->save();
@@ -81,7 +83,7 @@ class ServiciosController extends Controller
                         $actividadfoto->estado='1';
                         $actividadfoto->save();
                         Storage::disk('actividades')->put($filename,  File::get($foto_portada));
-                    
+
                 }
                 if(!empty($fotos)){
                     foreach($fotos as $foto){
@@ -96,7 +98,7 @@ class ServiciosController extends Controller
                         Storage::disk('actividades')->put($filename,  File::get($foto));
                     }
                 }
-                
+
                 foreach ($categoria as $key => $value) {
                     $actividad_precio=new ActividadPrecio();
                     $actividad_precio->categoria=$value;
@@ -273,10 +275,10 @@ class ServiciosController extends Controller
         $categoria_=$request->input('categoria_');
         $titulo=strtolower(trim($request->input('titulo')));
         $descripcion=$request->input('descripcion');
-        
+
         $foto_portada=$request->file('foto_portada');
         $foto_portada_e=$request->input('foto_portada_e');
-        
+
         $fotos=$request->file('foto');
         $fotos_e=$request->input('fotos_');
         $categoria_n=$request->input('categoria_n');
@@ -285,6 +287,7 @@ class ServiciosController extends Controller
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
+        $recomendaciones=$request->input('recomendaciones');
 
         $minimo_n=$request->input('minimo_'.$attributo.'_n_'.$id);
         $maximo_n=$request->input('maximo_'.$attributo.'_n_'.$id);
@@ -312,6 +315,7 @@ class ServiciosController extends Controller
                 $actividad->incluye=$incluye;
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
+                $actividad->recomendaciones=$recomendaciones;
                 $actividad->save();
                 //-- agregando foto de portada
                 if(!empty($foto_portada_e)){
@@ -336,7 +340,7 @@ class ServiciosController extends Controller
 
                         $filename ='foto-'.$actividadfoto->id.'.'.$foto_portada->getClientOriginalExtension();
                         $actividadfoto->imagen=$filename;
-                        $actividadfoto->estado='1'; 
+                        $actividadfoto->estado='1';
                         $actividadfoto->save();
                         Storage::disk('actividades')->put($filename,  File::get($foto_portada));
                     // }

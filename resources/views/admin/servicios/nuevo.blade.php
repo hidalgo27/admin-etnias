@@ -63,7 +63,7 @@
                                     <div class="tab-content" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-actividades" role="tabpanel" aria-labelledby="nav-actividades-tab">
                                             <form id="form_a_n_0" class="card card-body px-1" action="{{ route('servicios.actividad.store') }}" method="POST" enctype="multipart/form-data">
-                                                <div class="row"> 
+                                                <div class="row">
                                                     <div class="form-group col-12">
                                                         <b class="text-15 text-success">PASO 1: DATOS GENERALES</b>
                                                     </div>
@@ -122,7 +122,7 @@
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">incluye</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="incluye_a_n_0" name="incluye" placeholder="Ropa típica, almuerzo típico." required>
+                                                            <textarea class="form-control descripcion" name="incluye" id="incluye_a_n_0" cols="30" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
@@ -131,7 +131,7 @@
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">No incluye</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="no_incluye_a_n_0" name="no_incluye" placeholder="Transporte a la comunidad." required>
+                                                            <textarea class="form-control descripcion" name="no_incluye" id="no_incluye_a_n_0" cols="30" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
@@ -149,7 +149,7 @@
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Recomendaciones</div>
                                                             </div>
-                                                            <textarea class="form-control" name="recomendaciones" id="recomendaciones_a_n_0" cols="30" rows="10"></textarea>
+                                                            <textarea class="form-control descripcion" name="recomendaciones" id="recomendaciones_a_n_0" cols="30" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
@@ -242,7 +242,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control" name="descripcion" id="descripcion_c_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_c_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -322,7 +322,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control" name="descripcion" id="descripcion_h_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_h_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -401,7 +401,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control" name="descripcion" id="descripcion_t_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_t_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -480,7 +480,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Descripcion</div>
                                                         </div>
-                                                        <textarea class="form-control" name="descripcion" id="descripcion_s_0" cols="30" rows="10"></textarea>
+                                                        <textarea class="form-control descripcion" name="descripcion" id="descripcion_s_0" cols="30" rows="10"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
