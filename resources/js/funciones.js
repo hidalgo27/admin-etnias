@@ -173,7 +173,11 @@ function buscar_asociacion(ruc_rs){
         $.ajax({
             type:'get',
             url:'/admin/asociacion/buscar/'+valor,
-            // data:{id:id},
+            beforeSend: function(data1) {
+                // console.log('data1:'+data1);
+                $("#asociacion").html('');
+                $("#asociacion").html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+            },
             success:function(data){
                 $('#asociacion').html('');
                 $('#asociacion').html(data);
@@ -195,9 +199,11 @@ function agregar_precio(valor1,valor2){
     '<td>'+
     '<select class="form-control" name="categoria_n[]" id="categoria">'+
         '<option value="Nacional">Nacional</option>'+
-        '<option value="Extranjero">Extranjero</option>'+
-        '<option value="Agencia">Agencia</option>'+
-    '</select>'+
+        '<option value="Extranjero">Extranjero</option>';
+        if(valor1=='a'){
+            cadena+='<option value="Agencia">Agencia</option>';
+        }
+    cadena+='</select>'+
     '</td>'+
     '<td>'+
         '<input class="form-control" type="number" min="0" name="minimo_'+valor1+'_n_'+valor2+'[]" id="minimo">'+
@@ -402,7 +408,7 @@ function enviar_datos(valor1,valor2){
         processData: false,
         beforeSend: function() {
             $('#rpt_form_'+valor1+'_'+valor2).html('');
-            $('#rpt_form_'+valor1+'_'+valor2).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+            $('#rpt_form_'+valor1+'_'+valor2).html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
         },
         success:function(data){
             $('#rpt_form_'+valor1+'_'+valor2).html(data.mensaje);
@@ -422,7 +428,10 @@ function buscar_servicios(ruc_rs){
         $.ajax({
             type:'get',
             url:'/admin/servicios/buscar/'+valor,
-            // data:{id:id},
+            beforeSend: function() {
+                $('#servicios').html('');
+                $('#servicios').html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+            },
             success:function(data){
                 $('#servicios').html('');
                 $('#servicios').html(data);
@@ -571,7 +580,7 @@ function enviar_datos_editar(valor1,valor2){
         processData: false,
         beforeSend: function() {
             $('#rpt_form_'+valor1+'_'+valor2).html('');
-            $('#rpt_form_'+valor1+'_'+valor2).html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+            $('#rpt_form_'+valor1+'_'+valor2).html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
         },
         success:function(data){
             $('#rpt_form_'+valor1+'_'+valor2).html(data.mensaje);
@@ -759,7 +768,7 @@ function mostrar_proveedores(departamento_id,categoria,categoria_id,producto_id)
         data:{departamento_id:departamento_id,categoria:categoria,categoria_id:categoria_id,producto_id:producto_id},
         beforeSend: function() {
             $("#lista_proveedores").html('');
-            $("#lista_proveedores").html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+            $("#lista_proveedores").html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
         },
         success:function(data){
 
@@ -944,7 +953,7 @@ function mostrar_proveedores_productos(departamento_id,categoria,categoria_id,pr
         data:{departamento_id:departamento_id,categoria:categoria,categoria_id:categoria_id,producto_id:producto_id},
         beforeSend: function() {
             $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('');
-            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('<div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>');
+            $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
         },
         success:function(data){
             $("#lista_proveedores_"+categoria_id+"_"+producto_id).html('');
@@ -982,7 +991,7 @@ function escojer_proveedor(valor1,rol){
     beforeSend: function(data1) {
         console.log('data1:'+data1);
         $("#rpt_"+valor1).html('');
-        $("#rpt_"+valor1).html('<div class="spinner-grow text-light" role="status"><span class="sr-only">Loading...</span></div>');
+        $("#rpt_"+valor1).html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
         $('#rpt_proveedor_'+rol+'_'+valor1).html('');
         $('#rpt_precio_pago_'+rol+'_'+valor1).html('');
         $('#rpt_fecha_pago_'+rol+'_'+valor1).html('');
@@ -1053,14 +1062,17 @@ console.log(valorcito);
         }
     });
     $.ajax({
-    type:'POST',
-    url:'../admin/reserva/get-reserva',
-    data:{valor:valorcito},
-    success:function(data){
-        $("#rpt").html('');
-        $("#rpt").html(data);
-
-    }
+        type:'POST',
+        url:'../admin/reserva/get-reserva',
+        data:{valor:valorcito},
+        beforeSend: function() {
+            $("#rpt").html('');
+            $('#rpt').html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+        },
+        success:function(data){
+            $("#rpt").html('');
+            $("#rpt").html(data);
+        }
     });
 }
 
@@ -1074,6 +1086,11 @@ $.ajax({
     url: $("#form_a_calendario_"+valor1).attr('action'),
     method: $("#form_a_calendario_"+valor1).attr('method'),
     data:$("#form_a_calendario_"+valor1).serialize(),
+    beforeSend: function(data1) {
+        // console.log('data1:'+data1);
+        $("#rpt_calendario_"+valor1).html('');
+        $("#rpt_calendario_"+valor1).html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+    },
     success:function(data){
         console.log(data);
         if(data.length==1){
@@ -1107,6 +1124,11 @@ function guardar_calendario_2(valor1){
         url: $("#form_a_d_calendario_"+valor1).attr('action'),
         method: $("#form_a_d_calendario_"+valor1).attr('method'),
         data:$("#form_a_d_calendario_"+valor1).serialize(),
+        beforeSend: function(data1) {
+            // console.log('data1:'+data1);
+            $("#rpt_calendario_"+valor1).html('');
+            $("#rpt_calendario_"+valor1).html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+        },
         success:function(data){
             console.log(data);
             if(data.length==1){

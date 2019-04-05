@@ -103,7 +103,7 @@
                                                                     <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias($(this).val());">
                                                                         <option value="0">Escoja una opcion</option>
                                                                         @foreach ($departamentos as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->departamento_id)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia->departamento_id)
                                                                                 selected
                                                                             @endif>{{ $item_->departamento }}</option>
                                                                         @endforeach
@@ -113,8 +113,8 @@
                                                                     <label for="provincia">Provicia</label>
                                                                     <select class="form-control" name="provincia" id="provincia" onchange="mostrar_distritos($(this).val());">
                                                                         <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($provincias->where('departamento_id',$item->departamento_id) as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->provincia_id)
+                                                                        @foreach ($provincias->where('departamento_id',$item->comunidad->distrito->provincia->departamento_id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia_id)
                                                                                 selected
                                                                             @endif>{{ $item_->provincia }}</option>
                                                                         @endforeach
@@ -124,8 +124,8 @@
                                                                     <label for="distrito">Distrito</label>
                                                                     <select class="form-control" name="distrito" id="distrito" onchange="mostrar_comunidades($(this).val(),'{{ $item->id }}');">
                                                                         <option value="0">Escoja una opcion</option>
-                                                                        @foreach ($distritos->where('provincia_id',$item->provincia_id) as $item_)
-                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->distrito_id)
+                                                                        @foreach ($distritos->where('provincia_id',$item->comunidad->distrito->provincia_id) as $item_)
+                                                                            <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito_id)
                                                                                 selected
                                                                             @endif>{{ $item_->distrito }}</option>
                                                                         @endforeach
@@ -192,6 +192,10 @@
                                                                             <input type="file" name="foto[]" multiple class="form-control">
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    <label for="descripcion">Descripcion</label>
+                                                                    <textarea name="descripcion" id="descripcion" class="form-control descripcion"  cols="30" rows="10" required >{{ $item->descripcion }}</textarea>
                                                                 </div>
                                                             </div>
 

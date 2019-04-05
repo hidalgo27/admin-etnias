@@ -41,7 +41,7 @@ class AsociacionController extends Controller
     public function store(Request $request){
         $ruc=$request->input('ruc');
         $nombre=$request->input('nombre');
-
+        $descripcion=$request->input('descripcion');
         $contacto=$request->input('contacto');
         $celular=$request->input('celular');
         $email=$request->input('email');
@@ -66,6 +66,7 @@ class AsociacionController extends Controller
             $asociacion->email=$email;
             $asociacion->direccion=$direccion;
             $asociacion->comision=$comision;
+            $asociacion->descripcion=$descripcion;
             $asociacion->comunidad_id=$comunidad_id;
             $asociacion->save();
             if(!empty($portada)){
@@ -115,6 +116,7 @@ class AsociacionController extends Controller
         $ruc=$request->input('ruc');
         $nombre=$request->input('nombre');
 
+        $descripcion=$request->input('descripcion');
         $contacto=$request->input('contacto');
         $celular=$request->input('celular');
         $email=$request->input('email');
@@ -139,6 +141,7 @@ class AsociacionController extends Controller
         $asociacion->email=$email;
         $asociacion->direccion=$direccion;
         $asociacion->comision=$comision;
+        $asociacion->descripcion=$descripcion;        
         $asociacion->comunidad_id=$comunidad_id;
         $asociacion->save();
 

@@ -96,6 +96,10 @@
                                         <label for="foto">Galeria de fotos</label>
                                         <input type="file" name="foto[]" multiple class="form-control">
                                     </div>
+                                    <div class="form-group col-12">
+                                        <label for="descripcion">Descripcion</label>
+                                        <textarea name="descripcion" id="descripcion" class="form-control descripcion"  cols="30" rows="10" required >{{ old('descripcion') }}</textarea>
+                                    </div>
                                 </div>
 
                             </div>
