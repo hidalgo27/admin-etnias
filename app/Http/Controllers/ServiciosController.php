@@ -47,6 +47,9 @@ class ServiciosController extends Controller
         $descripcion=$request->input('descripcion');
         $duracion=$request->input('duracion');
         $periodo=$request->input('periodo');
+        $edad_minima=$request->input('edad_minima');
+        $dificultad=$request->input('dificultad');
+        $tolerancia=$request->input('tolerancia');
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
@@ -72,6 +75,9 @@ class ServiciosController extends Controller
                 $actividad->descripcion=$descripcion;
                 $actividad->duracion=$duracion;
                 $actividad->periodo=$periodo;
+                $actividad->edad_minima=$edad_minima;
+                $actividad->dificultad=$dificultad;
+                $actividad->tolerancia=$tolerancia;
                 $actividad->incluye=$incluye;
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
@@ -290,6 +296,9 @@ class ServiciosController extends Controller
         $categoria_n=$request->input('categoria_n');
         $duracion=$request->input('duracion');
         $periodo=$request->input('periodo');
+        $edad_minima=$request->input('edad_minima');
+        $dificultad=$request->input('dificultad');
+        $tolerancia=$request->input('tolerancia');
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
@@ -318,6 +327,9 @@ class ServiciosController extends Controller
                 $actividad->descripcion=$descripcion;
                 $actividad->duracion=$duracion;
                 $actividad->periodo=$periodo;
+                $actividad->edad_minima=$edad_minima;
+                $actividad->dificultad=$dificultad;
+                $actividad->tolerancia=$tolerancia;
                 $actividad->incluye=$incluye;
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;

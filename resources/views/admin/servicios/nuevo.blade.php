@@ -104,7 +104,7 @@
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Duracion</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="duracion_a_n_0" name="duracion" placeholder="Duracion" required>
+                                                            <input type="text" class="form-control" id="duracion_a_n_0" name="duracion" placeholder="Ejm. 3 horas" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 my-1">
@@ -113,7 +113,34 @@
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Periodo</div>
                                                             </div>
-                                                            <input type="text" class="form-control" id="periodo_a_n_0" name="periodo" placeholder="periodo" required>
+                                                            <input type="text" class="form-control" id="periodo_a_n_0" name="periodo" placeholder="Ejm. Todo el año" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 my-1">
+                                                        <label class="sr-only" for="edad_minima_a_n_0">Edad minima</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Edad minima</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="edad_minima_a_n_0" name="edad_minima" placeholder="Ejm. 7 años" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 my-1">
+                                                        <label class="sr-only" for="dificultad_a_n_0">Dificultad</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Dificultad</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="dificultad_a_n_0" name="dificultad" placeholder="Ejm. Facil" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 my-1">
+                                                        <label class="sr-only" for="tolerancia_a_n_0">Tolerancia</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Tolerancia</div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="tolerancia_a_n_0" name="tolerancia" placeholder="Ejm. 20 minutos" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">

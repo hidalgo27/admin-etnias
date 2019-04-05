@@ -108,6 +108,33 @@
                                                         <input type="text" class="form-control" id="periodo_a_0" name="periodo" placeholder="periodo" value="{{$item->periodo}}" required>
                                                     </div>
                                                 </div>
+                                                <div class="col-4 my-1">
+                                                    <label class="sr-only" for="edad_minima_a_n_0">Edad minima</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Edad minima</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="edad_minima_a_0" name="edad_minima" placeholder="Ejm. 7 años" value="{{$item->edad_minima}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 my-1">
+                                                    <label class="sr-only" for="dificultad_a_n_0">Dificultad</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Dificultad</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="dificultad_a_0" name="dificultad" placeholder="Ejm. Facil" value="{{$item->dificultad}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 my-1">
+                                                    <label class="sr-only" for="tolerancia_a_n_0">Tolerancia</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Tolerancia</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" id="tolerancia_a_0" name="tolerancia" placeholder="Ejm. 20 minutos" value="{{$item->tolerancia}}" required>
+                                                    </div>
+                                                </div>
                                                 <div class="col-12 my-1">
                                                     <label class="sr-only" for="incluye_a_0">incluye</label>
                                                     <div class="input-group">
