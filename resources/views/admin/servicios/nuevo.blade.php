@@ -240,7 +240,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="a">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('a','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_a_n_0"></div>
                                             </form>
@@ -324,7 +324,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="c">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('c','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_c_n_0"></div>
                                             </form>
@@ -403,7 +403,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="h">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('h','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_h_n_0"></div>
                                             </form>
@@ -482,7 +482,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="t">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('t','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_t_n_0"></div>
                                             </form>
@@ -560,7 +560,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="s">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('s','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_s_n_0"></div>
                                             </form>
