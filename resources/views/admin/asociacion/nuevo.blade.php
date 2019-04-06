@@ -51,6 +51,14 @@
                                         <label for="email">email</label>
                                         <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" aria-describedby="email" placeholder="Email" required>
                                     </div>
+                                    <div class="form-group col-6">
+                                        <label for="email">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}" aria-describedby="password" placeholder="Password" required>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="email">Re password</label>
+                                        <input type="password" class="form-control" id="repassword" name="repassword" value="{{ old('repassword') }}" aria-describedby="repassword" placeholder="Re password" required>
+                                    </div>
                                     <div class="form-group col-12">
                                         <label for="direccion">Direccion</label>
                                         <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}" aria-describedby="direccion" placeholder="Numero del direccion" required>

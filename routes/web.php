@@ -243,3 +243,23 @@ Route::post('/admin/servicio/calendario-d', [
     'uses' => 'ServiciosController@add_calendario_d',
     'as' => 'servicios.calendario.add_2',
 ]);
+
+// rutas para las solicitudes
+
+Route::get('/admin/solucitudes/asociacion/lista', [
+    'uses' => 'SolicitudAsociacionController@lista',
+    'as' => 'solucitudes.asociacion.lista',
+]);
+
+Route::get('/admin/solucitudes/asociacion/crear/{id}', [
+    'uses' => 'SolicitudAsociacionController@crear',
+    'as' => 'solucitudes.asociacion.crear',
+]);
+Route::get('/admin/solucitudes/otros/lista', [
+    'uses' => 'SolicitudOtrosController@lista',
+    'as' => 'solucitudes.otros.lista',
+]);
+Route::get('/admin/solicitudes/otros/crear/{id}', [
+    'uses' => 'SolicitudOtrosController@crear',
+    'as' => 'solucitudes.otros.crear',
+]);

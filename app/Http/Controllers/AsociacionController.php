@@ -45,6 +45,8 @@ class AsociacionController extends Controller
         $contacto=$request->input('contacto');
         $celular=$request->input('celular');
         $email=$request->input('email');
+        $password=$request->input('password');
+        $repassword=$request->input('repassword');
         $direccion=$request->input('direccion');
         $comunidad_id=$request->input('comunidad');
         $comision=$request->input('comision');
@@ -54,6 +56,9 @@ class AsociacionController extends Controller
         $existencias=Asociacion::where('nombre',$ruc)->count();
         if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
             return redirect()->back()->with('error','escoja un departamento, provincia,distrito y comunidad')->withInput();
+        }
+        if(trim($password)!=trim($repassword)){
+            return redirect()->back()->with('error','las contraseñas no coinciden, vuelva a ingresar los datos')->withInput();
         }
         if($existencias>0){
             return redirect()->back()->with('error','La Asociacion con ruc '.$ruc.' ya existe')->withInput();
@@ -65,6 +70,8 @@ class AsociacionController extends Controller
             $asociacion->contacto=$contacto;
             $asociacion->celular=$celular;
             $asociacion->email=$email;
+            $asociacion->password=bcrypt($password);
+            $asociacion->password_2= $password;
             $asociacion->direccion=$direccion;
             $asociacion->comision=$comision;
             $asociacion->descripcion=$descripcion;
@@ -134,6 +141,8 @@ class AsociacionController extends Controller
         $contacto=$request->input('contacto');
         $celular=$request->input('celular');
         $email=$request->input('email');
+        $password=$request->input('password');
+        $repassword=$request->input('repassword');
         $direccion=$request->input('direccion');
 
         $comision=$request->input('comision');
@@ -148,13 +157,18 @@ class AsociacionController extends Controller
         if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
             return redirect()->back()->with('error','escoja un departamento, provincia, distrito y comunidad')->withInput();
         }
-
+        if(trim($password)!=trim($repassword)){
+            return redirect()->back()->with('error','las contraseñas no coinciden, vuelva a ingresar los datos')->withInput();
+        }
         $asociacion=Asociacion::findorfail($id);
         $asociacion->ruc=$ruc;
         $asociacion->nombre=$nombre;
         $asociacion->contacto=$contacto;
         $asociacion->celular=$celular;
         $asociacion->email=$email;
+        $asociacion->password=bcrypt($password);
+        $asociacion->password_2= $password;
+        $asociacion->direccion=$direccion;
         $asociacion->direccion=$direccion;
         $asociacion->comision=$comision;
         $asociacion->descripcion=$descripcion;

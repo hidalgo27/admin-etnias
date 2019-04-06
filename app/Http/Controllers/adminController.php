@@ -16,4 +16,9 @@ class adminController extends Controller
         // auth()->guard('admin')->logout();
         return redirect()->route('admin_index_path');
     }
+    public function solicitudes_lista()
+    {
+
+        return view('admin.index');
+    }
 }

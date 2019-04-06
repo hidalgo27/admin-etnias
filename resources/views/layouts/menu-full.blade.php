@@ -41,7 +41,8 @@
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
       (url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista'))||
       (url()->current()==route('proveedor.nuevo',[$categoria])||url()->current()==route('proveedor.lista'))||
-      (url()->current()==route('producto.nuevo',[$categoria])||url()->current()==route('producto.lista'))
+      (url()->current()==route('producto.nuevo',[$categoria])||url()->current()==route('producto.lista'))||
+      (url()->current()==route('solucitudes.asociacion.lista')||url()->current()==route('solucitudes.otros.lista'))
       ) show @endif" id="operaciones">
       <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">COMUNIDADES</a>
@@ -58,6 +59,13 @@
       </li>
       <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('producto.nuevo',[$categoria])||url()->current()==route('producto.lista')) active @endif" href="{{route('producto.lista')}}">PRODUCTOS</a>
+      </li>
+      <hr>
+      <li data-toggle="collapse" class="active1">
+        <a class="@if(url()->current()==route('solucitudes.asociacion.lista')) active @endif" href="{{route('solucitudes.asociacion.lista')}}">SOLICITUDES ASOCIACIONES</a>
+      </li>
+      <li data-toggle="collapse" class="active1">
+        <a class="@if(url()->current()==route('solucitudes.otros.lista')) active @endif" href="{{route('solucitudes.otros.lista')}}">SOLICITUDES TRANSP.&GUIAS</a>
       </li>
     </ul>
     {{-- rutas para la base de datos --}}

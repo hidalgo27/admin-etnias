@@ -98,6 +98,14 @@
                                                                     <label for="email">Email</label>
                                                                     <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="email" value="{{ $item->email }}">
                                                                 </div>
+                                                                <div class="form-group col-6">
+                                                                    <label for="password">Password</label>
+                                                                    <input type="password" class="form-control" id="password" name="password" aria-describedby="password" placeholder="password" value="{{ $item->password_2 }}">
+                                                                </div>
+                                                                <div class="form-group col-6">
+                                                                        <label for="password">Re password</label>
+                                                                        <input type="password" class="form-control" id="repassword" name="repassword" aria-describedby="password" placeholder="password" value="{{ $item->password_2 }}">
+                                                                    </div>
                                                                 <div class="form-group col-4">
                                                                     <label for="departamento">Departamento</label>
                                                                     <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias($(this).val());">
