@@ -123,7 +123,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Dificultad</div>
                                                         </div>
-                                                        <input type="text" class="form-control" id="dificultad_a_0" name="dificultad" placeholder="Ejm. Facil" value="{{$item->dificultad}}" required>
+                                                        <input type="text" class="form-control" id="dificultad_a_0" name="dificultad" placeholder="Ejm. Facil" value="{{ $item->dificultad}}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-4 my-1">
@@ -133,6 +133,55 @@
                                                             <div class="input-group-text">Tolerancia</div>
                                                         </div>
                                                         <input type="text" class="form-control" id="tolerancia_a_0" name="tolerancia" placeholder="Ejm. 20 minutos" value="{{$item->tolerancia}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 my-1">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="form-group my-0 py-0">
+                                                                <div class="btn-group">
+                                                                    <label for="id_comida" class="btn btn-primary">
+                                                                        <span class="glyphicon glyphicon-ok"></span>
+                                                                        <span>
+                                                                            <input type="checkbox" name="id_comida" id="id_comida" autocomplete="off" @if($item->in_comida=='1') checked="checked" @endif />
+                                                                        </span>
+                                                                    </label>
+                                                                    <label for="id_comida" class="btn btn-primary active">
+                                                                        Comida
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group my-0 py-0">
+                                                                <div class="btn-group">
+                                                                    <label for="id_hospedaje" class="btn btn-primary">
+                                                                        <span class="glyphicon glyphicon-ok"></span>
+                                                                        <span>
+                                                                            <input type="checkbox" name="id_hospedaje" id="id_hospedaje" autocomplete="off" @if($item->in_hospedaje=='1') checked="checked" @endif/>
+                                                                        </span>
+                                                                    </label>
+                                                                    <label for="id_hospedaje" class="btn btn-primary active">
+                                                                        Hospedaje
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group my-0 py-0">
+                                                                <div class="btn-group">
+                                                                    <label for="id_transporte" class="btn btn-primary">
+                                                                        <span class="glyphicon glyphicon-ok"></span>
+                                                                        <span>
+                                                                            <input type="checkbox" name="id_transporte" id="id_transporte" autocomplete="off" @if($item->in_transporte=='1') checked="checked" @endif/>
+                                                                        </span>
+                                                                    </label>
+                                                                    <label for="id_transporte" class="btn btn-primary active">
+                                                                        Transporte
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-1">
@@ -171,7 +220,7 @@
                                                         <textarea class="form-control descripcion" name="recomendaciones" id="recomendaciones_a_0" cols="30" rows="10">{{$item->recomendaciones}}</textarea>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-12 text-lef">
+                                                <div class="form-group col-6 text-lef">
                                                     <p><b>FOTO DE PORTADA</b></p>
                                                     @foreach ($item->fotos->where('estado','1') as $foto)
                                                         @if (Storage::disk('actividades')->has($foto->imagen))
@@ -193,6 +242,31 @@
                                                                 <div class="input-group-text">Portada</div>
                                                             </div>
                                                             <input type="file" name="foto_portada"  class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-6 text-lef">
+                                                    <p><b>FOTO DE MINIATURA</b></p>
+                                                    @foreach ($item->fotos->where('estado','2') as $foto)
+                                                        @if (Storage::disk('actividades')->has($foto->imagen))
+                                                            <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
+                                                                <img src="{{ route('servicio.show.imagen',[$foto->imagen,'actividades']) }}" class="figure-img rounded" alt="A generic" width="180px" height="180px">
+                                                                <figcaption class="figure-caption text-right mt-0">
+                                                                    <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_asociacion('a_{{ $item->id.'_'.$foto->id }}')">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </a>
+                                                                </figcaption>
+                                                                <input type="hidden" name="foto_miniatura_e" value="{{ $foto->id }}">
+                                                            </figure>
+                                                        @endif
+                                                    @endforeach
+                                                    <div class="col-12 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Miniatura</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Miniatura</div>
+                                                            </div>
+                                                            <input type="file" name="foto_miniatura"  class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -74,9 +74,13 @@
                                         <label for="historia">Historia</label>
                                         <textarea class="form-control descripcion" name="historia" id="historia" cols="30" rows="10">{{ old('historia') }}</textarea>
                                     </div>
-                                    <div class="form-group col-12">
+                                    <div class="form-group col-6">
                                         <label for="foto">Portada</label>
                                         <input type="file" name="portada" class="form-control">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="miniatura">Miniatura</label>
+                                        <input type="file" name="miniatura" class="form-control">
                                     </div>
                                     <div class="form-group col-12">
                                         <label for="foto">Galeria de fotos</label>

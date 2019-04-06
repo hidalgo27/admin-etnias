@@ -276,6 +276,33 @@ function enviar_datos(valor1,valor2){
             })
             return false;
         }
+        if($('#edad_minima_'+valor1+'_'+valor2).val().trim()==''){
+            $('#edad_minima_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese la edad minima',
+            })
+            return false;
+        }
+        if($('#dificultad_'+valor1+'_'+valor2).val().trim()==''){
+            $('#dificultad_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese la dificultad',
+            })
+            return false;
+        }
+        if($('#tolerancia_'+valor1+'_'+valor2).val().trim()==''){
+            $('#tolerancia_'+valor1+'_'+valor2).focus();
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Ingrese la tolerancia',
+            })
+            return false;
+        }
     }
     
     if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){

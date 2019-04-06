@@ -35,6 +35,7 @@ class ComunidadController extends Controller
         $altura=$request->input('altura');
         $distancia=$request->input('distancia');
         $portada=$request->file('portada');
+        $miniatura=$request->file('miniatura');
         $fotos=$request->file('foto');
         $existencias=Comunidad::where('nombre',$nombre)->count();
         if(trim($distrito_id)==''||trim($distrito_id)=='0'){
@@ -47,7 +48,7 @@ class ComunidadController extends Controller
             $comunidad=new Comunidad();
             $comunidad->nombre=$nombre;
             $comunidad->descripcion=$descripcion;
-            $comunidad->historia=$historia;            
+            $comunidad->historia=$historia;
             $comunidad->distrito_id=$distrito_id;
             $comunidad->altura=$altura;
             $comunidad->distancia=$distancia;
@@ -63,6 +64,19 @@ class ComunidadController extends Controller
                     $comunidadfoto->estado='1';
                     $comunidadfoto->save();
                     Storage::disk('comunidades')->put($filename,  File::get($portada));
+                // }
+            }
+            if(!empty($miniatura)){
+                // foreach($fotos as $foto){
+                    $comunidadfoto = new ComunidadFoto();
+                    $comunidadfoto->comunidad_id=$comunidad->id;
+                    $comunidadfoto->save();
+
+                    $filename ='foto-'.$comunidadfoto->id.'.'.$miniatura->getClientOriginalExtension();
+                    $comunidadfoto->imagen=$filename;
+                    $comunidadfoto->estado='2';
+                    $comunidadfoto->save();
+                    Storage::disk('comunidades')->put($filename,  File::get($miniatura));
                 // }
             }
             if(!empty($fotos)){
@@ -108,6 +122,8 @@ class ComunidadController extends Controller
         $historia=$request->input('historia');
         $portada_f=$request->file('portada_f');
         $portada=$request->input('portada');
+        $miniatura=$request->input('miniatura');
+        $miniatura_f=$request->file('miniatura_f');
         $fotos=$request->file('foto');
         $altura=$request->input('altura');
         $distancia=$request->input('distancia');
@@ -120,7 +136,7 @@ class ComunidadController extends Controller
         $comunidad=Comunidad::find($id);
         $comunidad->nombre=$nombre;
         $comunidad->descripcion=$descripcion;
-        $comunidad->historia=$historia;        
+        $comunidad->historia=$historia;
         $comunidad->distrito_id=$distrito_id;
         $comunidad->altura=$altura;
         $comunidad->distancia=$distancia;
@@ -138,6 +154,7 @@ class ComunidadController extends Controller
         else{
             ComunidadFoto::where('comunidad_id',$comunidad->id)->where('estado','1')->delete();
         }
+
         if(!empty($portada_f)){
             ComunidadFoto::where('comunidad_id',$comunidad->id)->where('estado','1')->delete();
             // foreach($portada_f as $foto){
@@ -150,6 +167,34 @@ class ComunidadController extends Controller
                 $comunidadfoto->estado='1';
                 $comunidadfoto->save();
                 Storage::disk('comunidades')->put($filename,  File::get($portada_f));
+            // }
+        }
+        // borramos de la db la foto de portada que han sido eliminadas por el usuario
+        if(isset($miniatura)){
+            $fotos_existentes=ComunidadFoto::where('comunidad_id',$comunidad->id)->where('estado','2')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if($value->id!=$miniatura){
+                    ComunidadFoto::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            ComunidadFoto::where('comunidad_id',$comunidad->id)->where('estado','2')->delete();
+        }
+
+        if(!empty($miniatura_f)){
+            ComunidadFoto::where('comunidad_id',$comunidad->id)->where('estado','2')->delete();
+            // foreach($miniatura_f as $foto){
+                $comunidadfoto = new ComunidadFoto();
+                $comunidadfoto->comunidad_id=$comunidad->id;
+                $comunidadfoto->save();
+
+                $filename ='foto-'.$comunidadfoto->id.'.'.$miniatura_f->getClientOriginalExtension();
+                $comunidadfoto->imagen=$filename;
+                $comunidadfoto->estado='2';
+                $comunidadfoto->save();
+                Storage::disk('comunidades')->put($filename,  File::get($miniatura_f));
             // }
         }
         // borramos de la db las fotos que han sido eliminadas por el usuario

@@ -144,6 +144,55 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <div class="form-group my-0 py-0">
+                                                                    <div class="btn-group">
+                                                                        <label for="id_comida" class="btn btn-primary">
+                                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                                            <span>
+                                                                                <input type="checkbox" name="id_comida" id="id_comida" autocomplete="off" />
+                                                                            </span>
+                                                                        </label>
+                                                                        <label for="id_comida" class="btn btn-primary active">
+                                                                            Comida
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="form-group my-0 py-0">
+                                                                    <div class="btn-group">
+                                                                        <label for="id_hospedaje" class="btn btn-primary">
+                                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                                            <span>
+                                                                                <input type="checkbox" name="id_hospedaje" id="id_hospedaje" autocomplete="off" />
+                                                                            </span>
+                                                                        </label>
+                                                                        <label for="id_hospedaje" class="btn btn-primary active">
+                                                                            Hospedaje
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="form-group my-0 py-0">
+                                                                    <div class="btn-group">
+                                                                        <label for="id_transporte" class="btn btn-primary">
+                                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                                            <span>
+                                                                                <input type="checkbox" name="id_transporte" id="id_transporte" autocomplete="off" />
+                                                                            </span>
+                                                                        </label>
+                                                                        <label for="id_transporte" class="btn btn-primary active">
+                                                                            Transporte
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 my-1">
                                                         <label class="sr-only" for="incluye_a_n_0">incluye</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
@@ -179,13 +228,22 @@
                                                             <textarea class="form-control descripcion" name="recomendaciones" id="recomendaciones_a_n_0" cols="30" rows="10"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 my-1">
+                                                    <div class="col-6 my-1">
                                                         <label class="sr-only" for="inlineFormInputGroupUsername">Portada</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text">Portada</div>
                                                             </div>
                                                             <input type="file" name="foto_portada" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 my-1">
+                                                        <label class="sr-only" for="inlineFormInputGroupUsername">Miniatura</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">Miniatura</div>
+                                                            </div>
+                                                            <input type="file" name="foto_miniatura" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">

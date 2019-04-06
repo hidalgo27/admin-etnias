@@ -49,6 +49,7 @@ class AsociacionController extends Controller
         $comunidad_id=$request->input('comunidad');
         $comision=$request->input('comision');
         $portada=$request->file('portada');
+        $miniatura=$request->file('miniatura');
         $fotos=$request->file('foto');
         $existencias=Asociacion::where('nombre',$ruc)->count();
         if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
@@ -80,6 +81,19 @@ class AsociacionController extends Controller
                     $asociacionfoto->estado='1';
                     $asociacionfoto->save();
                     Storage::disk('asociaciones')->put($filename,  File::get($portada));
+                // }
+            }
+            if(!empty($miniatura)){
+                // foreach($fotos as $foto){
+                    $asociacionfoto = new AsociacionFoto();
+                    $asociacionfoto->asociacion_id=$asociacion->id;
+                    $asociacionfoto->save();
+
+                    $filename ='foto-'.$asociacionfoto->id.'.'.$miniatura->getClientOriginalExtension();
+                    $asociacionfoto->imagen=$filename;
+                    $asociacionfoto->estado='2';
+                    $asociacionfoto->save();
+                    Storage::disk('asociaciones')->put($filename,  File::get($miniatura));
                 // }
             }
             if(!empty($fotos)){
@@ -126,6 +140,8 @@ class AsociacionController extends Controller
         $comunidad_id=$request->input('comunidad');
         $portada_f=$request->file('portada_f');
         $portada=$request->input('portada');
+        $miniatura_f=$request->file('miniatura_f');
+        $miniatura=$request->input('miniatura');
         $fotos=$request->file('foto');
         $fotosExistentes=$request->input('fotos_');
         // dd($fotosExistentes);
@@ -141,7 +157,7 @@ class AsociacionController extends Controller
         $asociacion->email=$email;
         $asociacion->direccion=$direccion;
         $asociacion->comision=$comision;
-        $asociacion->descripcion=$descripcion;        
+        $asociacion->descripcion=$descripcion;
         $asociacion->comunidad_id=$comunidad_id;
         $asociacion->save();
 
@@ -170,6 +186,33 @@ class AsociacionController extends Controller
                 $asociacionfoto->estado='1';
                 $asociacionfoto->save();
                 Storage::disk('asociaciones')->put($filename,  File::get($portada_f));
+            // }
+        }
+        // borramos de la db las fotos que han sido eliminadas por el usuario
+        if(isset($miniatura)){
+            $fotos_existentes=AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','2')->get();
+            foreach ($fotos_existentes as $value) {
+                # code...
+                if($value->id!=$miniatura){
+                    AsociacionFoto::find($value->id)->delete();
+                }
+            }
+        }
+        else{
+            AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','2')->delete();
+        }
+        if(!empty($miniatura_f)){
+            // foreach($fotos as $foto){
+                AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','2')->delete();
+                $asociacionfoto = new AsociacionFoto();
+                $asociacionfoto->asociacion_id=$asociacion->id;
+                $asociacionfoto->save();
+
+                $filename ='foto-'.$asociacionfoto->id.'.'.$miniatura_f->getClientOriginalExtension();
+                $asociacionfoto->imagen=$filename;
+                $asociacionfoto->estado='2';
+                $asociacionfoto->save();
+                Storage::disk('asociaciones')->put($filename,  File::get($miniatura_f));
             // }
         }
         // borramos de la db las fotos que han sido eliminadas por el usuario

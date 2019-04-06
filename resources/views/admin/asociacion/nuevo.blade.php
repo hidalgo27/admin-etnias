@@ -88,10 +88,19 @@
                                         <label for="comision">Comision</label>
                                         <input class="form-control" type="number" name="comision" id="comision" value="" min="0" max="100" step="0.01" required>
                                     </div>
-                                    <div class="form-group col-12">
-                                        <label for="portada">Portada</label>
-                                        <input type="file" name="portada" id="portada" class="form-control">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label for="portada">Portada</label>
+                                                <input type="file" name="portada" id="portada" class="form-control">
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label for="miniatura">Miniatura</label>
+                                                <input type="file" name="miniatura" id="miniatura" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <div class="form-group col-12">
                                         <label for="foto">Galeria de fotos</label>
                                         <input type="file" name="foto[]" multiple class="form-control">

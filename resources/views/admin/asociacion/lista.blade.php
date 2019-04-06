@@ -148,7 +148,7 @@
                                                                     <input type="number" class="form-control" id="comision" name="comision" value="{{ $item->comision }}" step="0.01" min="0" max="100">
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-12">
+                                                                    <div class="col-6">
                                                                         <div class="form-group col-12 text-left">
                                                                             <p><b>Portada</b></p>
                                                                             @foreach ($item->fotos->where('estado','1') as $foto)
@@ -170,7 +170,31 @@
                                                                             <input type="file" name="portada_f" multiple class="form-control">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-12">
+                                                                    <div class="col-6">
+                                                                        <div class="form-group col-12 text-left">
+                                                                            <p><b>Miniatura</b></p>
+                                                                            @foreach ($item->fotos->where('estado','2') as $foto)
+                                                                                @if (Storage::disk('asociaciones')->has($foto->imagen))
+                                                                                    <figure class="figure m-3" id="{{ $item->id.'_'.$foto->id }}">
+                                                                                        <img src="{{ route('asociacion.editar.imagen',$foto->imagen) }}" class="figure-img rounded" alt="A generic" width="200px" height="200px">
+                                                                                        <figcaption class="figure-caption text-right mt-0">
+                                                                                            <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_asociacion('{{ $item->id.'_'.$foto->id }}')">
+                                                                                                <i class="fas fa-trash-alt"></i>
+                                                                                            </a>
+                                                                                        </figcaption>
+                                                                                        <input type="hidden" name="miniatura" value="{{ $foto->id }}">
+                                                                                    </figure>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </div>
+                                                                        <div class="form-group col-12">
+                                                                            <label for="foto">Foto</label>
+                                                                            <input type="file" name="miniatura_f" multiple class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <div class="row">
                                                                         <div class="form-group col-12 text-left">
                                                                             <p><b>Galeria de fotos</b></p>
                                                                                 @foreach ($item->fotos->where('estado','0') as $foto)
@@ -195,7 +219,7 @@
                                                                 </div>
                                                                 <div class="form-group col-12">
                                                                     <label for="descripcion">Descripcion</label>
-                                                                    <textarea name="descripcion" id="descripcion" class="form-control descripcion"  cols="30" rows="10" required >{{ $item->descripcion }}</textarea>
+                                                                    <textarea name="descripcion" id="descripcion" class="form-control descripcion"  cols="30" rows="10" >{{ $item->descripcion }}</textarea>
                                                                 </div>
                                                             </div>
 

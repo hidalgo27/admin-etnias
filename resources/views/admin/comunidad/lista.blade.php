@@ -120,7 +120,7 @@
                                                                     <textarea class="form-control descripcion" name="historia" id="historia" cols="30" rows="10">{{ $item->historia }}</textarea>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-12">
+                                                                    <div class="col-6">
                                                                         <div class="form-group col-12 text-left">
                                                                             <p><b>Portada</b></p>
                                                                             @foreach ($item->fotos->where('estado','1') as $foto)
@@ -140,6 +140,28 @@
                                                                         <div class="form-group col-12">
                                                                             <label for="foto">Foto</label>
                                                                             <input type="file" name="portada_f" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="form-group col-12 text-left">
+                                                                            <p><b>Miniatura</b></p>
+                                                                            @foreach ($item->fotos->where('estado','2') as $foto)
+                                                                                @if (Storage::disk('comunidades')->has($foto->imagen))
+                                                                                    <figure class="figure m-3" id="{{ $item->id.'_'.$foto->id }}">
+                                                                                        <img src="{{ route('comunidad_editar_imagen_path',$foto->imagen) }}" class="figure-img rounded" alt="A generic" width="200px" height="200px">
+                                                                                        <figcaption class="figure-caption text-right mt-0">
+                                                                                            <a href="#!" class="btn btn-danger btn btn-block" onclick="borrar_foto_cliente('{{ $item->id.'_'.$foto->id }}')">
+                                                                                                <i class="fas fa-trash-alt"></i>
+                                                                                            </a>
+                                                                                        </figcaption>
+                                                                                        <input type="hidden" name="miniatura" value="{{ $foto->id }}">
+                                                                                    </figure>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </div>
+                                                                        <div class="form-group col-12">
+                                                                            <label for="foto">Foto</label>
+                                                                            <input type="file" name="miniatura_f" class="form-control">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-12">

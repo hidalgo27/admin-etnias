@@ -50,6 +50,9 @@ class ServiciosController extends Controller
         $edad_minima=$request->input('edad_minima');
         $dificultad=$request->input('dificultad');
         $tolerancia=$request->input('tolerancia');
+        $id_comida=$request->input('id_comida');
+        $id_hospedaje=$request->input('id_hospedaje');
+        $id_transporte=$request->input('id_transporte');
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
@@ -57,6 +60,7 @@ class ServiciosController extends Controller
 
         $fotos=$request->file('foto');
         $foto_portada=$request->file('foto_portada');
+        $foto_miniatura=$request->file('foto_miniatura');
         $categoria=$request->input('categoria_n');
         $minimo=$request->input('minimo_'.$attributo.'_n_0');
         $maximo=$request->input('maximo_'.$attributo.'_n_0');
@@ -69,6 +73,18 @@ class ServiciosController extends Controller
         }
         else{
             if($attributo=='a'){
+                $v_comida=0;
+                if(isset($id_comida)){
+                    $v_comida=1;
+                }
+                $v_hospedaje=0;
+                if(isset($id_hospedaje)){
+                    $v_hospedaje=1;
+                }
+                $v_transporte=0;
+                if(isset($id_transporte)){
+                    $v_transporte=1;
+                }
                 $actividad=new Actividad();
                 $actividad->titulo=$titulo;
                 $actividad->categoria=$categoria_;
@@ -78,6 +94,9 @@ class ServiciosController extends Controller
                 $actividad->edad_minima=$edad_minima;
                 $actividad->dificultad=$dificultad;
                 $actividad->tolerancia=$tolerancia;
+                $actividad->in_comida=$v_comida;
+                $actividad->in_hospedaje=$v_hospedaje;
+                $actividad->in_transporte=$v_transporte;
                 $actividad->incluye=$incluye;
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
@@ -97,6 +116,19 @@ class ServiciosController extends Controller
                         Storage::disk('actividades')->put($filename,  File::get($foto_portada));
 
                 }
+                if(!empty($foto_miniatura)){
+
+                    $actividadfoto = new ActividadFoto();
+                    $actividadfoto->actividad_id=$actividad->id;
+                    $actividadfoto->save();
+
+                    $filename ='foto-'.$actividadfoto->id.'.'.$foto_miniatura->getClientOriginalExtension();
+                    $actividadfoto->imagen=$filename;
+                    $actividadfoto->estado='2';
+                    $actividadfoto->save();
+                    Storage::disk('actividades')->put($filename,  File::get($foto_miniatura));
+
+            }
                 if(!empty($fotos)){
                     foreach($fotos as $foto){
                         $actividadfoto = new ActividadFoto();
@@ -290,7 +322,8 @@ class ServiciosController extends Controller
 
         $foto_portada=$request->file('foto_portada');
         $foto_portada_e=$request->input('foto_portada_e');
-
+        $foto_miniatura=$request->file('foto_miniatura');
+        $foto_miniatura_e=$request->input('foto_miniatura_e');
         $fotos=$request->file('foto');
         $fotos_e=$request->input('fotos_');
         $categoria_n=$request->input('categoria_n');
@@ -299,6 +332,9 @@ class ServiciosController extends Controller
         $edad_minima=$request->input('edad_minima');
         $dificultad=$request->input('dificultad');
         $tolerancia=$request->input('tolerancia');
+        $id_comida=$request->input('id_comida');
+        $id_hospedaje=$request->input('id_hospedaje');
+        $id_transporte=$request->input('id_transporte');
         $incluye=$request->input('incluye');
         $no_incluye=$request->input('no_incluye');
         $disponible=$request->input('disponible');
@@ -321,6 +357,18 @@ class ServiciosController extends Controller
         // }
         // else{
             if($attributo=='a'){
+                $v_comida=0;
+                if(isset($id_comida)){
+                    $v_comida=1;
+                }
+                $v_hospedaje=0;
+                if(isset($id_hospedaje)){
+                    $v_hospedaje=1;
+                }
+                $v_transporte=0;
+                if(isset($id_transporte)){
+                    $v_transporte=1;
+                }
                 $actividad=Actividad::FindOrFail($id);
                 $actividad->titulo=$titulo;
                 $actividad->categoria=$categoria_;
@@ -330,6 +378,9 @@ class ServiciosController extends Controller
                 $actividad->edad_minima=$edad_minima;
                 $actividad->dificultad=$dificultad;
                 $actividad->tolerancia=$tolerancia;
+                $actividad->in_comida=$v_comida;
+                $actividad->in_hospedaje=$v_hospedaje;
+                $actividad->in_transporte=$v_transporte;
                 $actividad->incluye=$incluye;
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
@@ -363,7 +414,34 @@ class ServiciosController extends Controller
                         Storage::disk('actividades')->put($filename,  File::get($foto_portada));
                     // }
                 }
+//-- agregando foto de portada
+if(!empty($foto_miniatura_e)){
+    $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','2')->get();
+    foreach($fotitos as $fotito){
+        if(($fotito->id!=$foto_miniatura_e)){
+            $temp=ActividadFoto::findOrfail($fotito->id);
+            $temp->delete();
+        }
+    }
+}
+else{
+    ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
+}
 
+if(!empty($foto_miniatura)){
+    // foreach($foto_miniatura as $foto){
+        ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
+        $actividadfoto = new ActividadFoto();
+        $actividadfoto->actividad_id=$actividad->id;
+        $actividadfoto->save();
+
+        $filename ='foto-'.$actividadfoto->id.'.'.$foto_miniatura->getClientOriginalExtension();
+        $actividadfoto->imagen=$filename;
+        $actividadfoto->estado='2';
+        $actividadfoto->save();
+        Storage::disk('actividades')->put($filename,  File::get($foto_miniatura));
+    // }
+}
                 //-- agrgando galeria de fotos
                 if(!empty($fotos_e)){
                     $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','0')->get();
