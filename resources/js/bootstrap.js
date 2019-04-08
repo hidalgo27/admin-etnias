@@ -12,7 +12,10 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('summernote/dist/summernote-bs4.js');
+    // require('summernote/dist/summernote-bs4.js');
+    require('tinymce/tinymce.js');
+    require('tinymce/themes/silver/index.js');
+    require('tinymce/plugins/lists/index.js');
 } catch (e) {}
 
 /**

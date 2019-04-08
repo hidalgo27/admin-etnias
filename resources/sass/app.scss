@@ -9,7 +9,14 @@
 @import '~bootstrap/scss/bootstrap';
 
 // summernote
-@import '~summernote/dist/summernote-bs4.css';
+// @import '~summernote/dist/summernote-bs4.css';
+
+// tinymce
+@import '~tinymce/skins/ui/oxide/skin.min.css';
+@import '~tinymce/skins/content/default/content.css';
+@import '~tinymce/skins/ui/oxide/content.min.css';
+@import '~tinymce/skins/ui/oxide/skin.min.css';
+
 //fonts
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";

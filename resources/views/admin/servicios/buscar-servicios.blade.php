@@ -1197,12 +1197,28 @@
 
 <script>
     $(document).ready(function (){
-        $('.descripcion').summernote({
+        /*$('.descripcion').summernote({
             height: 150,   //set editable area's height
             codemirror: { // codemirror options
                 theme: 'monokai'
             }
-        });
+        });*/
+        tinymce.init({
+            selector: "textarea",
+            height: 300,
+            menubar: false,
+            plugins: [
+                'lists'
+            //   'advlist autolink lists link image charmap print preview anchor textcolor',
+            //   'searchreplace visualblocks code fullscreen',
+            //   'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            // content_css: [
+            //   '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+            //   '//www.tiny.cloud/css/codepen.min.css'
+            // ]
+          });
     });
 
 </script>

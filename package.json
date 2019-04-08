@@ -32,6 +32,7 @@
     "air-datepicker": "^2.2.3",
     "codemirror": "^5.45.0",
     "grunt": "^1.0.4",
-    "sweetalert2": "^8.0.7"
+    "sweetalert2": "^8.0.7",
+    "tinymce": "^5.0.3"
   }
 }
