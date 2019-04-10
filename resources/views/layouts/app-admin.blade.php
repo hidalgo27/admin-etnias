@@ -41,7 +41,7 @@
                                 <a class="nav-link item-titulo" href="{{ route('asociacion.lista') }}">ASOCIACION</a>
                               </li>
                               <li class="nav-item item-menu">
-                                <a class="nav-link item-titulo" href="{{ route('servicios.nuevo') }}">SERVIVIOS</a>
+                                {{-- <a class="nav-link item-titulo" href="{{ route('servicios.nuevo',[$asociacion->id]) }}">SERVIVIOS</a> --}}
                               </li>
                               <li class="nav-item item-menu">
                                 <a class="nav-link item-titulo" href="#">SERVIVIOS</a>

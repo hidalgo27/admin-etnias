@@ -1,4 +1,4 @@
-@php   
+@php
   use Carbon\Carbon;
 @endphp
 @if (!isset($hotel_proveedor_id))
@@ -30,6 +30,12 @@
       $f2=$fecha->format('Y-m-d');
   @endphp
 @endif
+@if (!isset($asociacion_id))
+  @php
+      $asociacion_id=1;
+  @endphp
+@endif
+
 <div class="menu-list text-12">
   <ul id="menu-content" class="menu-content collapsed menu1">
     {{-- rutas para la base de datos --}}
@@ -39,7 +45,7 @@
     <ul class="sub-menu collapse menu2 @if(
       (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
-      (url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista'))||
+      (url()->current()==route('servicios.nuevo',[$asociacion_id])||url()->current()==route('servicios.lista',[$asociacion_id]))||
       (url()->current()==route('proveedor.nuevo',[$categoria])||url()->current()==route('proveedor.lista'))||
       (url()->current()==route('producto.nuevo',[$categoria])||url()->current()==route('producto.lista'))||
       (url()->current()==route('solucitudes.asociacion.lista')||url()->current()==route('solucitudes.otros.lista'))
@@ -48,11 +54,11 @@
         <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">COMUNIDADES</a>
       </li>
       <li data-toggle="collapse" class="active1">
-        <a class="@if(url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo')) active @endif" href="{{route('asociacion.lista')}}"> ASOCIACIONES</a>
+        <a class="@if(url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo') || url()->current()==route('servicios.nuevo',[$asociacion_id])||url()->current()==route('servicios.lista',[$asociacion_id])) active @endif" href="{{route('asociacion.lista')}}"> ASOCIACIONES</a>
       </li>
-      <li data-toggle="collapse" class="active1">
-        <a class="@if(url()->current()==route('servicios.nuevo')||url()->current()==route('servicios.lista')) active @endif" href="{{route('servicios.lista')}}">SERVICIOS</a>
-      </li>
+      {{-- <li data-toggle="collapse" class="active1">
+        <a class="@if(url()->current()==route('servicios.nuevo',[$asociacion_id])||url()->current()==route('servicios.lista',[$asociacion_id])) active @endif" href="{{route('servicios.lista',[$asociacion_id])}}">SERVICIOS</a>
+      </li> --}}
       <hr>
       <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('proveedor.nuevo',[$categoria])||url()->current()==route('proveedor.lista')) active @endif" href="{{route('proveedor.lista')}}">PROVEEDORES</a>

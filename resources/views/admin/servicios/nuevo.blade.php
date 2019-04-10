@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('servicios.lista') }}">SERVICIOS</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('servicios.lista',$asociacion->id) }}">SERVICIOS</a></li>
                 <li class="breadcrumb-item active" aria-current="page">NUEVO</li>
             </ol>
         </nav>
@@ -30,7 +30,7 @@
                                 </div>
                             @endif
                             <div class="row">
-                                <div class="col-12 mb-3">
+                                <div class="col-12 mb-3 d-none">
                                     <label for="validationCustomUsername">Asociacion</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -43,12 +43,14 @@
                                     </div>
                                 </div>
                                 <div id="asociacion" class="col-12">
-                                    <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="" form="form_a_n_0">
-                                    <input type="hidden" name="c_asociacion_id" id="c_asociacion_id" value="" form="form_c_n_0">
-                                    <input type="hidden" name="h_asociacion_id" id="h_asociacion_id" value="" form="form_h_n_0">
-                                    <input type="hidden" name="t_asociacion_id" id="t_asociacion_id" value="" form="form_t_n_0">
-                                    <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="" form="form_s_n_0">
-
+                                    <div class="alert alert-primary">
+                                        Ruc: <b>{{ $asociacion->ruc }}</b> | Razon social: <b>{{ $asociacion->nombre }} </b>
+                                        <input type="hidden" name="a_asociacion_id" id="a_asociacion_id" value="{{ $asociacion->id}}" form="form_a_n_0">
+                                        <input type="hidden" name="c_asociacion_id" id="c_asociacion_id" value="{{ $asociacion->id}}" form="form_c_n_0">
+                                        <input type="hidden" name="h_asociacion_id" id="h_asociacion_id" value="{{ $asociacion->id}}" form="form_h_n_0">
+                                        <input type="hidden" name="t_asociacion_id" id="t_asociacion_id" value="{{ $asociacion->id}}" form="form_t_n_0">
+                                        <input type="hidden" name="s_asociacion_id" id="s_asociacion_id" value="{{ $asociacion->id}}" form="form_s_n_0">
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <nav>
@@ -298,7 +300,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="a">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('a','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista',$asociacion->id) }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_a_n_0"></div>
                                             </form>
@@ -382,7 +384,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="c">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('c','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista',$asociacion->id) }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_c_n_0"></div>
                                             </form>
@@ -461,7 +463,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="h">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('h','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista',$asociacion->id) }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_h_n_0"></div>
                                             </form>
@@ -540,7 +542,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="t">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('t','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista',$asociacion->id) }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_t_n_0"></div>
                                             </form>
@@ -618,7 +620,7 @@
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="attributo" value="s">
                                                     <button class="btn btn-primary" type="button" onclick="enviar_datos('s','n_0')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                    <a href="{{ route('servicios.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                    <a href="{{ route('servicios.lista',$asociacion->id) }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
                                                 </div>
                                                 <div class="col-12" id="rpt_form_s_n_0"></div>
                                             </form>

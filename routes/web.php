@@ -104,11 +104,11 @@ Route::get('/admin/asociacion/delete/{id}', [
     'as' => 'asociacion.delete',
 ]);
 // rutas para servicios(actividades, comidas, hospedaje, transporte, otros_servicios)
-Route::get('/admin/servicios/lista', [
+Route::get('/admin/servicios/lista/{asociacion_id}', [
     'uses' => 'ServiciosController@lista',
     'as' => 'servicios.lista',
 ]);
-Route::get('/admin/servicios/nuevo', [
+Route::get('/admin/servicios/nuevo/{asociacion_id}', [
     'uses' => 'ServiciosController@nuevo',
     'as' => 'servicios.nuevo',
 ]);

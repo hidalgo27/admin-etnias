@@ -29,10 +29,10 @@ use MaddHatter\LaravelFullcalendar\Calendar;
 class ServiciosController extends Controller
 {
     //
-    public function nuevo(Request $request){
-
+    public function nuevo($asociacion_id){
+        $asociacion=Asociacion::find($asociacion_id);
         $categorias=Categoria::get();
-        return view('admin.servicios.nuevo',compact('categorias'));
+        return view('admin.servicios.nuevo',compact('categorias','asociacion','asociacion_id'));
     }
     public function buscar_asociacion($ruc_rs){
         $asociacion=Asociacion::where('ruc',$ruc_rs)->orwhere('nombre','like','%'.$ruc_rs.'%')->first();
@@ -292,8 +292,15 @@ class ServiciosController extends Controller
             }
         }
     }
-    public function lista(){
-        return view('admin.servicios.lista');
+    public function lista($asociacion_id){
+        $asociacion=Asociacion::find($asociacion_id);
+        $actividades=Actividad::where('asociacion_id',$asociacion_id)->get();
+        $comidas=Comida::where('asociacion_id',$asociacion_id)->get();
+        $hospedajes=Hospedaje::where('asociacion_id',$asociacion_id)->get();
+        $transportes=Transporte::where('asociacion_id',$asociacion_id)->get();
+        $servicios=Servicio::where('asociacion_id',$asociacion_id)->get();
+        $categorias=Categoria::get();
+        return view('admin.servicios.lista',compact('asociacion','actividades','comidas','hospedajes','transportes','servicios','categorias','asociacion_id'));
     }
     public function buscar_servicios($ruc_rs){
         $asociacion=Asociacion::where('ruc',$ruc_rs)->orwhere('nombre','like','%'.$ruc_rs.'%')->first();

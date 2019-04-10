@@ -246,6 +246,7 @@ function borrar_precio(valor1,valor2,valor3){
 //         });
 // }
 function enviar_datos(valor1,valor2){
+    // tinymce.triggerSave();
     if($('#'+valor1+'_asociacion_id').val()==''){
         $('#ruc_rs').focus();
         Swal.fire({
@@ -304,7 +305,7 @@ function enviar_datos(valor1,valor2){
             return false;
         }
     }
-    
+
     if($('#descripcion_'+valor1+'_'+valor2).val().trim()==''){
         $('#descripcion_'+valor1+'_'+valor2).focus();
         Swal.fire({
@@ -467,6 +468,7 @@ function buscar_servicios(ruc_rs){
     }
 }
 function enviar_datos_editar(valor1,valor2){
+    // tinymce.triggerSave();
     if($('#'+valor1+'_asociacion_id').val()==''){
         $('#ruc_rs').focus();
         Swal.fire({
