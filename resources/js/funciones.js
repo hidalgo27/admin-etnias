@@ -1200,3 +1200,13 @@ $.ajax({
 });
 
 }
+
+
+function agregar_precio(valor1,valor2){
+
+    var valor=$('#cantidad_horas_'+valor1+'_'+valor2).val();
+    valor++
+    $('#cantidad_horas_'+valor1+'_'+valor2).val(valor);
+    var cadena='';
+    $('#'+valor1+'_precios_'+valor2).append(cadena);
+}

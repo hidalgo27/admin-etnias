@@ -1,6 +1,9 @@
 @extends('layouts.app-admin')
 
 @section('content')
+@php
+    use carbon\carbon;
+@endphp
 <div class="row">
     <div class="col-12">
         <nav aria-label="breadcrumb">
@@ -432,6 +435,39 @@
                                                                                             <div class="input-group-text"># veces</div>
                                                                                         </div>
                                                                                         <input type="number" class="form-control" id="cantidad_a_e_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="2">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div id="caja_hora_{{$item->id}}" class="col-12 my-1">
+                                                                                        <input type="text" >   
+                                                                                        <div id="hora_1" class="input-group">
+                                                                                            <select class="form-control" name="hora[]">
+                                                                                                <option value="07:00:00">07:00:00</option>
+                                                                                                <option value="07:30:00">07:30:00</option>
+                                                                                                <option value="08:00:00">08:00:00</option>
+                                                                                                <option value="08:30:00">08:30:00</option>
+                                                                                                <option value="09:00:00">09:00:00</option>
+                                                                                                <option value="09:30:00">09:30:00</option>
+                                                                                                <option value="10:00:00">10:00:00</option>
+                                                                                                <option value="10:30:00">10:30:00</option>
+                                                                                                <option value="11:00:00">11:00:00</option>
+                                                                                                <option value="11:30:00">11:30:00</option>
+                                                                                                <option value="12:00:00">12:00:00</option>
+                                                                                                <option value="12:30:00">12:30:00</option>
+                                                                                                <option value="13:00:00">13:00:00</option>
+                                                                                                <option value="13:30:00">13:30:00</option>
+                                                                                                <option value="14:00:00">14:00:00</option>
+                                                                                                <option value="14:30:00">14:30:00</option>
+                                                                                                <option value="15:00:00">15:00:00</option>
+                                                                                                <option value="15:30:00">15:30:00</option>
+                                                                                                <option value="16:00:00">16:00:00</option>
+                                                                                                <option value="16:30:00">16:30:00</option>
+                                                                                                <option value="17:00:00">17:00:00</option>
+                                                                                            </select> 
+                                                                                            <div class="input-group-prepend">
+                                                                                                <button class="btn btn-success" onclick="agregar_hora('{{$item->id}}')"><i class="fas fa-plus"></i> </button>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-12 my-1">
