@@ -1202,11 +1202,46 @@ $.ajax({
 }
 
 
-function agregar_precio(valor1,valor2){
+function agregar_hora(valor1){
 
-    var valor=$('#cantidad_horas_'+valor1+'_'+valor2).val();
+    var valor=$('#cantidad_horas_'+valor1).val();
     valor++
-    $('#cantidad_horas_'+valor1+'_'+valor2).val(valor);
-    var cadena='';
-    $('#'+valor1+'_precios_'+valor2).append(cadena);
+    $('#cantidad_horas_'+valor1).val(valor);
+    var cadena='<div id="hora_'+valor1+'_'+valor+'" class="input-group mb-1">'+
+    '<div class="input-group-prepend">'+
+        '<button type="button" class="btn btn-secondary">Hora</button>'+
+    '</div>'+
+    '<select class="form-control" name="hora[]">'+
+        '<option value="07:00:00">07:00:00</option>'+
+        '<option value="07:30:00">07:30:00</option>'+
+        '<option value="08:00:00">08:00:00</option>'+
+        '<option value="08:30:00">08:30:00</option>'+
+        '<option value="09:00:00">09:00:00</option>'+
+        '<option value="09:30:00">09:30:00</option>'+
+        '<option value="10:00:00">10:00:00</option>'+
+        '<option value="10:30:00">10:30:00</option>'+
+        '<option value="11:00:00">11:00:00</option>'+
+        '<option value="11:30:00">11:30:00</option>'+
+        '<option value="12:00:00">12:00:00</option>'+
+        '<option value="12:30:00">12:30:00</option>'+
+        '<option value="13:00:00">13:00:00</option>'+
+        '<option value="13:30:00">13:30:00</option>'+
+        '<option value="14:00:00">14:00:00</option>'+
+        '<option value="14:30:00">14:30:00</option>'+
+        '<option value="15:00:00">15:00:00</option>'+
+        '<option value="15:30:00">15:30:00</option>'+
+        '<option value="16:00:00">16:00:00</option>'+
+        '<option value="16:30:00">16:30:00</option>'+
+        '<option value="17:00:00">17:00:00</option>'+
+        '</select>'+
+    '<div class="input-group-prepend">'+
+        '<button type="button" class="btn btn-danger" onclick="borrar_hora(\''+valor1+'\',\''+valor+'\')"><i class="fas fa-trash-alt"></i> </button>'+
+        '</div>'+
+'</div>';
+    $('#caja_hora_'+valor1).append(cadena);
+}
+
+function borrar_hora(valor1,item){
+    $('#hora_'+valor1+'_'+item).remove();
+
 }

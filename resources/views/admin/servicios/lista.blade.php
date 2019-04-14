@@ -422,125 +422,140 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="row">
-                                                                    <div class="col-6">
-                                                                        <form id="form_a_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add') }}" method="POST" enctype="multipart/form-data">
-                                                                            <div class="row">
-                                                                                <div class="form-group col-12">
-                                                                                    <b class="text-15 text-success">Ingrese los dias hábiles</b>
-                                                                                </div>
-                                                                                <div class="col-12 my-1">
-                                                                                    <label class="sr-only" for="cantidad">Cantidad</label>
-                                                                                    <div class="input-group">
-                                                                                        <div class="input-group-prepend">
-                                                                                            <div class="input-group-text"># veces</div>
+                                                                    <div class="col-12">
+                                                                        <div class="card">
+                                                                            <div class="card-header"><b class="text-15 text-success">Ingrese los dias hábiles</b></div>
+                                                                            <div class="card-body">
+                                                                                <form id="form_a_calendario_{{ $item->id }}" action="{{ route('servicios.calendario.add') }}" method="POST" enctype="multipart/form-data">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group col-12">
+
                                                                                         </div>
-                                                                                        <input type="number" class="form-control" id="cantidad_a_e_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="2">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div id="caja_hora_{{$item->id}}" class="col-12 my-1">
-                                                                                        <input type="text" >   
-                                                                                        <div id="hora_1" class="input-group">
-                                                                                            <select class="form-control" name="hora[]">
-                                                                                                <option value="07:00:00">07:00:00</option>
-                                                                                                <option value="07:30:00">07:30:00</option>
-                                                                                                <option value="08:00:00">08:00:00</option>
-                                                                                                <option value="08:30:00">08:30:00</option>
-                                                                                                <option value="09:00:00">09:00:00</option>
-                                                                                                <option value="09:30:00">09:30:00</option>
-                                                                                                <option value="10:00:00">10:00:00</option>
-                                                                                                <option value="10:30:00">10:30:00</option>
-                                                                                                <option value="11:00:00">11:00:00</option>
-                                                                                                <option value="11:30:00">11:30:00</option>
-                                                                                                <option value="12:00:00">12:00:00</option>
-                                                                                                <option value="12:30:00">12:30:00</option>
-                                                                                                <option value="13:00:00">13:00:00</option>
-                                                                                                <option value="13:30:00">13:30:00</option>
-                                                                                                <option value="14:00:00">14:00:00</option>
-                                                                                                <option value="14:30:00">14:30:00</option>
-                                                                                                <option value="15:00:00">15:00:00</option>
-                                                                                                <option value="15:30:00">15:30:00</option>
-                                                                                                <option value="16:00:00">16:00:00</option>
-                                                                                                <option value="16:30:00">16:30:00</option>
-                                                                                                <option value="17:00:00">17:00:00</option>
-                                                                                            </select> 
-                                                                                            <div class="input-group-prepend">
-                                                                                                <button class="btn btn-success" onclick="agregar_hora('{{$item->id}}')"><i class="fas fa-plus"></i> </button>
+                                                                                        <div class="col-12 my-1 d-none">
+                                                                                            <label class="sr-only" for="cantidad">Cantidad</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-prepend">
+                                                                                                    <div class="input-group-text"># veces</div>
+                                                                                                </div>
+                                                                                                <input type="number" class="form-control" id="cantidad_a_e_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="2">
                                                                                             </div>
                                                                                         </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12 my-1">
-                                                                                    <label class="sr-only" for="fecha">Fecha</label>
-                                                                                    <div class="input-group">
-                                                                                        <div class="input-group-prepend">
-                                                                                            <div class="input-group-text">Fechas</div>
+                                                                                        <div class="col-12">
+                                                                                            <div class="row">
+                                                                                                <div class="col-6 my-1" id="caja_hora_{{ $item->id }}">
+                                                                                                    <input type="hidden" id="cantidad_horas_{{ $item->id }}" value="1">
+                                                                                                    <div id="hora_{{ $item->id }}_1" class="input-group mb-1">
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <button type="button" class="btn btn-secondary">Hora</button>
+                                                                                                        </div>
+                                                                                                        <select class="form-control" name="hora[]">
+                                                                                                            <option value="07:00:00">07:00:00</option>
+                                                                                                            <option value="07:30:00">07:30:00</option>
+                                                                                                            <option value="08:00:00">08:00:00</option>
+                                                                                                            <option value="08:30:00">08:30:00</option>
+                                                                                                            <option value="09:00:00">09:00:00</option>
+                                                                                                            <option value="09:30:00">09:30:00</option>
+                                                                                                            <option value="10:00:00">10:00:00</option>
+                                                                                                            <option value="10:30:00">10:30:00</option>
+                                                                                                            <option value="11:00:00">11:00:00</option>
+                                                                                                            <option value="11:30:00">11:30:00</option>
+                                                                                                            <option value="12:00:00">12:00:00</option>
+                                                                                                            <option value="12:30:00">12:30:00</option>
+                                                                                                            <option value="13:00:00">13:00:00</option>
+                                                                                                            <option value="13:30:00">13:30:00</option>
+                                                                                                            <option value="14:00:00">14:00:00</option>
+                                                                                                            <option value="14:30:00">14:30:00</option>
+                                                                                                            <option value="15:00:00">15:00:00</option>
+                                                                                                            <option value="15:30:00">15:30:00</option>
+                                                                                                            <option value="16:00:00">16:00:00</option>
+                                                                                                            <option value="16:30:00">16:30:00</option>
+                                                                                                            <option value="17:00:00">17:00:00</option>
+                                                                                                        </select>
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <button type="button" class="btn btn-success" onclick="agregar_hora('{{ $item->id}}')"><i class="fas fa-plus"></i> </button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-6 my-1">
+                                                                                                    <label class="sr-only" for="fecha">Fecha</label>
+                                                                                                    <div class="input-group">
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <div class="input-group-text">Fechas</div>
+                                                                                                        </div>
+                                                                                                        <input type="text" id="fecha_a_e_{{ $item->id }}" name="fecha_add" data-range="true"
+                                                                                                        data-multiple-dates-separator=","
+                                                                                                        data-language="en"
+                                                                                                        class="form-control datepicker-here" data-position="center top"  required>
+                                                                                                            <script>
+                                                                                                                $picker1 = $('#fecha_a_e_{{ $item->id}}');
+                                                                                                                $picker1.datepicker({
+                                                                                                                    inline:true,
+                                                                                                                    toggleSelected: false
+                                                                                                                });
+                                                                                                            </script>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <input type="text" id="fecha_a_e_{{ $item->id }}" name="fecha_add" data-range="true"
-                                                                                        data-multiple-dates-separator=","
-                                                                                        data-language="en"
-                                                                                        class="form-control datepicker-here" data-position="center top"  required>
-                                                                                            <script>
-                                                                                                $picker1 = $('#fecha_a_e_{{ $item->id}}');
-                                                                                                $picker1.datepicker({
-                                                                                                    inline:true,
-                                                                                                    toggleSelected: false
-                                                                                                });
-                                                                                            </script>
+                                                                                        <div class="col-12">
+                                                                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                                                                            {{ csrf_field() }}
+                                                                                            <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
+                                                                                            <button class="btn btn-primary btn-block btn-lg" type="button" onclick="guardar_calendario('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                                    {{ csrf_field() }}
-                                                                                    <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
-                                                                                    <button class="btn btn-primary btn-block btn-lg" type="button" onclick="guardar_calendario('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
-                                                                                </div>
+                                                                                </form>
                                                                             </div>
-                                                                        </form>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-6">
-                                                                        <form id="form_a_d_calendario_{{ $item->id }}" class="card card-body" action="{{ route('servicios.calendario.add_2') }}" method="POST" enctype="multipart/form-data">
-                                                                            <div class="row">
-                                                                                <div class="form-group col-12">
-                                                                                    <b class="text-15 text-danger">Ingrese el dia no hábil</b>
-                                                                                </div>
-                                                                                <div class="col-12 my-1">
-                                                                                    <label class="sr-only" for="cantidad">Cantidad</label>
-                                                                                    <div class="input-group">
-                                                                                        <div class="input-group-prepend">
-                                                                                            <div class="input-group-text"># veces</div>
-                                                                                        </div>
-                                                                                        <input type="number" class="form-control" id="cantidad_a_de_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="0" disabled>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12 my-1">
-                                                                                    <label class="sr-only" for="fecha">Fecha</label>
-                                                                                    <div class="input-group">
-                                                                                        <div class="input-group-prepend">
-                                                                                            <div class="input-group-text">Fechas</div>
-                                                                                        </div>
-                                                                                        <input type="text" id="fecha_a_de_{{ $item->id }}" name="fecha_d" data-range="false"
-                                                                                        data-multiple-dates-separator=","
-                                                                                        data-language="en"
-                                                                                        class="form-control datepicker-here" data-position="center top"  required>
-                                                                                            <script>
-                                                                                                $picker1 = $('#fecha_a_de_{{ $item->id}}');
-                                                                                                $picker1.datepicker({
-                                                                                                    inline:true,
-                                                                                                    toggleSelected: false
-                                                                                                });
-                                                                                            </script>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                                    {{ csrf_field() }}
-                                                                                    <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
-                                                                                    <button class="btn btn-danger btn-block btn-lg" type="button" onclick="guardar_calendario_2('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
-                                                                                </div>
+
+                                                                    <div class="col-12 mt-2">
+                                                                        <div class="card">
+                                                                            <div class="card-header"><b class="text-15 text-success">Ingrese el dia no hábil</b></div>
+                                                                            <div class="card-body">
+                                                                                    <form id="form_a_d_calendario_{{ $item->id }}" action="{{ route('servicios.calendario.add_2') }}" method="POST" enctype="multipart/form-data">
+                                                                                            <div class="row">
+                                                                                                <div class="col-12 my-1">
+                                                                                                    <label class="sr-only" for="cantidad">Cantidad</label>
+                                                                                                    <div class="input-group">
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <div class="input-group-text"># veces</div>
+                                                                                                        </div>
+                                                                                                        <input type="number" class="form-control" id="cantidad_a_de_{{ $item->id }}" name="cantidad" placeholder="# veces" required value="0" disabled>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-12 my-1">
+                                                                                                    <label class="sr-only" for="fecha">Fecha</label>
+                                                                                                    <div class="input-group">
+                                                                                                        <div class="input-group-prepend">
+                                                                                                            <div class="input-group-text">Fechas</div>
+                                                                                                        </div>
+                                                                                                        <input type="text" id="fecha_a_de_{{ $item->id }}" name="fecha_d" data-range="false"
+                                                                                                        data-multiple-dates-separator=","
+                                                                                                        data-language="en"
+                                                                                                        class="form-control datepicker-here" data-position="center top"  required>
+                                                                                                            <script>
+                                                                                                                $picker1 = $('#fecha_a_de_{{ $item->id}}');
+                                                                                                                $picker1.datepicker({
+                                                                                                                    inline:true,
+                                                                                                                    toggleSelected: false
+                                                                                                                });
+                                                                                                            </script>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-12">
+                                                                                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                                                                                    {{ csrf_field() }}
+                                                                                                    <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
+                                                                                                    <button class="btn btn-danger btn-block btn-lg" type="button" onclick="guardar_calendario_2('{{ $item->id }}')"><i class="fas fa-save"></i> Guardar</button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
                                                                             </div>
-                                                                        </form>
+                                                                        </div>
                                                                     </div>
+
+
                                                                 </div>
                                                                 <div class="row">
                                                                         <div class="form-group col-12">

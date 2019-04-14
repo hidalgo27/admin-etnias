@@ -25,6 +25,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use MaddHatter\LaravelFullcalendar\Calendar;
+use App\ActividadDisponibleHora;
 
 class ServiciosController extends Controller
 {
@@ -833,6 +834,8 @@ if(!empty($foto_miniatura)){
     public function add_calendario(Request $request){
         $cantidad=$request->input('cantidad');
         $fecha1=$request->input('fecha_add');
+        $hora=$request->input('hora');
+
         $fecha=explode(',',$fecha1);
         $start = Carbon::createFromFormat('m/d/Y', $fecha[0]);
         $end = Carbon::createFromFormat('m/d/Y', $fecha[1]);
@@ -861,6 +864,15 @@ if(!empty($foto_miniatura)){
                     $temp->estado='1';
                     $temp->actividad_id=$id;
                     $temp->save();
+
+                    // creamos las horas disponibles
+                    foreach($hora as $hora_){
+                        $hora_disponible=new ActividadDisponibleHora();
+                        $hora_disponible->hora=$hora_;
+                        $hora_disponible->actividad_disponible_id=$temp->id;
+                        $hora_disponible->save();
+                    }
+
                     $item=Actividad::find($id);
                 }
             }
@@ -929,6 +941,10 @@ if(!empty($foto_miniatura)){
         $fecha_=$request->input('fecha');
         $f=explode('-',$fecha_);
         $fecha = $f[2].'-'.$f[1].'-'.$f[0];
+
+        $rpt1=ActividadDisponible::where('actividad_id',$actividad_id)->where('fecha',$fecha)->first();
+        $hora=ActividadDisponibleHora::where('actividad_disponible_id',$rpt1->id)->delete();
+
         $rpt=ActividadDisponible::where('actividad_id',$actividad_id)->where('fecha',$fecha)->delete();
         if($rpt>0){
             // return view('servicios..');
