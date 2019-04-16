@@ -10,7 +10,9 @@ class adminController extends Controller
     public function index(Request $request)
     {
 
+        // return view('admin.index');
         return view('admin.index');
+
     }
     public function destroy(){
         // auth()->guard('admin')->logout();

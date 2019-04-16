@@ -1,18 +1,14 @@
 @extends('layouts.app-admin')
+@section('breadcrumb')
+<li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
+<li class="breadcrumb-item active" aria-current="page">SOLICITUD DE </li>
 
+@endsection
 @section('content')
 @php
     use Carbon\Carbon;
 @endphp
 <div class="row">
-    <div class="col-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-                <li class="breadcrumb-item active" aria-current="page">SOLICITUD DE </li>
-            </ol>
-        </nav>
-    </div>
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -117,7 +113,7 @@
                                                                     <div class="col-12 my-0">
                                                                         <b class="text-secondary">Distrito:</b> {{$item->distrito_id}}
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -2155,7 +2155,6 @@ body {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #eaeaea;
   transition: all 0.5s ease;
 }
 
@@ -2186,7 +2185,7 @@ body {
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
+  text-indent: 10px;
   line-height: 40px;
 }
 
@@ -2307,7 +2306,7 @@ a:active {
 
 #sidebar ul li a:hover {
   color: #959595;
-  background: #e4e4e4;
+  background: #bdbdbd;
 }
 
 #sidebar ul li.active > a,

@@ -1,17 +1,14 @@
 @extends('layouts.app-admin')
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{route('reserva.lista')}}">RESERVAS</a></li>
+    <li class="breadcrumb-item active"><a href="{{route('operaciones.lista',[$f1,$f2])}}"">OPERACIONES</a></li>
+@endsection
 @section('content')
 @php
 use Carbon\Carbon;
 @endphp
 <div class="row">
-    <div class="col-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('reserva.lista')}}">RESERVAS</a></li>
-                <li class="breadcrumb-item active"><a href="{{route('operaciones.lista',[$f1,$f2])}}"">OPERACIONES</a></li>
-            </ol>
-        </nav>
-    </div>
+    
     <div class="col-12">
         <div class="row mb-1">
             <div id="codigo_cerrado" class="col-12 px-0 form-inline">
@@ -56,7 +53,7 @@ use Carbon\Carbon;
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($operaciones as $item) 
+                        @foreach ($operaciones as $item)
                             <tr>
                                 <td>
                                     @php
@@ -68,73 +65,73 @@ use Carbon\Carbon;
                                 <td><b>{{$item->nro_pax}}</b></td>
                                 <td><span class="text-primary">{{$item->codigo}}</span> {{$item->nombre}}</td>
                                 <td>
-                                    @foreach ($item->actividades as $objeto) 
+                                    @foreach ($item->actividades as $objeto)
                                         {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span>
                                         @if ($objeto->estado=='0')
                                             <span class="text-danger"><i class="fas fa-user-clock"></i></span>
                                         @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
                                         @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
                                         @endif
                                         <br>
                                     @endforeach
                                 </td>
                                 <td>
-                                    @foreach ($item->comidas as $objeto) 
-                                        {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span> 
+                                    @foreach ($item->comidas as $objeto)
+                                        {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span>
                                         @if ($objeto->estado=='0')
                                             <span class="text-danger"><i class="fas fa-user-clock"></i></span>
                                         @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
                                         @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
                                         @endif
                                         <br>
                                     @endforeach
                                 </td>
                                 <td>
-                                    @foreach ($item->hospedajes as $objeto) 
+                                    @foreach ($item->hospedajes as $objeto)
                                         {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span>
                                         @if ($objeto->estado=='0')
                                             <span class="text-danger"><i class="fas fa-user-clock"></i></span>
                                         @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
                                         @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
-                                        @endif
-                                        <br>
-                                    @endforeach                            
-                                </td>
-                                <td>
-                                    @foreach ($item->transporte as $objeto) 
-                                        {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span>
-                                        @if ($objeto->estado=='0')
-                                            <span class="text-danger"><i class="fas fa-user-clock"></i></span>
-                                        @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
-                                        @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
                                         @endif
                                         <br>
                                     @endforeach
                                 </td>
                                 <td>
-                                    @foreach ($item->servicios as $objeto) 
+                                    @foreach ($item->transporte as $objeto)
                                         {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span>
                                         @if ($objeto->estado=='0')
                                             <span class="text-danger"><i class="fas fa-user-clock"></i></span>
                                         @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
                                         @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
                                         @endif
                                         <br>
                                     @endforeach
                                 </td>
                                 <td>
-                                    @foreach ($item->transporte_externo as $objeto) 
-                                        {{$objeto->categoria}} | {{$objeto->ruta_salida}} / {{$objeto->ruta_llegada}} | {{$objeto->s_p}} 
+                                    @foreach ($item->servicios as $objeto)
+                                        {{$objeto->titulo}} <span class="text-primary">{{$objeto->asociacion->nombre}}</span>
+                                        @if ($objeto->estado=='0')
+                                            <span class="text-danger"><i class="fas fa-user-clock"></i></span>
+                                        @elseif ($objeto->estado=='1')
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
+                                        @elseif ($objeto->estado=='2')
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
+                                        @endif
+                                        <br>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($item->transporte_externo as $objeto)
+                                        {{$objeto->categoria}} | {{$objeto->ruta_salida}} / {{$objeto->ruta_llegada}} | {{$objeto->s_p}}
                                         <span class="text-primary">
                                             @if ($objeto->proveedor_id>0)
                                                 {{$proveedores->where('id',$objeto->proveedor_id)->first()->nombre_comercial}}
@@ -145,16 +142,16 @@ use Carbon\Carbon;
                                         @if ($objeto->estado=='0')
                                             <span class="text-danger"><i class="fas fa-user-clock"></i></span>
                                         @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
                                         @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
                                         @endif
                                         <br>
                                     @endforeach
                                 </td>
                                 <td>
-                                    @foreach ($item->guia as $objeto) 
-                                    {{$objeto->categoria}} | {{$objeto->ruta_salida}} / {{$objeto->ruta_llegada}} | {{$objeto->s_p}} 
+                                    @foreach ($item->guia as $objeto)
+                                    {{$objeto->categoria}} | {{$objeto->ruta_salida}} / {{$objeto->ruta_llegada}} | {{$objeto->s_p}}
                                         <span class="text-primary">
                                             @if ($objeto->proveedor_id>0)
                                                 {{$proveedores->where('id',$objeto->proveedor_id)->first()->nombre_comercial}}
@@ -165,20 +162,20 @@ use Carbon\Carbon;
                                         @if ($objeto->estado=='0')
                                             <span class="text-danger"><i class="fas fa-user-clock"></i></span>
                                         @elseif ($objeto->estado=='1')
-                                            <span class="text-success"><i class="fas fa-user-check"></i></span> 
+                                            <span class="text-success"><i class="fas fa-user-check"></i></span>
                                         @elseif ($objeto->estado=='2')
-                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span> 
+                                            <span class="text-secondary"><i class="fas fa-user-alt-slach"></i></span>
                                         @endif
                                         <br>
                                     @endforeach
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody>       
-                </table> 
+                    </tbody>
+                </table>
             </div>
         </div>
-        
+
     </div>
 </div>
 

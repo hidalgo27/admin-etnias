@@ -37,7 +37,18 @@
 @endif
 
 <div class="menu-list text-12">
-  <ul id="menu-content" class="menu-content collapsed menu1">
+
+  <ul id="menu-content" class="menu-content collapsed menu1 sidebar-nav">
+        <li class="sidebar-brand1 sidebar-wrap">
+            <a href="#">
+                <img alt="Brand" src="{{asset("images/img/etnias-peru.png")}}" class="w-75">
+            </a>
+            <a href="#!" >
+                <b class="text-primary text-13">Usuario del sistema</b>
+                <span class="text-primary">(Administrador)</span>
+            </a>
+         </li>
+
     {{-- rutas para la base de datos --}}
     <li data-toggle="collapse" data-target="#operaciones" class="collapsed">
         <a href="#" class="bg-dark text-white"><i class="fas fa-database"></i> BASE DE DATOS </a>
@@ -91,4 +102,4 @@
   </ul>
 
   </ul>
- </div>
+</div>

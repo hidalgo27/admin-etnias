@@ -1,19 +1,15 @@
 @extends('layouts.app-admin')
+@section('breadcrumb')
+<li class="breadcrumb-item"><a href="#">RESERVAS</a></li>
+<li class="breadcrumb-item" aria-current="page"><a href="{{route('reserva.lista')}}">LISTA</a></li>
+<li class="breadcrumb-item active" aria-current="page">DETALLE</li>
 
+@endsection
 @section('content')
 @php
 use Carbon\Carbon;
 @endphp
 <div class="row">
-    <div class="col-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">RESERVAS</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="{{route('reserva.lista')}}">LISTA</a></li>
-                <li class="breadcrumb-item active" aria-current="page">DETALLE</li>
-            </ol>
-        </nav>
-    </div>
     <div class="col-12">
         <div class="row">
                 @php

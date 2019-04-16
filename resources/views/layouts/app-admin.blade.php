@@ -19,54 +19,61 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">  --}}
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-2">
-              @include('layouts.nav')
-                 <!-- Sidebar -->
-                <div id="sidebar-wrapper">
-                    <ul class="nav nav-pills flex-column pl-1">
-                        <li class="nav-item item-menu">
-                          <a class="nav-link item-titulo" data-toggle="collapse" href="#item-1">
-                                <i class="fas fa-database"></i> BASE DE DATOS</a></li>
-                          <div id="item-1" class="collapse">
-                            <ul class="nav flex-column ml-3">
-                              <li class="nav-item item-menu">
-                                <a class="nav-link item-titulo active" href="{{ route('comunidad_lista_path') }}">COMUNIDADES</a>
-                              </li>
-                              <li class="nav-item item-menu">
-                                <a class="nav-link item-titulo" href="{{ route('asociacion.lista') }}">ASOCIACION</a>
-                              </li>
-                              <li class="nav-item item-menu">
-                                {{-- <a class="nav-link item-titulo" href="{{ route('servicios.nuevo',[$asociacion->id]) }}">SERVIVIOS</a> --}}
-                              </li>
-                              <li class="nav-item item-menu">
-                                <a class="nav-link item-titulo" href="#">SERVIVIOS</a>
-                              </li>
-                              <li class="nav-item item-menu">
-                                <a class="nav-link item-titulo" href="#">OTROS SERVICIOS</a>
-                              </li>
-                            </ul>
-                          </div>
-                        <li class="nav-item item-menu">
-                          <a class="nav-link item-titulo" href="#">
-                                <i class="fas fa-book-reader"></i> RESERVAS</a>
-                        </li>
-                        <li class="nav-item item-menu">
-                          <a class="nav-link item-titulo" href="#">
-                                <i class="fas fa-file"></i> REPORTES</a>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-            <div class="col-10">
-                @yield('content')
-            </div>
-        </div>
-    </div>
+
+
+            <div id="wrapper" class="toggled">
+
+                <!-- Sidebar -->
+                @include('layouts.nav')
+
+                <!-- /#sidebar-wrapper -->
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-1 ">
+                            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
+                                <i class="fas fa-bars fa-2x"></i>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                        </div>
+                        <div class="col-11">
+                            <nav  aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    @yield('breadcrumb')
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
+                    @yield('content')
+                </div> <!-- /#page-content-wrapper -->
+            </div> <!-- /#wrapper -->
+            <!-- Bootstrap core JavaScript -->
+            <script src="js/jquery.min.js"></script>
+            <script src="js/bootstrap.bundle.min.js"></script> <!-- Menu Toggle Script -->
+            <script>
+              $(function(){
+                $("#menu-toggle").click(function(e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+
+                $(window).resize(function(e) {
+                  if($(window).width()<=768||$(window).width()<=1024){
+                    $("#wrapper").removeClass("toggled");
+                  }else{
+                    $("#wrapper").addClass("toggled");
+                  }
+                });
+              });
+
+            </script>
+
+
+
+
 </body>
 
 </html>
