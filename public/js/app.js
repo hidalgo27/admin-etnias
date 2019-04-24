@@ -38764,7 +38764,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-* sweetalert2 v8.0.7
+* sweetalert2 v8.2.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -39071,7 +39071,7 @@ var prefix = function prefix(items) {
 
   return result;
 };
-var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'toast-column', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'validation-message', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl']);
+var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'toast-column', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl']);
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
 var states = {
@@ -39168,7 +39168,7 @@ var getImage = function getImage() {
   return elementByClass(swalClasses.image);
 };
 var getProgressSteps = function getProgressSteps() {
-  return elementByClass(swalClasses.progresssteps);
+  return elementByClass(swalClasses['progress-steps']);
 };
 var getValidationMessage = function getValidationMessage() {
   return elementByClass(swalClasses['validation-message']);
@@ -39225,7 +39225,7 @@ var isNodeEnv = function isNodeEnv() {
   return typeof window === 'undefined' || typeof document === 'undefined';
 };
 
-var sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").concat(swalClasses.header, "\">\n     <ul class=\"").concat(swalClasses.progresssteps, "\"></ul>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.error, "\">\n       <span class=\"swal2-x-mark\"><span class=\"swal2-x-mark-line-left\"></span><span class=\"swal2-x-mark-line-right\"></span></span>\n     </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.question, "\">\n       <span class=\"").concat(swalClasses['icon-text'], "\">?</span>\n      </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.warning, "\">\n       <span class=\"").concat(swalClasses['icon-text'], "\">!</span>\n      </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.info, "\">\n       <span class=\"").concat(swalClasses['icon-text'], "\">i</span>\n      </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.success, "\">\n       <div class=\"swal2-success-circular-line-left\"></div>\n       <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n       <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n       <div class=\"swal2-success-circular-line-right\"></div>\n     </div>\n     <img class=\"").concat(swalClasses.image, "\" />\n     <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").concat(swalClasses.close, "\">\xD7</button>\n   </div>\n   <div class=\"").concat(swalClasses.content, "\">\n     <div id=\"").concat(swalClasses.content, "\"></div>\n     <input class=\"").concat(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n     <div class=\"").concat(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").concat(swalClasses.select, "\"></select>\n     <div class=\"").concat(swalClasses.radio, "\"></div>\n     <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").concat(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n     <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\">\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
+var sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses.content, "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <div class=\"").concat(swalClasses.header, "\">\n     <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.error, "\">\n       <span class=\"swal2-x-mark\"><span class=\"swal2-x-mark-line-left\"></span><span class=\"swal2-x-mark-line-right\"></span></span>\n     </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.question, "\">\n       <span class=\"").concat(swalClasses['icon-text'], "\">?</span>\n      </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.warning, "\">\n       <span class=\"").concat(swalClasses['icon-text'], "\">!</span>\n      </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.info, "\">\n       <span class=\"").concat(swalClasses['icon-text'], "\">i</span>\n      </div>\n     <div class=\"").concat(swalClasses.icon, " ").concat(iconTypes.success, "\">\n       <div class=\"swal2-success-circular-line-left\"></div>\n       <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n       <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n       <div class=\"swal2-success-circular-line-right\"></div>\n     </div>\n     <img class=\"").concat(swalClasses.image, "\" />\n     <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n     <button type=\"button\" class=\"").concat(swalClasses.close, "\">\xD7</button>\n   </div>\n   <div class=\"").concat(swalClasses.content, "\">\n     <div id=\"").concat(swalClasses.content, "\"></div>\n     <input class=\"").concat(swalClasses.input, "\" />\n     <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n     <div class=\"").concat(swalClasses.range, "\">\n       <input type=\"range\" />\n       <output></output>\n     </div>\n     <select class=\"").concat(swalClasses.select, "\"></select>\n     <div class=\"").concat(swalClasses.radio, "\"></div>\n     <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n       <input type=\"checkbox\" />\n       <span class=\"").concat(swalClasses.label, "\"></span>\n     </label>\n     <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n     <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   </div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\">OK</button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\">Cancel</button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\">\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
 /*
  * Add modal + backdrop to DOM
  */
@@ -39506,19 +39506,19 @@ var renderProgressSteps = function renderProgressSteps(params) {
     }
 
     params.progressSteps.forEach(function (step, index) {
-      var circle = document.createElement('li');
-      addClass(circle, swalClasses.progresscircle);
-      circle.innerHTML = step;
+      var stepEl = document.createElement('li');
+      addClass(stepEl, swalClasses['progress-step']);
+      stepEl.innerHTML = step;
 
       if (index === currentProgressStep) {
-        addClass(circle, swalClasses.activeprogressstep);
+        addClass(stepEl, swalClasses['active-progress-step']);
       }
 
-      progressStepsContainer.appendChild(circle);
+      progressStepsContainer.appendChild(stepEl);
 
       if (index !== params.progressSteps.length - 1) {
         var line = document.createElement('li');
-        addClass(line, swalClasses.progressline);
+        addClass(line, swalClasses['progress-step-line']);
 
         if (params.progressStepsDistance) {
           line.style.width = params.progressStepsDistance;
@@ -39853,7 +39853,8 @@ var defaultParams = {
   onBeforeOpen: null,
   onAfterClose: null,
   onOpen: null,
-  onClose: null
+  onClose: null,
+  scrollbarPadding: true
 };
 var deprecatedParams = [];
 var toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusCancel', 'heightAuto', 'keydownListenerCapture'];
@@ -40572,7 +40573,10 @@ var openPopup = function openPopup(params) {
   }
 
   if (isModal()) {
-    fixScrollbar();
+    if (params.scrollbarPadding) {
+      fixScrollbar();
+    }
+
     iOSfix();
     IEfix();
     setAriaHidden(); // sweetalert2/issues/1247
@@ -41320,7 +41324,7 @@ Object.keys(instanceMethods).forEach(function (key) {
   };
 });
 SweetAlert.DismissReason = DismissReason;
-SweetAlert.version = '8.0.7';
+SweetAlert.version = '8.2.1';
 
 var Swal = SweetAlert;
 Swal.default = Swal;
@@ -41330,7 +41334,7 @@ return Swal;
 })));
 if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
 
-"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;box-shadow:0 0 .625em #d9d9d9;overflow-y:hidden}.swal2-popup.swal2-toast .swal2-header{flex-direction:row}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:initial;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon-text{font-size:2em;font-weight:700;line-height:1em}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:2em;height:2.8125em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.25em;left:-.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:2em 2em;transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;-webkit-transform-origin:0 2em;transform-origin:0 2em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:showSweetToast .5s;animation:showSweetToast .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:hideSweetToast .2s forwards;animation:hideSweetToast .2s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:animate-toast-success-tip .75s;animation:animate-toast-success-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:animate-toast-success-long .75s;animation:animate-toast-success-long .75s}@-webkit-keyframes showSweetToast{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg);opacity:0}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg);opacity:.5}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg);opacity:.7}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0);opacity:1}}@keyframes showSweetToast{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg);opacity:0}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg);opacity:.5}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg);opacity:.7}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0);opacity:1}}@-webkit-keyframes hideSweetToast{0%{opacity:1}33%{opacity:.5}100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@keyframes hideSweetToast{0%{opacity:1}33%{opacity:.5}100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes animate-toast-success-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes animate-toast-success-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes animate-toast-success-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes animate-toast-success-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:flex;position:fixed;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:10px;background-color:transparent;z-index:1060;overflow-x:hidden;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem;box-sizing:border-box}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-popup .swal2-header{display:flex;flex-direction:column;align-items:center}.swal2-popup .swal2-title{display:block;position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-popup .swal2-actions{flex-wrap:wrap;align-items:center;justify-content:center;margin:1.25em auto 0;z-index:1}.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-confirm{width:2.5em;height:2.5em;margin:.46875em;padding:0;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;box-sizing:border-box;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-popup .swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{display:inline-block;width:15px;height:15px;margin-left:5px;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff;content:'';-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal}.swal2-popup .swal2-styled{margin:.3125em;padding:.625em 2em;font-weight:500;box-shadow:none}.swal2-popup .swal2-styled:not([disabled]){cursor:pointer}.swal2-popup .swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-popup .swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-popup .swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-popup .swal2-styled::-moz-focus-inner{border:0}.swal2-popup .swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-popup .swal2-image{max-width:100%;margin:1.25em auto}.swal2-popup .swal2-close{position:absolute;top:0;right:0;justify-content:center;width:1.2em;height:1.2em;padding:0;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer;overflow:hidden}.swal2-popup .swal2-close:hover{-webkit-transform:none;transform:none;color:#f27474}.swal2-popup>.swal2-checkbox,.swal2-popup>.swal2-file,.swal2-popup>.swal2-input,.swal2-popup>.swal2-radio,.swal2-popup>.swal2-select,.swal2-popup>.swal2-textarea{display:none}.swal2-popup .swal2-content{justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;z-index:1;word-wrap:break-word}.swal2-popup #swal2-content{text-align:center}.swal2-popup .swal2-checkbox,.swal2-popup .swal2-file,.swal2-popup .swal2-input,.swal2-popup .swal2-radio,.swal2-popup .swal2-select,.swal2-popup .swal2-textarea{margin:1em auto}.swal2-popup .swal2-file,.swal2-popup .swal2-input,.swal2-popup .swal2-textarea{width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;font-size:1.125em;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);box-sizing:border-box}.swal2-popup .swal2-file.swal2-inputerror,.swal2-popup .swal2-input.swal2-inputerror,.swal2-popup .swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-popup .swal2-file:focus,.swal2-popup .swal2-input:focus,.swal2-popup .swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-popup .swal2-file::-webkit-input-placeholder,.swal2-popup .swal2-input::-webkit-input-placeholder,.swal2-popup .swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-popup .swal2-file:-ms-input-placeholder,.swal2-popup .swal2-input:-ms-input-placeholder,.swal2-popup .swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-popup .swal2-file::-ms-input-placeholder,.swal2-popup .swal2-input::-ms-input-placeholder,.swal2-popup .swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-popup .swal2-file::placeholder,.swal2-popup .swal2-input::placeholder,.swal2-popup .swal2-textarea::placeholder{color:#ccc}.swal2-popup .swal2-range input{width:80%}.swal2-popup .swal2-range output{width:20%;font-weight:600;text-align:center}.swal2-popup .swal2-range input,.swal2-popup .swal2-range output{height:2.625em;margin:1em auto;padding:0;font-size:1.125em;line-height:2.625em}.swal2-popup .swal2-input{height:2.625em;padding:0 .75em}.swal2-popup .swal2-input[type=number]{max-width:10em}.swal2-popup .swal2-file{font-size:1.125em}.swal2-popup .swal2-textarea{height:6.75em;padding:.75em}.swal2-popup .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;color:#545454;font-size:1.125em}.swal2-popup .swal2-checkbox,.swal2-popup .swal2-radio{align-items:center;justify-content:center}.swal2-popup .swal2-checkbox label,.swal2-popup .swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-popup .swal2-checkbox input,.swal2-popup .swal2-radio input{margin:0 .4em}.swal2-popup .swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;background:#f0f0f0;color:#666;font-size:1em;font-weight:300;overflow:hidden}.swal2-popup .swal2-validation-message::before{display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center;content:'!';zoom:normal}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;border:.25em solid transparent;border-radius:50%;line-height:5em;cursor:default;box-sizing:content-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;zoom:normal}.swal2-icon-text{font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:3.75em 3.75em;transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 3.75em;transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;top:-.25em;left:-.25em;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%;z-index:2;box-sizing:content-box}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;top:.5em;left:1.625em;width:.4375em;height:5.625em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);z-index:1}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;height:.3125em;border-radius:.125em;background-color:#a5dc86;z-index:2}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progresssteps{align-items:center;margin:0 0 1.25em;padding:0;font-weight:600}.swal2-progresssteps li{display:inline-block;position:relative}.swal2-progresssteps .swal2-progresscircle{width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center;z-index:20}.swal2-progresssteps .swal2-progresscircle:first-child{margin-left:0}.swal2-progresssteps .swal2-progresscircle:last-child{margin-right:0}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep{background:#3085d6}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progresscircle{background:#add8e6}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progressline{background:#add8e6}.swal2-progresssteps .swal2-progressline{width:2.5em;height:.4em;margin:0 -1px;background:#3085d6;z-index:10}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:initial!important}}");
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;box-shadow:0 0 .625em #d9d9d9;overflow-y:hidden}.swal2-popup.swal2-toast .swal2-header{flex-direction:row}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:initial;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon-text{font-size:2em;font-weight:700;line-height:1em}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:2em;height:2.8125em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.25em;left:-.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:2em 2em;transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;-webkit-transform-origin:0 2em;transform-origin:0 2em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:showSweetToast .5s;animation:showSweetToast .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:hideSweetToast .2s forwards;animation:hideSweetToast .2s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:animate-toast-success-tip .75s;animation:animate-toast-success-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:animate-toast-success-long .75s;animation:animate-toast-success-long .75s}@-webkit-keyframes showSweetToast{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg);opacity:0}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg);opacity:.5}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg);opacity:.7}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0);opacity:1}}@keyframes showSweetToast{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg);opacity:0}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg);opacity:.5}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg);opacity:.7}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0);opacity:1}}@-webkit-keyframes hideSweetToast{0%{opacity:1}33%{opacity:.5}100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@keyframes hideSweetToast{0%{opacity:1}33%{opacity:.5}100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes animate-toast-success-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes animate-toast-success-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes animate-toast-success-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes animate-toast-success-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:flex;position:fixed;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:10px;background-color:transparent;z-index:1060;overflow-x:hidden;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem;box-sizing:border-box}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-popup .swal2-header{display:flex;flex-direction:column;align-items:center}.swal2-popup .swal2-title{display:block;position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-popup .swal2-actions{flex-wrap:wrap;align-items:center;justify-content:center;margin:1.25em auto 0;z-index:1}.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-confirm{width:2.5em;height:2.5em;margin:.46875em;padding:0;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;box-sizing:border-box;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-popup .swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{display:inline-block;width:15px;height:15px;margin-left:5px;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff;content:'';-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal}.swal2-popup .swal2-styled{margin:.3125em;padding:.625em 2em;font-weight:500;box-shadow:none}.swal2-popup .swal2-styled:not([disabled]){cursor:pointer}.swal2-popup .swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-popup .swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-popup .swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-popup .swal2-styled::-moz-focus-inner{border:0}.swal2-popup .swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-popup .swal2-image{max-width:100%;margin:1.25em auto}.swal2-popup .swal2-close{position:absolute;top:0;right:0;justify-content:center;width:1.2em;height:1.2em;padding:0;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer;overflow:hidden}.swal2-popup .swal2-close:hover{-webkit-transform:none;transform:none;color:#f27474}.swal2-popup>.swal2-checkbox,.swal2-popup>.swal2-file,.swal2-popup>.swal2-input,.swal2-popup>.swal2-radio,.swal2-popup>.swal2-select,.swal2-popup>.swal2-textarea{display:none}.swal2-popup .swal2-content{justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;z-index:1;word-wrap:break-word}.swal2-popup #swal2-content{text-align:center}.swal2-popup .swal2-checkbox,.swal2-popup .swal2-file,.swal2-popup .swal2-input,.swal2-popup .swal2-radio,.swal2-popup .swal2-select,.swal2-popup .swal2-textarea{margin:1em auto}.swal2-popup .swal2-file,.swal2-popup .swal2-input,.swal2-popup .swal2-textarea{width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;font-size:1.125em;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);box-sizing:border-box}.swal2-popup .swal2-file.swal2-inputerror,.swal2-popup .swal2-input.swal2-inputerror,.swal2-popup .swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-popup .swal2-file:focus,.swal2-popup .swal2-input:focus,.swal2-popup .swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-popup .swal2-file::-webkit-input-placeholder,.swal2-popup .swal2-input::-webkit-input-placeholder,.swal2-popup .swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-popup .swal2-file:-ms-input-placeholder,.swal2-popup .swal2-input:-ms-input-placeholder,.swal2-popup .swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-popup .swal2-file::-ms-input-placeholder,.swal2-popup .swal2-input::-ms-input-placeholder,.swal2-popup .swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-popup .swal2-file::placeholder,.swal2-popup .swal2-input::placeholder,.swal2-popup .swal2-textarea::placeholder{color:#ccc}.swal2-popup .swal2-range{margin:1em auto;background:inherit}.swal2-popup .swal2-range input{width:80%}.swal2-popup .swal2-range output{width:20%;font-weight:600;text-align:center}.swal2-popup .swal2-range input,.swal2-popup .swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-popup .swal2-input{height:2.625em;padding:0 .75em}.swal2-popup .swal2-input[type=number]{max-width:10em}.swal2-popup .swal2-file{background:inherit;font-size:1.125em}.swal2-popup .swal2-textarea{height:6.75em;padding:.75em}.swal2-popup .swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:#545454;font-size:1.125em}.swal2-popup .swal2-checkbox,.swal2-popup .swal2-radio{align-items:center;justify-content:center;background:inherit}.swal2-popup .swal2-checkbox label,.swal2-popup .swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-popup .swal2-checkbox input,.swal2-popup .swal2-radio input{margin:0 .4em}.swal2-popup .swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;background:#f0f0f0;color:#666;font-size:1em;font-weight:300;overflow:hidden}.swal2-popup .swal2-validation-message::before{display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center;content:'!';zoom:normal}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;border:.25em solid transparent;border-radius:50%;line-height:5em;cursor:default;box-sizing:content-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;zoom:normal}.swal2-icon-text{font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:3.75em 3.75em;transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 3.75em;transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;top:-.25em;left:-.25em;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%;z-index:2;box-sizing:content-box}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;top:.5em;left:1.625em;width:.4375em;height:5.625em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);z-index:1}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;height:.3125em;border-radius:.125em;background-color:#a5dc86;z-index:2}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center;z-index:20}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:inherit;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:inherit}.swal2-progress-steps .swal2-progress-step-line{width:2.5em;height:.4em;margin:0 -1px;background:#3085d6;z-index:10}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:initial!important}}");
 
 /***/ }),
 
@@ -41439,7 +41443,7 @@ __webpack_require__(/*! ./plugin.js */ "./node_modules/tinymce/plugins/advlist/p
  * For LGPL see License.txt in the project root for license information.
  * For commercial licenses see https://www.tiny.cloud/
  *
- * Version: 5.0.3 (2019-03-19)
+ * Version: 5.0.4 (2019-04-23)
  */
 (function () {
 var advlist = (function () {
@@ -41673,8 +41677,7 @@ var advlist = (function () {
               type: 'choiceitem',
               value: itemValue,
               icon: 'list-' + iconStyle + '-' + iconName,
-              text: displayText,
-              ariaLabel: displayText
+              text: displayText
             };
           });
           callback(items);
@@ -41695,9 +41698,9 @@ var advlist = (function () {
           var nodeChangeHandler = function (e) {
             api.setActive(isWithinList(editor, e, nodeName));
           };
-          editor.on('nodeChange', nodeChangeHandler);
+          editor.on('NodeChange', nodeChangeHandler);
           return function () {
-            return editor.off('nodeChange', nodeChangeHandler);
+            return editor.off('NodeChange', nodeChangeHandler);
           };
         }
       });
@@ -41711,9 +41714,9 @@ var advlist = (function () {
           var nodeChangeHandler = function (e) {
             api.setActive(isWithinList(editor, e, nodeName));
           };
-          editor.on('nodeChange', nodeChangeHandler);
+          editor.on('NodeChange', nodeChangeHandler);
           return function () {
-            return editor.off('nodeChange', nodeChangeHandler);
+            return editor.off('NodeChange', nodeChangeHandler);
           };
         },
         onAction: function () {
@@ -41785,7 +41788,7 @@ __webpack_require__(/*! ./plugin.js */ "./node_modules/tinymce/plugins/lists/plu
  * For LGPL see License.txt in the project root for license information.
  * For commercial licenses see https://www.tiny.cloud/
  *
- * Version: 5.0.3 (2019-03-19)
+ * Version: 5.0.4 (2019-04-23)
  */
 (function () {
 var lists = (function (domGlobals) {
@@ -42159,6 +42162,41 @@ var lists = (function (domGlobals) {
     var isFunction = isType('function');
     var isNumber = isType('number');
 
+    var rawIndexOf = function () {
+      var pIndexOf = Array.prototype.indexOf;
+      var fastIndex = function (xs, x) {
+        return pIndexOf.call(xs, x);
+      };
+      var slowIndex = function (xs, x) {
+        return slowIndexOf(xs, x);
+      };
+      return pIndexOf === undefined ? slowIndex : fastIndex;
+    }();
+    var indexOf = function (xs, x) {
+      var r = rawIndexOf(xs, x);
+      return r === -1 ? Option.none() : Option.some(r);
+    };
+    var contains = function (xs, x) {
+      return rawIndexOf(xs, x) > -1;
+    };
+    var exists = function (xs, pred) {
+      return findIndex(xs, pred).isSome();
+    };
+    var range = function (num, f) {
+      var r = [];
+      for (var i = 0; i < num; i++) {
+        r.push(f(i));
+      }
+      return r;
+    };
+    var chunk = function (array, size) {
+      var r = [];
+      for (var i = 0; i < array.length; i += size) {
+        var s = array.slice(i, i + size);
+        r.push(s);
+      }
+      return r;
+    };
     var map = function (xs, f) {
       var len = xs.length;
       var r = new Array(len);
@@ -42173,6 +42211,25 @@ var lists = (function (domGlobals) {
         var x = xs[i];
         f(x, i, xs);
       }
+    };
+    var eachr = function (xs, f) {
+      for (var i = xs.length - 1; i >= 0; i--) {
+        var x = xs[i];
+        f(x, i, xs);
+      }
+    };
+    var partition = function (xs, pred) {
+      var pass = [];
+      var fail = [];
+      for (var i = 0, len = xs.length; i < len; i++) {
+        var x = xs[i];
+        var arr = pred(x, i, xs) ? pass : fail;
+        arr.push(x);
+      }
+      return {
+        pass: pass,
+        fail: fail
+      };
     };
     var filter = function (xs, pred) {
       var r = [];
@@ -42207,6 +42264,12 @@ var lists = (function (domGlobals) {
         return r;
       }
     };
+    var foldr = function (xs, f, acc) {
+      eachr(xs, function (x) {
+        acc = f(acc, x);
+      });
+      return acc;
+    };
     var foldl = function (xs, f, acc) {
       each(xs, function (x) {
         acc = f(acc, x);
@@ -42222,6 +42285,23 @@ var lists = (function (domGlobals) {
       }
       return Option.none();
     };
+    var findIndex = function (xs, pred) {
+      for (var i = 0, len = xs.length; i < len; i++) {
+        var x = xs[i];
+        if (pred(x, i, xs)) {
+          return Option.some(i);
+        }
+      }
+      return Option.none();
+    };
+    var slowIndexOf = function (xs, x) {
+      for (var i = 0, len = xs.length; i < len; ++i) {
+        if (xs[i] === x) {
+          return i;
+        }
+      }
+      return -1;
+    };
     var push = Array.prototype.push;
     var flatten = function (xs) {
       var r = [];
@@ -42236,11 +42316,46 @@ var lists = (function (domGlobals) {
       var output = map(xs, f);
       return flatten(output);
     };
+    var forall = function (xs, pred) {
+      for (var i = 0, len = xs.length; i < len; ++i) {
+        var x = xs[i];
+        if (pred(x, i, xs) !== true) {
+          return false;
+        }
+      }
+      return true;
+    };
+    var equal = function (a1, a2) {
+      return a1.length === a2.length && forall(a1, function (x, i) {
+        return x === a2[i];
+      });
+    };
     var slice = Array.prototype.slice;
     var reverse = function (xs) {
       var r = slice.call(xs, 0);
       r.reverse();
       return r;
+    };
+    var difference = function (a1, a2) {
+      return filter(a1, function (x) {
+        return !contains(a2, x);
+      });
+    };
+    var mapToObject = function (xs, f) {
+      var r = {};
+      for (var i = 0, len = xs.length; i < len; i++) {
+        var x = xs[i];
+        r[String(x)] = f(x, i);
+      }
+      return r;
+    };
+    var pure = function (x) {
+      return [x];
+    };
+    var sort = function (xs, comparator) {
+      var copy = slice.call(xs, 0);
+      copy.sort(comparator);
+      return copy;
     };
     var head = function (xs) {
       return xs.length === 0 ? Option.none() : Option.some(xs[0]);
@@ -42251,6 +42366,36 @@ var lists = (function (domGlobals) {
     var from$1 = isFunction(Array.from) ? Array.from : function (x) {
       return slice.call(x);
     };
+
+    var Arr = /*#__PURE__*/Object.freeze({
+        indexOf: indexOf,
+        contains: contains,
+        exists: exists,
+        range: range,
+        chunk: chunk,
+        map: map,
+        each: each,
+        eachr: eachr,
+        partition: partition,
+        filter: filter,
+        groupBy: groupBy,
+        foldr: foldr,
+        foldl: foldl,
+        find: find,
+        findIndex: findIndex,
+        flatten: flatten,
+        bind: bind,
+        forall: forall,
+        equal: equal,
+        reverse: reverse,
+        difference: difference,
+        mapToObject: mapToObject,
+        pure: pure,
+        sort: sort,
+        head: head,
+        last: last,
+        from: from$1
+    });
 
     var Global = typeof domGlobals.window !== 'undefined' ? domGlobals.window : Function('return this;')();
 
@@ -42667,14 +42812,14 @@ var lists = (function (domGlobals) {
       detectOs: detectOs
     };
 
-    var contains = function (str, substr) {
+    var contains$1 = function (str, substr) {
       return str.indexOf(substr) !== -1;
     };
 
     var normalVersionRegex = /.*?version\/\ ?([0-9]+)\.([0-9]+).*/;
     var checkContains = function (target) {
       return function (uastring) {
-        return contains(uastring, target);
+        return contains$1(uastring, target);
       };
     };
     var browsers = [
@@ -42682,7 +42827,7 @@ var lists = (function (domGlobals) {
         name: 'Edge',
         versionRegexes: [/.*?edge\/ ?([0-9]+)\.([0-9]+)$/],
         search: function (uastring) {
-          var monstrosity = contains(uastring, 'edge/') && contains(uastring, 'chrome') && contains(uastring, 'safari') && contains(uastring, 'applewebkit');
+          var monstrosity = contains$1(uastring, 'edge/') && contains$1(uastring, 'chrome') && contains$1(uastring, 'safari') && contains$1(uastring, 'applewebkit');
           return monstrosity;
         }
       },
@@ -42693,7 +42838,7 @@ var lists = (function (domGlobals) {
           normalVersionRegex
         ],
         search: function (uastring) {
-          return contains(uastring, 'chrome') && !contains(uastring, 'chromeframe');
+          return contains$1(uastring, 'chrome') && !contains$1(uastring, 'chromeframe');
         }
       },
       {
@@ -42703,7 +42848,7 @@ var lists = (function (domGlobals) {
           /.*?rv:([0-9]+)\.([0-9]+).*/
         ],
         search: function (uastring) {
-          return contains(uastring, 'msie') || contains(uastring, 'trident');
+          return contains$1(uastring, 'msie') || contains$1(uastring, 'trident');
         }
       },
       {
@@ -42726,7 +42871,7 @@ var lists = (function (domGlobals) {
           /.*?cpu os ([0-9]+)_([0-9]+).*/
         ],
         search: function (uastring) {
-          return (contains(uastring, 'safari') || contains(uastring, 'mobile/')) && contains(uastring, 'applewebkit');
+          return (contains$1(uastring, 'safari') || contains$1(uastring, 'mobile/')) && contains$1(uastring, 'applewebkit');
         }
       }
     ];
@@ -42739,7 +42884,7 @@ var lists = (function (domGlobals) {
       {
         name: 'iOS',
         search: function (uastring) {
-          return contains(uastring, 'iphone') || contains(uastring, 'ipad');
+          return contains$1(uastring, 'iphone') || contains$1(uastring, 'ipad');
         },
         versionRegexes: [
           /.*?version\/\ ?([0-9]+)\.([0-9]+).*/,
@@ -42841,7 +42986,7 @@ var lists = (function (domGlobals) {
       return Node.documentPositionContainedBy(e1.dom(), e2.dom());
     };
     var browser = PlatformDetection$1.detect().browser;
-    var contains$1 = browser.isIE() ? ieContains : regularContains;
+    var contains$2 = browser.isIE() ? ieContains : regularContains;
     var is$1 = is;
 
     var parent = function (element) {
@@ -43657,15 +43802,14 @@ var lists = (function (domGlobals) {
     var findNextCaretContainer = function (editor, rng, isForward, root) {
       var node = rng.startContainer;
       var offset = rng.startOffset;
-      var nonEmptyBlocks, walker;
       if (node.nodeType === 3 && (isForward ? offset < node.data.length : offset > 0)) {
         return node;
       }
-      nonEmptyBlocks = editor.schema.getNonEmptyElements();
+      var nonEmptyBlocks = editor.schema.getNonEmptyElements();
       if (node.nodeType === 1) {
         node = global$1.getNode(node, offset);
       }
-      walker = new global$2(node, root);
+      var walker = new global$2(node, root);
       if (isForward) {
         if (NodeType.isBogusBr(editor.dom, node)) {
           walker.next();
@@ -43727,7 +43871,7 @@ var lists = (function (domGlobals) {
       if (listNode) {
         toElm.appendChild(listNode);
       }
-      var contains = contains$1(Element.fromDom(toElm), Element.fromDom(fromElm));
+      var contains = contains$2(Element.fromDom(toElm), Element.fromDom(fromElm));
       var nestedLists = contains ? dom.getParents(fromElm, NodeType.isListNode, toElm) : [];
       dom.remove(fromElm);
       each(nestedLists, function (list) {
@@ -43917,7 +44061,7 @@ var lists = (function (domGlobals) {
     };
     var Keyboard = { setup: setup$1 };
 
-    var findIndex = function (list, predicate) {
+    var findIndex$1 = function (list, predicate) {
       for (var index = 0; index < list.length; index++) {
         var element = list[index];
         if (predicate(element)) {
@@ -43929,7 +44073,7 @@ var lists = (function (domGlobals) {
     var listState = function (editor, listName) {
       return function (buttonApi) {
         var nodeChangeHandler = function (e) {
-          var tableCellIndex = findIndex(e.parents, NodeType.isTableCellNode);
+          var tableCellIndex = findIndex$1(e.parents, NodeType.isTableCellNode);
           var parents = tableCellIndex !== -1 ? e.parents.slice(0, tableCellIndex) : e.parents;
           var lists = global$5.grep(parents, NodeType.isListNode);
           buttonApi.setActive(lists.length > 0 && lists[0].nodeName === listName && !isCustomList(lists[0]));
@@ -44016,7 +44160,7 @@ __webpack_require__(/*! ./theme.js */ "./node_modules/tinymce/themes/silver/them
  * For LGPL see License.txt in the project root for license information.
  * For commercial licenses see https://www.tiny.cloud/
  *
- * Version: 5.0.3 (2019-03-19)
+ * Version: 5.0.4 (2019-04-23)
  */
 (function () {
 var silver = (function (domGlobals) {
@@ -44054,6 +44198,9 @@ var silver = (function (domGlobals) {
     var identity = function (x) {
       return x;
     };
+    var tripleEquals = function (a, b) {
+      return a === b;
+    };
     function curry(fn) {
       var initialArgs = [];
       for (var _i = 1; _i < arguments.length; _i++) {
@@ -44082,8 +44229,30 @@ var silver = (function (domGlobals) {
         throw new Error(msg);
       };
     };
+    var apply = function (f) {
+      return f();
+    };
+    var call = function (f) {
+      f();
+    };
     var never = constant(false);
     var always = constant(true);
+
+    var Fun = /*#__PURE__*/Object.freeze({
+        noop: noop,
+        noarg: noarg,
+        compose: compose,
+        constant: constant,
+        identity: identity,
+        tripleEquals: tripleEquals,
+        curry: curry,
+        not: not,
+        die: die,
+        apply: apply,
+        call: call,
+        never: never,
+        always: always
+    });
 
     var never$1 = never;
     var always$1 = always;
@@ -44232,9 +44401,22 @@ var silver = (function (domGlobals) {
     var isString = isType('string');
     var isObject = isType('object');
     var isArray = isType('array');
+    var isNull = isType('null');
     var isBoolean = isType('boolean');
+    var isUndefined = isType('undefined');
     var isFunction = isType('function');
     var isNumber = isType('number');
+
+    var Type = /*#__PURE__*/Object.freeze({
+        isString: isString,
+        isObject: isObject,
+        isArray: isArray,
+        isNull: isNull,
+        isBoolean: isBoolean,
+        isUndefined: isUndefined,
+        isFunction: isFunction,
+        isNumber: isNumber
+    });
 
     var rawIndexOf = function () {
       var pIndexOf = Array.prototype.indexOf;
@@ -44255,6 +44437,13 @@ var silver = (function (domGlobals) {
     };
     var exists = function (xs, pred) {
       return findIndex(xs, pred).isSome();
+    };
+    var range = function (num, f) {
+      var r = [];
+      for (var i = 0; i < num; i++) {
+        r.push(f(i));
+      }
+      return r;
     };
     var chunk = function (array, size) {
       var r = [];
@@ -44307,6 +44496,29 @@ var silver = (function (domGlobals) {
         }
       }
       return r;
+    };
+    var groupBy = function (xs, f) {
+      if (xs.length === 0) {
+        return [];
+      } else {
+        var wasType = f(xs[0]);
+        var r = [];
+        var group = [];
+        for (var i = 0, len = xs.length; i < len; i++) {
+          var x = xs[i];
+          var type = f(x);
+          if (type !== wasType) {
+            r.push(group);
+            group = [];
+          }
+          wasType = type;
+          group.push(x);
+        }
+        if (group.length !== 0) {
+          r.push(group);
+        }
+        return r;
+      }
     };
     var foldr = function (xs, f, acc) {
       eachr(xs, function (x) {
@@ -44369,6 +44581,11 @@ var silver = (function (domGlobals) {
       }
       return true;
     };
+    var equal = function (a1, a2) {
+      return a1.length === a2.length && forall(a1, function (x, i) {
+        return x === a2[i];
+      });
+    };
     var slice = Array.prototype.slice;
     var reverse = function (xs) {
       var r = slice.call(xs, 0);
@@ -44379,6 +44596,14 @@ var silver = (function (domGlobals) {
       return filter(a1, function (x) {
         return !contains(a2, x);
       });
+    };
+    var mapToObject = function (xs, f) {
+      var r = {};
+      for (var i = 0, len = xs.length; i < len; i++) {
+        var x = xs[i];
+        r[String(x)] = f(x, i);
+      }
+      return r;
     };
     var pure = function (x) {
       return [x];
@@ -44397,6 +44622,36 @@ var silver = (function (domGlobals) {
     var from$1 = isFunction(Array.from) ? Array.from : function (x) {
       return slice.call(x);
     };
+
+    var Arr = /*#__PURE__*/Object.freeze({
+        indexOf: indexOf,
+        contains: contains,
+        exists: exists,
+        range: range,
+        chunk: chunk,
+        map: map,
+        each: each,
+        eachr: eachr,
+        partition: partition,
+        filter: filter,
+        groupBy: groupBy,
+        foldr: foldr,
+        foldl: foldl,
+        find: find,
+        findIndex: findIndex,
+        flatten: flatten,
+        bind: bind,
+        forall: forall,
+        equal: equal,
+        reverse: reverse,
+        difference: difference,
+        mapToObject: mapToObject,
+        pure: pure,
+        sort: sort,
+        head: head,
+        last: last,
+        from: from$1
+    });
 
     var keys = Object.keys;
     var hasOwnProperty = Object.hasOwnProperty;
@@ -44424,6 +44679,18 @@ var silver = (function (domGlobals) {
       });
       return r;
     };
+    var bifilter = function (obj, pred) {
+      var t = {};
+      var f = {};
+      each$1(obj, function (x, i) {
+        var branch = pred(x, i) ? t : f;
+        branch[i] = x;
+      });
+      return {
+        t: t,
+        f: f
+      };
+    };
     var mapToArray = function (obj, f) {
       var r = [];
       each$1(obj, function (value, name) {
@@ -44447,6 +44714,9 @@ var silver = (function (domGlobals) {
         return v;
       });
     };
+    var size = function (obj) {
+      return keys(obj).length;
+    };
     var get = function (obj, key) {
       return has(obj, key) ? Option.from(obj[key]) : Option.none();
     };
@@ -44454,6 +44724,38 @@ var silver = (function (domGlobals) {
       return hasOwnProperty.call(obj, key);
     };
 
+    var Obj = /*#__PURE__*/Object.freeze({
+        keys: keys,
+        hasOwnProperty: hasOwnProperty,
+        each: each$1,
+        map: map$1,
+        tupleMap: tupleMap,
+        bifilter: bifilter,
+        mapToArray: mapToArray,
+        find: find$1,
+        values: values,
+        size: size,
+        get: get,
+        has: has
+    });
+
+    var narrow = function (obj, fields) {
+      var r = {};
+      each(fields, function (field) {
+        if (obj[field] !== undefined && has(obj, field)) {
+          r[field] = obj[field];
+        }
+      });
+      return r;
+    };
+    var indexOnKey = function (array, key) {
+      var obj = {};
+      each(array, function (a) {
+        var keyValue = a[key];
+        obj[keyValue] = a;
+      });
+      return obj;
+    };
     var exclude = function (obj, fields) {
       var r = {};
       each$1(obj, function (v, k) {
@@ -44734,6 +45036,9 @@ var silver = (function (domGlobals) {
     var deepMerge = baseMerge(deep);
     var merge = baseMerge(shallow);
 
+    var narrow$1 = function (obj, fields) {
+      return narrow(obj, fields);
+    };
     var exclude$1 = function (obj, fields) {
       return exclude(obj, fields);
     };
@@ -44752,6 +45057,9 @@ var silver = (function (domGlobals) {
     var wrapAll$1 = function (keyvalues) {
       return wrapAll(keyvalues);
     };
+    var indexOnKey$1 = function (array, key) {
+      return indexOnKey(array, key);
+    };
     var mergeValues = function (values, base) {
       return values.length === 0 ? Result.value(base) : Result.value(deepMerge(base, merge.apply(undefined, values)));
     };
@@ -44765,6 +45073,19 @@ var silver = (function (domGlobals) {
     var hasKey$1 = function (obj, key) {
       return hasKey(obj, key);
     };
+
+    var Objects = /*#__PURE__*/Object.freeze({
+        narrow: narrow$1,
+        exclude: exclude$1,
+        readOpt: readOpt$1,
+        readOr: readOr$1,
+        readOptFrom: readOptFrom$1,
+        wrap: wrap$1,
+        wrapAll: wrapAll$1,
+        indexOnKey: indexOnKey$1,
+        hasKey: hasKey$1,
+        consolidate: consolidate
+    });
 
     var Cell = function (initial) {
       var value = initial;
@@ -44815,6 +45136,21 @@ var silver = (function (domGlobals) {
       }
       return Option.some(f.apply(null, r));
     };
+    function lift() {
+      var args = [];
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+      var f = args.pop();
+      return liftN(args, f);
+    }
+
+    var Options = /*#__PURE__*/Object.freeze({
+        cat: cat,
+        findMap: findMap,
+        liftN: liftN,
+        lift: lift
+    });
 
     var touchstart = constant('touchstart');
     var touchmove = constant('touchmove');
@@ -45425,6 +45761,30 @@ var silver = (function (domGlobals) {
       var dom = element.dom();
       return Option.from(dom.parentNode).map(Element.fromDom);
     };
+    var parents = function (element, isRoot) {
+      var stop = isFunction(isRoot) ? isRoot : constant(false);
+      var dom = element.dom();
+      var ret = [];
+      while (dom.parentNode !== null && dom.parentNode !== undefined) {
+        var rawParent = dom.parentNode;
+        var p = Element.fromDom(rawParent);
+        ret.push(p);
+        if (stop(p) === true) {
+          break;
+        } else {
+          dom = rawParent;
+        }
+      }
+      return ret;
+    };
+    var siblings = function (element) {
+      var filterSelf = function (elements) {
+        return filter(elements, function (x) {
+          return !eq(element, x);
+        });
+      };
+      return parent(element).map(children).map(filterSelf).getOr([]);
+    };
     var offsetParent = function (element) {
       var dom = element.dom();
       return Option.from(dom.offsetParent).map(Element.fromDom);
@@ -45534,14 +45894,30 @@ var silver = (function (domGlobals) {
     var type = function (element) {
       return element.dom().nodeType;
     };
+    var value$1 = function (element) {
+      return element.dom().nodeValue;
+    };
     var isType$1 = function (t) {
       return function (element) {
         return type(element) === t;
       };
     };
+    var isComment = function (element) {
+      return type(element) === COMMENT || name(element) === '#comment';
+    };
     var isElement = isType$1(ELEMENT);
     var isText = isType$1(TEXT);
     var isDocument = isType$1(DOCUMENT);
+
+    var Node$1 = /*#__PURE__*/Object.freeze({
+        name: name,
+        type: type,
+        value: value$1,
+        isElement: isElement,
+        isText: isText,
+        isDocument: isDocument,
+        isComment: isComment
+    });
 
     var rawSet = function (dom, key, value) {
       if (isString(value) || isBoolean(value) || isNumber(value)) {
@@ -45790,6 +46166,23 @@ var silver = (function (domGlobals) {
 
     var global = tinymce.util.Tools.resolve('tinymce.ThemeManager');
 
+    var extendStatics = function (d, b) {
+      extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+      } || function (d, b) {
+        for (var p in b)
+          if (b.hasOwnProperty(p))
+            d[p] = b[p];
+      };
+      return extendStatics(d, b);
+    };
+    function __extends(d, b) {
+      extendStatics(d, b);
+      function __() {
+        this.constructor = d;
+      }
+      d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
     var __assign = function () {
       __assign = Object.assign || function __assign(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -45813,6 +46206,322 @@ var silver = (function (domGlobals) {
             t[p[i]] = s[p[i]];
       return t;
     }
+    function __decorate(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+        r = Reflect.decorate(decorators, target, key, desc);
+      else
+        for (var i = decorators.length - 1; i >= 0; i--)
+          if (d = decorators[i])
+            r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+    function __param(paramIndex, decorator) {
+      return function (target, key) {
+        decorator(target, key, paramIndex);
+      };
+    }
+    function __metadata(metadataKey, metadataValue) {
+      if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+    function __awaiter(thisArg, _arguments, P, generator) {
+      return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator['throw'](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : new P(function (resolve) {
+            resolve(result.value);
+          }).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    }
+    function __generator(thisArg, body) {
+      var _ = {
+          label: 0,
+          sent: function () {
+            if (t[0] & 1)
+              throw t[1];
+            return t[1];
+          },
+          trys: [],
+          ops: []
+        }, f, y, t, g;
+      return g = {
+        next: verb(0),
+        'throw': verb(1),
+        'return': verb(2)
+      }, typeof Symbol === 'function' && (g[Symbol.iterator] = function () {
+        return this;
+      }), g;
+      function verb(n) {
+        return function (v) {
+          return step([
+            n,
+            v
+          ]);
+        };
+      }
+      function step(op) {
+        if (f)
+          throw new TypeError('Generator is already executing.');
+        while (_)
+          try {
+            if (f = 1, y && (t = op[0] & 2 ? y['return'] : op[0] ? y['throw'] || ((t = y['return']) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done)
+              return t;
+            if (y = 0, t)
+              op = [
+                op[0] & 2,
+                t.value
+              ];
+            switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return {
+                value: op[1],
+                done: false
+              };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2])
+                _.ops.pop();
+              _.trys.pop();
+              continue;
+            }
+            op = body.call(thisArg, _);
+          } catch (e) {
+            op = [
+              6,
+              e
+            ];
+            y = 0;
+          } finally {
+            f = t = 0;
+          }
+        if (op[0] & 5)
+          throw op[1];
+        return {
+          value: op[0] ? op[1] : void 0,
+          done: true
+        };
+      }
+    }
+    function __exportStar(m, exports) {
+      for (var p in m)
+        if (!exports.hasOwnProperty(p))
+          exports[p] = m[p];
+    }
+    function __values(o) {
+      var m = typeof Symbol === 'function' && o[Symbol.iterator], i = 0;
+      if (m)
+        return m.call(o);
+      return {
+        next: function () {
+          if (o && i >= o.length)
+            o = void 0;
+          return {
+            value: o && o[i++],
+            done: !o
+          };
+        }
+      };
+    }
+    function __read(o, n) {
+      var m = typeof Symbol === 'function' && o[Symbol.iterator];
+      if (!m)
+        return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
+          ar.push(r.value);
+      } catch (error) {
+        e = { error: error };
+      } finally {
+        try {
+          if (r && !r.done && (m = i['return']))
+            m.call(i);
+        } finally {
+          if (e)
+            throw e.error;
+        }
+      }
+      return ar;
+    }
+    function __spread() {
+      for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+      return ar;
+    }
+    function __await(v) {
+      return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+    function __asyncGenerator(thisArg, _arguments, generator) {
+      if (!Symbol.asyncIterator)
+        throw new TypeError('Symbol.asyncIterator is not defined.');
+      var g = generator.apply(thisArg, _arguments || []), i, q = [];
+      return i = {}, verb('next'), verb('throw'), verb('return'), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i;
+      function verb(n) {
+        if (g[n])
+          i[n] = function (v) {
+            return new Promise(function (a, b) {
+              q.push([
+                n,
+                v,
+                a,
+                b
+              ]) > 1 || resume(n, v);
+            });
+          };
+      }
+      function resume(n, v) {
+        try {
+          step(g[n](v));
+        } catch (e) {
+          settle(q[0][3], e);
+        }
+      }
+      function step(r) {
+        r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+      }
+      function fulfill(value) {
+        resume('next', value);
+      }
+      function reject(value) {
+        resume('throw', value);
+      }
+      function settle(f, v) {
+        if (f(v), q.shift(), q.length)
+          resume(q[0][0], q[0][1]);
+      }
+    }
+    function __asyncDelegator(o) {
+      var i, p;
+      return i = {}, verb('next'), verb('throw', function (e) {
+        throw e;
+      }), verb('return'), i[Symbol.iterator] = function () {
+        return this;
+      }, i;
+      function verb(n, f) {
+        i[n] = o[n] ? function (v) {
+          return (p = !p) ? {
+            value: __await(o[n](v)),
+            done: n === 'return'
+          } : f ? f(v) : v;
+        } : f;
+      }
+    }
+    function __asyncValues(o) {
+      if (!Symbol.asyncIterator)
+        throw new TypeError('Symbol.asyncIterator is not defined.');
+      var m = o[Symbol.asyncIterator], i;
+      return m ? m.call(o) : (o = typeof __values === 'function' ? __values(o) : o[Symbol.iterator](), i = {}, verb('next'), verb('throw'), verb('return'), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i);
+      function verb(n) {
+        i[n] = o[n] && function (v) {
+          return new Promise(function (resolve, reject) {
+            v = o[n](v), settle(resolve, reject, v.done, v.value);
+          });
+        };
+      }
+      function settle(resolve, reject, d, v) {
+        Promise.resolve(v).then(function (v) {
+          resolve({
+            value: v,
+            done: d
+          });
+        }, reject);
+      }
+    }
+    function __makeTemplateObject(cooked, raw) {
+      if (Object.defineProperty) {
+        Object.defineProperty(cooked, 'raw', { value: raw });
+      } else {
+        cooked.raw = raw;
+      }
+      return cooked;
+    }
+    function __importStar(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null)
+        for (var k in mod)
+          if (Object.hasOwnProperty.call(mod, k))
+            result[k] = mod[k];
+      result.default = mod;
+      return result;
+    }
+    function __importDefault(mod) {
+      return mod && mod.__esModule ? mod : { default: mod };
+    }
+
+    var tslib_1 = /*#__PURE__*/Object.freeze({
+        __extends: __extends,
+        get __assign () { return __assign; },
+        __rest: __rest,
+        __decorate: __decorate,
+        __param: __param,
+        __metadata: __metadata,
+        __awaiter: __awaiter,
+        __generator: __generator,
+        __exportStar: __exportStar,
+        __values: __values,
+        __read: __read,
+        __spread: __spread,
+        __await: __await,
+        __asyncGenerator: __asyncGenerator,
+        __asyncDelegator: __asyncDelegator,
+        __asyncValues: __asyncValues,
+        __makeTemplateObject: __makeTemplateObject,
+        __importStar: __importStar,
+        __importDefault: __importDefault
+    });
 
     var adt = Adt.generate([
       { strict: [] },
@@ -45830,7 +46539,6 @@ var silver = (function (domGlobals) {
     var strict = adt.strict;
     var asOption = adt.asOption;
     var defaultedThunk = adt.defaultedThunk;
-    var asDefaultedOptionThunk = adt.asDefaultedOptionThunk;
     var mergeWithThunk = adt.mergeWithThunk;
 
     var SimpleResultType;
@@ -45984,13 +46692,13 @@ var silver = (function (domGlobals) {
     var stringify = function (obj, replacer, space) {
       return json().stringify(obj, replacer, space);
     };
-    var JSON$1 = {
+    var Json = {
       parse: parse,
       stringify: stringify
     };
 
     var formatObj = function (input) {
-      return isObject(input) && keys(input).length > 100 ? ' removed due to size' : JSON$1.stringify(input, null, 2);
+      return isObject(input) && keys(input).length > 100 ? ' removed due to size' : Json.stringify(input, null, 2);
     };
     var formatErrors = function (errors) {
       var es = errors.length > 10 ? errors.slice(0, 10).concat([{
@@ -46119,7 +46827,7 @@ var silver = (function (domGlobals) {
       });
       return ResultCombine.consolidateObj(results, {});
     };
-    var value$1 = function (validator) {
+    var value$2 = function (validator) {
       var extract = function (path, strength, val) {
         return SimpleResult.bindError(validator(val, strength), function (err) {
           return custom(path, err);
@@ -46213,7 +46921,7 @@ var silver = (function (domGlobals) {
     };
     var setOf = function (validator, prop) {
       var validateKeys = function (path, keys) {
-        return arrOf(value$1(validator)).extract(path, identity, keys);
+        return arrOf(value$2(validator)).extract(path, identity, keys);
       };
       var extract = function (path, strength, o) {
         var keys$1 = keys(o);
@@ -46237,7 +46945,45 @@ var silver = (function (domGlobals) {
         toDsl: toDsl
       };
     };
-    var anyValue = constant(value$1(SimpleResult.svalue));
+    var func = function (args, schema, retriever) {
+      var delegate = value$2(function (f, strength) {
+        return isFunction(f) ? SimpleResult.svalue(function () {
+          var gArgs = Array.prototype.slice.call(arguments, 0);
+          var allowedArgs = gArgs.slice(0, args.length);
+          var o = f.apply(null, allowedArgs);
+          return retriever(o, strength);
+        }) : SimpleResult.serror('Not a function');
+      });
+      return {
+        extract: delegate.extract,
+        toString: function () {
+          return 'function';
+        },
+        toDsl: function () {
+          return typeAdt.func(args, schema);
+        }
+      };
+    };
+    var thunk = function (desc, processor) {
+      var getP = cached(function () {
+        return processor();
+      });
+      var extract = function (path, strength, val) {
+        return getP().extract(path, strength, val);
+      };
+      var toString = function () {
+        return getP().toString();
+      };
+      var toDsl = function () {
+        return typeAdt.thunk(desc);
+      };
+      return {
+        extract: extract,
+        toString: toString,
+        toDsl: toDsl
+      };
+    };
+    var anyValue = constant(value$2(SimpleResult.svalue));
     var arrOfObj = compose(arrOf, objOf);
     var state = adt$1.state;
     var field = adt$1.field;
@@ -46272,7 +47018,7 @@ var silver = (function (domGlobals) {
       };
     };
 
-    var _anyValue = value$1(SimpleResult.svalue);
+    var _anyValue = value$2(SimpleResult.svalue);
     var arrOfObj$1 = function (objFields) {
       return arrOfObj(objFields);
     };
@@ -46280,7 +47026,7 @@ var silver = (function (domGlobals) {
       return arrOf(_anyValue);
     };
     var valueOf = function (validator) {
-      return value$1(function (v) {
+      return value$2(function (v) {
         return validator(v).fold(SimpleResult.serror, SimpleResult.svalue);
       });
     };
@@ -46298,6 +47044,9 @@ var silver = (function (domGlobals) {
         };
       });
     };
+    var asStruct = function (label, prop, obj) {
+      return SimpleResult.toResult(extract(label, prop, constant, obj));
+    };
     var asRaw = function (label, prop, obj) {
       return SimpleResult.toResult(extract(label, prop, identity, obj));
     };
@@ -46309,15 +47058,27 @@ var silver = (function (domGlobals) {
     var asRawOrDie = function (label, prop, obj) {
       return getOrDie$1(asRaw(label, prop, obj));
     };
+    var asStructOrDie = function (label, prop, obj) {
+      return getOrDie$1(asStruct(label, prop, obj));
+    };
     var formatError = function (errInfo) {
       return 'Errors: \n' + formatErrors(errInfo.errors) + '\n\nInput object: ' + formatObj(errInfo.input);
     };
     var choose$1 = function (key, branches) {
       return choose(key, branches);
     };
+    var thunkOf = function (desc, schema) {
+      return thunk(desc, schema);
+    };
+    var funcOrDie = function (args, prop) {
+      var retriever = function (output, strength) {
+        return getOrDie$1(SimpleResult.toResult(extract('()', prop, strength, output)));
+      };
+      return func(args, prop, retriever);
+    };
     var anyValue$1 = constant(_anyValue);
     var typedValue = function (validator, expectedType) {
-      return value$1(function (a) {
+      return value$2(function (a) {
         var actualType = typeof a;
         return validator(a) ? SimpleResult.svalue(a) : SimpleResult.serror('Expected type: ' + expectedType + ' but got: ' + actualType);
       });
@@ -46326,6 +47087,30 @@ var silver = (function (domGlobals) {
     var string = typedValue(isString, 'string');
     var boolean = typedValue(isBoolean, 'boolean');
     var functionProcessor = typedValue(isFunction, 'function');
+
+    var ValueSchema = /*#__PURE__*/Object.freeze({
+        anyValue: anyValue$1,
+        arrOfObj: arrOfObj$1,
+        arrOf: arrOf,
+        arrOfVal: arrOfVal,
+        valueOf: valueOf,
+        setOf: setOf$1,
+        objOf: objOf,
+        objOfOnly: objOfOnly,
+        asStruct: asStruct,
+        asRaw: asRaw,
+        asStructOrDie: asStructOrDie,
+        asRawOrDie: asRawOrDie,
+        getOrDie: getOrDie$1,
+        formatError: formatError,
+        choose: choose$1,
+        thunkOf: thunkOf,
+        funcOrDie: funcOrDie,
+        number: number,
+        string: string,
+        boolean: boolean,
+        func: functionProcessor
+    });
 
     var validateEnum = function (values) {
       return valueOf(function (value) {
@@ -46351,7 +47136,7 @@ var silver = (function (domGlobals) {
       return strictOf(key, functionProcessor);
     };
     var forbid = function (key, message) {
-      return field(key, key, asOption(), value$1(function (v) {
+      return field(key, key, asOption(), value$2(function (v) {
         return SimpleResult.serror('The field: ' + key + ' is forbidden. ' + message);
       }));
     };
@@ -46370,17 +47155,23 @@ var silver = (function (domGlobals) {
     var optionOf = function (key, schema) {
       return field(key, key, asOption(), schema);
     };
+    var optionNumber = function (key) {
+      return optionOf(key, number);
+    };
     var optionString = function (key) {
       return optionOf(key, string);
     };
     var optionFunction = function (key) {
       return optionOf(key, functionProcessor);
     };
+    var optionArrayOf = function (key, schema) {
+      return optionOf(key, arrOf(schema));
+    };
     var optionObjOf = function (key, objSchema) {
-      return field(key, key, asOption(), objOf(objSchema));
+      return optionOf(key, objOf(objSchema));
     };
     var optionObjOfOnly = function (key, objSchema) {
-      return field(key, key, asOption(), objOfOnly(objSchema));
+      return optionOf(key, objOfOnly(objSchema));
     };
     var defaulted$1 = function (key, fallback) {
       return field(key, key, defaulted(fallback), anyValue());
@@ -46404,7 +47195,7 @@ var silver = (function (domGlobals) {
       return defaultedOf(key, fallback, functionProcessor);
     };
     var defaultedObjOf = function (key, fallback, objSchema) {
-      return field(key, key, defaulted(fallback), objOf(objSchema));
+      return defaultedOf(key, fallback, objOf(objSchema));
     };
     var state$1 = function (okey, instantiator) {
       return state(okey, instantiator);
@@ -46416,7 +47207,7 @@ var silver = (function (domGlobals) {
 
     var nu$4 = function (parts) {
       if (!hasKey$1(parts, 'can') && !hasKey$1(parts, 'abort') && !hasKey$1(parts, 'run')) {
-        throw new Error('EventHandler defined by: ' + JSON$1.stringify(parts, null, 2) + ' does not have can, abort, or run!');
+        throw new Error('EventHandler defined by: ' + Json.stringify(parts, null, 2) + ' does not have can, abort, or run!');
       }
       return asRawOrDie('Extracting event.handler', objOfOnly([
         defaulted$1('can', constant(true)),
@@ -46515,6 +47306,9 @@ var silver = (function (domGlobals) {
       return Element.fromDom(b);
     };
 
+    var first = function (predicate) {
+      return descendant(body(), predicate);
+    };
     var ancestor = function (scope, predicate, isRoot) {
       var element = scope.dom();
       var stop = isFunction(isRoot) ? isRoot : constant(false);
@@ -46534,6 +47328,19 @@ var silver = (function (domGlobals) {
         return predicate(s);
       };
       return ClosestOrAncestor(is, ancestor, scope, predicate, isRoot);
+    };
+    var sibling = function (scope, predicate) {
+      var element = scope.dom();
+      if (!element.parentNode) {
+        return Option.none();
+      }
+      return child$1(Element.fromDom(element.parentNode), function (x) {
+        return !eq(scope, x) && predicate(x);
+      });
+    };
+    var child$1 = function (scope, predicate) {
+      var result = find(scope.dom().childNodes, compose(predicate, Element.fromDom));
+      return result.map(Element.fromDom);
     };
     var descendant = function (scope, predicate) {
       var descend = function (node) {
@@ -46660,6 +47467,25 @@ var silver = (function (domGlobals) {
     var runOnDetached = runOnSourceName(detachedFromDom());
     var runOnInit = runOnSourceName(systemInit());
     var runOnExecute = runOnName(execute());
+
+    var AlloyEvents = /*#__PURE__*/Object.freeze({
+        derive: derive,
+        run: run,
+        preventDefault: preventDefault,
+        runActionExtra: runActionExtra,
+        runOnAttached: runOnAttached,
+        runOnDetached: runOnDetached,
+        runOnSource: runOnSource,
+        runOnInit: runOnInit,
+        runOnExecute: runOnExecute,
+        redirectToUid: redirectToUid,
+        redirectToPart: redirectToPart,
+        runWithTarget: runWithTarget,
+        abort: abort,
+        can: can,
+        cutter: cutter,
+        stopper: stopper
+    });
 
     var isRecursive = function (component, originator, target) {
       return eq(originator, component.element()) && !eq(originator, target);
@@ -46793,6 +47619,12 @@ var silver = (function (domGlobals) {
       }, f);
     };
 
+    var GuiTypes = /*#__PURE__*/Object.freeze({
+        makeApi: makeApi,
+        premade: premade,
+        getPremade: getPremade
+    });
+
     var NoState = {
       init: function () {
         return nu$5({
@@ -46814,7 +47646,7 @@ var silver = (function (domGlobals) {
         ]);
       });
       var validated = asRaw('component.behaviours', objOf(schema), spec.behaviours).fold(function (errInfo) {
-        throw new Error(formatError(errInfo) + '\nComplete spec:\n' + JSON$1.stringify(spec, null, 2));
+        throw new Error(formatError(errInfo) + '\nComplete spec:\n' + Json.stringify(spec, null, 2));
       }, function (v) {
         return v;
       });
@@ -46905,10 +47737,10 @@ var silver = (function (domGlobals) {
           var aIndex = order.indexOf(aKey);
           var bIndex = order.indexOf(bKey);
           if (aIndex === -1) {
-            throw new Error('The ordering for ' + label + ' does not have an entry for ' + aKey + '.\nOrder specified: ' + JSON$1.stringify(order, null, 2));
+            throw new Error('The ordering for ' + label + ' does not have an entry for ' + aKey + '.\nOrder specified: ' + Json.stringify(order, null, 2));
           }
           if (bIndex === -1) {
-            throw new Error('The ordering for ' + label + ' does not have an entry for ' + bKey + '.\nOrder specified: ' + JSON$1.stringify(order, null, 2));
+            throw new Error('The ordering for ' + label + ' does not have an entry for ' + bKey + '.\nOrder specified: ' + Json.stringify(order, null, 2));
           }
           if (aIndex < bIndex) {
             return -1;
@@ -46983,7 +47815,7 @@ var silver = (function (domGlobals) {
       };
     };
     var missingOrderError = function (eventName, tuples) {
-      return Result.error(['The event (' + eventName + ') has more than one behaviour that listens to it.\nWhen this occurs, you must ' + 'specify an event ordering for the behaviours in your spec (e.g. [ "listing", "toggling" ]).\nThe behaviours that ' + 'can trigger it are: ' + JSON$1.stringify(map(tuples, function (c) {
+      return Result.error(['The event (' + eventName + ') has more than one behaviour that listens to it.\nWhen this occurs, you must ' + 'specify an event ordering for the behaviours in your spec (e.g. [ "listing", "toggling" ]).\nThe behaviours that ' + 'can trigger it are: ' + Json.stringify(map(tuples, function (c) {
           return c.name();
         }), null, 2)]);
     };
@@ -47090,6 +47922,31 @@ var silver = (function (domGlobals) {
       return info.events;
     };
 
+    function Toggler (turnOff, turnOn, initial) {
+      var active = initial || false;
+      var on = function () {
+        turnOn();
+        active = true;
+      };
+      var off = function () {
+        turnOff();
+        active = false;
+      };
+      var toggle = function () {
+        var f = active ? off : on;
+        f();
+      };
+      var isOn = function () {
+        return active;
+      };
+      return {
+        on: on,
+        off: off,
+        toggle: toggle,
+        isOn: isOn
+      };
+    }
+
     var read$2 = function (element, attr) {
       var value = get$2(element, attr);
       return value === undefined || value === '' ? [] : value.split(' ');
@@ -47124,6 +47981,21 @@ var silver = (function (domGlobals) {
     var remove$3 = function (element, clazz) {
       return remove$2(element, 'class', clazz);
     };
+    var toggle = function (element, clazz) {
+      if (contains(get$3(element), clazz)) {
+        return remove$3(element, clazz);
+      } else {
+        return add$1(element, clazz);
+      }
+    };
+
+    var ClassList = /*#__PURE__*/Object.freeze({
+        get: get$3,
+        add: add$1,
+        remove: remove$3,
+        toggle: toggle,
+        supports: supports
+    });
 
     var add$2 = function (element, clazz) {
       if (supports(element)) {
@@ -47147,9 +48019,39 @@ var silver = (function (domGlobals) {
       }
       cleanClass(element);
     };
+    var toggle$1 = function (element, clazz) {
+      return supports(element) ? element.dom().classList.toggle(clazz) : toggle(element, clazz);
+    };
+    var toggler = function (element, clazz) {
+      var hasClasslist = supports(element);
+      var classList = element.dom().classList;
+      var off = function () {
+        if (hasClasslist) {
+          classList.remove(clazz);
+        } else {
+          remove$3(element, clazz);
+        }
+      };
+      var on = function () {
+        if (hasClasslist) {
+          classList.add(clazz);
+        } else {
+          add$1(element, clazz);
+        }
+      };
+      return Toggler(off, on, has$2(element, clazz));
+    };
     var has$2 = function (element, clazz) {
       return supports(element) && element.dom().classList.contains(clazz);
     };
+
+    var Class = /*#__PURE__*/Object.freeze({
+        add: add$2,
+        remove: remove$4,
+        toggle: toggle$1,
+        toggler: toggler,
+        has: has$2
+    });
 
     var add$3 = function (element, classes) {
       each(classes, function (x) {
@@ -47217,6 +48119,17 @@ var silver = (function (domGlobals) {
         return r.length > 0;
       });
     };
+    var getAllRaw = function (element) {
+      var css = {};
+      var dom = element.dom();
+      if (isSupported(dom)) {
+        for (var i = 0; i < dom.style.length; i++) {
+          var ruleName = dom.style.item(i);
+          css[ruleName] = dom.style[ruleName];
+        }
+      }
+      return css;
+    };
     var isValidValue = function (tag, property, value) {
       var element = Element.fromTag(tag);
       set$2(element, property, value);
@@ -47230,9 +48143,53 @@ var silver = (function (domGlobals) {
         remove$1(element, 'style');
       }
     };
+    var preserve = function (element, f) {
+      var oldStyles = get$2(element, 'style');
+      var result = f(element);
+      var restore = oldStyles === undefined ? remove$1 : set$1;
+      restore(element, 'style', oldStyles);
+      return result;
+    };
+    var copy = function (source, target) {
+      var sourceDom = source.dom();
+      var targetDom = target.dom();
+      if (isSupported(sourceDom) && isSupported(targetDom)) {
+        targetDom.style.cssText = sourceDom.style.cssText;
+      }
+    };
     var reflow = function (e) {
       return e.dom().offsetWidth;
     };
+    var transferOne = function (source, destination, style) {
+      getRaw(source, style).each(function (value) {
+        if (getRaw(destination, style).isNone()) {
+          set$2(destination, style, value);
+        }
+      });
+    };
+    var transfer = function (source, destination, styles) {
+      if (!isElement(source) || !isElement(destination)) {
+        return;
+      }
+      each(styles, function (style) {
+        transferOne(source, destination, style);
+      });
+    };
+
+    var Css = /*#__PURE__*/Object.freeze({
+        copy: copy,
+        set: set$2,
+        preserve: preserve,
+        setAll: setAll$1,
+        setOptions: setOptions,
+        remove: remove$6,
+        get: get$4,
+        getRaw: getRaw,
+        getAllRaw: getAllRaw,
+        isValidValue: isValidValue,
+        reflow: reflow,
+        transfer: transfer
+    });
 
     var get$5 = function (element) {
       return element.dom().value;
@@ -47325,7 +48282,7 @@ var silver = (function (domGlobals) {
       var config = function (behaviour) {
         var b = bData;
         var f = isFunction(b[behaviour.name()]) ? b[behaviour.name()] : function () {
-          throw new Error('Could not find ' + behaviour.name() + ' in ' + JSON$1.stringify(spec, null, 2));
+          throw new Error('Could not find ' + behaviour.name() + ' in ' + Json.stringify(spec, null, 2));
         };
         return f();
       };
@@ -47420,21 +48377,74 @@ var silver = (function (domGlobals) {
     };
     var premade$1 = premade;
 
+    var GuiFactory = /*#__PURE__*/Object.freeze({
+        build: build$1,
+        premade: premade$1,
+        external: external,
+        text: text
+    });
+
+    var any$1 = function (predicate) {
+      return first(predicate).isSome();
+    };
+    var ancestor$1 = function (scope, predicate, isRoot) {
+      return ancestor(scope, predicate, isRoot).isSome();
+    };
     var closest$2 = function (scope, predicate, isRoot) {
       return closest(scope, predicate, isRoot).isSome();
     };
+    var sibling$1 = function (scope, predicate) {
+      return sibling(scope, predicate).isSome();
+    };
+    var child$2 = function (scope, predicate) {
+      return child$1(scope, predicate).isSome();
+    };
+    var descendant$1 = function (scope, predicate) {
+      return descendant(scope, predicate).isSome();
+    };
 
-    var ancestor$1 = function (scope, selector, isRoot) {
+    var PredicateExists = /*#__PURE__*/Object.freeze({
+        any: any$1,
+        ancestor: ancestor$1,
+        closest: closest$2,
+        sibling: sibling$1,
+        child: child$2,
+        descendant: descendant$1
+    });
+
+    var first$1 = function (selector) {
+      return one(selector);
+    };
+    var ancestor$2 = function (scope, selector, isRoot) {
       return ancestor(scope, function (e) {
         return is(e, selector);
       }, isRoot);
     };
-    var descendant$1 = function (scope, selector) {
+    var sibling$2 = function (scope, selector) {
+      return sibling(scope, function (e) {
+        return is(e, selector);
+      });
+    };
+    var child$3 = function (scope, selector) {
+      return child$1(scope, function (e) {
+        return is(e, selector);
+      });
+    };
+    var descendant$2 = function (scope, selector) {
       return one(selector, scope);
     };
     var closest$3 = function (scope, selector, isRoot) {
-      return ClosestOrAncestor(is, ancestor$1, scope, selector, isRoot);
+      return ClosestOrAncestor(is, ancestor$2, scope, selector, isRoot);
     };
+
+    var SelectorFind = /*#__PURE__*/Object.freeze({
+        first: first$1,
+        ancestor: ancestor$2,
+        sibling: sibling$2,
+        child: child$3,
+        descendant: descendant$2,
+        closest: closest$3
+    });
 
     var find$3 = function (queryElem) {
       var dependent = closest(queryElem, function (elem) {
@@ -47447,7 +48457,7 @@ var silver = (function (domGlobals) {
       return dependent.bind(function (dep) {
         var id = get$2(dep, 'id');
         var doc = owner(dep);
-        return descendant$1(doc, '[aria-owns="' + id + '"]');
+        return descendant$2(doc, '[aria-owns="' + id + '"]');
       });
     };
     var manager = function () {
@@ -48459,12 +49469,10 @@ var silver = (function (domGlobals) {
         ]
       }
     ]);
-    var range = Immutable('start', 'soffset', 'finish', 'foffset');
+    var range$1 = Immutable('start', 'soffset', 'finish', 'foffset');
     var exactFromRange = function (simRange) {
       return type$1.exact(simRange.start(), simRange.soffset(), simRange.finish(), simRange.foffset());
     };
-    var domRange = type$1.domRange;
-    var relative$1 = type$1.relative;
     var exact = type$1.exact;
 
     var makeRange = function (start, soffset, finish, foffset) {
@@ -48705,6 +49713,10 @@ var silver = (function (domGlobals) {
       });
     };
 
+    var TextPoint = /*#__PURE__*/Object.freeze({
+        locate: locate
+    });
+
     var searchInChildren = function (doc, node, x, y) {
       var r = doc.dom().createRange();
       var nodes = children(node);
@@ -48741,7 +49753,7 @@ var silver = (function (domGlobals) {
       return hasCursorPosition || contains(elementsWithCursorPosition, name(elem));
     };
 
-    var first = function (element) {
+    var first$2 = function (element) {
       return descendant(element, isCursorPosition);
     };
     var last$1 = function (element) {
@@ -48781,7 +49793,7 @@ var silver = (function (domGlobals) {
       cursorRange.selectNode(node.dom());
       var rect = cursorRange.getBoundingClientRect();
       var collapseDirection = getCollapseDirection(rect, x);
-      var f = collapseDirection === COLLAPSE_TO_LEFT ? first : last$1;
+      var f = collapseDirection === COLLAPSE_TO_LEFT ? first$2 : last$1;
       return f(node).map(function (target) {
         return createCollapsedNode(doc, target, collapseDirection);
       });
@@ -48828,15 +49840,51 @@ var silver = (function (domGlobals) {
     };
     var availableSearch = document.caretPositionFromPoint ? caretPositionFromPoint : document.caretRangeFromPoint ? caretRangeFromPoint : searchFromPoint;
 
+    var ancestors = function (scope, predicate, isRoot) {
+      return filter(parents(scope, isRoot), predicate);
+    };
+    var siblings$1 = function (scope, predicate) {
+      return filter(siblings(scope), predicate);
+    };
+    var children$1 = function (scope, predicate) {
+      return filter(children(scope), predicate);
+    };
+
+    var all$3 = function (selector) {
+      return all(selector);
+    };
+    var ancestors$1 = function (scope, selector, isRoot) {
+      return ancestors(scope, function (e) {
+        return is(e, selector);
+      }, isRoot);
+    };
+    var siblings$2 = function (scope, selector) {
+      return siblings$1(scope, function (e) {
+        return is(e, selector);
+      });
+    };
+    var children$2 = function (scope, selector) {
+      return children$1(scope, function (e) {
+        return is(e, selector);
+      });
+    };
     var descendants = function (scope, selector) {
       return all(selector, scope);
     };
+
+    var SelectorFilter = /*#__PURE__*/Object.freeze({
+        all: all$3,
+        ancestors: ancestors$1,
+        siblings: siblings$2,
+        children: children$2,
+        descendants: descendants
+    });
 
     var readRange = function (selection) {
       if (selection.rangeCount > 0) {
         var firstRng = selection.getRangeAt(0);
         var lastRng = selection.getRangeAt(selection.rangeCount - 1);
-        return Option.some(range(Element.fromDom(firstRng.startContainer), firstRng.startOffset, Element.fromDom(lastRng.endContainer), lastRng.endOffset));
+        return Option.some(range$1(Element.fromDom(firstRng.startContainer), firstRng.startOffset, Element.fromDom(lastRng.endContainer), lastRng.endOffset));
       } else {
         return Option.none();
       }
@@ -48844,7 +49892,7 @@ var silver = (function (domGlobals) {
     var doGetExact = function (selection) {
       var anchor = Element.fromDom(selection.anchorNode);
       var focus = Element.fromDom(selection.focusNode);
-      return after$1(anchor, selection.anchorOffset, focus, selection.focusOffset) ? Option.some(range(anchor, selection.anchorOffset, focus, selection.focusOffset)) : readRange(selection);
+      return after$1(anchor, selection.anchorOffset, focus, selection.focusOffset) ? Option.some(range$1(anchor, selection.anchorOffset, focus, selection.focusOffset)) : readRange(selection);
     };
     var getExact = function (win) {
       return Option.from(win.getSelection()).filter(function (sel) {
@@ -49015,7 +50063,7 @@ var silver = (function (domGlobals) {
       return getSelection().map(function (sel) {
         var modStart = descendOnce$1(sel.start(), sel.soffset());
         var modFinish = descendOnce$1(sel.finish(), sel.foffset());
-        return range(modStart.element(), modStart.offset(), modFinish.element(), modFinish.offset());
+        return range$1(modStart.element(), modStart.offset(), modFinish.element(), modFinish.offset());
       });
     };
     var placement$2 = function (component, anchorInfo, origin) {
@@ -49093,7 +50141,7 @@ var silver = (function (domGlobals) {
     var northwest$2 = function (anchor, element, bubbles) {
       return nu$8(westX$1(anchor, element), northY$1(anchor, element), bubbles.northwest(), northwest(), 'link-layout-nw');
     };
-    var all$3 = function () {
+    var all$4 = function () {
       return [
         southeast$2,
         southwest$2,
@@ -49112,7 +50160,7 @@ var silver = (function (domGlobals) {
 
     var placement$4 = function (component, submenuInfo, origin) {
       var anchorBox = toBox(origin, submenuInfo.item.element());
-      var layouts = get$9(component.element(), submenuInfo, all$3(), allRtl$1());
+      var layouts = get$9(component.element(), submenuInfo, all$4(), allRtl$1());
       return Option.some(nu$9({
         anchorBox: anchorBox,
         bubble: fallback(),
@@ -49453,6 +50501,13 @@ var silver = (function (domGlobals) {
       get: get$b
     };
 
+    var SketchBehaviours$1 = /*#__PURE__*/Object.freeze({
+        SketchBehaviours: SketchBehaviours,
+        field: field$1,
+        get: get$b,
+        augment: augment
+    });
+
     var _placeholder = 'placeholder';
     var adt$8 = Adt.generate([
       {
@@ -49468,6 +50523,9 @@ var silver = (function (domGlobals) {
         ]
       }
     ]);
+    var isSubstitute = function (uiType) {
+      return contains([_placeholder], uiType);
+    };
     var subPlaceholder = function (owner, detail, compSpec, placeholders) {
       if (owner.exists(function (o) {
           return o !== compSpec.owner;
@@ -49475,7 +50533,7 @@ var silver = (function (domGlobals) {
         return adt$8.single(true, constant(compSpec));
       }
       return readOptFrom$1(placeholders, compSpec.name).fold(function () {
-        throw new Error('Unknown placeholder component: ' + compSpec.name + '\nKnown: [' + keys(placeholders) + ']\nNamespace: ' + owner.getOr('none') + '\nSpec: ' + JSON$1.stringify(compSpec, null, 2));
+        throw new Error('Unknown placeholder component: ' + compSpec.name + '\nKnown: [' + keys(placeholders) + ']\nNamespace: ' + owner.getOr('none') + '\nSpec: ' + Json.stringify(compSpec, null, 2));
       }, function (newSpec) {
         return newSpec.replace();
       });
@@ -49540,14 +50598,32 @@ var silver = (function (domGlobals) {
       var outcome = substituteAll(owner, detail, components, ps);
       each$1(ps, function (p) {
         if (p.used() === false && p.required()) {
-          throw new Error('Placeholder: ' + p.name() + ' was not found in components list\nNamespace: ' + owner.getOr('none') + '\nComponents: ' + JSON$1.stringify(detail.components, null, 2));
+          throw new Error('Placeholder: ' + p.name() + ' was not found in components list\nNamespace: ' + owner.getOr('none') + '\nComponents: ' + Json.stringify(detail.components, null, 2));
         }
       });
       return outcome;
     };
+    var singleReplace = function (detail, p) {
+      var replacement = p;
+      return replacement.fold(function (req, valueThunk) {
+        return [valueThunk(detail)];
+      }, function (req, valuesThunk) {
+        return valuesThunk(detail);
+      });
+    };
     var single = adt$8.single;
     var multiple = adt$8.multiple;
     var placeholder = constant(_placeholder);
+
+    var UiSubstitutes = /*#__PURE__*/Object.freeze({
+        single: single,
+        multiple: multiple,
+        isSubstitute: isSubstitute,
+        placeholder: placeholder,
+        substituteAll: substituteAll,
+        substitutePlaces: substitutePlaces,
+        singleReplace: singleReplace
+    });
 
     var adt$9 = Adt.generate([
       { required: ['data'] },
@@ -49866,6 +50942,12 @@ var silver = (function (domGlobals) {
       }, apis, extraApis);
     };
 
+    var Sketcher = /*#__PURE__*/Object.freeze({
+        isSketchSpec: isSketchSpec,
+        single: single$2,
+        composite: composite$1
+    });
+
     var inside = function (target) {
       return name(target) === 'input' && get$2(target, 'type') !== 'radio' || name(target) === 'textarea';
     };
@@ -49962,7 +51044,7 @@ var silver = (function (domGlobals) {
       return has$2(queryTarget.element(), hConfig.highlightClass);
     };
     var getHighlighted = function (component, hConfig, hState) {
-      return descendant$1(component.element(), '.' + hConfig.highlightClass).bind(function (e) {
+      return descendant$2(component.element(), '.' + hConfig.highlightClass).bind(function (e) {
         return component.getSystem().getByDom(e).toOption();
       });
     };
@@ -49973,7 +51055,7 @@ var silver = (function (domGlobals) {
       }, component.getSystem().getByDom);
     };
     var getFirst = function (component, hConfig, hState) {
-      return descendant$1(component.element(), '.' + hConfig.itemClass).bind(function (e) {
+      return descendant$2(component.element(), '.' + hConfig.itemClass).bind(function (e) {
         return component.getSystem().getByDom(e).toOption();
       });
     };
@@ -50097,6 +51179,12 @@ var silver = (function (domGlobals) {
         });
       };
     };
+    var is$1 = function (key) {
+      return function (event) {
+        var raw = event.raw();
+        return raw.which === key;
+      };
+    };
     var isShift = function (event) {
       var raw = event.raw();
       return raw.shiftKey === true;
@@ -50107,6 +51195,12 @@ var silver = (function (domGlobals) {
     };
     var isNotShift = not(isShift);
 
+    var basic = function (key, action) {
+      return {
+        matches: is$1(key),
+        classification: action
+      };
+    };
     var rule = function (matches, action) {
       return {
         matches: matches,
@@ -50121,6 +51215,12 @@ var silver = (function (domGlobals) {
         return t.classification;
       });
     };
+
+    var KeyRules = /*#__PURE__*/Object.freeze({
+        basic: basic,
+        rule: rule,
+        choose: choose$2
+    });
 
     var focus$1 = function (element) {
       element.dom().focus();
@@ -50555,7 +51655,7 @@ var silver = (function (domGlobals) {
       initSize()
     ];
     var focusIn = function (component, gridConfig, gridState) {
-      descendant$1(component.element(), gridConfig.selector).each(function (first) {
+      descendant$2(component.element(), gridConfig.selector).each(function (first) {
         gridConfig.focusManager.set(component, first);
       });
     };
@@ -50646,7 +51746,7 @@ var silver = (function (domGlobals) {
     };
     var focusIn$1 = function (component, flowConfig) {
       flowConfig.getInitial(component).orThunk(function () {
-        return descendant$1(component.element(), flowConfig.selector);
+        return descendant$2(component.element(), flowConfig.selector);
       }).each(function (first) {
         flowConfig.focusManager.set(component, first);
       });
@@ -50760,7 +51860,7 @@ var silver = (function (domGlobals) {
     var focusIn$2 = function (component, matrixConfig) {
       var focused = matrixConfig.previousSelector(component).orThunk(function () {
         var selectors = matrixConfig.selectors;
-        return descendant$1(component.element(), selectors.cell);
+        return descendant$2(component.element(), selectors.cell);
       });
       focused.each(function (cell) {
         matrixConfig.focusManager.set(component, cell);
@@ -50820,7 +51920,7 @@ var silver = (function (domGlobals) {
       });
     };
     var focusIn$3 = function (component, menuConfig) {
-      descendant$1(component.element(), menuConfig.selector).each(function (first) {
+      descendant$2(component.element(), menuConfig.selector).each(function (first) {
         menuConfig.focusManager.set(component, first);
       });
     };
@@ -50952,7 +52052,7 @@ var silver = (function (domGlobals) {
       state: KeyingState
     });
 
-    var preserve = function (f, container) {
+    var preserve$1 = function (f, container) {
       var ownerDoc = owner(container);
       var refocus = active(ownerDoc).bind(function (focused) {
         var hasFocus = function (elem) {
@@ -50973,7 +52073,7 @@ var silver = (function (domGlobals) {
 
     var set$5 = function (component, replaceConfig, replaceState, data) {
       detachChildren(component);
-      preserve(function () {
+      preserve$1(function () {
         var children = map(data, component.getSystem().build);
         each(children, function (l) {
           attach(component, l);
@@ -51335,7 +52435,7 @@ var silver = (function (domGlobals) {
         }
       });
     };
-    var toggle = function (component, toggleConfig, toggleState) {
+    var toggle$2 = function (component, toggleConfig, toggleState) {
       set$6(component, toggleConfig, toggleState, !toggleState.get());
     };
     var on = function (component, toggleConfig, toggleState) {
@@ -51361,7 +52461,7 @@ var silver = (function (domGlobals) {
 
     var ToggleApis = /*#__PURE__*/Object.freeze({
         onLoad: onLoad$4,
-        toggle: toggle,
+        toggle: toggle$2,
         isOn: isOn,
         on: on,
         off: off,
@@ -51372,7 +52472,7 @@ var silver = (function (domGlobals) {
       return nu$6({});
     };
     var events$5 = function (toggleConfig, toggleState) {
-      var execute = executeEvent(toggleConfig, toggleState, toggle);
+      var execute = executeEvent(toggleConfig, toggleState, toggle$2);
       var load = loadEvent(toggleConfig, toggleState, onLoad$4);
       return derive(flatten([
         toggleConfig.toggleOnExecute ? [execute] : [],
@@ -51385,31 +52485,30 @@ var silver = (function (domGlobals) {
         events: events$5
     });
 
-    var init$3 = function (spec) {
-      var cell = Cell(false);
-      var set = function (state) {
-        return cell.set(state);
+    var SetupBehaviourCellState = function (initialState) {
+      var init = function () {
+        var cell = Cell(initialState);
+        var get = function () {
+          return cell.get();
+        };
+        var set = function (newState) {
+          return cell.set(newState);
+        };
+        var clear = function () {
+          return cell.set(initialState);
+        };
+        var readState = function () {
+          return cell.get();
+        };
+        return {
+          get: get,
+          set: set,
+          clear: clear,
+          readState: readState
+        };
       };
-      var clear = function () {
-        return cell.set(false);
-      };
-      var get = function () {
-        return cell.get();
-      };
-      var readState = function () {
-        return cell.get();
-      };
-      return {
-        readState: readState,
-        get: get,
-        set: set,
-        clear: clear
-      };
+      return { init: init };
     };
-
-    var TogglingState = /*#__PURE__*/Object.freeze({
-        init: init$3
-    });
 
     var updatePressed = function (component, ariaInfo, status) {
       set$1(component.element(), 'aria-pressed', status);
@@ -51448,7 +52547,7 @@ var silver = (function (domGlobals) {
       name: 'toggling',
       active: ActiveToggle,
       apis: ToggleApis,
-      state: TogglingState
+      state: SetupBehaviourCellState(false)
     });
 
     var hoverEvent = 'alloy.item-hover';
@@ -51838,7 +52937,7 @@ var silver = (function (domGlobals) {
       });
     };
 
-    var init$4 = function () {
+    var init$3 = function () {
       var expansions = Cell({});
       var menus = Cell({});
       var paths = Cell({});
@@ -51913,7 +53012,7 @@ var silver = (function (domGlobals) {
         isClear: isClear
       };
     };
-    var LayeredState = { init: init$4 };
+    var LayeredState = { init: init$3 };
 
     var make$2 = function (detail, rawUiSpec) {
       var submenuParentItems = Cell(Option.none());
@@ -52486,6 +53585,10 @@ var silver = (function (domGlobals) {
       };
     };
 
+    var Memento = /*#__PURE__*/Object.freeze({
+        record: record
+    });
+
     var defaultIcon = function (icons) {
       return Option.from(icons()['temporary-placeholder']).getOr('!not found!');
     };
@@ -52714,7 +53817,7 @@ var silver = (function (domGlobals) {
             'warning',
             'info'
           ], settings.type) ? settings.type : undefined,
-          progress: settings.progressBar === true ? true : false,
+          progress: settings.progressBar === true,
           icon: Option.from(settings.icon),
           onAction: close,
           iconProvider: backstage.shared.providers.icons,
@@ -53121,7 +54224,7 @@ var silver = (function (domGlobals) {
       onHandler('onShow')
     ];
 
-    var init$5 = function () {
+    var init$4 = function () {
       var timer = Cell(Option.none());
       var popup = Cell(Option.none());
       var getTooltip = function () {
@@ -53160,7 +54263,7 @@ var silver = (function (domGlobals) {
     };
 
     var TooltippingState = /*#__PURE__*/Object.freeze({
-        init: init$5
+        init: init$4
     });
 
     var ExclusivityChannel = generate$1('tooltip.exclusive');
@@ -53409,14 +54512,14 @@ var silver = (function (domGlobals) {
       };
     };
 
-    var renderColorStructure = function (itemText, itemValue, iconSvg) {
+    var renderColorStructure = function (itemText, itemValue, iconSvg, providerBackstage) {
       var colorPickerCommand = 'custom';
       var removeColorCommand = 'remove';
       var getDom = function () {
         var common = colorClass;
         var icon = iconSvg.getOr('');
         var title = itemText.map(function (text) {
-          return ' title="' + text + '"';
+          return ' title="' + providerBackstage.translate(text) + '"';
         }).getOr('');
         if (itemValue === colorPickerCommand) {
           return fromHtml$2('<button class="' + common + ' tox-swatches__picker-btn"' + title + '>' + icon + '</button>');
@@ -53469,7 +54572,7 @@ var silver = (function (domGlobals) {
         return has(meta, 'style') ? curry(renderStyledText, meta.style) : renderText;
       });
       if (info.presets === 'color') {
-        return renderColorStructure(info.ariaLabel, info.value, icon);
+        return renderColorStructure(info.ariaLabel, info.value, icon, providersBackstage);
       } else {
         return renderNormalItemStructure(info, icon, renderIcons, textRender);
       }
@@ -53523,12 +54626,17 @@ var silver = (function (domGlobals) {
     var isDisabled = function (component) {
       return hasNative(component) ? nativeIsDisabled(component) : ariaIsDisabled(component);
     };
+    var set$7 = function (component, disableConfig, disableState, disabled) {
+      var f = disabled ? disable : enable;
+      f(component, disableConfig, disableState);
+    };
 
     var DisableApis = /*#__PURE__*/Object.freeze({
         enable: enable,
         disable: disable,
         isDisabled: isDisabled,
-        onLoad: onLoad$5
+        onLoad: onLoad$5,
+        set: set$7
     });
 
     var exhibit$3 = function (base, disableConfig, disableState) {
@@ -53727,7 +54835,7 @@ var silver = (function (domGlobals) {
             return Disabling.isDisabled(component);
           },
           setDisabled: function (state) {
-            return state ? Disabling.disable(component) : Disabling.enable(component);
+            return Disabling.set(component, state);
           }
         };
       };
@@ -53904,7 +55012,7 @@ var silver = (function (domGlobals) {
             return Disabling.isDisabled(component);
           },
           setDisabled: function (state) {
-            return state ? Disabling.disable(component) : Disabling.enable(component);
+            return Disabling.set(component, state);
           }
         };
       };
@@ -53939,7 +55047,7 @@ var silver = (function (domGlobals) {
             return Disabling.isDisabled(component);
           },
           setDisabled: function (state) {
-            return state ? Disabling.disable(component) : Disabling.enable(component);
+            return Disabling.set(component, state);
           }
         };
       };
@@ -53995,7 +55103,7 @@ var silver = (function (domGlobals) {
             return Disabling.isDisabled(component);
           },
           setDisabled: function (state) {
-            return state ? Disabling.disable(component) : Disabling.enable(component);
+            return Disabling.set(component, state);
           }
         };
       };
@@ -54031,7 +55139,7 @@ var silver = (function (domGlobals) {
     var separator = renderSeparatorItem;
     var normal = renderNormalItem;
     var nested = renderNestedItem;
-    var toggle$1 = renderToggleMenuItem;
+    var toggle$3 = renderToggleMenuItem;
     var fancy = renderFancyMenuItem;
 
     var forMenu = function (presets) {
@@ -54278,7 +55386,7 @@ var silver = (function (domGlobals) {
         });
       case 'togglemenuitem':
         return createToggleMenuItem(item).fold(handleError, function (d) {
-          return Option.some(toggle$1(d, itemResponse, providersBackstage));
+          return Option.some(toggle$3(d, itemResponse, providersBackstage));
         });
       case 'separator':
         return createSeparatorMenuItem(item).fold(handleError, function (d) {
@@ -55253,7 +56361,7 @@ var silver = (function (domGlobals) {
     var fixedContainerElement = function (editor) {
       var selector = fixedContainerSelector(editor);
       var isInline = editor.getParam('inline', false, 'boolean');
-      return selector.length > 0 && isInline ? descendant$1(body(), selector) : Option.none();
+      return selector.length > 0 && isInline ? descendant$2(body(), selector) : Option.none();
     };
     var useFixedContainer = function (editor) {
       return editor.getParam('inline', false, 'boolean') && fixedContainerElement(editor).isSome();
@@ -55443,12 +56551,12 @@ var silver = (function (domGlobals) {
 
     var CouplingSchema = [strictOf('others', setOf$1(Result.value, anyValue$1()))];
 
-    var init$6 = function (spec) {
+    var init$5 = function (spec) {
       var coupled = {};
       var getOrCreate = function (component, coupleConfig, name) {
         var available = keys(coupleConfig.others);
         if (!available) {
-          throw new Error('Cannot find coupled component: ' + name + '. Known coupled components: ' + JSON$1.stringify(available, null, 2));
+          throw new Error('Cannot find coupled component: ' + name + '. Known coupled components: ' + Json.stringify(available, null, 2));
         } else {
           return readOptFrom$1(coupled, name).getOrThunk(function () {
             var builder = readOptFrom$1(coupleConfig.others, name).getOrDie('No information found for coupled component: ' + name);
@@ -55467,7 +56575,7 @@ var silver = (function (domGlobals) {
     };
 
     var CouplingState = /*#__PURE__*/Object.freeze({
-        init: init$6
+        init: init$5
     });
 
     var Coupling = create$1({
@@ -55516,13 +56624,13 @@ var silver = (function (domGlobals) {
         cancel: cancel
       });
     };
-    var init$7 = function (spec) {
+    var init$6 = function (spec) {
       return spec.stream.streams.state(spec);
     };
 
     var StreamingState = /*#__PURE__*/Object.freeze({
         throttle: throttle,
-        init: init$7
+        init: init$6
     });
 
     var setup$2 = function (streamInfo, streamState) {
@@ -56588,26 +57696,34 @@ var silver = (function (domGlobals) {
     var isHexString = function (hex) {
       return shorthandRegex.test(hex) || longformRegex.test(hex);
     };
-    var getLongForm = function (hexColour) {
-      var hexString = hexColour.value().replace(shorthandRegex, function (m, r, g, b) {
+    var getLongForm = function (hex) {
+      var hexString = hex.value().replace(shorthandRegex, function (m, r, g, b) {
         return r + r + g + g + b + b;
       });
       return { value: constant(hexString) };
     };
-    var extractValues = function (hexColour) {
-      var longForm = getLongForm(hexColour);
-      return longformRegex.exec(longForm.value());
+    var extractValues = function (hex) {
+      var longForm = getLongForm(hex);
+      var splitForm = longformRegex.exec(longForm.value());
+      return splitForm === null ? [
+        'FFFFFF',
+        'FF',
+        'FF',
+        'FF'
+      ] : splitForm;
     };
     var toHex = function (component) {
       var hex = component.toString(16);
-      return hex.length == 1 ? '0' + hex : hex;
+      return hex.length === 1 ? '0' + hex : hex;
     };
     var fromRgba = function (rgbaColour) {
       var value = toHex(rgbaColour.red()) + toHex(rgbaColour.green()) + toHex(rgbaColour.blue());
       return hexColour(value);
     };
 
-    var min = Math.min, max = Math.max, round = Math.round;
+    var min = Math.min;
+    var max = Math.max;
+    var round = Math.round;
     var rgbRegex = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)/;
     var rgbaRegex = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d?(?:\.\d+)?)\)/;
     var rgbaColour = function (red, green, blue, alpha) {
@@ -56623,20 +57739,22 @@ var silver = (function (domGlobals) {
       return num.toString() === value && num >= 0 && num <= 255;
     };
     var fromHsv = function (hsv) {
-      var side, chroma, x, match, hue, saturation, brightness, r, g, b;
-      hue = (hsv.hue() || 0) % 360;
-      saturation = hsv.saturation() / 100;
-      brightness = hsv.value() / 100;
+      var r;
+      var g;
+      var b;
+      var hue = (hsv.hue() || 0) % 360;
+      var saturation = hsv.saturation() / 100;
+      var brightness = hsv.value() / 100;
       saturation = max(0, min(saturation, 1));
       brightness = max(0, min(brightness, 1));
       if (saturation === 0) {
         r = g = b = round(255 * brightness);
         return rgbaColour(r, g, b, 1);
       }
-      side = hue / 60;
-      chroma = brightness * saturation;
-      x = chroma * (1 - Math.abs(side % 2 - 1));
-      match = brightness - chroma;
+      var side = hue / 60;
+      var chroma = brightness * saturation;
+      var x = chroma * (1 - Math.abs(side % 2 - 1));
+      var match = brightness - chroma;
       switch (Math.floor(side)) {
       case 0:
         r = chroma;
@@ -56693,20 +57811,21 @@ var silver = (function (domGlobals) {
     var fromString = function (rgbaString) {
       if (rgbaString === 'transparent') {
         return Option.some(rgbaColour(0, 0, 0, 0));
-      } else if (rgbRegex.test(rgbaString)) {
-        var rgbMatch = rgbRegex.exec(rgbaString);
-        return Option.some(fromStringValues(rgbMatch[1], rgbMatch[2], rgbMatch[3], '1'));
-      } else if (rgbaRegex.test(rgbaString)) {
-        var rgbaMatch = rgbRegex.exec(rgbaString);
-        return Option.some(fromStringValues(rgbaMatch[1], rgbaMatch[2], rgbaMatch[3], rgbaMatch[4]));
-      } else {
-        return Option.none();
       }
+      var rgbMatch = rgbRegex.exec(rgbaString);
+      if (rgbMatch !== null) {
+        return Option.some(fromStringValues(rgbMatch[1], rgbMatch[2], rgbMatch[3], '1'));
+      }
+      var rgbaMatch = rgbaRegex.exec(rgbaString);
+      if (rgbaMatch !== null) {
+        return Option.some(fromStringValues(rgbaMatch[1], rgbaMatch[2], rgbaMatch[3], rgbaMatch[4]));
+      }
+      return Option.none();
     };
     var toString = function (rgba) {
       return 'rgba(' + rgba.red() + ',' + rgba.green() + ',' + rgba.blue() + ',' + rgba.alpha() + ')';
     };
-    var red = constant(rgbaColour(255, 0, 0, 1));
+    var redColour = constant(rgbaColour(255, 0, 0, 1));
 
     var global$7 = tinymce.util.Tools.resolve('tinymce.util.LocalStorage');
 
@@ -57440,6 +58559,45 @@ var silver = (function (domGlobals) {
       });
     };
 
+    var hsvColour = function (hue, saturation, value) {
+      return {
+        hue: constant(hue),
+        saturation: constant(saturation),
+        value: constant(value)
+      };
+    };
+    var fromRgb = function (rgbaColour) {
+      var h = 0;
+      var s = 0;
+      var v = 0;
+      var r = rgbaColour.red() / 255;
+      var g = rgbaColour.green() / 255;
+      var b = rgbaColour.blue() / 255;
+      var minRGB = Math.min(r, Math.min(g, b));
+      var maxRGB = Math.max(r, Math.max(g, b));
+      if (minRGB === maxRGB) {
+        v = minRGB;
+        return hsvColour(0, 0, v * 100);
+      }
+      var d = r === minRGB ? g - b : b === minRGB ? r - g : b - r;
+      h = r === minRGB ? 3 : b === minRGB ? 1 : 5;
+      h = 60 * (h - d / (maxRGB - minRGB));
+      s = (maxRGB - minRGB) / maxRGB;
+      v = maxRGB;
+      return hsvColour(Math.round(h), Math.round(s * 100), Math.round(v * 100));
+    };
+
+    var calcHex = function (value) {
+      var hue = (100 - value) / 100 * 360;
+      var hsv = hsvColour(hue, 100, 100);
+      var rgb = fromHsv(hsv);
+      return fromRgba(rgb);
+    };
+
+    var fieldsUpdate = constant(generate$1('rgb-hex-update'));
+    var sliderUpdate = constant(generate$1('slider-update'));
+    var paletteUpdate = constant(generate$1('palette-update'));
+
     var platform = PlatformDetection$1.detect();
     var isTouch = platform.deviceType.isTouch();
     var labelPart = optional({
@@ -57671,14 +58829,14 @@ var silver = (function (domGlobals) {
     var max1Y = function (detail) {
       return detail.model.maxY + 1;
     };
-    var range$1 = function (detail, max, min) {
+    var range$2 = function (detail, max, min) {
       return max(detail) - min(detail);
     };
     var xRange = function (detail) {
-      return range$1(detail, maxX, minX);
+      return range$2(detail, maxX, minX);
     };
     var yRange = function (detail) {
-      return range$1(detail, maxY, minY);
+      return range$2(detail, maxY, minY);
     };
     var halfX = function (detail) {
       return xRange(detail) / 2;
@@ -58339,96 +59497,6 @@ var silver = (function (domGlobals) {
       }
     });
 
-    var fieldsUpdate = constant(generate$1('rgb-hex-update'));
-    var sliderUpdate = constant(generate$1('slider-update'));
-    var paletteUpdate = constant(generate$1('palette-update'));
-
-    var paletteFactory = function (translate, getClass) {
-      var spectrum = Slider.parts().spectrum({
-        dom: {
-          tag: 'canvas',
-          attributes: { role: 'presentation' },
-          classes: [getClass('sv-palette-spectrum')]
-        }
-      });
-      var thumb = Slider.parts().thumb({
-        dom: {
-          tag: 'div',
-          attributes: { role: 'presentation' },
-          classes: [getClass('sv-palette-thumb')],
-          innerHtml: '<div class=' + getClass('sv-palette-inner-thumb') + ' role="presentation"></div>'
-        }
-      });
-      var setColour = function (canvas, rgba) {
-        var width = canvas.width, height = canvas.height;
-        var ctx = canvas.getContext('2d');
-        ctx.fillStyle = rgba;
-        ctx.fillRect(0, 0, width, height);
-        var grdWhite = ctx.createLinearGradient(0, 0, width, 0);
-        grdWhite.addColorStop(0, 'rgba(255,255,255,1)');
-        grdWhite.addColorStop(1, 'rgba(255,255,255,0)');
-        ctx.fillStyle = grdWhite;
-        ctx.fillRect(0, 0, width, height);
-        var grdBlack = ctx.createLinearGradient(0, 0, 0, height);
-        grdBlack.addColorStop(0, 'rgba(0,0,0,0)');
-        grdBlack.addColorStop(1, 'rgba(0,0,0,1)');
-        ctx.fillStyle = grdBlack;
-        ctx.fillRect(0, 0, width, height);
-      };
-      var setSliderColour = function (slider, rgba) {
-        var canvas = slider.components()[0].element().dom();
-        setColour(canvas, toString(rgba));
-      };
-      var factory = function (detail) {
-        var getInitialValue = constant({
-          x: constant(0),
-          y: constant(0)
-        });
-        var onChange = function (slider, _thumb, value) {
-          emitWith(slider, paletteUpdate(), { value: value });
-        };
-        var onInit = function (_slider, _thumb, spectrum, _value) {
-          setColour(spectrum.element().dom(), toString(red()));
-        };
-        var sliderBehaviours = derive$1([
-          Composing.config({ find: Option.some }),
-          Focusing.config({})
-        ]);
-        return Slider.sketch({
-          dom: {
-            tag: 'div',
-            attributes: { role: 'presentation' },
-            classes: [getClass('sv-palette')]
-          },
-          model: {
-            mode: 'xy',
-            getInitialValue: getInitialValue
-          },
-          rounded: false,
-          components: [
-            spectrum,
-            thumb
-          ],
-          onChange: onChange,
-          onInit: onInit,
-          sliderBehaviours: sliderBehaviours
-        });
-      };
-      var SaturationBrightnessPalette = single$2({
-        factory: factory,
-        name: 'SaturationBrightnessPalette',
-        configFields: [],
-        apis: {
-          setRgba: function (apis, slider, rgba) {
-            setSliderColour(slider, rgba);
-          }
-        },
-        extraApis: {}
-      });
-      return SaturationBrightnessPalette;
-    };
-    var SaturationBrightnessPalette = { paletteFactory: paletteFactory };
-
     var sliderFactory = function (translate, getClass) {
       var spectrum = Slider.parts().spectrum({
         dom: {
@@ -58460,7 +59528,7 @@ var silver = (function (domGlobals) {
           thumb
         ],
         sliderBehaviours: derive$1([Focusing.config({})]),
-        onChange: function (slider, thumb, value) {
+        onChange: function (slider, _thumb, value) {
           emitWith(slider, sliderUpdate(), { value: value });
         }
       });
@@ -58627,7 +59695,9 @@ var silver = (function (domGlobals) {
         return hex;
       };
       var copyRgbToForm = function (form, rgb) {
-        var red = rgb.red(), green = rgb.green(), blue = rgb.blue();
+        var red = rgb.red();
+        var green = rgb.green();
+        var blue = rgb.blue();
         Representing.setValue(form, {
           red: red,
           green: green,
@@ -58647,7 +59717,7 @@ var silver = (function (domGlobals) {
           set$2(preview.element(), 'background-color', '#' + hex.value());
         });
       };
-      var factory = function (detail) {
+      var factory = function () {
         var state = {
           red: constant(Cell(Option.some(255))),
           green: constant(Cell(Option.some(255))),
@@ -58675,7 +59745,9 @@ var silver = (function (domGlobals) {
           });
         };
         var setValueRgb = function (rgb) {
-          var red = rgb.red(), green = rgb.green(), blue = rgb.blue();
+          var red = rgb.red();
+          var green = rgb.green();
+          var blue = rgb.blue();
           set('red', Option.some(red));
           set('green', Option.some(green));
           set('blue', Option.some(blue));
@@ -58706,9 +59778,12 @@ var silver = (function (domGlobals) {
             updatePreview(form, hex);
           });
         };
+        var isHexInputEvent = function (data) {
+          return data.type() === 'hex';
+        };
         var onValidInput = function (form, simulatedEvent) {
           var data = simulatedEvent.event();
-          if (data.type() === 'hex') {
+          if (isHexInputEvent(data)) {
             onValidHex(form, data.value());
           } else {
             onValidRgb(form, data.type(), data.value());
@@ -58757,7 +59832,7 @@ var silver = (function (domGlobals) {
           }
         });
       };
-      var RgbForm = single$2({
+      var rgbFormSketcher = single$2({
         factory: factory,
         name: 'RgbForm',
         configFields: [],
@@ -58768,51 +59843,104 @@ var silver = (function (domGlobals) {
         },
         extraApis: {}
       });
-      return RgbForm;
+      return rgbFormSketcher;
     };
     var RgbForm = { rgbFormFactory: rgbFormFactory };
 
-    var hsvColour = function (hue, saturation, value) {
-      return {
-        hue: constant(hue),
-        saturation: constant(saturation),
-        value: constant(value)
+    var paletteFactory = function (_translate, getClass) {
+      var spectrumPart = Slider.parts().spectrum({
+        dom: {
+          tag: 'canvas',
+          attributes: { role: 'presentation' },
+          classes: [getClass('sv-palette-spectrum')]
+        }
+      });
+      var thumbPart = Slider.parts().thumb({
+        dom: {
+          tag: 'div',
+          attributes: { role: 'presentation' },
+          classes: [getClass('sv-palette-thumb')],
+          innerHtml: '<div class=' + getClass('sv-palette-inner-thumb') + ' role="presentation"></div>'
+        }
+      });
+      var setColour = function (canvas, rgba) {
+        var width = canvas.width, height = canvas.height;
+        var ctx = canvas.getContext('2d');
+        if (ctx === null) {
+          return;
+        }
+        ctx.fillStyle = rgba;
+        ctx.fillRect(0, 0, width, height);
+        var grdWhite = ctx.createLinearGradient(0, 0, width, 0);
+        grdWhite.addColorStop(0, 'rgba(255,255,255,1)');
+        grdWhite.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = grdWhite;
+        ctx.fillRect(0, 0, width, height);
+        var grdBlack = ctx.createLinearGradient(0, 0, 0, height);
+        grdBlack.addColorStop(0, 'rgba(0,0,0,0)');
+        grdBlack.addColorStop(1, 'rgba(0,0,0,1)');
+        ctx.fillStyle = grdBlack;
+        ctx.fillRect(0, 0, width, height);
       };
+      var setSliderColour = function (slider, rgba) {
+        var canvas = slider.components()[0].element().dom();
+        setColour(canvas, toString(rgba));
+      };
+      var factory = function (_detail) {
+        var getInitialValue = constant({
+          x: constant(0),
+          y: constant(0)
+        });
+        var onChange = function (slider, _thumb, value) {
+          emitWith(slider, paletteUpdate(), { value: value });
+        };
+        var onInit = function (_slider, _thumb, spectrum, _value) {
+          setColour(spectrum.element().dom(), toString(redColour()));
+        };
+        var sliderBehaviours = derive$1([
+          Composing.config({ find: Option.some }),
+          Focusing.config({})
+        ]);
+        return Slider.sketch({
+          dom: {
+            tag: 'div',
+            attributes: { role: 'presentation' },
+            classes: [getClass('sv-palette')]
+          },
+          model: {
+            mode: 'xy',
+            getInitialValue: getInitialValue
+          },
+          rounded: false,
+          components: [
+            spectrumPart,
+            thumbPart
+          ],
+          onChange: onChange,
+          onInit: onInit,
+          sliderBehaviours: sliderBehaviours
+        });
+      };
+      var saturationBrightnessPaletteSketcher = single$2({
+        factory: factory,
+        name: 'SaturationBrightnessPalette',
+        configFields: [],
+        apis: {
+          setRgba: function (_apis, slider, rgba) {
+            setSliderColour(slider, rgba);
+          }
+        },
+        extraApis: {}
+      });
+      return saturationBrightnessPaletteSketcher;
     };
-    var fromRgb = function (rgbaColour) {
-      var r, g, b, h, s, v, d, minRGB, maxRGB;
-      h = 0;
-      s = 0;
-      v = 0;
-      r = rgbaColour.red() / 255;
-      g = rgbaColour.green() / 255;
-      b = rgbaColour.blue() / 255;
-      minRGB = Math.min(r, Math.min(g, b));
-      maxRGB = Math.max(r, Math.max(g, b));
-      if (minRGB === maxRGB) {
-        v = minRGB;
-        return hsvColour(0, 0, v * 100);
-      }
-      d = r === minRGB ? g - b : b === minRGB ? r - g : b - r;
-      h = r === minRGB ? 3 : b === minRGB ? 1 : 5;
-      h = 60 * (h - d / (maxRGB - minRGB));
-      s = (maxRGB - minRGB) / maxRGB;
-      v = maxRGB;
-      return hsvColour(Math.round(h), Math.round(s * 100), Math.round(v * 100));
-    };
-
-    var calcHex = function (value) {
-      var hue = (100 - value / 100) * 360;
-      var hsv = hsvColour(hue, 100, 100);
-      var rgb = fromHsv(hsv);
-      return fromRgba(rgb);
-    };
+    var SaturationBrightnessPalette = { paletteFactory: paletteFactory };
 
     var makeFactory = function (translate, getClass) {
       var factory = function (detail) {
         var rgbForm = RgbForm.rgbFormFactory(translate, getClass, detail.onValidHex, detail.onInvalidHex);
         var sbPalette = SaturationBrightnessPalette.paletteFactory(translate, getClass);
-        var state = { paletteRgba: constant(Cell(red())) };
+        var state = { paletteRgba: constant(Cell(redColour())) };
         var memPalette = record(sbPalette.sketch({}));
         var memRgb = record(rgbForm.sketch({}));
         var updatePalette = function (anyInSystem, hex) {
@@ -58877,16 +60005,16 @@ var silver = (function (domGlobals) {
           ])
         };
       };
-      var ColourPicker = single$2({
+      var colourPickerSketcher = single$2({
         name: 'ColourPicker',
         configFields: [
+          strict$1('dom'),
           defaulted$1('onValidHex', noop),
-          defaulted$1('onInvalidHex', noop),
-          optionString('formChangeEvent')
+          defaulted$1('onInvalidHex', noop)
         ],
         factory: factory
       });
-      return ColourPicker;
+      return colourPickerSketcher;
     };
     var ColourPicker = { makeFactory: makeFactory };
 
@@ -59561,7 +60689,7 @@ var silver = (function (domGlobals) {
       };
       return Promise;
     };
-    var Promise = window.Promise ? window.Promise : promise();
+    var Promise$1 = window.Promise ? window.Promise : promise();
 
     function Blob (parts, properties) {
       var f = Global$1.getOrDie('Blob');
@@ -59599,7 +60727,7 @@ var silver = (function (domGlobals) {
       return anyUriToBlob(src);
     }
     function blobToImage(blob) {
-      return new Promise(function (resolve, reject) {
+      return new Promise$1(function (resolve, reject) {
         var blobUrl = domGlobals.URL.createObjectURL(blob);
         var image = new domGlobals.Image();
         var removeListeners = function () {
@@ -59623,7 +60751,7 @@ var silver = (function (domGlobals) {
       });
     }
     function anyUriToBlob(url) {
-      return new Promise(function (resolve, reject) {
+      return new Promise$1(function (resolve, reject) {
         var xhr = new domGlobals.XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.responseType = 'blob';
@@ -59672,7 +60800,7 @@ var silver = (function (domGlobals) {
       return Option.some(Blob(byteArrays, { type: mimetype }));
     }
     function dataUriToBlob(uri) {
-      return new Promise(function (resolve, reject) {
+      return new Promise$1(function (resolve, reject) {
         dataUriToBlobSync(uri).fold(function () {
           reject('uri is not base64: ' + uri);
         }, resolve);
@@ -59690,7 +60818,7 @@ var silver = (function (domGlobals) {
     function canvasToBlob(canvas, type, quality) {
       type = type || 'image/png';
       if (domGlobals.HTMLCanvasElement.prototype.toBlob) {
-        return new Promise(function (resolve) {
+        return new Promise$1(function (resolve) {
           canvas.toBlob(function (blob) {
             resolve(blob);
           }, type, quality);
@@ -59716,7 +60844,7 @@ var silver = (function (domGlobals) {
       });
     }
     function blobToDataUri(blob) {
-      return new Promise(function (resolve) {
+      return new Promise$1(function (resolve) {
         var reader = FileReader();
         reader.onloadend = function () {
           resolve(reader.result);
@@ -59725,7 +60853,7 @@ var silver = (function (domGlobals) {
       });
     }
     function blobToArrayBuffer(blob) {
-      return new Promise(function (resolve) {
+      return new Promise$1(function (resolve) {
         var reader = FileReader();
         reader.onloadend = function () {
           resolve(reader.result);
@@ -59758,7 +60886,7 @@ var silver = (function (domGlobals) {
       var initialType = blob.type;
       var getType = constant(initialType);
       function toBlob() {
-        return Promise.resolve(blob);
+        return Promise$1.resolve(blob);
       }
       function toDataURL() {
         return uri;
@@ -59802,7 +60930,7 @@ var silver = (function (domGlobals) {
     }
     function fromCanvas(canvas, type) {
       return Conversions.canvasToBlob(canvas, type).then(function (blob) {
-        return create$5(Promise.resolve(canvas), blob, canvas.toDataURL());
+        return create$5(Promise$1.resolve(canvas), blob, canvas.toDataURL());
       });
     }
     function fromImage(image) {
@@ -60471,7 +61599,7 @@ var silver = (function (domGlobals) {
       });
     }
     function _scale(image, wRatio, hRatio) {
-      return new Promise(function (resolve) {
+      return new Promise$1(function (resolve) {
         var sW = ImageSize.getWidth(image);
         var sH = ImageSize.getHeight(image);
         var dW = Math.floor(sW * wRatio);
@@ -60964,14 +62092,14 @@ var silver = (function (domGlobals) {
                 thumb: exifReader.thumb()
               };
             } else {
-              return Promise.reject('Headers did not include required information');
+              return Promise$1.reject('Headers did not include required information');
             }
             meta.rawHeaders = headers;
             return meta;
           }
-          return Promise.reject('Image was not a jpeg');
+          return Promise$1.reject('Image was not a jpeg');
         } catch (ex) {
-          return Promise.reject('Unsupported format or not an image: ' + blob.type + ' (Exception: ' + ex.message + ')');
+          return Promise$1.reject('Unsupported format or not an image: ' + blob.type + ' (Exception: ' + ex.message + ')');
         }
       });
     };
@@ -61574,7 +62702,7 @@ var silver = (function (domGlobals) {
     var redo = constant(generate$1('redo'));
     var zoom = constant(generate$1('zoom'));
     var back = constant(generate$1('back'));
-    var apply = constant(generate$1('apply'));
+    var apply$1 = constant(generate$1('apply'));
     var swap = constant(generate$1('swap'));
     var transform = constant(generate$1('transform'));
     var tempTransform = constant(generate$1('temp-transform'));
@@ -61584,7 +62712,7 @@ var silver = (function (domGlobals) {
       redo: redo,
       zoom: zoom,
       back: back,
-      apply: apply,
+      apply: apply$1,
       swap: swap,
       transform: transform,
       tempTransform: tempTransform,
@@ -62001,6 +63129,10 @@ var silver = (function (domGlobals) {
       };
     };
 
+    var EditPanel = /*#__PURE__*/Object.freeze({
+        renderEditPanel: renderEditPanel
+    });
+
     var global$8 = tinymce.util.Tools.resolve('tinymce.dom.DomQuery');
 
     var global$9 = tinymce.util.Tools.resolve('tinymce.geom.Rect');
@@ -62230,7 +63362,7 @@ var silver = (function (domGlobals) {
         dragHelpers = global$b.map(handles, createDragHelper);
         repaint(currentRect);
         global$8(containerElm).on('focusin focusout', function (e) {
-          global$8(e.target).attr('aria-grabbed', e.type === 'focus');
+          global$8(e.target).attr('aria-grabbed', e.type === 'focus' ? 'true' : 'false');
         });
         global$8(containerElm).on('keydown', function (e) {
           var activeHandle;
@@ -62577,6 +63709,10 @@ var silver = (function (domGlobals) {
       };
     };
 
+    var ImagePanel = /*#__PURE__*/Object.freeze({
+        renderImagePanel: renderImagePanel
+    });
+
     var createButton = function (innerHtml, icon, disabled, action, providersBackstage) {
       return renderIconButton({
         name: innerHtml,
@@ -62631,6 +63767,10 @@ var silver = (function (domGlobals) {
         updateButtonUndoStates: updateButtonUndoStates
       };
     };
+
+    var SideBar = /*#__PURE__*/Object.freeze({
+        renderSideBar: renderSideBar
+    });
 
     var url = function () {
       return Global$1.getOrDie('URL');
@@ -63007,13 +64147,19 @@ var silver = (function (domGlobals) {
     });
 
     var renderSelectBox = function (spec, providersBackstage) {
+      var translatedOptions = map(spec.items, function (item) {
+        return {
+          text: providersBackstage.translate(item.text),
+          value: item.value
+        };
+      });
       var pLabel = spec.label.map(function (label) {
         return renderLabel(label, providersBackstage);
       });
       var pField = FormField.parts().field({
         dom: {},
         selectAttributes: { size: spec.size },
-        options: spec.items,
+        options: translatedOptions,
         factory: HtmlSelect,
         selectBehaviours: derive$1([
           Tabstopping.config({}),
@@ -63192,7 +64338,7 @@ var silver = (function (domGlobals) {
     var nu$c = function (worker) {
       return wrap$2(Future.nu(worker));
     };
-    var value$2 = function (value) {
+    var value$3 = function (value) {
       return wrap$2(Future.pure(Result.value(value)));
     };
     var error$1 = function (error) {
@@ -63216,8 +64362,8 @@ var silver = (function (domGlobals) {
     var FutureResult = {
       nu: nu$c,
       wrap: wrap$2,
-      pure: value$2,
-      value: value$2,
+      pure: value$3,
+      value: value$3,
       error: error$1,
       fromResult: fromResult$1,
       fromFuture: fromFuture,
@@ -63697,13 +64843,13 @@ var silver = (function (domGlobals) {
           });
         })),
         run(focusin(), runOnItem(function (comp, tgt, itemValue) {
-          descendant$1(comp.element(), '.' + activeClass).each(function (currentActive) {
+          descendant$2(comp.element(), '.' + activeClass).each(function (currentActive) {
             remove$4(currentActive, activeClass);
           });
           add$2(tgt, activeClass);
         })),
         run(focusout(), runOnItem(function (comp, tgt, itemValue) {
-          descendant$1(comp.element(), '.' + activeClass).each(function (currentActive) {
+          descendant$2(comp.element(), '.' + activeClass).each(function (currentActive) {
             remove$4(currentActive, activeClass);
           });
         })),
@@ -64029,7 +65175,7 @@ var silver = (function (domGlobals) {
           root: bodyElement(),
           getSelection: function () {
             var rng = editor.selection.getRng();
-            return Option.some(range(Element.fromDom(rng.startContainer), rng.startOffset, Element.fromDom(rng.endContainer), rng.endOffset));
+            return Option.some(range$1(Element.fromDom(rng.startContainer), rng.startOffset, Element.fromDom(rng.endContainer), rng.endOffset));
           }
         };
       };
@@ -64324,7 +65470,7 @@ var silver = (function (domGlobals) {
       return doEnrich(formats);
     };
 
-    var init$8 = function (editor) {
+    var init$7 = function (editor) {
       var isSelectedFor = function (format) {
         return function () {
           return editor.formatter.match(format);
@@ -64619,7 +65765,7 @@ var silver = (function (domGlobals) {
       };
     };
 
-    var init$9 = function (sink, editor, lazyAnchorbar, lazyMoreButton) {
+    var init$8 = function (sink, editor, lazyAnchorbar, lazyMoreButton) {
       var backstage = {
         shared: {
           providers: {
@@ -64640,7 +65786,7 @@ var silver = (function (domGlobals) {
           }
         },
         urlinput: UrlInputBackstage(editor),
-        styleselect: init$8(editor),
+        styleselect: init$7(editor),
         colorinput: ColorInputBackstage(editor)
       };
       return backstage;
@@ -64920,7 +66066,7 @@ var silver = (function (domGlobals) {
       }))
     ];
 
-    var init$a = function (spec) {
+    var init$9 = function (spec) {
       var state = Cell(spec.expanded);
       var readState = function () {
         return 'expanded: ' + state.get();
@@ -64939,7 +66085,7 @@ var silver = (function (domGlobals) {
     };
 
     var SlidingState = /*#__PURE__*/Object.freeze({
-        init: init$a
+        init: init$9
     });
 
     var Sliding = create$1({
@@ -65545,7 +66691,7 @@ var silver = (function (domGlobals) {
         events: events$e
     });
 
-    var init$b = function (spec) {
+    var init$a = function (spec) {
       var cell = Cell(Option.none());
       var set = function (optS) {
         return cell.set(optS);
@@ -65568,7 +66714,7 @@ var silver = (function (domGlobals) {
     };
 
     var ReflectingState = /*#__PURE__*/Object.freeze({
-        init: init$b
+        init: init$a
     });
 
     var ReflectingSchema = [
@@ -65774,13 +66920,120 @@ var silver = (function (domGlobals) {
       factory: factory$c
     });
 
+    var updateMenuText = generate$1('update-menu-text');
+    var updateMenuIcon = generate$1('update-menu-icon');
+    var renderCommonDropdown = function (spec, prefix, sharedBackstage) {
+      var editorOffCell = Cell(noop);
+      var optMemDisplayText = spec.text.map(function (text) {
+        return record(renderLabel$1(text, prefix, sharedBackstage.providers));
+      });
+      var optMemDisplayIcon = spec.icon.map(function (iconName) {
+        return record(renderReplacableIconFromPack(iconName, sharedBackstage.providers.icons));
+      });
+      var onLeftOrRightInMenu = function (comp, se) {
+        var dropdown = Representing.getValue(comp);
+        Focusing.focus(dropdown);
+        emitWith(dropdown, 'keydown', { raw: se.event().raw() });
+        Dropdown.close(dropdown);
+        return Option.some(true);
+      };
+      var role = spec.role.fold(function () {
+        return {};
+      }, function (role) {
+        return { role: role };
+      });
+      var tooltipAttributes = spec.tooltip.fold(function () {
+        return {};
+      }, function (tooltip) {
+        var translatedTooltip = sharedBackstage.providers.translate(tooltip);
+        return {
+          'title': translatedTooltip,
+          'aria-label': translatedTooltip
+        };
+      });
+      var memDropdown = record(Dropdown.sketch(__assign({}, role, {
+        dom: {
+          tag: 'button',
+          classes: [
+            prefix,
+            prefix + '--select'
+          ].concat(map(spec.classes, function (c) {
+            return prefix + '--' + c;
+          })),
+          attributes: __assign({}, tooltipAttributes)
+        },
+        components: componentRenderPipeline([
+          optMemDisplayIcon.map(function (mem) {
+            return mem.asSpec();
+          }),
+          optMemDisplayText.map(function (mem) {
+            return mem.asSpec();
+          }),
+          Option.some({
+            dom: {
+              tag: 'div',
+              classes: [prefix + '__select-chevron'],
+              innerHtml: get$c('chevron-down', sharedBackstage.providers.icons)
+            }
+          })
+        ]),
+        matchWidth: true,
+        useMinWidth: true,
+        dropdownBehaviours: derive$1(spec.dropdownBehaviours.concat([
+          DisablingConfigs.button(spec.disabled),
+          Unselecting.config({}),
+          Replacing.config({}),
+          config('dropdown-events', [
+            onControlAttached(spec, editorOffCell),
+            onControlDetached(spec, editorOffCell)
+          ]),
+          config('menubutton-update-display-text', [
+            run(updateMenuText, function (comp, se) {
+              optMemDisplayText.bind(function (mem) {
+                return mem.getOpt(comp);
+              }).each(function (displayText) {
+                Replacing.set(displayText, [text(sharedBackstage.providers.translate(se.event().text()))]);
+              });
+            }),
+            run(updateMenuIcon, function (comp, se) {
+              optMemDisplayIcon.bind(function (mem) {
+                return mem.getOpt(comp);
+              }).each(function (displayIcon) {
+                Replacing.set(displayIcon, [renderReplacableIconFromPack(se.event().icon(), sharedBackstage.providers.icons)]);
+              });
+            })
+          ])
+        ])),
+        eventOrder: deepMerge(toolbarButtonEventOrder, {
+          mousedown: [
+            'focusing',
+            'alloy.base.behaviour',
+            'item-type-events',
+            'normal-dropdown-events'
+          ]
+        }),
+        sandboxBehaviours: derive$1([Keying.config({
+            mode: 'special',
+            onLeft: onLeftOrRightInMenu,
+            onRight: onLeftOrRightInMenu
+          })]),
+        lazySink: sharedBackstage.getSink,
+        toggleClass: prefix + '--active',
+        parts: { menu: part(false, spec.columns, spec.presets) },
+        fetch: function () {
+          return Future.nu(spec.fetch);
+        }
+      })));
+      return memDropdown.asSpec();
+    };
+
     var getButtonApi = function (component) {
       return {
         isDisabled: function () {
           return Disabling.isDisabled(component);
         },
         setDisabled: function (state) {
-          return state ? Disabling.disable(component) : Disabling.enable(component);
+          return Disabling.set(component, state);
         }
       };
     };
@@ -65796,7 +67049,30 @@ var silver = (function (domGlobals) {
           return Disabling.isDisabled(component);
         },
         setDisabled: function (state) {
-          return state ? Disabling.disable(component) : Disabling.enable(component);
+          return Disabling.set(component, state);
+        }
+      };
+    };
+    var getMenuButtonApi = function (component) {
+      return {
+        isDisabled: function () {
+          return Disabling.isDisabled(component);
+        },
+        setDisabled: function (state) {
+          return Disabling.set(component, state);
+        },
+        setActive: function (state) {
+          var elm = component.element();
+          if (state) {
+            add$2(elm, 'tox-tbtn--enabled');
+            set$1(elm, 'aria-pressed', true);
+          } else {
+            remove$4(elm, 'tox-tbtn--enabled');
+            remove$1(elm, 'aria-pressed');
+          }
+        },
+        isActive: function () {
+          return has$2(component.element(), 'tox-tbtn--enabled');
         }
       };
     };
@@ -65931,28 +67207,28 @@ var silver = (function (domGlobals) {
             return Disabling.isDisabled(comp);
           },
           setDisabled: function (state) {
-            return state ? Disabling.disable(comp) : Disabling.enable(comp);
+            return Disabling.set(comp, state);
           },
           setIconFill: function (id, value) {
-            descendant$1(comp.element(), 'svg path[id="' + id + '"], rect[id="' + id + '"]').each(function (underlinePath) {
+            descendant$2(comp.element(), 'svg path[id="' + id + '"], rect[id="' + id + '"]').each(function (underlinePath) {
               set$1(underlinePath, 'fill', value);
             });
           },
           setIconStroke: function (id, value) {
-            descendant$1(comp.element(), 'svg path[id="' + id + '"], rect[id="' + id + '"]').each(function (underlinePath) {
+            descendant$2(comp.element(), 'svg path[id="' + id + '"], rect[id="' + id + '"]').each(function (underlinePath) {
               set$1(underlinePath, 'stroke', value);
             });
           },
           setActive: function (state) {
             set$1(comp.element(), 'aria-pressed', state);
-            descendant$1(comp.element(), 'span').each(function (button) {
+            descendant$2(comp.element(), 'span').each(function (button) {
               comp.getSystem().getByDom(button).each(function (buttonComp) {
                 return Toggling.set(buttonComp, state);
               });
             });
           },
           isActive: function () {
-            return descendant$1(comp.element(), 'span').exists(function (button) {
+            return descendant$2(comp.element(), 'span').exists(function (button) {
               return comp.getSystem().getByDom(button).exists(Toggling.isOn);
             });
           }
@@ -66008,6 +67284,25 @@ var silver = (function (domGlobals) {
           SplitDropdown.parts()['aria-descriptor']({ text: sharedBackstage.providers.translate('To open the popup, press Shift+Enter') })
         ]
       });
+    };
+    var renderMenuButton = function (spec, prefix, sharedBackstage, role) {
+      return renderCommonDropdown({
+        text: spec.text,
+        icon: spec.icon,
+        tooltip: spec.tooltip,
+        role: role,
+        fetch: function (callback) {
+          spec.fetch(function (items) {
+            callback(build$2(items, ItemResponse$1.CLOSE_ON_EXECUTE, sharedBackstage.providers));
+          });
+        },
+        onSetup: spec.onSetup,
+        getApi: getMenuButtonApi,
+        columns: 1,
+        presets: 'normal',
+        classes: [],
+        dropdownBehaviours: []
+      }, prefix, sharedBackstage);
     };
 
     var getFormApi = function (input) {
@@ -66222,7 +67517,7 @@ var silver = (function (domGlobals) {
       });
     };
 
-    var ancestor$2 = function (scope, transform, isRoot) {
+    var ancestor$3 = function (scope, transform, isRoot) {
       var element = scope.dom();
       var stop = isFunction(isRoot) ? isRoot : constant(false);
       while (element.parentNode) {
@@ -66253,7 +67548,7 @@ var silver = (function (domGlobals) {
       var startNode = Element.fromDom(editor.selection.getNode());
       return matchTargetWith(startNode, scopes.inNodeScope).orThunk(function () {
         return matchTargetWith(startNode, scopes.inEditorScope).orThunk(function () {
-          return ancestor$2(startNode, function (elem) {
+          return ancestor$3(startNode, function (elem) {
             return matchTargetWith(elem, scopes.inNodeScope);
           }, isRoot);
         });
@@ -66313,110 +67608,6 @@ var silver = (function (domGlobals) {
       };
     };
     var ToolbarScopes = { categorise: categorise };
-
-    var updateMenuText = generate$1('update-menu-text');
-    var updateMenuIcon = generate$1('update-menu-icon');
-    var renderCommonDropdown = function (spec, prefix, sharedBackstage) {
-      var optMemDisplayText = spec.text.map(function (text) {
-        return record(renderLabel$1(text, prefix, sharedBackstage.providers));
-      });
-      var optMemDisplayIcon = spec.icon.map(function (iconName) {
-        return record(renderReplacableIconFromPack(iconName, sharedBackstage.providers.icons));
-      });
-      var onLeftOrRightInMenu = function (comp, se) {
-        var dropdown = Representing.getValue(comp);
-        Focusing.focus(dropdown);
-        emitWith(dropdown, 'keydown', { raw: se.event().raw() });
-        Dropdown.close(dropdown);
-        return Option.some(true);
-      };
-      var role = spec.role.fold(function () {
-        return {};
-      }, function (role) {
-        return { role: role };
-      });
-      var tooltipAttributes = spec.tooltip.fold(function () {
-        return {};
-      }, function (tooltip) {
-        var translatedTooltip = sharedBackstage.providers.translate(tooltip);
-        return {
-          'title': translatedTooltip,
-          'aria-label': translatedTooltip
-        };
-      });
-      var memDropdown = record(Dropdown.sketch(__assign({}, role, {
-        dom: {
-          tag: 'button',
-          classes: [
-            prefix,
-            prefix + '--select'
-          ].concat(map(spec.classes, function (c) {
-            return prefix + '--' + c;
-          })),
-          attributes: __assign({}, tooltipAttributes)
-        },
-        components: componentRenderPipeline([
-          optMemDisplayIcon.map(function (mem) {
-            return mem.asSpec();
-          }),
-          optMemDisplayText.map(function (mem) {
-            return mem.asSpec();
-          }),
-          Option.some({
-            dom: {
-              tag: 'div',
-              classes: [prefix + '__select-chevron'],
-              innerHtml: get$c('chevron-down', sharedBackstage.providers.icons)
-            }
-          })
-        ]),
-        matchWidth: true,
-        useMinWidth: true,
-        dropdownBehaviours: derive$1([
-          DisablingConfigs.button(spec.disabled),
-          Unselecting.config({}),
-          Replacing.config({}),
-          config('menubutton-update-display-text', [
-            runOnAttached(spec.onAttach),
-            runOnDetached(spec.onDetach),
-            run(updateMenuText, function (comp, se) {
-              optMemDisplayText.bind(function (mem) {
-                return mem.getOpt(comp);
-              }).each(function (displayText) {
-                Replacing.set(displayText, [text(sharedBackstage.providers.translate(se.event().text()))]);
-              });
-            }),
-            run(updateMenuIcon, function (comp, se) {
-              optMemDisplayIcon.bind(function (mem) {
-                return mem.getOpt(comp);
-              }).each(function (displayIcon) {
-                Replacing.set(displayIcon, [renderReplacableIconFromPack(se.event().icon(), sharedBackstage.providers.icons)]);
-              });
-            })
-          ])
-        ]),
-        eventOrder: deepMerge(toolbarButtonEventOrder, {
-          mousedown: [
-            'focusing',
-            'alloy.base.behaviour',
-            'item-type-events',
-            'normal-dropdown-events'
-          ]
-        }),
-        sandboxBehaviours: derive$1([Keying.config({
-            mode: 'special',
-            onLeft: onLeftOrRightInMenu,
-            onRight: onLeftOrRightInMenu
-          })]),
-        lazySink: sharedBackstage.getSink,
-        toggleClass: prefix + '--active',
-        parts: { menu: part(false, spec.columns, spec.presets) },
-        fetch: function () {
-          return Future.nu(spec.fetch);
-        }
-      })));
-      return memDropdown.asSpec();
-    };
 
     var onSetupFormatToggle = function (editor, name) {
       return function (api) {
@@ -66525,33 +67716,34 @@ var silver = (function (domGlobals) {
     };
     var createSelectButton = function (editor, backstage, dataset, spec) {
       var _a = createMenuItems(editor, backstage, dataset, spec), items = _a.items, getStyleItems = _a.getStyleItems;
-      var onDestroyCell = Cell(undefined);
-      var onAttach = spec.nodeChangeHandler.map(function (f) {
-        return function (comp) {
-          var handler = f(comp);
-          onDestroyCell.set(handler);
-          editor.on('nodeChange', handler);
-        };
-      }).getOr(noop);
-      var onDetach = spec.nodeChangeHandler.map(function (_f) {
-        return function (_comp) {
-          var onDestroy = onDestroyCell.get();
-          if (onDestroy !== undefined) {
-            editor.off('nodeChange', onDestroy);
+      var getApi = function (comp) {
+        return {
+          getComponent: function () {
+            return comp;
           }
         };
-      }).getOr(noop);
+      };
+      var onSetup = function (api) {
+        return spec.nodeChangeHandler.map(function (f) {
+          var handler = f(api.getComponent());
+          editor.on('NodeChange', handler);
+          return function () {
+            editor.off('NodeChange', handler);
+          };
+        }).getOr(noop);
+      };
       return renderCommonDropdown({
         text: spec.icon.isSome() ? Option.none() : Option.some(''),
         icon: spec.icon,
         tooltip: Option.from(spec.tooltip),
         role: Option.none(),
         fetch: items.getFetch(backstage, getStyleItems),
-        onAttach: onAttach,
-        onDetach: onDetach,
+        onSetup: onSetup,
+        getApi: getApi,
         columns: 1,
         presets: 'normal',
-        classes: spec.icon.isSome() ? [] : ['bespoke']
+        classes: spec.icon.isSome() ? [] : ['bespoke'],
+        dropdownBehaviours: []
       }, 'tox-tbtn', backstage.shared);
     };
 
@@ -67017,113 +68209,6 @@ var silver = (function (domGlobals) {
       });
     };
 
-    var defaultMenubar = 'file edit view insert format tools table help';
-    var defaultMenus = {
-      file: {
-        title: 'File',
-        items: 'newdocument restoredraft | preview | print | deleteallconversations'
-      },
-      edit: {
-        title: 'Edit',
-        items: 'undo redo | cut copy paste pastetext | selectall | searchreplace'
-      },
-      view: {
-        title: 'View',
-        items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen | showcomments'
-      },
-      insert: {
-        title: 'Insert',
-        items: 'image link media addcomment pageembed template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime'
-      },
-      format: {
-        title: 'Format',
-        items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align | removeformat'
-      },
-      tools: {
-        title: 'Tools',
-        items: 'spellchecker spellcheckerlanguage | a11ycheck code wordcount'
-      },
-      table: {
-        title: 'Table',
-        items: 'inserttable tableprops deletetable row column cell'
-      },
-      help: {
-        title: 'Help',
-        items: 'help'
-      }
-    };
-    var renderMenuButton = function (spec, prefix, sharedBackstage, role) {
-      return renderCommonDropdown({
-        text: spec.text,
-        icon: spec.icon,
-        tooltip: spec.tooltip,
-        role: role,
-        fetch: function (callback) {
-          spec.fetch(function (items) {
-            callback(build$2(items, ItemResponse$1.CLOSE_ON_EXECUTE, sharedBackstage.providers));
-          });
-        },
-        onAttach: function () {
-        },
-        onDetach: function () {
-        },
-        columns: 1,
-        presets: 'normal',
-        classes: []
-      }, prefix, sharedBackstage);
-    };
-    var make$6 = function (menu, registry, editor) {
-      var removedMenuItems = getRemovedMenuItems(editor).split(/[ ,]/);
-      return {
-        text: menu.title,
-        getItems: function () {
-          return bind(menu.items, function (i) {
-            var itemName = i.toLowerCase();
-            if (itemName.trim().length === 0) {
-              return [];
-            } else if (exists(removedMenuItems, function (removedMenuItem) {
-                return removedMenuItem === itemName;
-              })) {
-              return [];
-            } else if (itemName === 'separator' || itemName === '|') {
-              return [{ type: 'separator' }];
-            } else if (registry.menuItems[itemName]) {
-              return [registry.menuItems[itemName]];
-            } else {
-              return [];
-            }
-          });
-        }
-      };
-    };
-    var parseItemsString = function (items) {
-      if (typeof items === 'string') {
-        return items.split(' ');
-      }
-      return items;
-    };
-    var identifyMenus = function (editor, registry) {
-      var rawMenuData = merge(defaultMenus, registry.menus);
-      var userDefinedMenus = keys(registry.menus).length > 0;
-      var menubar = registry.menubar === undefined || registry.menubar === true ? parseItemsString(defaultMenubar) : parseItemsString(registry.menubar === false ? '' : registry.menubar);
-      var validMenus = filter(menubar, function (menuName) {
-        return userDefinedMenus ? registry.menus.hasOwnProperty(menuName) && registry.menus[menuName].hasOwnProperty('items') || defaultMenus.hasOwnProperty(menuName) : defaultMenus.hasOwnProperty(menuName);
-      });
-      var menus = map(validMenus, function (menuName) {
-        var menuData = rawMenuData[menuName];
-        return make$6({
-          title: menuData.title,
-          items: parseItemsString(menuData.items)
-        }, registry, editor);
-      });
-      return filter(menus, function (menu) {
-        var isNotSeparator = function (item) {
-          return item.type !== 'separator';
-        };
-        return menu.getItems().length > 0 && exists(menu.getItems(), isNotSeparator);
-      });
-    };
-
     var defaultToolbar = [
       {
         name: 'history',
@@ -67170,7 +68255,9 @@ var silver = (function (domGlobals) {
     ];
     var renderFromBridge = function (bridgeBuilder, render) {
       return function (spec, extras) {
-        var internal = bridgeBuilder(spec).fold(compose(Result.error, formatError), Result.value).getOrDie();
+        var internal = bridgeBuilder(spec).mapError(function (errInfo) {
+          return formatError(errInfo);
+        }).getOrDie();
         return render(internal, extras);
       };
     };
@@ -67462,7 +68549,7 @@ var silver = (function (domGlobals) {
         timer.set(t);
       };
       editor.on('init', function () {
-        editor.on('click keyup setContent ObjectResized ResizeEditor', function (e) {
+        editor.on('click keyup SetContent ObjectResized ResizeEditor', function (e) {
           resetTimer(global$1.setEditorTimeout(editor, launchContextToolbar, 0));
         });
         editor.on('focusout', function (e) {
@@ -67473,7 +68560,7 @@ var silver = (function (domGlobals) {
             }
           }, 0);
         });
-        editor.on('nodeChange', function (e) {
+        editor.on('NodeChange', function (e) {
           search$1(contextbar.element()).fold(function () {
             resetTimer(global$1.setEditorTimeout(editor, launchContextToolbar, 0));
           }, function (_) {
@@ -67575,14 +68662,16 @@ var silver = (function (domGlobals) {
       var setMenus = function (comp, menus) {
         var newMenus = map(menus, function (m) {
           var buttonSpec = {
-            text: Option.some(m.text),
-            icon: Option.none(),
-            tooltip: Option.none(),
+            type: 'menubutton',
+            text: m.text,
             fetch: function (callback) {
               callback(m.getItems());
             }
           };
-          return renderMenuButton(buttonSpec, 'tox-mbtn', {
+          var internal = createMenuButton(buttonSpec).mapError(function (errInfo) {
+            return formatError(errInfo);
+          }).getOrDie();
+          return renderMenuButton(internal, 'tox-mbtn', {
             getSink: detail.getSink,
             providers: detail.providers
           }, Option.some('menuitem'));
@@ -67604,7 +68693,7 @@ var silver = (function (domGlobals) {
               detail.onSetup(component);
             }),
             run(mouseover(), function (comp, se) {
-              descendant$1(comp.element(), '.' + 'tox-mbtn--active').each(function (activeButton) {
+              descendant$2(comp.element(), '.' + 'tox-mbtn--active').each(function (activeButton) {
                 closest$3(se.event().target(), '.' + 'tox-mbtn').each(function (hoveredButton) {
                   if (!eq(activeButton, hoveredButton)) {
                     comp.getSystem().getByDom(activeButton).each(function (activeComp) {
@@ -67695,9 +68784,9 @@ var silver = (function (domGlobals) {
           pname: getPartName$1(n)
         });
       });
-      return composite(owner$4, schema$n, fieldParts, make$7, spec);
+      return composite(owner$4, schema$n, fieldParts, make$6, spec);
     };
-    var make$7 = function (detail, components, spec) {
+    var make$6 = function (detail, components, spec) {
       var getSlotNames = function (_) {
         return getAllPartNames(detail);
       };
@@ -67992,6 +69081,76 @@ var silver = (function (domGlobals) {
       };
     };
 
+    var renderSpinner = function (providerBackstage) {
+      return {
+        dom: {
+          tag: 'div',
+          attributes: { 'aria-label': providerBackstage.translate('Loading...') },
+          classes: ['tox-throbber__busy-spinner']
+        },
+        components: [{ dom: fromHtml$2('<div class="tox-spinner"><div></div><div></div><div></div></div>') }],
+        behaviours: derive$1([
+          Keying.config({
+            mode: 'special',
+            onTab: function () {
+              return Option.some(true);
+            },
+            onShiftTab: function () {
+              return Option.some(true);
+            }
+          }),
+          Focusing.config({})
+        ])
+      };
+    };
+    var toggleThrobber = function (comp, state, providerBackstage) {
+      var element = comp.element();
+      if (state === true) {
+        Replacing.set(comp, [renderSpinner(providerBackstage)]);
+        remove$6(element, 'display');
+        remove$1(element, 'aria-hidden');
+      } else {
+        Replacing.set(comp, []);
+        set$2(element, 'display', 'none');
+        set$1(element, 'aria-hidden', 'true');
+      }
+    };
+    var renderThrobber = function (spec) {
+      return {
+        uid: spec.uid,
+        dom: {
+          tag: 'div',
+          attributes: { 'aria-hidden': 'true' },
+          classes: ['tox-throbber'],
+          styles: { display: 'none' }
+        },
+        behaviours: derive$1([Replacing.config({})]),
+        components: []
+      };
+    };
+    var setup$5 = function (editor, lazyThrobber, sharedBackstage) {
+      var throbberState = Cell(false);
+      var timer = Cell(Option.none());
+      var toggle = function (state) {
+        if (state !== throbberState.get()) {
+          toggleThrobber(lazyThrobber(), state, sharedBackstage.providers);
+          throbberState.set(state);
+        }
+      };
+      editor.on('ProgressState', function (e) {
+        timer.get().each(global$1.clearTimeout);
+        if (isNumber(e.time)) {
+          var timerId = global$1.setEditorTimeout(editor, function () {
+            return toggle(e.state);
+          }, e.time);
+          timer.set(Option.some(timerId));
+        } else {
+          toggle(e.state);
+          timer.set(Option.none());
+        }
+      });
+    };
+
     var factory$e = function (detail, components, spec) {
       var apis = {
         getSocket: function (comp) {
@@ -68023,6 +69182,9 @@ var silver = (function (domGlobals) {
           return toolbar.bind(function (toolbar) {
             return SplitToolbar.getMoreButton(toolbar);
           });
+        },
+        getThrobber: function (comp) {
+          return parts$b.getPart(comp, detail, 'throbber');
         },
         focusToolbar: function (comp) {
           parts$b.getPart(comp, detail, 'toolbar').each(function (toolbar) {
@@ -68095,6 +69257,11 @@ var silver = (function (domGlobals) {
       name: 'sidebar',
       schema: [strict$1('dom')]
     });
+    var partThrobber = partType$1.optional({
+      factory: { sketch: renderThrobber },
+      name: 'throbber',
+      schema: [strict$1('dom')]
+    });
     var OuterContainer = composite$1({
       name: 'OuterContainer',
       factory: factory$e,
@@ -68106,7 +69273,8 @@ var silver = (function (domGlobals) {
         partMenubar,
         partToolbar,
         partSocket,
-        partSidebar
+        partSidebar,
+        partThrobber
       ],
       apis: {
         getSocket: function (apis, comp) {
@@ -68133,6 +69301,9 @@ var silver = (function (domGlobals) {
         getMoreButton: function (apis, comp) {
           return apis.getMoreButton(comp);
         },
+        getThrobber: function (apis, comp) {
+          return apis.getThrobber(comp);
+        },
         setMenubar: function (apis, comp, menus) {
           apis.setMenubar(comp, menus);
         },
@@ -68144,6 +69315,93 @@ var silver = (function (domGlobals) {
         }
       }
     });
+
+    var defaultMenubar = 'file edit view insert format tools table help';
+    var defaultMenus = {
+      file: {
+        title: 'File',
+        items: 'newdocument restoredraft | preview | print | deleteallconversations'
+      },
+      edit: {
+        title: 'Edit',
+        items: 'undo redo | cut copy paste pastetext | selectall | searchreplace'
+      },
+      view: {
+        title: 'View',
+        items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen | showcomments'
+      },
+      insert: {
+        title: 'Insert',
+        items: 'image link media addcomment pageembed template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime'
+      },
+      format: {
+        title: 'Format',
+        items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align | removeformat'
+      },
+      tools: {
+        title: 'Tools',
+        items: 'spellchecker spellcheckerlanguage | a11ycheck code wordcount'
+      },
+      table: {
+        title: 'Table',
+        items: 'inserttable tableprops deletetable row column cell'
+      },
+      help: {
+        title: 'Help',
+        items: 'help'
+      }
+    };
+    var make$7 = function (menu, registry, editor) {
+      var removedMenuItems = getRemovedMenuItems(editor).split(/[ ,]/);
+      return {
+        text: menu.title,
+        getItems: function () {
+          return bind(menu.items, function (i) {
+            var itemName = i.toLowerCase();
+            if (itemName.trim().length === 0) {
+              return [];
+            } else if (exists(removedMenuItems, function (removedMenuItem) {
+                return removedMenuItem === itemName;
+              })) {
+              return [];
+            } else if (itemName === 'separator' || itemName === '|') {
+              return [{ type: 'separator' }];
+            } else if (registry.menuItems[itemName]) {
+              return [registry.menuItems[itemName]];
+            } else {
+              return [];
+            }
+          });
+        }
+      };
+    };
+    var parseItemsString = function (items) {
+      if (typeof items === 'string') {
+        return items.split(' ');
+      }
+      return items;
+    };
+    var identifyMenus = function (editor, registry) {
+      var rawMenuData = merge(defaultMenus, registry.menus);
+      var userDefinedMenus = keys(registry.menus).length > 0;
+      var menubar = registry.menubar === undefined || registry.menubar === true ? parseItemsString(defaultMenubar) : parseItemsString(registry.menubar === false ? '' : registry.menubar);
+      var validMenus = filter(menubar, function (menuName) {
+        return userDefinedMenus ? registry.menus.hasOwnProperty(menuName) && registry.menus[menuName].hasOwnProperty('items') || defaultMenus.hasOwnProperty(menuName) : defaultMenus.hasOwnProperty(menuName);
+      });
+      var menus = map(validMenus, function (menuName) {
+        var menuData = rawMenuData[menuName];
+        return make$7({
+          title: menuData.title,
+          items: parseItemsString(menuData.items)
+        }, registry, editor);
+      });
+      return filter(menus, function (menu) {
+        var isNotSeparator = function (item) {
+          return item.type !== 'separator';
+        };
+        return menu.getItems().length > 0 && exists(menu.getItems(), isNotSeparator);
+      });
+    };
 
     var fireSkinLoaded = function (editor) {
       return editor.fire('SkinLoaded');
@@ -68602,7 +69860,7 @@ var silver = (function (domGlobals) {
         }
         updateChromeUi();
         show();
-        editor.on('nodeChange ResizeWindow', updateChromeUi);
+        editor.on('NodeChange ResizeWindow', updateChromeUi);
         editor.on('activate', show);
         editor.on('deactivate', hide);
         editor.nodeChanged();
@@ -68700,7 +69958,7 @@ var silver = (function (domGlobals) {
       });
     };
     var getContextMenu = function (editor) {
-      return getMenuItems(editor, 'contextmenu', 'link image imagetools table spellchecker configurepermanentpen');
+      return getMenuItems(editor, 'contextmenu', 'link linkchecker image imagetools table spellchecker configurepermanentpen');
     };
     var Settings$1 = {
       shouldNeverUseNative: shouldNeverUseNative,
@@ -68780,7 +70038,7 @@ var silver = (function (domGlobals) {
     var isNativeOverrideKeyEvent = function (editor, e) {
       return e.ctrlKey && !Settings$1.shouldNeverUseNative(editor);
     };
-    var setup$5 = function (editor, lazySink, sharedBackstage) {
+    var setup$6 = function (editor, lazySink, sharedBackstage) {
       var contextmenu = build$1(InlineView.sketch({
         dom: { tag: 'div' },
         lazySink: lazySink,
@@ -68865,7 +70123,7 @@ var silver = (function (domGlobals) {
       var y = parseInt(get$2(element, snapsInfo.topAttr), 10);
       return isNaN(x) || isNaN(y) ? Option.none() : Option.some(Position(x, y));
     };
-    var set$7 = function (component, snapsInfo, pt) {
+    var set$8 = function (component, snapsInfo, pt) {
       var element = component.element();
       set$1(element, snapsInfo.leftAttr, pt.left() + 'px');
       set$1(element, snapsInfo.topAttr, pt.top() + 'px');
@@ -68887,7 +70145,7 @@ var silver = (function (domGlobals) {
       var newCoord = getCoords(component, snapInfo, coord, delta);
       var snap = findSnap(component, snapInfo, newCoord, scroll, origin);
       var fixedCoord = asFixed(newCoord, scroll, origin);
-      set$7(component, snapInfo, fixedCoord);
+      set$8(component, snapInfo, fixedCoord);
       return snap.fold(function () {
         return {
           coord: fixed$1(fixedCoord.left(), fixedCoord.top()),
@@ -68974,7 +70232,7 @@ var silver = (function (domGlobals) {
       defaulted$1('lazyViewport', defaultLazyViewport$1)
     ]);
 
-    var init$c = function (dragApi) {
+    var init$b = function (dragApi) {
       return derive([
         run(mousedown(), dragApi.forceDrop),
         run(mouseup(), dragApi.drop),
@@ -69034,7 +70292,7 @@ var silver = (function (domGlobals) {
               },
               classes: [dragConfig.blockerClass]
             },
-            events: init$c(dragApi)
+            events: init$b(dragApi)
           }));
           var stop = function () {
             discard(blocker);
@@ -69119,7 +70377,7 @@ var silver = (function (domGlobals) {
         touch: touch
     });
 
-    var init$d = function () {
+    var init$c = function () {
       var previous = Option.none();
       var reset = function () {
         previous = Option.none();
@@ -69145,7 +70403,7 @@ var silver = (function (domGlobals) {
     };
 
     var DragState = /*#__PURE__*/Object.freeze({
-        init: init$d
+        init: init$c
     });
 
     var Dragging = createModes$1({
@@ -69293,7 +70551,7 @@ var silver = (function (domGlobals) {
               editor.shortcuts.add('alt+F11', 'focus statusbar elementpath', function () {
                 return Keying.focusIn(comp);
               });
-              editor.on('nodeChange', function (e) {
+              editor.on('NodeChange', function (e) {
                 var newPath = updatePath(e.parents);
                 if (newPath.length > 0) {
                   Replacing.set(comp, getDataPath(newPath));
@@ -69447,7 +70705,7 @@ var silver = (function (domGlobals) {
       };
     };
 
-    var setup$6 = function (editor) {
+    var setup$7 = function (editor) {
       var isInline = editor.getParam('inline', false, 'boolean');
       var mode = isInline ? Inline : Iframe;
       var lazyOuterContainer = Option.none();
@@ -69484,7 +70742,12 @@ var silver = (function (domGlobals) {
           return OuterContainer.getToolbar(container);
         }).getOrDie('Could not find more toolbar element');
       };
-      var backstage = init$9(sink, editor, lazyAnchorBar, lazyMoreButton);
+      var lazyThrobber = function () {
+        return lazyOuterContainer.bind(function (container) {
+          return OuterContainer.getThrobber(container);
+        }).getOrDie('Could not find throbber element');
+      };
+      var backstage = init$8(sink, editor, lazyAnchorBar, lazyMoreButton);
       var lazySink = function () {
         return Result.value(sink);
       };
@@ -69525,6 +70788,13 @@ var silver = (function (domGlobals) {
           classes: ['tox-sidebar']
         }
       });
+      var partThrobber = OuterContainer.parts().throbber({
+        dom: {
+          tag: 'div',
+          classes: ['tox-throbber']
+        },
+        backstage: backstage
+      });
       var statusbar = editor.getParam('statusbar', true, 'boolean') && !isInline ? Option.some(renderStatusbar(editor, backstage.shared.providers)) : Option.none();
       var socketSidebarContainer = {
         dom: {
@@ -69553,7 +70823,8 @@ var silver = (function (domGlobals) {
       };
       var containerComponents = flatten([
         [editorContainer],
-        isInline ? [] : statusbar.toArray()
+        isInline ? [] : statusbar.toArray(),
+        [partThrobber]
       ]);
       var attributes = __assign({ role: 'application' }, global$3.isRtl() ? { dir: 'rtl' } : {});
       var outerContainer = build$1(OuterContainer.sketch({
@@ -69569,7 +70840,7 @@ var silver = (function (domGlobals) {
         components: containerComponents,
         behaviours: derive$1(mode.getBehaviours(editor).concat([Keying.config({
             mode: 'cyclic',
-            selector: '.tox-menubar, .tox-toolbar, .tox-toolbar__primary, .tox-sidebar__overflow--open, .tox-statusbar__path, .tox-statusbar__wordcount, .tox-statusbar__branding a'
+            selector: '.tox-menubar, .tox-toolbar, .tox-toolbar__primary, .tox-toolbar__overflow--open, .tox-sidebar__overflow--open, .tox-statusbar__path, .tox-statusbar__wordcount, .tox-statusbar__branding a'
           })]))
       }));
       lazyOuterContainer = Option.some(outerContainer);
@@ -69622,8 +70893,9 @@ var silver = (function (domGlobals) {
         return parsedHeight;
       };
       var renderUI = function () {
-        setup$5(editor, lazySink, backstage.shared);
+        setup$6(editor, lazySink, backstage.shared);
         setup$4(editor);
+        setup$5(editor, lazyThrobber, backstage.shared);
         var _a = editor.ui.registry.getAll(), buttons = _a.buttons, menuItems = _a.menuItems, contextToolbars = _a.contextToolbars, sidebars = _a.sidebars;
         var rawUiConfig = {
           menuItems: menuItems,
@@ -69657,7 +70929,7 @@ var silver = (function (domGlobals) {
         getUi: getUi
       };
     };
-    var Render = { setup: setup$6 };
+    var Render = { setup: setup$7 };
 
     var register$5 = function (editor) {
       var alignToolbarButtons = [
@@ -69749,7 +71021,7 @@ var silver = (function (domGlobals) {
           text: 'Superscript',
           icon: 'superscript'
         }
-      ], function (btn) {
+      ], function (btn, idx) {
         editor.ui.registry.addToggleButton(btn.name, {
           tooltip: btn.text,
           icon: btn.icon,
@@ -70101,7 +71373,7 @@ var silver = (function (domGlobals) {
     };
     var ComplexControls = { register: register$a };
 
-    var setup$7 = function (editor, backstage) {
+    var setup$8 = function (editor, backstage) {
       AlignmentButtons.register(editor);
       SimpleControls.register(editor);
       ComplexControls.register(editor, backstage);
@@ -70110,7 +71382,7 @@ var silver = (function (domGlobals) {
       VisualAid.register(editor);
       IndentOutdent.register(editor);
     };
-    var FormatControls = { setup: setup$7 };
+    var FormatControls = { setup: setup$8 };
 
     var AriaLabel = {
       labelledBy: function (labelledElement, labelElement) {
@@ -70132,7 +71404,7 @@ var silver = (function (domGlobals) {
       onKeyboardHandler('onExecute'),
       onStrictKeyboardHandler('onEscape')
     ]);
-    var basic = { sketch: identity };
+    var basic$1 = { sketch: identity };
     var parts$c = constant([
       optional({
         name: 'draghandle',
@@ -70141,9 +71413,9 @@ var silver = (function (domGlobals) {
             behaviours: derive$1([Dragging.config({
                 mode: 'mouse',
                 getTarget: function (handle) {
-                  return ancestor$1(handle, '[role="dialog"]').getOr(handle);
+                  return ancestor$2(handle, '[role="dialog"]').getOr(handle);
                 },
-                blockerClass: detail.dragBlockClass.getOrDie(new Error('The drag blocker class was not specified for a dialog with a drag handle: \n' + JSON$1.stringify(spec, null, 2)).message)
+                blockerClass: detail.dragBlockClass.getOrDie(new Error('The drag blocker class was not specified for a dialog with a drag handle: \n' + Json.stringify(spec, null, 2)).message)
               })])
           };
         }
@@ -70153,17 +71425,17 @@ var silver = (function (domGlobals) {
         name: 'title'
       }),
       required({
-        factory: basic,
+        factory: basic$1,
         schema: [strict$1('dom')],
         name: 'close'
       }),
       required({
-        factory: basic,
+        factory: basic$1,
         schema: [strict$1('dom')],
         name: 'body'
       }),
-      required({
-        factory: basic,
+      optional({
+        factory: basic$1,
         schema: [strict$1('dom')],
         name: 'footer'
       }),
@@ -70515,12 +71787,7 @@ var silver = (function (domGlobals) {
       strictArrayOfObj('tabs', tabFields)
     ];
 
-    var dialogButtonSchema = objOf([
-      strictStringEnum('type', [
-        'submit',
-        'cancel',
-        'custom'
-      ]),
+    var dialogButtonFields = [
       field('name', 'name', defaultedThunk(function () {
         return generate$1('button-name');
       }), string),
@@ -70532,7 +71799,12 @@ var silver = (function (domGlobals) {
       ]),
       defaultedBoolean('primary', false),
       defaultedBoolean('disabled', false)
-    ]);
+    ];
+    var dialogButtonSchema = objOf([strictStringEnum('type', [
+        'submit',
+        'cancel',
+        'custom'
+      ])].concat(dialogButtonFields));
     var dialogSchema = objOf([
       strictString('title'),
       strictOf('body', choose$1('type', {
@@ -70599,6 +71871,25 @@ var silver = (function (domGlobals) {
       return objOf(fields);
     };
 
+    var urlDialogButtonSchema = objOf([strictStringEnum('type', [
+        'cancel',
+        'custom'
+      ])].concat(dialogButtonFields));
+    var urlDialogSchema = objOf([
+      strictString('title'),
+      strictString('url'),
+      optionNumber('height'),
+      optionNumber('width'),
+      optionArrayOf('buttons', urlDialogButtonSchema),
+      defaultedFunction('onAction', noop),
+      defaultedFunction('onCancel', noop),
+      defaultedFunction('onClose', noop),
+      defaultedFunction('onMessage', noop)
+    ]);
+    var createUrlDialog = function (spec) {
+      return asRaw('dialog', urlDialogSchema, spec);
+    };
+
     var extract$1 = function (structure) {
       var internalDialog = getOrDie$1(createDialog(structure));
       var dataValidator = createDataValidator(structure);
@@ -70614,15 +71905,14 @@ var silver = (function (domGlobals) {
         var extraction = extract$1(structure);
         return factory(extraction.internalDialog, extraction.initialData, extraction.dataValidator);
       },
+      openUrl: function (factory, structure) {
+        var internalDialog = getOrDie$1(createUrlDialog(structure));
+        return factory(internalDialog);
+      },
       redial: function (structure) {
         return extract$1(structure);
       }
     };
-
-    var dialogChannel = generate$1('update-dialog');
-    var titleChannel = generate$1('update-title');
-    var bodyChannel = generate$1('update-body');
-    var footerChannel = generate$1('update-footer');
 
     var toValidValues = function (values) {
       var errors = [];
@@ -70961,7 +72251,7 @@ var silver = (function (domGlobals) {
       }));
     };
     var getMaxTabviewHeight = function (dialog, dialogBody) {
-      var rootElm = ancestor$1(dialog, '.tox-dialog-wrap').getOr(dialog);
+      var rootElm = ancestor$2(dialog, '.tox-dialog-wrap').getOr(dialog);
       var isFixed = get$4(rootElm, 'position') === 'fixed';
       var maxHeight;
       if (isFixed) {
@@ -70978,7 +72268,7 @@ var silver = (function (domGlobals) {
       });
     };
     var updateTabviewHeight = function (dialogBody, tabview, maxTabHeight) {
-      ancestor$1(dialogBody, '[role="dialog"]').each(function (dialog) {
+      ancestor$2(dialogBody, '[role="dialog"]').each(function (dialog) {
         maxTabHeight.get().map(function (height) {
           set$2(tabview, 'height', '0');
           return Math.min(height, getMaxTabviewHeight(dialog, dialogBody));
@@ -70992,7 +72282,7 @@ var silver = (function (domGlobals) {
         var maxTabHeight = Cell(Option.none());
         var extraEvents = [
           runOnAttached(function (comp) {
-            descendant$1(comp.element(), '[role="tabpanel"]').each(function (tabview) {
+            descendant$2(comp.element(), '[role="tabpanel"]').each(function (tabview) {
               set$2(tabview, 'visibility', 'hidden');
               comp.getSystem().getByDom(tabview).toOption().each(function (tabviewComp) {
                 var heights = measureHeights(allTabs, tabview, tabviewComp);
@@ -71008,12 +72298,12 @@ var silver = (function (domGlobals) {
             });
           }),
           run(windowResize(), function (comp) {
-            descendant$1(comp.element(), '[role="tabpanel"]').each(function (tabview) {
+            descendant$2(comp.element(), '[role="tabpanel"]').each(function (tabview) {
               updateTabviewHeight(comp.element(), tabview, maxTabHeight);
             });
           }),
           run(formResizeEvent, function (comp, se) {
-            descendant$1(comp.element(), '[role="tabpanel"]').each(function (tabview) {
+            descendant$2(comp.element(), '[role="tabpanel"]').each(function (tabview) {
               var oldFocus = active();
               set$2(tabview, 'visibility', 'hidden');
               var oldHeight = getRaw(tabview, 'height').map(function (h) {
@@ -71179,6 +72469,12 @@ var silver = (function (domGlobals) {
       });
     };
 
+    var dialogChannel = generate$1('update-dialog');
+    var titleChannel = generate$1('update-title');
+    var bodyChannel = generate$1('update-body');
+    var footerChannel = generate$1('update-footer');
+    var bodySendMessageChannel = generate$1('body-send-message');
+
     var renderBody = function (foo, id, backstage, ariaAttrs) {
       var renderComponents = function (incoming) {
         switch (incoming.body.type) {
@@ -71222,50 +72518,49 @@ var silver = (function (domGlobals) {
       return renderBody(foo, Option.some(contentId), backstage, ariaAttrs);
     };
     var renderModalBody = function (foo, backstage) {
-      return ModalDialog.parts().body(renderBody(foo, Option.none(), backstage, false));
+      var bodySpec = renderBody(foo, Option.none(), backstage, false);
+      return ModalDialog.parts().body(bodySpec);
+    };
+    var renderIframeBody = function (spec) {
+      var bodySpec = {
+        dom: {
+          tag: 'div',
+          classes: ['tox-dialog__content-js']
+        },
+        components: [{
+            dom: {
+              tag: 'div',
+              classes: ['tox-dialog__body-iframe']
+            },
+            components: [NavigableObject.craft({
+                dom: {
+                  tag: 'iframe',
+                  attributes: { src: spec.url }
+                },
+                behaviours: derive$1([
+                  Tabstopping.config({}),
+                  Focusing.config({})
+                ])
+              })]
+          }],
+        behaviours: derive$1([Keying.config({
+            mode: 'acyclic',
+            useTabstopAt: not(NavigableObject.isPseudoStop)
+          })])
+      };
+      return ModalDialog.parts().body(bodySpec);
     };
 
-    var init$e = function (getInstanceApi, extras) {
-      var fireApiEvent = function (eventName, f) {
-        return run(eventName, function (c, se) {
-          withSpec(c, function (spec, _c) {
-            f(spec, se.event(), c);
-          });
-        });
-      };
-      var withSpec = function (c, f) {
-        Reflecting.getState(c).get().each(function (currentDialogInit) {
-          f(currentDialogInit.internalDialog, c);
-        });
-      };
+    var initCommonEvents = function (fireApiEvent, extras) {
       return [
         runWithTarget(focusin(), NavigableObject.onFocus),
-        fireApiEvent(formSubmitEvent, function (spec) {
-          return spec.onSubmit(getInstanceApi());
-        }),
-        fireApiEvent(formChangeEvent, function (spec, event) {
-          spec.onChange(getInstanceApi(), { name: event.name() });
-        }),
-        fireApiEvent(formActionEvent, function (spec, event) {
-          spec.onAction(getInstanceApi(), {
-            name: event.name(),
-            value: event.value()
-          });
-        }),
-        fireApiEvent(formTabChangeEvent, function (spec, event) {
-          spec.onTabChange(getInstanceApi(), event.title());
-        }),
-        fireApiEvent(formCloseEvent, function (spec) {
+        fireApiEvent(formCloseEvent, function (api, spec) {
           extras.onClose();
           spec.onClose();
         }),
-        fireApiEvent(formCancelEvent, function (spec, _event, self) {
-          spec.onCancel(getInstanceApi());
+        fireApiEvent(formCancelEvent, function (api, spec, _event, self) {
+          spec.onCancel(api);
           emit(self, formCloseEvent);
-        }),
-        runOnDetached(function (component) {
-          var api = getInstanceApi();
-          Representing.setValue(component, api.getData());
         }),
         run(formUnblockEvent, function (c, se) {
           return extras.onUnblock();
@@ -71275,7 +72570,62 @@ var silver = (function (domGlobals) {
         })
       ];
     };
-    var SilverDialogEvents = { init: init$e };
+    var initUrlDialog = function (getInstanceApi, extras) {
+      var fireApiEvent = function (eventName, f) {
+        return run(eventName, function (c, se) {
+          withSpec(c, function (spec, _c) {
+            f(getInstanceApi(), spec, se.event(), c);
+          });
+        });
+      };
+      var withSpec = function (c, f) {
+        Reflecting.getState(c).get().each(function (currentDialog) {
+          f(currentDialog, c);
+        });
+      };
+      return initCommonEvents(fireApiEvent, extras).concat([fireApiEvent(formActionEvent, function (api, spec, event) {
+          spec.onAction(api, { name: event.name() });
+        })]);
+    };
+    var initDialog = function (getInstanceApi, extras) {
+      var fireApiEvent = function (eventName, f) {
+        return run(eventName, function (c, se) {
+          withSpec(c, function (spec, _c) {
+            f(getInstanceApi(), spec, se.event(), c);
+          });
+        });
+      };
+      var withSpec = function (c, f) {
+        Reflecting.getState(c).get().each(function (currentDialogInit) {
+          f(currentDialogInit.internalDialog, c);
+        });
+      };
+      return initCommonEvents(fireApiEvent, extras).concat([
+        fireApiEvent(formSubmitEvent, function (api, spec) {
+          return spec.onSubmit(api);
+        }),
+        fireApiEvent(formChangeEvent, function (api, spec, event) {
+          spec.onChange(api, { name: event.name() });
+        }),
+        fireApiEvent(formActionEvent, function (api, spec, event) {
+          spec.onAction(api, {
+            name: event.name(),
+            value: event.value()
+          });
+        }),
+        fireApiEvent(formTabChangeEvent, function (api, spec, event) {
+          spec.onTabChange(api, event.title());
+        }),
+        runOnDetached(function (component) {
+          var api = getInstanceApi();
+          Representing.setValue(component, api.getData());
+        })
+      ]);
+    };
+    var SilverDialogEvents = {
+      initUrlDialog: initUrlDialog,
+      initDialog: initDialog
+    };
 
     var makeButton = function (button, providersBackstage) {
       return renderFooterButton(button, button.type, providersBackstage);
@@ -71346,86 +72696,6 @@ var silver = (function (domGlobals) {
     };
     var renderModalFooter = function (initFoo, providersBackstage) {
       return ModalDialog.parts().footer(renderFooter(initFoo, providersBackstage));
-    };
-
-    var renderClose = function (providersBackstage) {
-      return Button.sketch({
-        dom: {
-          tag: 'button',
-          classes: [
-            'tox-button',
-            'tox-button--icon',
-            'tox-button--naked'
-          ],
-          attributes: {
-            'type': 'button',
-            'aria-label': providersBackstage.translate('Close'),
-            'title': providersBackstage.translate('Close')
-          }
-        },
-        components: [{
-            dom: {
-              tag: 'div',
-              classes: ['tox-icon'],
-              innerHtml: '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M17.953 7.453L13.422 12l4.531 4.547-1.406 1.406L12 13.422l-4.547 4.531-1.406-1.406L10.578 12 6.047 7.453l1.406-1.406L12 10.578l4.547-4.531z" fill-rule="evenodd"></path></svg>'
-            }
-          }],
-        action: function (comp) {
-          emit(comp, formCancelEvent);
-        }
-      });
-    };
-    var renderTitle = function (foo, id, providersBackstage) {
-      var renderComponents = function (data) {
-        return [text(providersBackstage.translate(data.title))];
-      };
-      return {
-        dom: {
-          tag: 'div',
-          classes: ['tox-dialog__title'],
-          attributes: __assign({}, id.map(function (x) {
-            return { id: x };
-          }).getOr({}))
-        },
-        components: renderComponents(foo),
-        behaviours: derive$1([Reflecting.config({
-            channel: titleChannel,
-            renderComponents: renderComponents
-          })])
-      };
-    };
-    var renderInlineHeader = function (foo, titleId, providersBackstage) {
-      return Container.sketch({
-        dom: fromHtml$2('<div class="tox-dialog__header"></div>'),
-        components: [
-          renderTitle(foo, Option.some(titleId), providersBackstage),
-          renderClose(providersBackstage)
-        ],
-        containerBehaviours: derive$1([Dragging.config({
-            mode: 'mouse',
-            blockerClass: 'blocker',
-            getTarget: function (handle) {
-              return closest$3(handle, '[role="dialog"]').getOrDie();
-            },
-            snaps: {
-              getSnapPoints: function () {
-                return [];
-              },
-              leftAttr: 'data-drag-left',
-              topAttr: 'data-drag-top'
-            }
-          })])
-      });
-    };
-    var renderModalHeader = function (foo, providersBackstage) {
-      var pTitle = ModalDialog.parts().title(renderTitle(foo, Option.none(), providersBackstage));
-      var pHandle = ModalDialog.parts().draghandle({ dom: fromHtml$2('<div class="tox-dialog__draghandle"></div>') });
-      var pClose = ModalDialog.parts().close(renderClose(providersBackstage));
-      var components = [pTitle].concat(foo.draggable ? [pHandle] : []).concat([pClose]);
-      return Container.sketch({
-        dom: fromHtml$2('<div class="tox-dialog__header"></div>'),
-        components: components
-      });
     };
 
     var getCompByName = function (access, name) {
@@ -71537,25 +72807,99 @@ var silver = (function (domGlobals) {
       return instanceApi;
     };
 
-    var renderDialog = function (dialogInit, extra, backstage) {
-      var _a;
-      var updateState = function (_comp, incoming) {
-        return Option.some(incoming);
+    var renderClose = function (providersBackstage) {
+      return Button.sketch({
+        dom: {
+          tag: 'button',
+          classes: [
+            'tox-button',
+            'tox-button--icon',
+            'tox-button--naked'
+          ],
+          attributes: {
+            'type': 'button',
+            'aria-label': providersBackstage.translate('Close'),
+            'title': providersBackstage.translate('Close')
+          }
+        },
+        components: [{
+            dom: {
+              tag: 'div',
+              classes: ['tox-icon'],
+              innerHtml: '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M17.953 7.453L13.422 12l4.531 4.547-1.406 1.406L12 13.422l-4.547 4.531-1.406-1.406L10.578 12 6.047 7.453l1.406-1.406L12 10.578l4.547-4.531z" fill-rule="evenodd"></path></svg>'
+            }
+          }],
+        action: function (comp) {
+          emit(comp, formCancelEvent);
+        }
+      });
+    };
+    var renderTitle = function (foo, id, providersBackstage) {
+      var renderComponents = function (data) {
+        return [text(providersBackstage.translate(data.title))];
       };
-      var header = renderModalHeader({
-        title: backstage.shared.providers.translate(dialogInit.internalDialog.title),
+      return {
+        dom: {
+          tag: 'div',
+          classes: ['tox-dialog__title'],
+          attributes: __assign({}, id.map(function (x) {
+            return { id: x };
+          }).getOr({}))
+        },
+        components: renderComponents(foo),
+        behaviours: derive$1([Reflecting.config({
+            channel: titleChannel,
+            renderComponents: renderComponents
+          })])
+      };
+    };
+    var renderInlineHeader = function (foo, titleId, providersBackstage) {
+      return Container.sketch({
+        dom: fromHtml$2('<div class="tox-dialog__header"></div>'),
+        components: [
+          renderTitle(foo, Option.some(titleId), providersBackstage),
+          renderClose(providersBackstage)
+        ],
+        containerBehaviours: derive$1([Dragging.config({
+            mode: 'mouse',
+            blockerClass: 'blocker',
+            getTarget: function (handle) {
+              return closest$3(handle, '[role="dialog"]').getOrDie();
+            },
+            snaps: {
+              getSnapPoints: function () {
+                return [];
+              },
+              leftAttr: 'data-drag-left',
+              topAttr: 'data-drag-top'
+            }
+          })])
+      });
+    };
+    var renderModalHeader = function (foo, providersBackstage) {
+      var pTitle = ModalDialog.parts().title(renderTitle(foo, Option.none(), providersBackstage));
+      var pHandle = ModalDialog.parts().draghandle({ dom: fromHtml$2('<div class="tox-dialog__draghandle"></div>') });
+      var pClose = ModalDialog.parts().close(renderClose(providersBackstage));
+      var components = [pTitle].concat(foo.draggable ? [pHandle] : []).concat([pClose]);
+      return Container.sketch({
+        dom: fromHtml$2('<div class="tox-dialog__header"></div>'),
+        components: components
+      });
+    };
+
+    var getHeader = function (title, backstage) {
+      return renderModalHeader({
+        title: backstage.shared.providers.translate(title),
         draggable: true
       }, backstage.shared.providers);
-      var body$1 = renderModalBody({ body: dialogInit.internalDialog.body }, backstage);
-      var footer = renderModalFooter({ buttons: dialogInit.internalDialog.buttons }, backstage.shared.providers);
-      var dialogEvents = SilverDialogEvents.init(function () {
-        return instanceApi;
-      }, {
+    };
+    var getEventExtras = function (lazyDialog, extra) {
+      return {
         onClose: function () {
           return extra.closeWindow();
         },
         onBlock: function (blockEvent) {
-          ModalDialog.setBusy(dialog, function (d, bs) {
+          ModalDialog.setBusy(lazyDialog(), function (d, bs) {
             return {
               dom: {
                 tag: 'div',
@@ -71575,11 +72919,16 @@ var silver = (function (domGlobals) {
           });
         },
         onUnblock: function () {
-          ModalDialog.setIdle(dialog);
+          ModalDialog.setIdle(lazyDialog());
         }
-      });
-      var dialogSize = dialogInit.internalDialog.size !== 'normal' ? dialogInit.internalDialog.size === 'large' ? 'tox-dialog--width-lg' : 'tox-dialog--width-md' : [];
-      var dialog = build$1(ModalDialog.sketch({
+      };
+    };
+    var renderModalDialog = function (spec, initialData, dialogEvents, backstage) {
+      var _a;
+      var updateState = function (_comp, incoming) {
+        return Option.some(incoming);
+      };
+      return build$1(ModalDialog.sketch({
         lazySink: backstage.shared.getSink,
         onEscape: function (c) {
           emit(c, formCancelEvent);
@@ -71592,8 +72941,9 @@ var silver = (function (domGlobals) {
           Reflecting.config({
             channel: dialogChannel,
             updateState: updateState,
-            initialData: dialogInit
+            initialData: initialData
           }),
+          RepresentingConfigs.memory({}),
           Focusing.config({}),
           config('execute-on-form', dialogEvents.concat([runOnSource(focusin(), function (comp, se) {
               Keying.focusIn(comp);
@@ -71605,30 +72955,33 @@ var silver = (function (domGlobals) {
             runOnDetached(function () {
               remove$4(body(), 'tox-dialog__disable-scroll');
             })
-          ]),
-          RepresentingConfigs.memory({})
-        ]),
-        eventOrder: (_a = {}, _a[execute()] = ['execute-on-form'], _a[attachedToDom()] = [
+          ])
+        ].concat(spec.extraBehaviours)),
+        eventOrder: (_a = {}, _a[execute()] = ['execute-on-form'], _a[receive()] = [
+          'reflecting',
+          'receiving'
+        ], _a[attachedToDom()] = [
           'scroll-lock',
           'reflecting',
+          'messages',
           'execute-on-form',
           'alloy.base.behaviour'
         ], _a[detachedFromDom()] = [
           'alloy.base.behaviour',
           'execute-on-form',
+          'messages',
           'reflecting',
           'scroll-lock'
         ], _a),
         dom: {
           tag: 'div',
-          classes: ['tox-dialog'].concat(dialogSize),
-          styles: { position: 'relative' }
+          classes: ['tox-dialog'].concat(spec.extraClasses),
+          styles: __assign({ position: 'relative' }, spec.extraStyles)
         },
         components: [
-          header,
-          body$1,
-          footer
-        ],
+          spec.header,
+          spec.body
+        ].concat(spec.footer.toArray()),
         dragBlockClass: 'tox-dialog-wrap',
         parts: {
           blocker: {
@@ -71642,6 +72995,27 @@ var silver = (function (domGlobals) {
           }
         }
       }));
+    };
+
+    var renderDialog = function (dialogInit, extra, backstage) {
+      var header = getHeader(dialogInit.internalDialog.title, backstage);
+      var body = renderModalBody({ body: dialogInit.internalDialog.body }, backstage);
+      var footer = renderModalFooter({ buttons: dialogInit.internalDialog.buttons }, backstage.shared.providers);
+      var dialogEvents = SilverDialogEvents.initDialog(function () {
+        return instanceApi;
+      }, getEventExtras(function () {
+        return dialog;
+      }, extra));
+      var dialogSize = dialogInit.internalDialog.size !== 'normal' ? dialogInit.internalDialog.size === 'large' ? ['tox-dialog--width-lg'] : ['tox-dialog--width-md'] : [];
+      var spec = {
+        header: header,
+        body: body,
+        footer: Option.some(footer),
+        extraClasses: dialogSize,
+        extraBehaviours: [],
+        extraStyles: {}
+      };
+      var dialog = renderModalDialog(spec, dialogInit, dialogEvents, backstage);
       var modalAccess = function () {
         var getForm = function () {
           var outerForm = ModalDialog.getBody(dialog);
@@ -71667,6 +73041,165 @@ var silver = (function (domGlobals) {
       };
     };
 
+    var global$d = tinymce.util.Tools.resolve('tinymce.util.URI');
+
+    var getUrlDialogApi = function (root) {
+      var withRoot = function (f) {
+        if (root.getSystem().isConnected()) {
+          f(root);
+        }
+      };
+      var block = function (message) {
+        if (!isString(message)) {
+          throw new Error('The urlDialogInstanceAPI.block function should be passed a blocking message of type string as an argument');
+        }
+        withRoot(function (root) {
+          emitWith(root, formBlockEvent, { message: message });
+        });
+      };
+      var unblock = function () {
+        withRoot(function (root) {
+          emit(root, formUnblockEvent);
+        });
+      };
+      var close = function () {
+        withRoot(function (root) {
+          emit(root, formCloseEvent);
+        });
+      };
+      var sendMessage = function (data) {
+        withRoot(function (root) {
+          root.getSystem().broadcastOn([bodySendMessageChannel], data);
+        });
+      };
+      return {
+        block: block,
+        unblock: unblock,
+        close: close,
+        sendMessage: sendMessage
+      };
+    };
+
+    var SUPPORTED_MESSAGE_ACTIONS = [
+      'insertContent',
+      'setContent',
+      'execCommand',
+      'close',
+      'block',
+      'unblock'
+    ];
+    var isSupportedMessage = function (data) {
+      return isObject(data) && SUPPORTED_MESSAGE_ACTIONS.indexOf(data.mceAction) !== -1;
+    };
+    var isCustomMessage = function (data) {
+      return !isSupportedMessage(data) && isObject(data) && has(data, 'mceAction');
+    };
+    var handleMessage = function (editor, api, data) {
+      switch (data.mceAction) {
+      case 'insertContent':
+        editor.insertContent(data.content);
+        break;
+      case 'setContent':
+        editor.setContent(data.content);
+        break;
+      case 'execCommand':
+        var ui = isBoolean(data.ui) ? data.ui : false;
+        editor.execCommand(data.cmd, ui, data.value);
+        break;
+      case 'close':
+        api.close();
+        break;
+      case 'block':
+        api.block(data.message);
+        break;
+      case 'unblock':
+        api.unblock();
+        break;
+      }
+    };
+    var renderUrlDialog = function (internalDialog, extra, editor, backstage) {
+      var _a;
+      var header = getHeader(internalDialog.title, backstage);
+      var body = renderIframeBody(internalDialog);
+      var footer = internalDialog.buttons.bind(function (buttons) {
+        if (buttons.length === 0) {
+          return Option.none();
+        } else {
+          return Option.some(renderModalFooter({ buttons: buttons }, backstage.shared.providers));
+        }
+      });
+      var dialogEvents = SilverDialogEvents.initUrlDialog(function () {
+        return instanceApi;
+      }, getEventExtras(function () {
+        return dialog;
+      }, extra));
+      var styles = __assign({}, internalDialog.height.fold(function () {
+        return {};
+      }, function (height) {
+        return {
+          'height': height + 'px',
+          'max-height': height + 'px'
+        };
+      }), internalDialog.width.fold(function () {
+        return {};
+      }, function (width) {
+        return {
+          'width': width + 'px',
+          'max-width': width + 'px'
+        };
+      }));
+      var classes = internalDialog.width.isNone() && internalDialog.height.isNone() ? ['tox-dialog--width-lg'] : [];
+      var iframeUri = new global$d(internalDialog.url, { base_uri: new global$d(domGlobals.window.location.href) });
+      var iframeDomain = iframeUri.protocol + '://' + iframeUri.host + (iframeUri.port ? ':' + iframeUri.port : '');
+      var messageHandlerUnbinder = Cell(Option.none());
+      var extraBehaviours = [
+        config('messages', [
+          runOnAttached(function () {
+            var unbind = bind$3(Element.fromDom(domGlobals.window), 'message', function (e) {
+              if (iframeUri.isSameOrigin(new global$d(e.raw().origin))) {
+                var data = e.raw().data;
+                if (isSupportedMessage(data)) {
+                  handleMessage(editor, instanceApi, data);
+                } else if (isCustomMessage(data)) {
+                  internalDialog.onMessage(instanceApi, data);
+                }
+              }
+            });
+            messageHandlerUnbinder.set(Option.some(unbind));
+          }),
+          runOnDetached(function () {
+            messageHandlerUnbinder.get().each(function (unbinder) {
+              return unbinder.unbind();
+            });
+          })
+        ]),
+        Receiving.config({
+          channels: (_a = {}, _a[bodySendMessageChannel] = {
+            onReceive: function (comp, data) {
+              descendant$2(comp.element(), 'iframe').each(function (iframeEle) {
+                var iframeWin = iframeEle.dom().contentWindow;
+                iframeWin.postMessage(data, iframeDomain);
+              });
+            }
+          }, _a)
+        })
+      ];
+      var spec = {
+        header: header,
+        body: body,
+        footer: footer,
+        extraClasses: classes,
+        extraBehaviours: extraBehaviours,
+        extraStyles: styles
+      };
+      var dialog = renderModalDialog(spec, internalDialog, dialogEvents, backstage);
+      var instanceApi = getUrlDialogApi(dialog);
+      return {
+        dialog: dialog,
+        instanceApi: instanceApi
+      };
+    };
+
     var renderInlineDialog = function (dialogInit, extra, backstage, ariaAttrs) {
       var _a, _b;
       var dialogLabelId = generate$1('dialog-label');
@@ -71680,7 +73213,7 @@ var silver = (function (domGlobals) {
       }, dialogLabelId, backstage.shared.providers));
       var memBody = record(renderInlineBody({ body: dialogInit.internalDialog.body }, dialogContentId, backstage, ariaAttrs));
       var memFooter = record(renderInlineFooter({ buttons: dialogInit.internalDialog.buttons }, backstage.shared.providers));
-      var dialogEvents = SilverDialogEvents.init(function () {
+      var dialogEvents = SilverDialogEvents.initDialog(function () {
         return instanceApi;
       }, {
         onBlock: function () {
@@ -71864,7 +73397,7 @@ var silver = (function (domGlobals) {
       });
     };
 
-    var setup$8 = function (extras) {
+    var setup$9 = function (extras) {
       var sharedBackstage = extras.backstage.shared;
       var open = function (message, callback) {
         var closeDialog = function () {
@@ -71902,7 +73435,7 @@ var silver = (function (domGlobals) {
       return { open: open };
     };
 
-    var setup$9 = function (extras) {
+    var setup$a = function (extras) {
       var sharedBackstage = extras.backstage.shared;
       var open = function (message, callback) {
         var closeDialog = function (state) {
@@ -71954,9 +73487,9 @@ var silver = (function (domGlobals) {
     var validateData$1 = function (data, validator) {
       return getOrDie$1(asRaw('data', validator, data));
     };
-    var setup$a = function (extras) {
-      var alertDialog = setup$8(extras);
-      var confirmDialog = setup$9(extras);
+    var setup$b = function (extras) {
+      var alertDialog = setup$9(extras);
+      var confirmDialog = setup$a(extras);
       var open = function (config, params, closeWindow) {
         if (params !== undefined && params.inline === 'toolbar') {
           return openInlineDialog(config, extras.backstage.shared.anchors.toolbar(), closeWindow, params.ariaAttrs);
@@ -71965,6 +73498,22 @@ var silver = (function (domGlobals) {
         } else {
           return openModalDialog(config, closeWindow);
         }
+      };
+      var openUrl = function (config, closeWindow) {
+        return openModalUrlDialog(config, closeWindow);
+      };
+      var openModalUrlDialog = function (config, closeWindow) {
+        var factory = function (contents) {
+          var dialog = renderUrlDialog(contents, {
+            closeWindow: function () {
+              ModalDialog.hide(dialog.dialog);
+              closeWindow(dialog.instanceApi);
+            }
+          }, extras.editor, extras.backstage);
+          ModalDialog.show(dialog.dialog);
+          return dialog.instanceApi;
+        };
+        return DialogManager.openUrl(factory, config);
       };
       var openModalDialog = function (config, closeWindow) {
         var factory = function (contents, internalInitialData, dataValidator) {
@@ -72035,12 +73584,13 @@ var silver = (function (domGlobals) {
       };
       return {
         open: open,
+        openUrl: openUrl,
         alert: alert,
         close: close,
         confirm: confirm
       };
     };
-    var WindowManager = { setup: setup$a };
+    var WindowManager = { setup: setup$b };
 
     global.add('silver', function (editor) {
       var _a = Render.setup(editor), mothership = _a.mothership, uiMothership = _a.uiMothership, backstage = _a.backstage, renderUI = _a.renderUI, getUi = _a.getUi;
@@ -72048,7 +73598,10 @@ var silver = (function (domGlobals) {
       registerInspector(generate$1('silver-demo'), mothership);
       registerInspector(generate$1('silver-ui-demo'), uiMothership);
       Autocompleter.register(editor, backstage.shared);
-      var windowMgr = WindowManager.setup({ backstage: backstage });
+      var windowMgr = WindowManager.setup({
+        editor: editor,
+        backstage: backstage
+      });
       return {
         renderUI: renderUI,
         getWindowManagerImpl: constant(windowMgr),
@@ -72082,7 +73635,7 @@ var silver = (function (domGlobals) {
  * For LGPL see License.txt in the project root for license information.
  * For commercial licenses see https://www.tiny.cloud/
  *
- * Version: 5.0.3 (2019-03-19)
+ * Version: 5.0.4 (2019-04-23)
  */
 (function () {
 (function (domGlobals) {
@@ -72093,6 +73646,15 @@ var silver = (function (domGlobals) {
       for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
       }
+    };
+    var noarg = function (f) {
+      return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        return f();
+      };
     };
     var compose = function (fa, fb) {
       return function () {
@@ -72110,6 +73672,9 @@ var silver = (function (domGlobals) {
     };
     var identity = function (x) {
       return x;
+    };
+    var tripleEquals = function (a, b) {
+      return a === b;
     };
     function curry(fn) {
       var initialArgs = [];
@@ -72139,8 +73704,30 @@ var silver = (function (domGlobals) {
         throw new Error(msg);
       };
     };
+    var apply = function (f) {
+      return f();
+    };
+    var call = function (f) {
+      f();
+    };
     var never = constant(false);
     var always = constant(true);
+
+    var Fun = /*#__PURE__*/Object.freeze({
+        noop: noop,
+        noarg: noarg,
+        compose: compose,
+        constant: constant,
+        identity: identity,
+        tripleEquals: tripleEquals,
+        curry: curry,
+        not: not,
+        die: die,
+        apply: apply,
+        call: call,
+        never: never,
+        always: always
+    });
 
     var never$1 = never;
     var always$1 = always;
@@ -72314,6 +73901,21 @@ var silver = (function (domGlobals) {
     var exists = function (xs, pred) {
       return findIndex(xs, pred).isSome();
     };
+    var range = function (num, f) {
+      var r = [];
+      for (var i = 0; i < num; i++) {
+        r.push(f(i));
+      }
+      return r;
+    };
+    var chunk = function (array, size) {
+      var r = [];
+      for (var i = 0; i < array.length; i += size) {
+        var s = array.slice(i, i + size);
+        r.push(s);
+      }
+      return r;
+    };
     var map = function (xs, f) {
       var len = xs.length;
       var r = new Array(len);
@@ -72357,6 +73959,29 @@ var silver = (function (domGlobals) {
         }
       }
       return r;
+    };
+    var groupBy = function (xs, f) {
+      if (xs.length === 0) {
+        return [];
+      } else {
+        var wasType = f(xs[0]);
+        var r = [];
+        var group = [];
+        for (var i = 0, len = xs.length; i < len; i++) {
+          var x = xs[i];
+          var type = f(x);
+          if (type !== wasType) {
+            r.push(group);
+            group = [];
+          }
+          wasType = type;
+          group.push(x);
+        }
+        if (group.length !== 0) {
+          r.push(group);
+        }
+        return r;
+      }
     };
     var foldr = function (xs, f, acc) {
       eachr(xs, function (x) {
@@ -72419,6 +74044,11 @@ var silver = (function (domGlobals) {
       }
       return true;
     };
+    var equal = function (a1, a2) {
+      return a1.length === a2.length && forall(a1, function (x, i) {
+        return x === a2[i];
+      });
+    };
     var slice = Array.prototype.slice;
     var reverse = function (xs) {
       var r = slice.call(xs, 0);
@@ -72438,6 +74068,9 @@ var silver = (function (domGlobals) {
       }
       return r;
     };
+    var pure = function (x) {
+      return [x];
+    };
     var sort = function (xs, comparator) {
       var copy = slice.call(xs, 0);
       copy.sort(comparator);
@@ -72452,6 +74085,36 @@ var silver = (function (domGlobals) {
     var from$1 = isFunction(Array.from) ? Array.from : function (x) {
       return slice.call(x);
     };
+
+    var Arr = /*#__PURE__*/Object.freeze({
+        indexOf: indexOf,
+        contains: contains,
+        exists: exists,
+        range: range,
+        chunk: chunk,
+        map: map,
+        each: each,
+        eachr: eachr,
+        partition: partition,
+        filter: filter,
+        groupBy: groupBy,
+        foldr: foldr,
+        foldl: foldl,
+        find: find,
+        findIndex: findIndex,
+        flatten: flatten,
+        bind: bind,
+        forall: forall,
+        equal: equal,
+        reverse: reverse,
+        difference: difference,
+        mapToObject: mapToObject,
+        pure: pure,
+        sort: sort,
+        head: head,
+        last: last,
+        from: from$1
+    });
 
     var Global = typeof domGlobals.window !== 'undefined' ? domGlobals.window : Function('return this;')();
 
@@ -72749,7 +74412,10 @@ var silver = (function (domGlobals) {
     var debounce = function (callback, time) {
       var timer, func;
       func = function () {
-        var args = arguments;
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
         domGlobals.clearTimeout(timer);
         timer = wrappedSetTimeout(function () {
           callback.apply(this, args);
@@ -72944,55 +74610,37 @@ var silver = (function (domGlobals) {
       addEvent(win, 'load', readyHandler);
     };
     var EventUtils = function () {
-      var self = this;
-      var events = {}, count, expando, hasFocusIn, hasMouseEnterLeave, mouseEnterLeave;
-      expando = eventExpandoPrefix + (+new Date()).toString(32);
-      hasMouseEnterLeave = 'onmouseenter' in domGlobals.document.documentElement;
-      hasFocusIn = 'onfocusin' in domGlobals.document.documentElement;
-      mouseEnterLeave = {
-        mouseenter: 'mouseover',
-        mouseleave: 'mouseout'
-      };
-      count = 1;
-      self.domLoaded = false;
-      self.events = events;
-      var executeHandlers = function (evt, id) {
-        var callbackList, i, l, callback;
-        var container = events[id];
-        callbackList = container && container[evt.type];
-        if (callbackList) {
-          for (i = 0, l = callbackList.length; i < l; i++) {
-            callback = callbackList[i];
-            if (callback && callback.func.call(callback.scope, evt) === false) {
-              evt.preventDefault();
-            }
-            if (evt.isImmediatePropagationStopped()) {
-              return;
-            }
-          }
-        }
-      };
-      self.bind = function (target, names, callback, scope) {
+      function EventUtils() {
+        this.domLoaded = false;
+        this.events = {};
+        this.count = 1;
+        this.expando = eventExpandoPrefix + (+new Date()).toString(32);
+        this.hasMouseEnterLeave = 'onmouseenter' in domGlobals.document.documentElement;
+        this.hasFocusIn = 'onfocusin' in domGlobals.document.documentElement;
+        this.count = 1;
+      }
+      EventUtils.prototype.bind = function (target, names, callback, scope) {
+        var self = this;
         var id, callbackList, i, name, fakeName, nativeHandler, capture;
         var win = domGlobals.window;
         var defaultNativeHandler = function (evt) {
-          executeHandlers(fix(evt || win.event), id);
+          self.executeHandlers(fix(evt || win.event), id);
         };
         if (!target || target.nodeType === 3 || target.nodeType === 8) {
           return;
         }
-        if (!target[expando]) {
-          id = count++;
-          target[expando] = id;
-          events[id] = {};
+        if (!target[self.expando]) {
+          id = self.count++;
+          target[self.expando] = id;
+          self.events[id] = {};
         } else {
-          id = target[expando];
+          id = target[self.expando];
         }
         scope = scope || target;
-        names = names.split(' ');
-        i = names.length;
+        var namesList = names.split(' ');
+        i = namesList.length;
         while (i--) {
-          name = names[i];
+          name = namesList[i];
           nativeHandler = defaultNativeHandler;
           fakeName = capture = false;
           if (name === 'DOMContentLoaded') {
@@ -73002,8 +74650,8 @@ var silver = (function (domGlobals) {
             callback.call(scope, fix({ type: name }));
             continue;
           }
-          if (!hasMouseEnterLeave) {
-            fakeName = mouseEnterLeave[name];
+          if (!self.hasMouseEnterLeave) {
+            fakeName = self.mouseEnterLeave[name];
             if (fakeName) {
               nativeHandler = function (evt) {
                 var current, related;
@@ -73020,23 +74668,23 @@ var silver = (function (domGlobals) {
                   evt = fix(evt || win.event);
                   evt.type = evt.type === 'mouseout' ? 'mouseleave' : 'mouseenter';
                   evt.target = current;
-                  executeHandlers(evt, id);
+                  self.executeHandlers(evt, id);
                 }
               };
             }
           }
-          if (!hasFocusIn && (name === 'focusin' || name === 'focusout')) {
+          if (!self.hasFocusIn && (name === 'focusin' || name === 'focusout')) {
             capture = true;
             fakeName = name === 'focusin' ? 'focus' : 'blur';
             nativeHandler = function (evt) {
               evt = fix(evt || win.event);
               evt.type = evt.type === 'focus' ? 'focusin' : 'focusout';
-              executeHandlers(evt, id);
+              self.executeHandlers(evt, id);
             };
           }
-          callbackList = events[id][name];
+          callbackList = self.events[id][name];
           if (!callbackList) {
-            events[id][name] = callbackList = [{
+            self.events[id][name] = callbackList = [{
                 func: callback,
                 scope: scope
               }];
@@ -73050,7 +74698,7 @@ var silver = (function (domGlobals) {
             }
           } else {
             if (name === 'ready' && self.domLoaded) {
-              callback({ type: name });
+              callback(fix({ type: name }));
             } else {
               callbackList.push({
                 func: callback,
@@ -73062,19 +74710,19 @@ var silver = (function (domGlobals) {
         target = callbackList = 0;
         return callback;
       };
-      self.unbind = function (target, names, callback) {
+      EventUtils.prototype.unbind = function (target, names, callback) {
         var id, callbackList, i, ci, name, eventMap;
         if (!target || target.nodeType === 3 || target.nodeType === 8) {
-          return self;
+          return this;
         }
-        id = target[expando];
+        id = target[this.expando];
         if (id) {
-          eventMap = events[id];
+          eventMap = this.events[id];
           if (names) {
-            names = names.split(' ');
-            i = names.length;
+            var namesList = names.split(' ');
+            i = namesList.length;
             while (i--) {
-              name = names[i];
+              name = namesList[i];
               callbackList = eventMap[name];
               if (callbackList) {
                 if (callback) {
@@ -73105,73 +74753,87 @@ var silver = (function (domGlobals) {
             eventMap = {};
           }
           for (name in eventMap) {
-            return self;
+            return this;
           }
-          delete events[id];
+          delete this.events[id];
           try {
-            delete target[expando];
+            delete target[this.expando];
           } catch (ex) {
-            target[expando] = null;
+            target[this.expando] = null;
           }
         }
-        return self;
+        return this;
       };
-      self.fire = function (target, name, args) {
+      EventUtils.prototype.fire = function (target, name, args) {
         var id;
         if (!target || target.nodeType === 3 || target.nodeType === 8) {
-          return self;
+          return this;
         }
-        args = fix(null, args);
-        args.type = name;
-        args.target = target;
+        var event = fix(null, args);
+        event.type = name;
+        event.target = target;
         do {
-          id = target[expando];
+          id = target[this.expando];
           if (id) {
-            executeHandlers(args, id);
+            this.executeHandlers(event, id);
           }
           target = target.parentNode || target.ownerDocument || target.defaultView || target.parentWindow;
-        } while (target && !args.isPropagationStopped());
-        return self;
+        } while (target && !event.isPropagationStopped());
+        return this;
       };
-      self.clean = function (target) {
+      EventUtils.prototype.clean = function (target) {
         var i, children;
-        var unbind = self.unbind;
         if (!target || target.nodeType === 3 || target.nodeType === 8) {
-          return self;
+          return this;
         }
-        if (target[expando]) {
-          unbind(target);
+        if (target[this.expando]) {
+          this.unbind(target);
         }
         if (!target.getElementsByTagName) {
           target = target.document;
         }
         if (target && target.getElementsByTagName) {
-          unbind(target);
+          this.unbind(target);
           children = target.getElementsByTagName('*');
           i = children.length;
           while (i--) {
             target = children[i];
-            if (target[expando]) {
-              unbind(target);
+            if (target[this.expando]) {
+              this.unbind(target);
             }
           }
         }
-        return self;
+        return this;
       };
-      self.destroy = function () {
-        events = {};
+      EventUtils.prototype.destroy = function () {
+        this.events = {};
       };
-      self.cancel = function (e) {
+      EventUtils.prototype.cancel = function (e) {
         if (e) {
           e.preventDefault();
           e.stopImmediatePropagation();
         }
         return false;
       };
-    };
-    EventUtils.Event = new EventUtils();
-    EventUtils.Event.bind(domGlobals.window, 'ready', function () {
-    });
+      EventUtils.prototype.executeHandlers = function (evt, id) {
+        var callbackList, i, l, callback;
+        var container = this.events[id];
+        callbackList = container && container[evt.type];
+        if (callbackList) {
+          for (i = 0, l = callbackList.length; i < l; i++) {
+            callback = callbackList[i];
+            if (callback && callback.func.call(callback.scope, evt) === false) {
+              evt.preventDefault();
+            }
+            if (evt.isImmediatePropagationStopped()) {
+              return;
+            }
+          }
+        }
+      };
+      EventUtils.Event = new EventUtils();
+      return EventUtils;
+    }();
 
     var i, support, Expr, getText, isXML, tokenize, compile, select, outermostContext, sortInput, hasDuplicate, setDocument, document, docElem, documentIsHTML, rbuggyQSA, rbuggyMatches, matches, contains$1, expando = 'sizzle' + -new Date(), preferredDoc = domGlobals.window.document, dirruns = 0, done = 0, classCache = createCache(), tokenCache = createCache(), compilerCache = createCache(), sortOrder = function (a, b) {
         if (a === b) {
@@ -73892,6 +75554,8 @@ var silver = (function (domGlobals) {
           soFar = soFar.slice(matched.length);
         }
         for (type in Expr.filter) {
+          if (!Expr.filter.hasOwnProperty(type))
+            continue;
           if ((match = matchExpr[type].exec(soFar)) && (!preFilters[type] || (match = preFilters[type](match)))) {
             matched = match.shift();
             tokens.push({
@@ -74542,7 +76206,7 @@ var silver = (function (domGlobals) {
     };
     var cssFix = { float: 'cssFloat' };
     var attrHooks = {}, cssHooks = {};
-    var DomQuery = function (selector, context) {
+    var DomQueryConstructor = function (selector, context) {
       return new DomQuery.fn.init(selector, context);
     };
     var inArray = function (item, array) {
@@ -74604,8 +76268,8 @@ var silver = (function (domGlobals) {
       }
       return element.ownerDocument;
     };
-    DomQuery.fn = DomQuery.prototype = {
-      constructor: DomQuery,
+    DomQueryConstructor.fn = DomQueryConstructor.prototype = {
+      constructor: DomQueryConstructor,
       selector: '',
       context: null,
       length: 0,
@@ -75066,10 +76730,10 @@ var silver = (function (domGlobals) {
         return this.css(offset);
       },
       push: push$2,
-      sort: [].sort,
-      splice: [].splice
+      sort: Array.prototype.sort,
+      splice: Array.prototype.splice
     };
-    Tools.extend(DomQuery, {
+    Tools.extend(DomQueryConstructor, {
       extend: Tools.extend,
       makeArray: function (object) {
         if (isWindow(object) || object.nodeType) {
@@ -75177,7 +76841,7 @@ var silver = (function (domGlobals) {
         return Tools.toArray((node.nodeName === 'iframe' ? node.contentDocument || node.contentWindow.document : node).childNodes);
       }
     }, function (name, fn) {
-      DomQuery.fn[name] = function (selector) {
+      DomQueryConstructor.fn[name] = function (selector) {
         var self = this;
         var result = [];
         self.each(function () {
@@ -75198,11 +76862,11 @@ var silver = (function (domGlobals) {
             result = result.reverse();
           }
         }
-        result = DomQuery(result);
+        var wrappedResult = DomQuery(result);
         if (selector) {
-          return result.filter(selector);
+          return wrappedResult.filter(selector);
         }
-        return result;
+        return wrappedResult;
       };
     });
     each$2({
@@ -75216,7 +76880,7 @@ var silver = (function (domGlobals) {
         return sibling(node, 'previousSibling', 1, until).slice(1);
       }
     }, function (name, fn) {
-      DomQuery.fn[name] = function (selector, filter) {
+      DomQueryConstructor.fn[name] = function (selector, filter) {
         var self = this;
         var result = [];
         self.each(function () {
@@ -75235,18 +76899,18 @@ var silver = (function (domGlobals) {
             result = result.reverse();
           }
         }
-        result = DomQuery(result);
+        var wrappedResult = DomQuery(result);
         if (filter) {
-          return result.filter(filter);
+          return wrappedResult.filter(filter);
         }
-        return result;
+        return wrappedResult;
       };
     });
-    DomQuery.fn.is = function (selector) {
+    DomQueryConstructor.fn.is = function (selector) {
       return !!selector && this.filter(selector).length > 0;
     };
-    DomQuery.fn.init.prototype = DomQuery.fn;
-    DomQuery.overrideDefaults = function (callback) {
+    DomQueryConstructor.fn.init.prototype = DomQueryConstructor.fn;
+    DomQueryConstructor.overrideDefaults = function (callback) {
       var defaults;
       var sub = function (selector, context) {
         defaults = defaults || callback();
@@ -75317,8 +76981,9 @@ var silver = (function (domGlobals) {
         }
       });
     }
-    DomQuery.attrHooks = attrHooks;
-    DomQuery.cssHooks = cssHooks;
+    DomQueryConstructor.attrHooks = attrHooks;
+    DomQueryConstructor.cssHooks = cssHooks;
+    var DomQuery = DomQueryConstructor;
 
     var cached = function (f) {
       var called = false;
@@ -75949,6 +77614,14 @@ var silver = (function (domGlobals) {
       }
       return ret;
     };
+    var siblings = function (element) {
+      var filterSelf = function (elements) {
+        return filter(elements, function (x) {
+          return !eq(element, x);
+        });
+      };
+      return parent(element).map(children).map(filterSelf).getOr([]);
+    };
     var prevSibling = function (element) {
       var dom = element.dom();
       return Option.from(dom.previousSibling).map(Element.fromDom);
@@ -76079,14 +77752,14 @@ var silver = (function (domGlobals) {
         isReady: isReady
       };
     };
-    var pure = function (a) {
+    var pure$1 = function (a) {
       return nu$3(function (callback) {
         callback(a);
       });
     };
     var LazyValue = {
       nu: nu$3,
-      pure: pure
+      pure: pure$1
     };
 
     var bounce = function (f) {
@@ -76149,14 +77822,14 @@ var silver = (function (domGlobals) {
         get: get
       };
     };
-    var pure$1 = function (a) {
+    var pure$2 = function (a) {
       return nu$4(function (callback) {
         callback(a);
       });
     };
     var Future = {
       nu: nu$4,
-      pure: pure$1
+      pure: pure$2
     };
 
     var par = function (asyncValues, nu) {
@@ -76444,20 +78117,142 @@ var silver = (function (domGlobals) {
       };
     }
 
-    function TreeWalker (startNode, rootNode) {
-      var node = startNode;
-      var findSibling = function (node, startName, siblingName, shallow) {
+    var isNodeType = function (type) {
+      return function (node) {
+        return !!node && node.nodeType === type;
+      };
+    };
+    var isElement$1 = isNodeType(1);
+    var matchNodeNames = function (names) {
+      var items = names.toLowerCase().split(' ');
+      return function (node) {
+        var i, name;
+        if (node && node.nodeType) {
+          name = node.nodeName.toLowerCase();
+          for (i = 0; i < items.length; i++) {
+            if (name === items[i]) {
+              return true;
+            }
+          }
+        }
+        return false;
+      };
+    };
+    var matchStyleValues = function (name, values) {
+      var items = values.toLowerCase().split(' ');
+      return function (node) {
+        var i, cssValue;
+        if (isElement$1(node)) {
+          for (i = 0; i < items.length; i++) {
+            var computed = node.ownerDocument.defaultView.getComputedStyle(node, null);
+            cssValue = computed ? computed.getPropertyValue(name) : null;
+            if (cssValue === items[i]) {
+              return true;
+            }
+          }
+        }
+        return false;
+      };
+    };
+    var hasPropValue = function (propName, propValue) {
+      return function (node) {
+        return isElement$1(node) && node[propName] === propValue;
+      };
+    };
+    var hasAttribute = function (attrName, attrValue) {
+      return function (node) {
+        return isElement$1(node) && node.hasAttribute(attrName);
+      };
+    };
+    var hasAttributeValue = function (attrName, attrValue) {
+      return function (node) {
+        return isElement$1(node) && node.getAttribute(attrName) === attrValue;
+      };
+    };
+    var isBogus = function (node) {
+      return isElement$1(node) && node.hasAttribute('data-mce-bogus');
+    };
+    var isBogusAll = function (node) {
+      return isElement$1(node) && node.getAttribute('data-mce-bogus') === 'all';
+    };
+    var isTable = function (node) {
+      return isElement$1(node) && node.tagName === 'TABLE';
+    };
+    var hasContentEditableState = function (value) {
+      return function (node) {
+        if (isElement$1(node)) {
+          if (node.contentEditable === value) {
+            return true;
+          }
+          if (node.getAttribute('data-mce-contenteditable') === value) {
+            return true;
+          }
+        }
+        return false;
+      };
+    };
+    var isText$1 = isNodeType(3);
+    var isComment = isNodeType(8);
+    var isDocument = isNodeType(9);
+    var isDocumentFragment = isNodeType(11);
+    var isBr = matchNodeNames('br');
+    var isContentEditableTrue = hasContentEditableState('true');
+    var isContentEditableFalse = hasContentEditableState('false');
+    var NodeType = {
+      isText: isText$1,
+      isElement: isElement$1,
+      isComment: isComment,
+      isDocument: isDocument,
+      isDocumentFragment: isDocumentFragment,
+      isBr: isBr,
+      isContentEditableTrue: isContentEditableTrue,
+      isContentEditableFalse: isContentEditableFalse,
+      matchNodeNames: matchNodeNames,
+      hasPropValue: hasPropValue,
+      hasAttribute: hasAttribute,
+      hasAttributeValue: hasAttributeValue,
+      matchStyleValues: matchStyleValues,
+      isBogus: isBogus,
+      isBogusAll: isBogusAll,
+      isTable: isTable
+    };
+
+    var TreeWalker = function () {
+      function TreeWalker(startNode, rootNode) {
+        this.node = startNode;
+        this.rootNode = rootNode;
+        this.current = this.current.bind(this);
+        this.next = this.next.bind(this);
+        this.prev = this.prev.bind(this);
+        this.prev2 = this.prev2.bind(this);
+      }
+      TreeWalker.prototype.current = function () {
+        return this.node;
+      };
+      TreeWalker.prototype.next = function (shallow) {
+        this.node = this.findSibling(this.node, 'firstChild', 'nextSibling', shallow);
+        return this.node;
+      };
+      TreeWalker.prototype.prev = function (shallow) {
+        this.node = this.findSibling(this.node, 'lastChild', 'previousSibling', shallow);
+        return this.node;
+      };
+      TreeWalker.prototype.prev2 = function (shallow) {
+        this.node = this.findPreviousNode(this.node, 'lastChild', 'previousSibling', shallow);
+        return this.node;
+      };
+      TreeWalker.prototype.findSibling = function (node, startName, siblingName, shallow) {
         var sibling, parent;
         if (node) {
           if (!shallow && node[startName]) {
             return node[startName];
           }
-          if (node !== rootNode) {
+          if (node !== this.rootNode) {
             sibling = node[siblingName];
             if (sibling) {
               return sibling;
             }
-            for (parent = node.parentNode; parent && parent !== rootNode; parent = parent.parentNode) {
+            for (parent = node.parentNode; parent && parent !== this.rootNode; parent = parent.parentNode) {
               sibling = parent[siblingName];
               if (sibling) {
                 return sibling;
@@ -76466,11 +78261,11 @@ var silver = (function (domGlobals) {
           }
         }
       };
-      var findPreviousNode = function (node, startName, siblingName, shallow) {
+      TreeWalker.prototype.findPreviousNode = function (node, startName, siblingName, shallow) {
         var sibling, parent, child;
         if (node) {
           sibling = node[siblingName];
-          if (rootNode && sibling === rootNode) {
+          if (this.rootNode && sibling === this.rootNode) {
             return;
           }
           if (sibling) {
@@ -76484,27 +78279,13 @@ var silver = (function (domGlobals) {
             return sibling;
           }
           parent = node.parentNode;
-          if (parent && parent !== rootNode) {
+          if (parent && parent !== this.rootNode) {
             return parent;
           }
         }
       };
-      this.current = function () {
-        return node;
-      };
-      this.next = function (shallow) {
-        node = findSibling(node, 'firstChild', 'nextSibling', shallow);
-        return node;
-      };
-      this.prev = function (shallow) {
-        node = findSibling(node, 'lastChild', 'previousSibling', shallow);
-        return node;
-      };
-      this.prev2 = function (shallow) {
-        node = findPreviousNode(node, 'lastChild', 'previousSibling', shallow);
-        return node;
-      };
-    }
+      return TreeWalker;
+    }();
 
     var blocks = [
       'article',
@@ -76643,13 +78424,13 @@ var silver = (function (domGlobals) {
     };
     var isHeading = lazyLookup(headings);
     var isBlock = lazyLookup(blocks);
-    var isTable = function (node) {
+    var isTable$1 = function (node) {
       return name(node) === 'table';
     };
     var isInline = function (node) {
       return isElement(node) && !isBlock(node);
     };
-    var isBr = function (node) {
+    var isBr$1 = function (node) {
       return isElement(node) && name(node) === 'br';
     };
     var isTextBlock = lazyLookup(textBlocks);
@@ -76659,106 +78440,6 @@ var silver = (function (domGlobals) {
     var isTableSection = lazyLookup(tableSections);
     var isTableCell = lazyLookup(tableCells);
     var isWsPreserveElement = lazyLookup(wsElements);
-
-    var isNodeType = function (type) {
-      return function (node) {
-        return !!node && node.nodeType === type;
-      };
-    };
-    var isElement$1 = isNodeType(1);
-    var matchNodeNames = function (names) {
-      var items = names.toLowerCase().split(' ');
-      return function (node) {
-        var i, name;
-        if (node && node.nodeType) {
-          name = node.nodeName.toLowerCase();
-          for (i = 0; i < items.length; i++) {
-            if (name === items[i]) {
-              return true;
-            }
-          }
-        }
-        return false;
-      };
-    };
-    var matchStyleValues = function (name, values) {
-      var items = values.toLowerCase().split(' ');
-      return function (node) {
-        var i, cssValue;
-        if (isElement$1(node)) {
-          for (i = 0; i < items.length; i++) {
-            var computed = node.ownerDocument.defaultView.getComputedStyle(node, null);
-            cssValue = computed ? computed.getPropertyValue(name) : null;
-            if (cssValue === items[i]) {
-              return true;
-            }
-          }
-        }
-        return false;
-      };
-    };
-    var hasPropValue = function (propName, propValue) {
-      return function (node) {
-        return isElement$1(node) && node[propName] === propValue;
-      };
-    };
-    var hasAttribute = function (attrName, attrValue) {
-      return function (node) {
-        return isElement$1(node) && node.hasAttribute(attrName);
-      };
-    };
-    var hasAttributeValue = function (attrName, attrValue) {
-      return function (node) {
-        return isElement$1(node) && node.getAttribute(attrName) === attrValue;
-      };
-    };
-    var isBogus = function (node) {
-      return isElement$1(node) && node.hasAttribute('data-mce-bogus');
-    };
-    var isBogusAll = function (node) {
-      return isElement$1(node) && node.getAttribute('data-mce-bogus') === 'all';
-    };
-    var isTable$1 = function (node) {
-      return isElement$1(node) && node.tagName === 'TABLE';
-    };
-    var hasContentEditableState = function (value) {
-      return function (node) {
-        if (isElement$1(node)) {
-          if (node.contentEditable === value) {
-            return true;
-          }
-          if (node.getAttribute('data-mce-contenteditable') === value) {
-            return true;
-          }
-        }
-        return false;
-      };
-    };
-    var isText$1 = isNodeType(3);
-    var isComment = isNodeType(8);
-    var isDocument = isNodeType(9);
-    var isDocumentFragment = isNodeType(11);
-    var isBr$1 = matchNodeNames('br');
-    var isContentEditableTrue = hasContentEditableState('true');
-    var isContentEditableFalse = hasContentEditableState('false');
-    var NodeType = {
-      isText: isText$1,
-      isElement: isElement$1,
-      isComment: isComment,
-      isDocument: isDocument,
-      isDocumentFragment: isDocumentFragment,
-      isBr: isBr$1,
-      isContentEditableTrue: isContentEditableTrue,
-      isContentEditableFalse: isContentEditableFalse,
-      matchNodeNames: matchNodeNames,
-      hasPropValue: hasPropValue,
-      hasAttribute: hasAttribute,
-      hasAttributeValue: hasAttributeValue,
-      matchStyleValues: matchStyleValues,
-      isBogus: isBogus,
-      isBogusAll: isBogusAll,
-      isTable: isTable$1
-    };
 
     var surroundedBySpans = function (node) {
       var previousIsSpan = node.previousSibling && node.previousSibling.nodeName === 'SPAN';
@@ -77606,7 +79287,7 @@ var silver = (function (domGlobals) {
       };
       return '#' + hex(r) + hex(g) + hex(b);
     };
-    function Styles(settings, schema) {
+    var Styles = function (settings, schema) {
       var rgbRegExp = /rgb\s*\(\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\s*\)/gi;
       var urlOrStrRegExp = /(?:url(?:(?:\(\s*\"([^\"]+)\"\s*\))|(?:\(\s*\'([^\']+)\'\s*\))|(?:\(\s*([^)\s]+)\s*\))))|(?:\'([^\']+)\')|(?:\"([^\"]+)\")/gi;
       var styleRegExp = /\s*([^:]+):\s*([^;]+);?/g;
@@ -77832,7 +79513,7 @@ var silver = (function (domGlobals) {
           return css;
         }
       };
-    }
+    };
 
     var each$5 = Tools.each;
     var grep$1 = Tools.grep;
@@ -77840,7 +79521,6 @@ var silver = (function (domGlobals) {
     var simpleSelectorRe = /^([a-z0-9],?)+$/i;
     var whiteSpaceRegExp$2 = /^[ \t\r\n]*$/;
     var setupAttrHooks = function (styles, settings, getContext) {
-      var attrHooks = {};
       var keepValues = settings.keep_values;
       var keepUrlHook = {
         set: function ($elm, value, name) {
@@ -77853,7 +79533,7 @@ var silver = (function (domGlobals) {
           return $elm.attr('data-mce-' + name) || $elm.attr(name);
         }
       };
-      attrHooks = {
+      var attrHooks = {
         style: {
           set: function ($elm, value) {
             if (value !== null && typeof value === 'object') {
@@ -77920,7 +79600,7 @@ var silver = (function (domGlobals) {
         url_converter: settings.url_converter,
         url_converter_scope: settings.url_converter_scope
       }, settings.schema);
-      var events = settings.ownEvents ? new EventUtils(settings.proxy) : EventUtils.Event;
+      var events = settings.ownEvents ? new EventUtils() : EventUtils.Event;
       var blockElementsMap = schema.getBlockElements();
       var $ = DomQuery.overrideDefaults(function () {
         return {
@@ -78022,7 +79702,7 @@ var silver = (function (domGlobals) {
       var getViewPort = function (argWin) {
         var actWin = !argWin ? win : argWin;
         var doc = actWin.document;
-        var rootElm = boxModel ? doc.documentElement : doc.body;
+        var rootElm = doc.documentElement;
         return {
           x: actWin.pageXOffset || rootElm.scrollLeft,
           y: actWin.pageYOffset || rootElm.scrollTop,
@@ -78034,7 +79714,7 @@ var silver = (function (domGlobals) {
         return Position.getPos(doc.body, get(elm), rootElm);
       };
       var setStyle = function (elm, name, value) {
-        var $elm = $$(elm).css(name, value);
+        var $elm = isString(name) ? $$(elm).css(name, value) : $$(elm).css(name);
         if (settings.update_styles) {
           updateInternalStyleAttr(styles, $elm);
         }
@@ -78454,12 +80134,12 @@ var silver = (function (domGlobals) {
         return styles.toHex(Tools.trim(rgbVal));
       };
       var isEmpty = function (node, elements) {
-        var i, attributes, type, whitespace, walker, name, brCount = 0;
+        var i, attributes, type, name, brCount = 0;
         node = node.firstChild;
         if (node) {
-          walker = new TreeWalker(node, node.parentNode);
+          var walker = new TreeWalker(node, node.parentNode);
+          var whitespace = schema ? schema.getWhiteSpaceElements() : {};
           elements = elements || (schema ? schema.getNonEmptyElements() : null);
-          whitespace = schema ? schema.getWhiteSpaceElements() : {};
           do {
             type = node.nodeType;
             if (NodeType.isElement(node)) {
@@ -78528,10 +80208,11 @@ var silver = (function (domGlobals) {
       var bind = function (target, name, func, scope) {
         if (Tools.isArray(target)) {
           var i = target.length;
+          var rv = [];
           while (i--) {
-            target[i] = bind(target[i], name, func, scope);
+            rv[i] = bind(target[i], name, func, scope);
           }
-          return target;
+          return rv;
         }
         if (settings.collect && (target === doc || target === win)) {
           boundEvents.push([
@@ -78547,10 +80228,11 @@ var silver = (function (domGlobals) {
         var i;
         if (Tools.isArray(target)) {
           i = target.length;
+          var rv = [];
           while (i--) {
-            target[i] = unbind(target[i], name, func);
+            rv[i] = unbind(target[i], name, func);
           }
-          return target;
+          return rv;
         }
         if (boundEvents && (target === doc || target === win)) {
           i = boundEvents.length;
@@ -78703,20 +80385,19 @@ var silver = (function (domGlobals) {
 
     var DOM = DOMUtils$1.DOM;
     var each$6 = Tools.each, grep$2 = Tools.grep;
-    var isFunction$1 = function (f) {
-      return typeof f === 'function';
-    };
+    var QUEUED = 0;
+    var LOADING = 1;
+    var LOADED = 2;
+    var FAILED = 3;
     var ScriptLoader = function () {
-      var QUEUED = 0;
-      var LOADING = 1;
-      var LOADED = 2;
-      var FAILED = 3;
-      var states = {};
-      var queue = [];
-      var scriptLoadedCallbacks = {};
-      var queueLoadedCallbacks = [];
-      var loading = 0;
-      var loadScript = function (url, success, failure) {
+      function ScriptLoader() {
+        this.states = {};
+        this.queue = [];
+        this.scriptLoadedCallbacks = {};
+        this.queueLoadedCallbacks = [];
+        this.loading = 0;
+      }
+      ScriptLoader.prototype.loadScript = function (url, success, failure) {
         var dom = DOM;
         var elm, id;
         var done = function () {
@@ -78727,7 +80408,7 @@ var silver = (function (domGlobals) {
           success();
         };
         var error = function () {
-          if (isFunction$1(failure)) {
+          if (isFunction(failure)) {
             failure();
           } else {
             if (typeof domGlobals.console !== 'undefined' && domGlobals.console.log) {
@@ -78744,50 +80425,52 @@ var silver = (function (domGlobals) {
         elm.onerror = error;
         (domGlobals.document.getElementsByTagName('head')[0] || domGlobals.document.body).appendChild(elm);
       };
-      this.loadScript = function (url, success, failure) {
-        loadScript(url, success, failure);
-      }, this.isDone = function (url) {
-        return states[url] === LOADED;
+      ScriptLoader.prototype.isDone = function (url) {
+        return this.states[url] === LOADED;
       };
-      this.markDone = function (url) {
-        states[url] = LOADED;
+      ScriptLoader.prototype.markDone = function (url) {
+        this.states[url] = LOADED;
       };
-      this.add = this.load = function (url, success, scope, failure) {
-        var state = states[url];
+      ScriptLoader.prototype.add = function (url, success, scope, failure) {
+        var state = this.states[url];
         if (state === undefined) {
-          queue.push(url);
-          states[url] = QUEUED;
+          this.queue.push(url);
+          this.states[url] = QUEUED;
         }
         if (success) {
-          if (!scriptLoadedCallbacks[url]) {
-            scriptLoadedCallbacks[url] = [];
+          if (!this.scriptLoadedCallbacks[url]) {
+            this.scriptLoadedCallbacks[url] = [];
           }
-          scriptLoadedCallbacks[url].push({
+          this.scriptLoadedCallbacks[url].push({
             success: success,
             failure: failure,
             scope: scope || this
           });
         }
       };
-      this.remove = function (url) {
-        delete states[url];
-        delete scriptLoadedCallbacks[url];
+      ScriptLoader.prototype.load = function (url, success, scope, failure) {
+        return this.add(url, success, scope, failure);
       };
-      this.loadQueue = function (success, scope, failure) {
-        this.loadScripts(queue, success, scope, failure);
+      ScriptLoader.prototype.remove = function (url) {
+        delete this.states[url];
+        delete this.scriptLoadedCallbacks[url];
       };
-      this.loadScripts = function (scripts, success, scope, failure) {
+      ScriptLoader.prototype.loadQueue = function (success, scope, failure) {
+        this.loadScripts(this.queue, success, scope, failure);
+      };
+      ScriptLoader.prototype.loadScripts = function (scripts, success, scope, failure) {
+        var self = this;
         var loadScripts;
         var failures = [];
         var execCallbacks = function (name, url) {
-          each$6(scriptLoadedCallbacks[url], function (callback) {
-            if (isFunction$1(callback[name])) {
+          each$6(self.scriptLoadedCallbacks[url], function (callback) {
+            if (isFunction(callback[name])) {
               callback[name].call(callback.scope);
             }
           });
-          scriptLoadedCallbacks[url] = undefined;
+          self.scriptLoadedCallbacks[url] = undefined;
         };
-        queueLoadedCallbacks.push({
+        self.queueLoadedCallbacks.push({
           success: success,
           failure: failure,
           scope: scope || this
@@ -78796,41 +80479,41 @@ var silver = (function (domGlobals) {
           var loadingScripts = grep$2(scripts);
           scripts.length = 0;
           each$6(loadingScripts, function (url) {
-            if (states[url] === LOADED) {
+            if (self.states[url] === LOADED) {
               execCallbacks('success', url);
               return;
             }
-            if (states[url] === FAILED) {
+            if (self.states[url] === FAILED) {
               execCallbacks('failure', url);
               return;
             }
-            if (states[url] !== LOADING) {
-              states[url] = LOADING;
-              loading++;
-              loadScript(url, function () {
-                states[url] = LOADED;
-                loading--;
+            if (self.states[url] !== LOADING) {
+              self.states[url] = LOADING;
+              self.loading++;
+              self.loadScript(url, function () {
+                self.states[url] = LOADED;
+                self.loading--;
                 execCallbacks('success', url);
                 loadScripts();
               }, function () {
-                states[url] = FAILED;
-                loading--;
+                self.states[url] = FAILED;
+                self.loading--;
                 failures.push(url);
                 execCallbacks('failure', url);
                 loadScripts();
               });
             }
           });
-          if (!loading) {
-            var notifyCallbacks = queueLoadedCallbacks.slice(0);
-            queueLoadedCallbacks.length = 0;
+          if (!self.loading) {
+            var notifyCallbacks = self.queueLoadedCallbacks.slice(0);
+            self.queueLoadedCallbacks.length = 0;
             each$6(notifyCallbacks, function (callback) {
               if (failures.length === 0) {
-                if (isFunction$1(callback.success)) {
+                if (isFunction(callback.success)) {
                   callback.success.call(callback.scope);
                 }
               } else {
-                if (isFunction$1(callback.failure)) {
+                if (isFunction(callback.failure)) {
                   callback.failure.call(callback.scope, failures);
                 }
               }
@@ -78839,9 +80522,27 @@ var silver = (function (domGlobals) {
         };
         loadScripts();
       };
-    };
-    ScriptLoader.ScriptLoader = new ScriptLoader();
+      ScriptLoader.ScriptLoader = new ScriptLoader();
+      return ScriptLoader;
+    }();
 
+    var extendStatics = function (d, b) {
+      extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+      } || function (d, b) {
+        for (var p in b)
+          if (b.hasOwnProperty(p))
+            d[p] = b[p];
+      };
+      return extendStatics(d, b);
+    };
+    function __extends(d, b) {
+      extendStatics(d, b);
+      function __() {
+        this.constructor = d;
+      }
+      d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
     var __assign = function () {
       __assign = Object.assign || function __assign(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -78865,6 +80566,322 @@ var silver = (function (domGlobals) {
             t[p[i]] = s[p[i]];
       return t;
     }
+    function __decorate(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if (typeof Reflect === 'object' && typeof Reflect.decorate === 'function')
+        r = Reflect.decorate(decorators, target, key, desc);
+      else
+        for (var i = decorators.length - 1; i >= 0; i--)
+          if (d = decorators[i])
+            r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+    function __param(paramIndex, decorator) {
+      return function (target, key) {
+        decorator(target, key, paramIndex);
+      };
+    }
+    function __metadata(metadataKey, metadataValue) {
+      if (typeof Reflect === 'object' && typeof Reflect.metadata === 'function')
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+    function __awaiter(thisArg, _arguments, P, generator) {
+      return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator['throw'](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : new P(function (resolve) {
+            resolve(result.value);
+          }).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    }
+    function __generator(thisArg, body) {
+      var _ = {
+          label: 0,
+          sent: function () {
+            if (t[0] & 1)
+              throw t[1];
+            return t[1];
+          },
+          trys: [],
+          ops: []
+        }, f, y, t, g;
+      return g = {
+        next: verb(0),
+        'throw': verb(1),
+        'return': verb(2)
+      }, typeof Symbol === 'function' && (g[Symbol.iterator] = function () {
+        return this;
+      }), g;
+      function verb(n) {
+        return function (v) {
+          return step([
+            n,
+            v
+          ]);
+        };
+      }
+      function step(op) {
+        if (f)
+          throw new TypeError('Generator is already executing.');
+        while (_)
+          try {
+            if (f = 1, y && (t = op[0] & 2 ? y['return'] : op[0] ? y['throw'] || ((t = y['return']) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done)
+              return t;
+            if (y = 0, t)
+              op = [
+                op[0] & 2,
+                t.value
+              ];
+            switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return {
+                value: op[1],
+                done: false
+              };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2])
+                _.ops.pop();
+              _.trys.pop();
+              continue;
+            }
+            op = body.call(thisArg, _);
+          } catch (e) {
+            op = [
+              6,
+              e
+            ];
+            y = 0;
+          } finally {
+            f = t = 0;
+          }
+        if (op[0] & 5)
+          throw op[1];
+        return {
+          value: op[0] ? op[1] : void 0,
+          done: true
+        };
+      }
+    }
+    function __exportStar(m, exports) {
+      for (var p in m)
+        if (!exports.hasOwnProperty(p))
+          exports[p] = m[p];
+    }
+    function __values(o) {
+      var m = typeof Symbol === 'function' && o[Symbol.iterator], i = 0;
+      if (m)
+        return m.call(o);
+      return {
+        next: function () {
+          if (o && i >= o.length)
+            o = void 0;
+          return {
+            value: o && o[i++],
+            done: !o
+          };
+        }
+      };
+    }
+    function __read(o, n) {
+      var m = typeof Symbol === 'function' && o[Symbol.iterator];
+      if (!m)
+        return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
+          ar.push(r.value);
+      } catch (error) {
+        e = { error: error };
+      } finally {
+        try {
+          if (r && !r.done && (m = i['return']))
+            m.call(i);
+        } finally {
+          if (e)
+            throw e.error;
+        }
+      }
+      return ar;
+    }
+    function __spread() {
+      for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+      return ar;
+    }
+    function __await(v) {
+      return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+    function __asyncGenerator(thisArg, _arguments, generator) {
+      if (!Symbol.asyncIterator)
+        throw new TypeError('Symbol.asyncIterator is not defined.');
+      var g = generator.apply(thisArg, _arguments || []), i, q = [];
+      return i = {}, verb('next'), verb('throw'), verb('return'), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i;
+      function verb(n) {
+        if (g[n])
+          i[n] = function (v) {
+            return new Promise(function (a, b) {
+              q.push([
+                n,
+                v,
+                a,
+                b
+              ]) > 1 || resume(n, v);
+            });
+          };
+      }
+      function resume(n, v) {
+        try {
+          step(g[n](v));
+        } catch (e) {
+          settle(q[0][3], e);
+        }
+      }
+      function step(r) {
+        r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+      }
+      function fulfill(value) {
+        resume('next', value);
+      }
+      function reject(value) {
+        resume('throw', value);
+      }
+      function settle(f, v) {
+        if (f(v), q.shift(), q.length)
+          resume(q[0][0], q[0][1]);
+      }
+    }
+    function __asyncDelegator(o) {
+      var i, p;
+      return i = {}, verb('next'), verb('throw', function (e) {
+        throw e;
+      }), verb('return'), i[Symbol.iterator] = function () {
+        return this;
+      }, i;
+      function verb(n, f) {
+        i[n] = o[n] ? function (v) {
+          return (p = !p) ? {
+            value: __await(o[n](v)),
+            done: n === 'return'
+          } : f ? f(v) : v;
+        } : f;
+      }
+    }
+    function __asyncValues(o) {
+      if (!Symbol.asyncIterator)
+        throw new TypeError('Symbol.asyncIterator is not defined.');
+      var m = o[Symbol.asyncIterator], i;
+      return m ? m.call(o) : (o = typeof __values === 'function' ? __values(o) : o[Symbol.iterator](), i = {}, verb('next'), verb('throw'), verb('return'), i[Symbol.asyncIterator] = function () {
+        return this;
+      }, i);
+      function verb(n) {
+        i[n] = o[n] && function (v) {
+          return new Promise(function (resolve, reject) {
+            v = o[n](v), settle(resolve, reject, v.done, v.value);
+          });
+        };
+      }
+      function settle(resolve, reject, d, v) {
+        Promise.resolve(v).then(function (v) {
+          resolve({
+            value: v,
+            done: d
+          });
+        }, reject);
+      }
+    }
+    function __makeTemplateObject(cooked, raw) {
+      if (Object.defineProperty) {
+        Object.defineProperty(cooked, 'raw', { value: raw });
+      } else {
+        cooked.raw = raw;
+      }
+      return cooked;
+    }
+    function __importStar(mod) {
+      if (mod && mod.__esModule)
+        return mod;
+      var result = {};
+      if (mod != null)
+        for (var k in mod)
+          if (Object.hasOwnProperty.call(mod, k))
+            result[k] = mod[k];
+      result.default = mod;
+      return result;
+    }
+    function __importDefault(mod) {
+      return mod && mod.__esModule ? mod : { default: mod };
+    }
+
+    var tslib_1 = /*#__PURE__*/Object.freeze({
+        __extends: __extends,
+        get __assign () { return __assign; },
+        __rest: __rest,
+        __decorate: __decorate,
+        __param: __param,
+        __metadata: __metadata,
+        __awaiter: __awaiter,
+        __generator: __generator,
+        __exportStar: __exportStar,
+        __values: __values,
+        __read: __read,
+        __spread: __spread,
+        __await: __await,
+        __asyncGenerator: __asyncGenerator,
+        __asyncDelegator: __asyncDelegator,
+        __asyncValues: __asyncValues,
+        __makeTemplateObject: __makeTemplateObject,
+        __importStar: __importStar,
+        __importDefault: __importDefault
+    });
 
     var Cell = function (initial) {
       var value = initial;
@@ -79105,6 +81122,7 @@ var silver = (function (domGlobals) {
       AddOnManager.PluginManager = AddOnManager();
       AddOnManager.ThemeManager = AddOnManager();
     }(AddOnManager || (AddOnManager = {})));
+    var AddOnManager$1 = AddOnManager;
 
     var before = function (marker, element) {
       var parent$1 = parent(marker);
@@ -79255,6 +81273,21 @@ var silver = (function (domGlobals) {
     var remove$3 = function (element, clazz) {
       return remove$2(element, 'class', clazz);
     };
+    var toggle = function (element, clazz) {
+      if (contains(get$3(element), clazz)) {
+        return remove$3(element, clazz);
+      } else {
+        return add$2(element, clazz);
+      }
+    };
+
+    var ClassList = /*#__PURE__*/Object.freeze({
+        get: get$3,
+        add: add$2,
+        remove: remove$3,
+        toggle: toggle,
+        supports: supports
+    });
 
     var add$3 = function (element, clazz) {
       if (supports(element)) {
@@ -79282,6 +81315,15 @@ var silver = (function (domGlobals) {
       return supports(element) && element.dom().classList.contains(clazz);
     };
 
+    var ancestors = function (scope, predicate, isRoot) {
+      return filter(parents(scope, isRoot), predicate);
+    };
+    var siblings$1 = function (scope, predicate) {
+      return filter(siblings(scope), predicate);
+    };
+    var children$1 = function (scope, predicate) {
+      return filter(children(scope), predicate);
+    };
     var descendants = function (scope, predicate) {
       var result = [];
       each(children(scope), function (x) {
@@ -79293,9 +81335,35 @@ var silver = (function (domGlobals) {
       return result;
     };
 
+    var all$1 = function (selector) {
+      return all(selector);
+    };
+    var ancestors$1 = function (scope, selector, isRoot) {
+      return ancestors(scope, function (e) {
+        return is$1(e, selector);
+      }, isRoot);
+    };
+    var siblings$2 = function (scope, selector) {
+      return siblings$1(scope, function (e) {
+        return is$1(e, selector);
+      });
+    };
+    var children$2 = function (scope, selector) {
+      return children$1(scope, function (e) {
+        return is$1(e, selector);
+      });
+    };
     var descendants$1 = function (scope, selector) {
       return all(selector, scope);
     };
+
+    var SelectorFilter = /*#__PURE__*/Object.freeze({
+        all: all$1,
+        ancestors: ancestors$1,
+        siblings: siblings$2,
+        children: children$2,
+        descendants: descendants$1
+    });
 
     function ClosestOrAncestor (is, ancestor, scope, a, isRoot) {
       return is(scope, a) ? Option.some(scope) : isFunction(isRoot) && isRoot(scope) ? Option.none() : ancestor(scope, a, isRoot);
@@ -79458,7 +81526,7 @@ var silver = (function (domGlobals) {
       editor.on('remove', function () {
         onNodeChange.cancel();
       });
-      editor.on('nodeChange', function () {
+      editor.on('NodeChange', function () {
         onNodeChange.throttle();
       });
       var addListener = function (name, f) {
@@ -79474,8 +81542,7 @@ var silver = (function (domGlobals) {
 
     var setup$1 = function (editor, registry) {
       var identifyParserNode = function (span) {
-        var optAnnotation = Option.from(span.attributes.map[dataAnnotation()]);
-        return optAnnotation.bind(registry.lookup);
+        return Option.from(span.attr(dataAnnotation())).bind(registry.lookup);
       };
       editor.on('init', function () {
         editor.serializer.addNodeFilter('span', function (spans) {
@@ -79619,6 +81686,28 @@ var silver = (function (domGlobals) {
       }
       return textNode;
     };
+    var prependInline = function (node) {
+      if (NodeType.isText(node)) {
+        var data = node.data;
+        if (data.length > 0 && data.charAt(0) !== Zwsp.ZWSP) {
+          node.insertData(0, Zwsp.ZWSP);
+        }
+        return node;
+      } else {
+        return null;
+      }
+    };
+    var appendInline = function (node) {
+      if (NodeType.isText(node)) {
+        var data = node.data;
+        if (data.length > 0 && data.charAt(data.length - 1) !== Zwsp.ZWSP) {
+          node.insertData(data.length, Zwsp.ZWSP);
+        }
+        return node;
+      } else {
+        return null;
+      }
+    };
     var isBeforeInline = function (pos) {
       var container = pos.container();
       if (!pos || !NodeType.isText(container)) {
@@ -79684,6 +81773,23 @@ var silver = (function (domGlobals) {
     var isRangeInCaretContainerBlock = function (range) {
       return isCaretContainerBlock(range.startContainer);
     };
+
+    var CaretContainer = /*#__PURE__*/Object.freeze({
+        isCaretContainer: isCaretContainer,
+        isCaretContainerBlock: isCaretContainerBlock,
+        isCaretContainerInline: isCaretContainerInline,
+        showCaretContainerBlock: showCaretContainerBlock,
+        insertInline: insertInline,
+        prependInline: prependInline,
+        appendInline: appendInline,
+        isBeforeInline: isBeforeInline,
+        isAfterInline: isAfterInline,
+        insertBlock: insertBlock,
+        hasContent: hasContent,
+        startsWithCaretContainer: startsWithCaretContainer,
+        endsWithCaretContainer: endsWithCaretContainer,
+        isRangeInCaretContainerBlock: isRangeInCaretContainerBlock
+    });
 
     var isContentEditableTrue$1 = NodeType.isContentEditableTrue;
     var isContentEditableFalse$1 = NodeType.isContentEditableFalse;
@@ -80168,7 +82274,7 @@ var silver = (function (domGlobals) {
       }
       return offset;
     };
-    var equal = function (a) {
+    var equal$1 = function (a) {
       return function (b) {
         return a === b;
       };
@@ -80176,7 +82282,7 @@ var silver = (function (domGlobals) {
     var normalizedNodeIndex = function (node) {
       var nodes, index, numTextFragments;
       nodes = getChildNodes(normalizedParent(node));
-      index = ArrUtils.findIndex(nodes, equal(node), node);
+      index = ArrUtils.findIndex(nodes, equal$1(node), node);
       nodes = nodes.slice(0, index + 1);
       numTextFragments = ArrUtils.reduce(nodes, function (result, node, i) {
         if (isText$5(node) && isText$5(nodes[i - 1])) {
@@ -80185,7 +82291,7 @@ var silver = (function (domGlobals) {
         return result;
       }, 0);
       nodes = ArrUtils.filter(nodes, NodeType.matchNodeNames(node.nodeName));
-      index = ArrUtils.findIndex(nodes, equal(node), node);
+      index = ArrUtils.findIndex(nodes, equal$1(node), node);
       return index - numTextFragments;
     };
     var createPathItem = function (node) {
@@ -80717,7 +82823,7 @@ var silver = (function (domGlobals) {
       var reposition = function () {
         lastVisualCaret.get().each(function (caretState) {
           var clientRect = getAbsoluteClientRect(root, caretState.element, caretState.before);
-          DomQuery(caretState.caret).css(clientRect);
+          DomQuery(caretState.caret).css(__assign({}, clientRect));
         });
       };
       var destroy = function () {
@@ -81625,7 +83731,7 @@ var silver = (function (domGlobals) {
       return pos;
     };
     var findWordEndPoint = function (dom, body, container, offset, start, remove) {
-      var walker, node, pos, lastTextNode;
+      var node, pos, lastTextNode;
       if (container.nodeType === 3) {
         pos = findSpace(start, remove, container, offset);
         if (pos !== -1) {
@@ -81636,7 +83742,7 @@ var silver = (function (domGlobals) {
         }
         lastTextNode = container;
       }
-      walker = new TreeWalker(container, dom.getParent(container, dom.isBlock) || body);
+      var walker = new TreeWalker(container, dom.getParent(container, dom.isBlock) || body);
       while (node = walker[start ? 'prev' : 'next']()) {
         if (node.nodeType === 3 && !isBookmarkNode$2(node.parentNode)) {
           lastTextNode = node;
@@ -82088,7 +84194,7 @@ var silver = (function (domGlobals) {
       });
     };
 
-    function Annotator (editor) {
+    var Annotator = function (editor) {
       var registry = create$1();
       setup$1(editor, registry);
       var changes = setup(editor, registry);
@@ -82119,7 +84225,7 @@ var silver = (function (domGlobals) {
           });
         }
       };
-    }
+    };
 
     var whiteSpaceRegExp$3 = /^[ \t\r\n]*$/;
     var typeLookup = {
@@ -82365,7 +84471,7 @@ var silver = (function (domGlobals) {
         if (node) {
           do {
             if (node.type === 1) {
-              if (node.attributes.map['data-mce-bogus']) {
+              if (node.attr('data-mce-bogus')) {
                 continue;
               }
               if (elements[node.name]) {
@@ -82956,7 +85062,7 @@ var silver = (function (domGlobals) {
     };
 
     var makeMap$3 = Tools.makeMap;
-    function Writer (settings) {
+    var Writer = function (settings) {
       var html = [];
       var indent, indentBefore, indentAfter, encode, htmlOutput;
       settings = settings || {};
@@ -83034,9 +85140,9 @@ var silver = (function (domGlobals) {
           return html.join('').replace(/\n$/, '');
         }
       };
-    }
+    };
 
-    function Serializer (settings, schema) {
+    var Serializer = function (settings, schema) {
       if (schema === void 0) {
         schema = Schema();
       }
@@ -83129,7 +85235,7 @@ var silver = (function (domGlobals) {
         return writer.getContent();
       };
       return { serialize: serialize };
-    }
+    };
 
     var traverse = function (node, fn) {
       fn(node);
@@ -83302,10 +85408,7 @@ var silver = (function (domGlobals) {
         ]
       }
     ]);
-    var range = Immutable('start', 'soffset', 'finish', 'foffset');
-    var domRange = type$1.domRange;
-    var relative = type$1.relative;
-    var exact = type$1.exact;
+    var range$1 = Immutable('start', 'soffset', 'finish', 'foffset');
 
     var browser$3 = PlatformDetection$1.detect().browser;
     var clamp = function (offset, element) {
@@ -83318,7 +85421,7 @@ var silver = (function (domGlobals) {
       return offset;
     };
     var normalizeRng = function (rng) {
-      return range(rng.start(), clamp(rng.soffset(), rng.start()), rng.finish(), clamp(rng.foffset(), rng.finish()));
+      return range$1(rng.start(), clamp(rng.soffset(), rng.start()), rng.finish(), clamp(rng.foffset(), rng.finish()));
     };
     var isOrContains = function (root, elm) {
       return contains$3(root, elm) || eq(root, elm);
@@ -83332,7 +85435,7 @@ var silver = (function (domGlobals) {
       return editor.inline === true || browser$3.isIE();
     };
     var nativeRangeToSelectionRange = function (r) {
-      return range(Element.fromDom(r.startContainer), r.startOffset, Element.fromDom(r.endContainer), r.endOffset);
+      return range$1(Element.fromDom(r.startContainer), r.startOffset, Element.fromDom(r.endContainer), r.endOffset);
     };
     var readRange = function (win) {
       var selection = win.getSelection();
@@ -83728,7 +85831,7 @@ var silver = (function (domGlobals) {
         render_ui: true,
         inline_styles: true,
         convert_fonts_to_spans: true,
-        indent: 'simple',
+        indent: true,
         indent_before: 'p,h1,h2,h3,h4,h5,h6,blockquote,div,title,style,pre,script,td,th,ul,ol,li,dl,dt,dd,area,table,thead,' + 'tfoot,tbody,tr,section,summary,article,hgroup,aside,figure,figcaption,option,optgroup,datalist',
         indent_after: 'p,h1,h2,h3,h4,h5,h6,blockquote,div,title,style,pre,script,td,th,ul,ol,li,dl,dt,dd,area,table,thead,' + 'tfoot,tbody,tr,section,summary,article,hgroup,aside,figure,figcaption,option,optgroup,datalist',
         entity_encoding: 'named',
@@ -83783,7 +85886,7 @@ var silver = (function (domGlobals) {
           if (arr.length > 1) {
             output[Tools.trim(arr[0])] = Tools.trim(arr[1]);
           } else {
-            output[Tools.trim(arr[0])] = Tools.trim(arr);
+            output[Tools.trim(arr[0])] = Tools.trim(arr[0]);
           }
         });
       } else {
@@ -83869,7 +85972,7 @@ var silver = (function (domGlobals) {
       isEditorAttachedToDom: isEditorAttachedToDom
     };
 
-    function NotificationManagerImpl () {
+    function NotificationManagerImpl() {
       var unimplemented = function () {
         throw new Error('Theme did not provide a NotificationManager implementation.');
       };
@@ -83881,7 +85984,7 @@ var silver = (function (domGlobals) {
       };
     }
 
-    function NotificationManager (editor) {
+    function NotificationManager(editor) {
       var notifications = [];
       var getImplementation = function () {
         var theme = editor.theme;
@@ -83908,15 +86011,15 @@ var silver = (function (domGlobals) {
           notifications.splice(index, 1);
         });
       };
-      var open = function (args) {
+      var open = function (spec) {
         if (editor.removed || !EditorView.isEditorAttachedToDom(editor)) {
           return;
         }
         return find(notifications, function (notification) {
-          return isEqual(getImplementation().getArgs(notification), args);
+          return isEqual(getImplementation().getArgs(notification), spec);
         }).getOrThunk(function () {
           editor.editorManager.setActive(editor);
-          var notification = getImplementation().open(args, function () {
+          var notification = getImplementation().open(spec, function () {
             closeNotification(notification);
             reposition();
           });
@@ -83941,7 +86044,7 @@ var silver = (function (domGlobals) {
           if (serviceMessage) {
             open({
               text: serviceMessage,
-              type: 'warning',
+              type: 'warn',
               timeout: 0
             });
           }
@@ -83969,6 +86072,7 @@ var silver = (function (domGlobals) {
       };
       return {
         open: unimplemented,
+        openUrl: unimplemented,
         alert: unimplemented,
         confirm: unimplemented,
         close: unimplemented,
@@ -83977,7 +86081,7 @@ var silver = (function (domGlobals) {
       };
     }
 
-    function WindowManager (editor) {
+    var WindowManager = function (editor) {
       var dialogs = [];
       var getImplementation = function () {
         var theme = editor.theme;
@@ -84010,12 +86114,22 @@ var silver = (function (domGlobals) {
       var getTopDialog = function () {
         return Option.from(dialogs[dialogs.length - 1]);
       };
-      var open = function (args, params) {
+      var storeSelectionAndOpenDialog = function (openDialog) {
         editor.editorManager.setActive(editor);
         SelectionBookmark.store(editor);
-        var dialog = getImplementation().open(args, params, closeDialog);
+        var dialog = openDialog();
         addDialog(dialog);
         return dialog;
+      };
+      var open = function (args, params) {
+        return storeSelectionAndOpenDialog(function () {
+          return getImplementation().open(args, params, closeDialog);
+        });
+      };
+      var openUrl = function (args) {
+        return storeSelectionAndOpenDialog(function () {
+          return getImplementation().openUrl(args, closeDialog);
+        });
       };
       var alert = function (message, callback, scope) {
         getImplementation().alert(message, funcBind(scope ? scope : this, callback));
@@ -84036,13 +86150,14 @@ var silver = (function (domGlobals) {
       });
       return {
         open: open,
+        openUrl: openUrl,
         alert: alert,
         confirm: confirm,
         close: close
       };
-    }
+    };
 
-    var PluginManager = AddOnManager.PluginManager;
+    var PluginManager = AddOnManager$1.PluginManager;
     var resolvePluginName = function (targetUrl, suffix) {
       for (var name in PluginManager.urls) {
         var matchUrl = PluginManager.urls[name] + '/plugin' + suffix + '.js';
@@ -84117,6 +86232,153 @@ var silver = (function (domGlobals) {
       initError: initError
     };
 
+    var getAll = function () {
+      return {
+        'accessibility-check': '<svg width="24" height="24"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.1.9-2 2-2zm8 7h-5v12c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-5c0-.6-.4-1-1-1a1 1 0 0 0-1 1v5c0 .6-.4 1-1 1a1 1 0 0 1-1-1V9H4a1 1 0 1 1 0-2h16c.6 0 1 .4 1 1s-.4 1-1 1z" fill-rule="nonzero"/></svg>',
+        'align-center': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm3 4h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 1 1 0-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2zm-3-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
+        'align-justify': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
+        'align-left': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 4h8c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2zm0-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
+        'align-none': '<svg width="24" height="24"><path d="M14.2 5L13 7H5a1 1 0 1 1 0-2h9.2zm4 0h.8a1 1 0 0 1 0 2h-2l1.2-2zm-6.4 4l-1.2 2H5a1 1 0 0 1 0-2h6.8zm4 0H19a1 1 0 0 1 0 2h-4.4l1.2-2zm-6.4 4l-1.2 2H5a1 1 0 0 1 0-2h4.4zm4 0H19a1 1 0 0 1 0 2h-6.8l1.2-2zM7 17l-1.2 2H5a1 1 0 0 1 0-2h2zm4 0h8a1 1 0 0 1 0 2H9.8l1.2-2zm5.2-13.5l1.3.7-9.7 16.3-1.3-.7 9.7-16.3z" fill-rule="evenodd"/></svg>',
+        'align-right': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm6 4h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm-6-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
+        'arrow-left': '<svg width="24" height="24"><path d="M5.6 13l12 6a1 1 0 0 0 1.4-1V6a1 1 0 0 0-1.4-.9l-12 6a1 1 0 0 0 0 1.8z" fill-rule="evenodd"/></svg>',
+        'arrow-right': '<svg width="24" height="24"><path d="M18.5 13l-12 6A1 1 0 0 1 5 18V6a1 1 0 0 1 1.4-.9l12 6a1 1 0 0 1 0 1.8z" fill-rule="evenodd"/></svg>',
+        'bold': '<svg width="24" height="24"><path d="M7.8 19c-.3 0-.5 0-.6-.2l-.2-.5V5.7c0-.2 0-.4.2-.5l.6-.2h5c1.5 0 2.7.3 3.5 1 .7.6 1.1 1.4 1.1 2.5a3 3 0 0 1-.6 1.9c-.4.6-1 1-1.6 1.2.4.1.9.3 1.3.6s.8.7 1 1.2c.4.4.5 1 .5 1.6 0 1.3-.4 2.3-1.3 3-.8.7-2.1 1-3.8 1H7.8zm5-8.3c.6 0 1.2-.1 1.6-.5.4-.3.6-.7.6-1.3 0-1.1-.8-1.7-2.3-1.7H9.3v3.5h3.4zm.5 6c.7 0 1.3-.1 1.7-.4.4-.4.6-.9.6-1.5s-.2-1-.7-1.4c-.4-.3-1-.4-2-.4H9.4v3.8h4z" fill-rule="evenodd"/></svg>',
+        'bookmark': '<svg width="24" height="24"><path d="M6 4v17l6-4 6 4V4c0-.6-.4-1-1-1H7a1 1 0 0 0-1 1z" fill-rule="nonzero"/></svg>',
+        'border-width': '<svg width="24" height="24"><path d="M5 14.8h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm-.5 3.7h15c.3 0 .5.2.5.5s-.2.5-.5.5h-15a.5.5 0 1 1 0-1zm.5-8.3h14c.6 0 1 .4 1 1v1c0 .5-.4 1-1 1H5a1 1 0 0 1-1-1v-1c0-.6.4-1 1-1zm0-5.7h14c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H5a1 1 0 0 1-1-1v-2c0-.6.4-1 1-1z" fill-rule="evenodd"/></svg>',
+        'brightness': '<svg width="24" height="24"><path d="M12 17c.3 0 .5.1.7.3.2.2.3.4.3.7v1c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3 1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7v-1c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3zm0-10a1 1 0 0 1-.7-.3A1 1 0 0 1 11 6V5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3.3 0 .5.1.7.3.2.2.3.4.3.7v1c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3zm7 4c.3 0 .5.1.7.3.2.2.3.4.3.7 0 .3-.1.5-.3.7a1 1 0 0 1-.7.3h-1a1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h1zM7 12c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3H5a1 1 0 0 1-.7-.3A1 1 0 0 1 4 12c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h1c.3 0 .5.1.7.3.2.2.3.4.3.7zm10 3.5l.7.8c.2.1.3.4.3.6 0 .3-.1.6-.3.8a1 1 0 0 1-.8.3 1 1 0 0 1-.6-.3l-.8-.7a1 1 0 0 1-.3-.8c0-.2.1-.5.3-.7a1 1 0 0 1 1.4 0zm-10-7l-.7-.8a1 1 0 0 1-.3-.6c0-.3.1-.6.3-.8.2-.2.5-.3.8-.3.2 0 .5.1.7.3l.7.7c.2.2.3.5.3.8 0 .2-.1.5-.3.7a1 1 0 0 1-.7.3 1 1 0 0 1-.8-.3zm10 0a1 1 0 0 1-.8.3 1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7c0-.3.1-.6.3-.8l.8-.7c.1-.2.4-.3.6-.3.3 0 .6.1.8.3.2.2.3.5.3.8 0 .2-.1.5-.3.7l-.7.7zm-10 7c.2-.2.5-.3.8-.3.2 0 .5.1.7.3a1 1 0 0 1 0 1.4l-.8.8a1 1 0 0 1-.6.3 1 1 0 0 1-.8-.3 1 1 0 0 1-.3-.8c0-.2.1-.5.3-.6l.7-.8zM12 8a4 4 0 0 1 3.7 2.4 4 4 0 0 1 0 3.2A4 4 0 0 1 12 16a4 4 0 0 1-3.7-2.4 4 4 0 0 1 0-3.2A4 4 0 0 1 12 8zm0 6.5c.7 0 1.3-.2 1.8-.7.5-.5.7-1.1.7-1.8s-.2-1.3-.7-1.8c-.5-.5-1.1-.7-1.8-.7s-1.3.2-1.8.7c-.5.5-.7 1.1-.7 1.8s.2 1.3.7 1.8c.5.5 1.1.7 1.8.7z" fill-rule="evenodd"/></svg>',
+        'browse': '<svg width="24" height="24"><path d="M19 4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4v-2h4V8H5v10h4v2H5a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h14zm-8 9.4l-2.3 2.3a1 1 0 1 1-1.4-1.4l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1-1.4 1.4L13 13.4V20a1 1 0 0 1-2 0v-6.6z" fill-rule="nonzero"/></svg>',
+        'cancel': '<svg width="24" height="24"><path d="M12 4.6a7.4 7.4 0 1 1 0 14.8 7.4 7.4 0 0 1 0-14.8zM12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 8L14.8 8l1 1.1-2.7 2.8 2.7 2.7-1.1 1.1-2.7-2.7-2.7 2.7-1-1.1 2.6-2.7-2.7-2.7 1-1.1 2.8 2.7z" fill-rule="nonzero"/></svg>',
+        'change-case': '<svg width="24" height="24"><path d="M18.4 18.2v-.6c-.5.8-1.3 1.2-2.4 1.2-2.2 0-3.3-1.6-3.3-4.8 0-3.1 1-4.7 3.3-4.7 1.1 0 1.8.3 2.4 1.1v-.6c0-.5.4-.8.8-.8s.8.3.8.8v8.4c0 .5-.4.8-.8.8a.8.8 0 0 1-.8-.8zm-2-7.4c-1.3 0-1.8.9-1.8 3.2 0 2.4.5 3.3 1.7 3.3 1.3 0 1.8-.9 1.8-3.2 0-2.4-.5-3.3-1.7-3.3zM10 15.7H5.5l-.8 2.6a1 1 0 0 1-1 .7h-.2a.7.7 0 0 1-.7-1l4-12a1 1 0 1 1 2 0l4 12a.7.7 0 0 1-.8 1h-.2a1 1 0 0 1-1-.7l-.8-2.6zm-.3-1.5l-2-6.5-1.9 6.5h3.9z" fill-rule="evenodd"/></svg>',
+        'character-count': '<svg width="24" height="24"><path d="M4 11.5h16v1H4v-1zm4.8-6.8V10H7.7V5.8h-1v-1h2zM11 8.3V9h2v1h-3V7.7l2-1v-.9h-2v-1h3v2.4l-2 1zm6.3-3.4V10h-3.1V9h2.1V8h-2.1V6.8h2.1v-1h-2.1v-1h3.1zM5.8 16.4c0-.5.2-.8.5-1 .2-.2.6-.3 1.2-.3l.8.1c.2 0 .4.2.5.3l.4.4v2.8l.2.3H8.2v-.1-.2l-.6.3H7c-.4 0-.7 0-1-.2a1 1 0 0 1-.3-.9c0-.3 0-.6.3-.8.3-.2.7-.4 1.2-.4l.6-.2h.3v-.2l-.1-.2a.8.8 0 0 0-.5-.1 1 1 0 0 0-.4 0l-.3.4h-1zm2.3.8h-.2l-.2.1-.4.1a1 1 0 0 0-.4.2l-.2.2.1.3.5.1h.4l.4-.4v-.6zm2-3.4h1.2v1.7l.5-.3h.5c.5 0 .9.1 1.2.5.3.4.5.8.5 1.4 0 .6-.2 1.1-.5 1.5-.3.4-.7.6-1.3.6l-.6-.1-.4-.4v.4h-1.1v-5.4zm1.1 3.3c0 .3 0 .6.2.8a.7.7 0 0 0 1.2 0l.2-.8c0-.4 0-.6-.2-.8a.7.7 0 0 0-.6-.3l-.6.3-.2.8zm6.1-.5c0-.2 0-.3-.2-.4a.8.8 0 0 0-.5-.2c-.3 0-.5.1-.6.3l-.2.9c0 .3 0 .6.2.8.1.2.3.3.6.3.2 0 .4 0 .5-.2l.2-.4h1.1c0 .5-.3.8-.6 1.1a2 2 0 0 1-1.3.4c-.5 0-1-.2-1.3-.6a2 2 0 0 1-.5-1.4c0-.6.1-1.1.5-1.5.3-.4.8-.5 1.4-.5.5 0 1 0 1.2.3.4.3.5.7.5 1.2h-1v-.1z" fill-rule="evenodd"/></svg>',
+        'checklist': '<svg width="24" height="24"><path d="M11 17h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8a1 1 0 0 1 0 2h-8a1 1 0 0 1 0-2zM7.2 16c.2-.4.6-.5.9-.3.3.2.4.6.2 1L6 20c-.2.3-.7.4-1 0l-1.3-1.3a.7.7 0 0 1 0-1c.3-.2.7-.2 1 0l.7.9 1.7-2.8zm0-6c.2-.4.6-.5.9-.3.3.2.4.6.2 1L6 14c-.2.3-.7.4-1 0l-1.3-1.3a.7.7 0 0 1 0-1c.3-.2.7-.2 1 0l.7.9 1.7-2.8zm0-6c.2-.4.6-.5.9-.3.3.2.4.6.2 1L6 8c-.2.3-.7.4-1 0L3.8 6.9a.7.7 0 0 1 0-1c.3-.2.7-.2 1 0l.7.9 1.7-2.8z" fill-rule="evenodd"/></svg>',
+        'checkmark': '<svg width="24" height="24"><path d="M18.2 5.4a1 1 0 0 1 1.6 1.2l-8 12a1 1 0 0 1-1.5.1l-5-5a1 1 0 1 1 1.4-1.4l4.1 4.1 7.4-11z" fill-rule="nonzero"/></svg>',
+        'chevron-down': '<svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"/></svg>',
+        'chevron-left': '<svg width="10" height="10"><path d="M7.8 1.3L4 5l3.8 3.7c.3.3.3.8 0 1-.4.4-.9.4-1.2 0L2.2 5.7a.8.8 0 0 1 0-1.2L6.6.2C7 0 7.4 0 7.8.2c.3.3.3.8 0 1.1z" fill-rule="nonzero"/></svg>',
+        'chevron-right': '<svg width="10" height="10"><path d="M2.2 1.3a.8.8 0 0 1 0-1c.4-.4.9-.4 1.2 0l4.4 4.1c.3.4.3.9 0 1.2L3.4 9.8c-.3.3-.8.3-1.2 0a.8.8 0 0 1 0-1.1L6 5 2.2 1.3z" fill-rule="nonzero"/></svg>',
+        'chevron-up': '<svg width="10" height="10"><path d="M8.7 7.8L5 4 1.3 7.8c-.3.3-.8.3-1 0a.8.8 0 0 1 0-1.2l4.1-4.4c.3-.3.9-.3 1.2 0l4.2 4.4c.3.3.3.9 0 1.2-.3.3-.8.3-1.1 0z" fill-rule="nonzero"/></svg>',
+        'close': '<svg width="24" height="24"><path d="M17.3 8.2L13.4 12l3.9 3.8a1 1 0 0 1-1.5 1.5L12 13.4l-3.8 3.9a1 1 0 0 1-1.5-1.5l3.9-3.8-3.9-3.8a1 1 0 0 1 1.5-1.5l3.8 3.9 3.8-3.9a1 1 0 0 1 1.5 1.5z" fill-rule="evenodd"/></svg>',
+        'code-sample': '<svg width="24" height="26"><path d="M7.1 11a2.8 2.8 0 0 1-.8 2 2.8 2.8 0 0 1 .8 2v1.7c0 .3.1.6.4.8.2.3.5.4.8.4.3 0 .4.2.4.4v.8c0 .2-.1.4-.4.4-.7 0-1.4-.3-2-.8-.5-.6-.8-1.3-.8-2V15c0-.3-.1-.6-.4-.8-.2-.3-.5-.4-.8-.4a.4.4 0 0 1-.4-.4v-.8c0-.2.2-.4.4-.4.3 0 .6-.1.8-.4.3-.2.4-.5.4-.8V9.3c0-.7.3-1.4.8-2 .6-.5 1.3-.8 2-.8.3 0 .4.2.4.4v.8c0 .2-.1.4-.4.4-.3 0-.6.1-.8.4-.3.2-.4.5-.4.8V11zm9.8 0V9.3c0-.3-.1-.6-.4-.8-.2-.3-.5-.4-.8-.4a.4.4 0 0 1-.4-.4V7c0-.2.1-.4.4-.4.7 0 1.4.3 2 .8.5.6.8 1.3.8 2V11c0 .3.1.6.4.8.2.3.5.4.8.4.2 0 .4.2.4.4v.8c0 .2-.2.4-.4.4-.3 0-.6.1-.8.4-.3.2-.4.5-.4.8v1.7c0 .7-.3 1.4-.8 2-.6.5-1.3.8-2 .8a.4.4 0 0 1-.4-.4v-.8c0-.2.1-.4.4-.4.3 0 .6-.1.8-.4.3-.2.4-.5.4-.8V15a2.8 2.8 0 0 1 .8-2 2.8 2.8 0 0 1-.8-2zm-3.3-.4c0 .4-.1.8-.5 1.1-.3.3-.7.5-1.1.5-.4 0-.8-.2-1.1-.5-.4-.3-.5-.7-.5-1.1 0-.5.1-.9.5-1.2.3-.3.7-.4 1.1-.4.4 0 .8.1 1.1.4.4.3.5.7.5 1.2zM12 13c.4 0 .8.1 1.1.5.4.3.5.7.5 1.1 0 1-.1 1.6-.5 2a3 3 0 0 1-1.1 1c-.4.3-.8.4-1.1.4a.5.5 0 0 1-.5-.5V17a3 3 0 0 0 1-.2l.6-.6c-.6 0-1-.2-1.3-.5-.2-.3-.3-.7-.3-1 0-.5.1-1 .5-1.2.3-.4.7-.5 1.1-.5z" fill-rule="evenodd"/></svg>',
+        'color-levels': '<svg width="24" height="24"><path d="M17.5 11.4A9 9 0 0 1 18 14c0 .5 0 1-.2 1.4 0 .4-.3.9-.5 1.3a6.2 6.2 0 0 1-3.7 3 5.7 5.7 0 0 1-3.2 0A5.9 5.9 0 0 1 7.6 18a6.2 6.2 0 0 1-1.4-2.6 6.7 6.7 0 0 1 0-2.8c0-.4.1-.9.3-1.3a13.6 13.6 0 0 1 2.3-4A20 20 0 0 1 12 4a26.4 26.4 0 0 1 3.2 3.4 18.2 18.2 0 0 1 2.3 4zm-2 4.5c.4-.7.5-1.4.5-2a7.3 7.3 0 0 0-1-3.2c.2.6.2 1.2.2 1.9a4.5 4.5 0 0 1-1.3 3 5.3 5.3 0 0 1-2.3 1.5 4.9 4.9 0 0 1-2 .1 4.3 4.3 0 0 0 2.4.8 4 4 0 0 0 2-.6 4 4 0 0 0 1.5-1.5z" fill-rule="evenodd"/></svg>',
+        'color-picker': '<svg width="24" height="24"><path d="M12 3a9 9 0 0 0 0 18 1.5 1.5 0 0 0 1.1-2.5c-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill-rule="nonzero"/></svg>',
+        'color-swatch-remove-color': '<svg width="24" height="24"><path stroke="#000" stroke-width="2" d="M21 3L3 21" fill-rule="evenodd"/></svg>',
+        'color-swatch': '<svg width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="1" fill-rule="evenodd"/></svg>',
+        'comment': '<svg width="24" height="24"><path d="M9 19l3-2h7c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H5a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h4v2zm-2 4v-4H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-6.4L7 23z" fill-rule="nonzero"/></svg>',
+        'contrast': '<svg width="24" height="24"><path d="M12 4a7.8 7.8 0 0 1 5.7 2.3A8 8 0 1 1 12 4zm-6 8a6 6 0 0 0 6 6V6a6 6 0 0 0-6 6z" fill-rule="evenodd"/></svg>',
+        'copy': '<svg width="24" height="24"><path d="M16 3H6a2 2 0 0 0-2 2v11h2V5h10V3zm1 4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9c0-1.2.9-2 2-2h7zm0 12V9h-7v10h7z" fill-rule="nonzero"/></svg>',
+        'crop': '<svg width="24" height="24"><path d="M17 8v7h2c.6 0 1 .4 1 1s-.4 1-1 1h-2v2c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-2H7V9H5a1 1 0 1 1 0-2h2V5c0-.6.4-1 1-1s1 .4 1 1v2h7l3-3 1 1-3 3zM9 9v5l5-5H9zm1 6h5v-5l-5 5z" fill-rule="evenodd"/></svg>',
+        'cut': '<svg width="24" height="24"><path d="M18 15c.6.7 1 1.4 1 2.3 0 .8-.2 1.5-.7 2l-.8.5-1 .2c-.4 0-.8 0-1.2-.3a3.9 3.9 0 0 1-2.1-2.2c-.2-.5-.3-1-.2-1.5l-1-1-1 1c0 .5 0 1-.2 1.5-.1.5-.4 1-.9 1.4-.3.4-.7.6-1.2.8l-1.2.3c-.4 0-.7 0-1-.2-.3 0-.6-.3-.8-.5-.5-.5-.8-1.2-.7-2 0-.9.4-1.6 1-2.2A3.7 3.7 0 0 1 8.6 14H9l1-1-4-4-.5-1a3.3 3.3 0 0 1 0-2c0-.4.3-.7.5-1l6 6 6-6 .5 1a3.3 3.3 0 0 1 0 2c0 .4-.3.7-.5 1l-4 4 1 1h.5c.4 0 .8 0 1.2.3.5.2.9.4 1.2.8zm-8.5 2.2l.1-.4v-.3-.4a1 1 0 0 0-.2-.5 1 1 0 0 0-.4-.2 1.6 1.6 0 0 0-.8 0 2.6 2.6 0 0 0-.8.3 2.5 2.5 0 0 0-.9 1.1l-.1.4v.7l.2.5.5.2h.7a2.5 2.5 0 0 0 .8-.3 2.8 2.8 0 0 0 1-1zm2.5-2.8c.4 0 .7-.1 1-.4.3-.3.4-.6.4-1s-.1-.7-.4-1c-.3-.3-.6-.4-1-.4s-.7.1-1 .4c-.3.3-.4.6-.4 1s.1.7.4 1c.3.3.6.4 1 .4zm5.4 4l.2-.5v-.4-.3a2.6 2.6 0 0 0-.3-.8 2.4 2.4 0 0 0-.7-.7 2.5 2.5 0 0 0-.8-.3 1.5 1.5 0 0 0-.8 0 1 1 0 0 0-.4.2 1 1 0 0 0-.2.5 1.5 1.5 0 0 0 0 .7v.4l.3.4.3.4a2.8 2.8 0 0 0 .8.5l.4.1h.7l.5-.2z" fill-rule="evenodd"/></svg>',
+        'document-properties': '<svg width="24" height="24"><path d="M14.4 3H7a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V7.6L14.4 3zM17 19H7V5h6v4h4v10z" fill-rule="nonzero"/></svg>',
+        'drag': '<svg width="24" height="24"><path d="M13 5h2v2h-2V5zm0 4h2v2h-2V9zM9 9h2v2H9V9zm4 4h2v2h-2v-2zm-4 0h2v2H9v-2zm0 4h2v2H9v-2zm4 0h2v2h-2v-2zM9 5h2v2H9V5z" fill-rule="evenodd"/></svg>',
+        'duplicate': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M16 3v2H6v11H4V5c0-1.1.9-2 2-2h10zm3 8h-2V9h-7v10h9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9c0-1.2.9-2 2-2h7a2 2 0 0 1 2 2v2z"/><path d="M17 14h1a1 1 0 0 1 0 2h-1v1a1 1 0 0 1-2 0v-1h-1a1 1 0 0 1 0-2h1v-1a1 1 0 0 1 2 0v1z"/></g></svg>',
+        'edit-image': '<svg width="24" height="24"><path d="M18 16h2V7a2 2 0 0 0-2-2H7v2h11v9zM6 17h15a1 1 0 0 1 0 2h-1v1a1 1 0 0 1-2 0v-1H6a2 2 0 0 1-2-2V7H3a1 1 0 1 1 0-2h1V4a1 1 0 1 1 2 0v13zm3-5.3l1.3 2 3-4.7 3.7 6H7l2-3.3z" fill-rule="nonzero"/></svg>',
+        'embed-page': '<svg width="24" height="24"><path d="M19 6V5H5v14h2A13 13 0 0 1 19 6zm0 1.4c-.8.8-1.6 2.4-2.2 4.6H19V7.4zm0 5.6h-2.4c-.4 1.8-.6 3.8-.6 6h3v-6zm-4 6c0-2.2.2-4.2.6-6H13c-.7 1.8-1.1 3.8-1.1 6h3zm-4 0c0-2.2.4-4.2 1-6H9.6A12 12 0 0 0 8 19h3zM4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm11.8 9c.4-1.9 1-3.4 1.8-4.5a9.2 9.2 0 0 0-4 4.5h2.2zm-3.4 0a12 12 0 0 1 2.8-4 12 12 0 0 0-5 4h2.2z" fill-rule="nonzero"/></svg>',
+        'embed': '<svg width="24" height="24"><path d="M4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm1 2v14h14V5H5zm4.8 2.6l5.6 4a.5.5 0 0 1 0 .8l-5.6 4A.5.5 0 0 1 9 16V8a.5.5 0 0 1 .8-.4z" fill-rule="nonzero"/></svg>',
+        'emoji': '<svg width="24" height="24"><path d="M9 11c.6 0 1-.4 1-1s-.4-1-1-1a1 1 0 0 0-1 1c0 .6.4 1 1 1zm6 0c.6 0 1-.4 1-1s-.4-1-1-1a1 1 0 0 0-1 1c0 .6.4 1 1 1zm-3 5.5c2.1 0 4-1.5 4.4-3.5H7.6c.5 2 2.3 3.5 4.4 3.5zM12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13z" fill-rule="nonzero"/></svg>',
+        'fill': '<svg width="24" height="26"><path d="M16.6 12l-9-9-1.4 1.4 2.4 2.4-5.2 5.1c-.5.6-.5 1.6 0 2.2L9 19.6a1.5 1.5 0 0 0 2.2 0l5.5-5.5c.5-.6.5-1.6 0-2.2zM5.2 13L10 8.2l4.8 4.8H5.2zM19 14.5s-2 2.2-2 3.5c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.3-2-3.5-2-3.5z" fill-rule="nonzero"/></svg>',
+        'flip-horizontally': '<svg width="24" height="24"><path d="M14 19h2v-2h-2v2zm4-8h2V9h-2v2zM4 7v10c0 1.1.9 2 2 2h3v-2H6V7h3V5H6a2 2 0 0 0-2 2zm14-2v2h2a2 2 0 0 0-2-2zm-7 16h2V3h-2v18zm7-6h2v-2h-2v2zm-4-8h2V5h-2v2zm4 12a2 2 0 0 0 2-2h-2v2z" fill-rule="nonzero"/></svg>',
+        'flip-vertically': '<svg width="24" height="24"><path d="M5 14v2h2v-2H5zm8 4v2h2v-2h-2zm4-14H7a2 2 0 0 0-2 2v3h2V6h10v3h2V6a2 2 0 0 0-2-2zm2 14h-2v2a2 2 0 0 0 2-2zM3 11v2h18v-2H3zm6 7v2h2v-2H9zm8-4v2h2v-2h-2zM5 18c0 1.1.9 2 2 2v-2H5z" fill-rule="nonzero"/></svg>',
+        'format-painter': '<svg width="24" height="24"><path d="M18 5V4c0-.5-.4-1-1-1H5a1 1 0 0 0-1 1v4c0 .6.5 1 1 1h12c.6 0 1-.4 1-1V7h1v4H9v9c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-7h8V5h-3z" fill-rule="nonzero"/></svg>',
+        'fullscreen': '<svg width="24" height="24"><path d="M15.3 10l-1.2-1.3 2.9-3h-2.3a.9.9 0 1 1 0-1.7H19c.5 0 .9.4.9.9v4.4a.9.9 0 1 1-1.8 0V7l-2.9 3zm0 4l3 3v-2.3a.9.9 0 1 1 1.7 0V19c0 .5-.4.9-.9.9h-4.4a.9.9 0 1 1 0-1.8H17l-3-2.9 1.3-1.2zM10 15.4l-2.9 3h2.3a.9.9 0 1 1 0 1.7H5a.9.9 0 0 1-.9-.9v-4.4a.9.9 0 1 1 1.8 0V17l2.9-3 1.2 1.3zM8.7 10L5.7 7v2.3a.9.9 0 0 1-1.7 0V5c0-.5.4-.9.9-.9h4.4a.9.9 0 0 1 0 1.8H7l3 2.9-1.3 1.2z" fill-rule="nonzero"/></svg>',
+        'gamma': '<svg width="24" height="24"><path d="M4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm1 2v14h14V5H5zm6.5 11.8V14L9.2 8.7a5.1 5.1 0 0 0-.4-.8l-.1-.2H8 8v-1l.3-.1.3-.1h.7a1 1 0 0 1 .6.5l.1.3a8.5 8.5 0 0 1 .3.6l1.9 4.6 2-5.2a1 1 0 0 1 1-.6.5.5 0 0 1 .5.6L13 14v2.8a.7.7 0 0 1-1.4 0z" fill-rule="nonzero"/></svg>',
+        'help': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M12 5.5a6.5 6.5 0 0 0-6 9 6.3 6.3 0 0 0 1.4 2l1 1a6.3 6.3 0 0 0 3.6 1 6.5 6.5 0 0 0 6-9 6.3 6.3 0 0 0-1.4-2l-1-1a6.3 6.3 0 0 0-3.6-1zM12 4a7.8 7.8 0 0 1 5.7 2.3A8 8 0 1 1 12 4z"/><path d="M9.6 9.7a.7.7 0 0 1-.7-.8c0-1.1 1.5-1.8 3.2-1.8 1.8 0 3.2.8 3.2 2.4 0 1.4-.4 2.1-1.5 2.8-.2 0-.3.1-.3.2a2 2 0 0 0-.8.8.8.8 0 0 1-1.4-.6c.3-.7.8-1 1.3-1.5l.4-.2c.7-.4.8-.6.8-1.5 0-.5-.6-.9-1.7-.9-.5 0-1 .1-1.4.3-.2 0-.3.1-.3.2v-.2c0 .4-.4.8-.8.8z" fill-rule="nonzero"/><circle cx="12" cy="16" r="1"/></g></svg>',
+        'highlight-bg-color': '<svg width="24" height="24"><g fill-rule="evenodd"><path id="tox-icon-highlight-bg-color__color" d="M3 18h18v3H3z"/><path fill-rule="nonzero" d="M7.7 16.7H3l3.3-3.3-.7-.8L10.2 8l4 4.1-4 4.2c-.2.2-.6.2-.8 0l-.6-.7-1.1 1.1zm5-7.5L11 7.4l3-2.9a2 2 0 0 1 2.6 0L18 6c.7.7.7 2 0 2.7l-2.9 2.9-1.8-1.8-.5-.6"/></g></svg>',
+        'home': '<svg width="24" height="24"><path fill-rule="nonzero" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>',
+        'horizontal-rule': '<svg width="24" height="24"><path d="M4 11h16v2H4z" fill-rule="evenodd"/></svg>',
+        'image-options': '<svg width="24" height="24"><path d="M6 10a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm12 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm-6 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2z" fill-rule="nonzero"/></svg>',
+        'image': '<svg width="24" height="24"><path d="M5 15.7l3.3-3.2c.3-.3.7-.3 1 0L12 15l4.1-4c.3-.4.8-.4 1 0l2 1.9V5H5v10.7zM5 18V19h3l2.8-2.9-2-2L5 17.9zm14-3l-2.5-2.4-6.4 6.5H19v-4zM4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill-rule="nonzero"/></svg>',
+        'indent': '<svg width="24" height="24"><path d="M7 5h12c.6 0 1 .4 1 1s-.4 1-1 1H7a1 1 0 1 1 0-2zm5 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm0 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm-5 4h12a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2zm-2.6-3.8L6.2 12l-1.8-1.2a1 1 0 0 1 1.2-1.6l3 2a1 1 0 0 1 0 1.6l-3 2a1 1 0 1 1-1.2-1.6z" fill-rule="evenodd"/></svg>',
+        'info': '<svg width="24" height="24"><path d="M12 4a7.8 7.8 0 0 1 5.7 2.3A8 8 0 1 1 12 4zm-1 3v2h2V7h-2zm3 10v-1h-1v-5h-3v1h1v4h-1v1h4z" fill-rule="evenodd"/></svg>',
+        'insert-character': '<svg width="24" height="24"><path d="M15 18h4l1-2v4h-6v-3.3l1.4-1a6 6 0 0 0 1.8-2.9 6.3 6.3 0 0 0-.1-4.1 5.8 5.8 0 0 0-3-3.2c-.6-.3-1.3-.5-2.1-.5a5.1 5.1 0 0 0-3.9 1.8 6.3 6.3 0 0 0-1.3 6 6.2 6.2 0 0 0 1.8 3l1.4.9V20H4v-4l1 2h4v-.5l-2-1L5.4 15A6.5 6.5 0 0 1 4 11c0-1 .2-1.9.6-2.7A7 7 0 0 1 6.3 6C7.1 5.4 8 5 9 4.5c1-.3 2-.5 3.1-.5a8.8 8.8 0 0 1 5.7 2 7 7 0 0 1 1.7 2.3 6 6 0 0 1 .2 4.8c-.2.7-.6 1.3-1 1.9a7.6 7.6 0 0 1-3.6 2.5v.5z" fill-rule="evenodd"/></svg>',
+        'insert-time': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M12 19a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0 2a9 9 0 1 1 0-18 9 9 0 0 1 0 18z"/><path d="M16 12h-3V7c0-.6-.4-1-1-1a1 1 0 0 0-1 1v7h5c.6 0 1-.4 1-1s-.4-1-1-1z"/></g></svg>',
+        'invert': '<svg width="24" height="24"><path d="M18 19.3L16.5 18a5.8 5.8 0 0 1-3.1 1.9 6.1 6.1 0 0 1-5.5-1.6A5.8 5.8 0 0 1 6 14v-.3l.1-1.2A13.9 13.9 0 0 1 7.7 9l-3-3 .7-.8 2.8 2.9 9 8.9 1.5 1.6-.7.6zm0-5.5v.3l-.1 1.1-.4 1-1.2-1.2a4.3 4.3 0 0 0 .2-1v-.2c0-.4 0-.8-.2-1.3l-.5-1.4a14.8 14.8 0 0 0-3-4.2L12 6a26.1 26.1 0 0 0-2.2 2.5l-1-1a20.9 20.9 0 0 1 2.9-3.3L12 4l1 .8a22.2 22.2 0 0 1 4 5.4c.6 1.2 1 2.4 1 3.6z" fill-rule="evenodd"/></svg>',
+        'italic': '<svg width="24" height="24"><path d="M16.7 4.7l-.1.9h-.3c-.6 0-1 0-1.4.3-.3.3-.4.6-.5 1.1l-2.1 9.8v.6c0 .5.4.8 1.4.8h.2l-.2.8H8l.2-.8h.2c1.1 0 1.8-.5 2-1.5l2-9.8.1-.5c0-.6-.4-.8-1.4-.8h-.3l.2-.9h5.8z" fill-rule="evenodd"/></svg>',
+        'line': '<svg width="24" height="24"><path d="M15 9l-8 8H4v-3l8-8 3 3zm1-1l-3-3 1-1h1c-.2 0 0 0 0 0l2 2s0 .2 0 0v1l-1 1zM4 18h16v2H4v-2z" fill-rule="evenodd"/></svg>',
+        'link': '<svg width="24" height="24"><path d="M6.2 12.3a1 1 0 0 1 1.4 1.4l-2.1 2a2 2 0 1 0 2.7 2.8l4.8-4.8a1 1 0 0 0 0-1.4 1 1 0 1 1 1.4-1.3 2.9 2.9 0 0 1 0 4L9.6 20a3.9 3.9 0 0 1-5.5-5.5l2-2zm11.6-.6a1 1 0 0 1-1.4-1.4l2-2a2 2 0 1 0-2.6-2.8L11 10.3a1 1 0 0 0 0 1.4A1 1 0 1 1 9.6 13a2.9 2.9 0 0 1 0-4L14.4 4a3.9 3.9 0 0 1 5.5 5.5l-2 2z" fill-rule="nonzero"/></svg>',
+        'list-bull-circle': '<svg width="48" height="48"><g fill-rule="evenodd"><path d="M11 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM11 26a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM11 36a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill-rule="nonzero"/><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/></g></svg>',
+        'list-bull-default': '<svg width="48" height="48"><g fill-rule="evenodd"><circle cx="11" cy="14" r="3"/><circle cx="11" cy="24" r="3"/><circle cx="11" cy="34" r="3"/><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/></g></svg>',
+        'list-bull-square': '<svg width="48" height="48"><g fill-rule="evenodd"><path d="M8 11h6v6H8zM8 21h6v6H8zM8 31h6v6H8z"/><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/></g></svg>',
+        'list-num-default': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M10 17v-4.8l-1.5 1v-1.1l1.6-1h1.2V17h-1.2zm3.6.1c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .7.3.7.7 0 .4-.2.7-.7.7zm-5 5.7c0-1.2.8-2 2.1-2s2.1.8 2.1 1.8c0 .7-.3 1.2-1.4 2.2l-1.1 1v.2h2.6v1H8.6v-.9l2-1.9c.8-.8 1-1.1 1-1.5 0-.5-.4-.8-1-.8-.5 0-.9.3-.9.9H8.5zm6.3 4.3c-.5 0-.7-.3-.7-.7 0-.4.2-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zM10 34.4v-1h.7c.6 0 1-.3 1-.8 0-.4-.4-.7-1-.7s-1 .3-1 .8H8.6c0-1.1 1-1.8 2.2-1.8 1.3 0 2.1.6 2.1 1.6 0 .7-.4 1.2-1 1.3v.1c.8.1 1.3.7 1.3 1.4 0 1-1 1.9-2.4 1.9-1.3 0-2.2-.8-2.3-2h1.2c0 .6.5 1 1.1 1 .7 0 1-.4 1-1 0-.5-.3-.8-1-.8h-.7zm4.7 2.7c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .8.3.8.7 0 .4-.3.7-.8.7z"/></g></svg>',
+        'list-num-lower-alpha': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M10.3 15.2c.5 0 1-.4 1-.9V14h-1c-.5.1-.8.3-.8.6 0 .4.3.6.8.6zm-.4.9c-1 0-1.5-.6-1.5-1.4 0-.8.6-1.3 1.7-1.4h1.1v-.4c0-.4-.2-.6-.7-.6-.5 0-.8.1-.9.4h-1c0-.8.8-1.4 2-1.4 1.1 0 1.8.6 1.8 1.6V16h-1.1v-.6h-.1c-.2.4-.7.7-1.3.7zm4.6 0c-.5 0-.7-.3-.7-.7 0-.4.2-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm-3.2 10c-.6 0-1.2-.3-1.4-.8v.7H8.5v-6.3H10v2.5c.3-.5.8-.9 1.4-.9 1.2 0 1.9 1 1.9 2.4 0 1.5-.7 2.4-1.9 2.4zm-.4-3.7c-.7 0-1 .5-1 1.3s.3 1.4 1 1.4c.6 0 1-.6 1-1.4 0-.8-.4-1.3-1-1.3zm4 3.7c-.5 0-.7-.3-.7-.7 0-.4.2-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm-2.2 7h-1.2c0-.5-.4-.8-.9-.8-.6 0-1 .5-1 1.4 0 1 .4 1.4 1 1.4.5 0 .8-.2 1-.7h1c0 1-.8 1.7-2 1.7-1.4 0-2.2-.9-2.2-2.4s.8-2.4 2.2-2.4c1.2 0 2 .7 2 1.7zm1.8 3c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7z"/></g></svg>',
+        'list-num-lower-greek': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M10.5 15c.7 0 1-.5 1-1.3s-.3-1.3-1-1.3c-.5 0-.9.5-.9 1.3s.4 1.4 1 1.4zm-.3 1c-1.1 0-1.8-.8-1.8-2.3 0-1.5.7-2.4 1.8-2.4.7 0 1.1.4 1.3 1h.1v-.9h1.2v3.2c0 .4.1.5.4.5h.2v.9h-.6c-.6 0-1-.2-1.1-.7h-.1c-.2.4-.7.8-1.4.8zm5 .1c-.5 0-.8-.3-.8-.7 0-.4.3-.7.7-.7.5 0 .8.3.8.7 0 .4-.3.7-.8.7zm-4.9 7v-1h.3c.6 0 1-.2 1-.7 0-.5-.4-.8-1-.8-.5 0-.8.3-.8 1v2.2c0 .8.4 1.3 1.1 1.3.6 0 1-.4 1-1s-.5-1-1.3-1h-.3zM8.6 22c0-1.5.7-2.3 2-2.3 1.2 0 2 .6 2 1.6 0 .6-.3 1-.8 1.3.8.3 1.3.8 1.3 1.7 0 1.2-.8 1.9-1.9 1.9-.6 0-1.1-.3-1.3-.8v2.2H8.5V22zm6.2 4.2c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .7.3.7.7 0 .4-.2.7-.7.7zm-4.5 8.5L8 30h1.4l1.7 3.5 1.7-3.5h1.1l-2.2 4.6v.1c.5.8.7 1.4.7 1.8 0 .4-.1.8-.4 1-.2.2-.6.3-1 .3-.9 0-1.3-.4-1.3-1.2 0-.5.2-1 .5-1.7l.1-.2zm.7 1a2 2 0 0 0-.4.9c0 .3.1.4.4.4.3 0 .4-.1.4-.4 0-.2-.1-.6-.4-1zm4.5.5c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7z"/></g></svg>',
+        'list-num-lower-roman': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M15.1 16v-1.2h1.3V16H15zm0 10v-1.2h1.3V26H15zm0 10v-1.2h1.3V36H15z"/><path fill-rule="nonzero" d="M12 21h1.5v5H12zM12 31h1.5v5H12zM9 21h1.5v5H9zM9 31h1.5v5H9zM6 31h1.5v5H6zM12 11h1.5v5H12zM12 19h1.5v1H12zM12 29h1.5v1H12zM9 19h1.5v1H9zM9 29h1.5v1H9zM6 29h1.5v1H6zM12 9h1.5v1H12z"/></g></svg>',
+        'list-num-upper-alpha': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M12.6 17l-.5-1.4h-2L9.5 17H8.3l2-6H12l2 6h-1.3zM11 12.3l-.7 2.3h1.6l-.8-2.3zm4.7 4.8c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .7.3.7.7 0 .4-.2.7-.7.7zM11.4 27H8.7v-6h2.6c1.2 0 1.9.6 1.9 1.5 0 .6-.5 1.2-1 1.3.7.1 1.3.7 1.3 1.5 0 1-.8 1.7-2 1.7zM10 22v1.5h1c.6 0 1-.3 1-.8 0-.4-.4-.7-1-.7h-1zm0 4H11c.7 0 1.1-.3 1.1-.8 0-.6-.4-.9-1.1-.9H10V26zm5.4 1.1c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm-4.1 10c-1.8 0-2.8-1.1-2.8-3.1s1-3.1 2.8-3.1c1.4 0 2.5.9 2.6 2.2h-1.3c0-.7-.6-1.1-1.3-1.1-1 0-1.6.7-1.6 2s.6 2 1.6 2c.7 0 1.2-.4 1.4-1h1.2c-.1 1.3-1.2 2.2-2.6 2.2zm4.5 0c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7z"/></g></svg>',
+        'list-num-upper-roman': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M15.1 17v-1.2h1.3V17H15zm0 10v-1.2h1.3V27H15zm0 10v-1.2h1.3V37H15z"/><path fill-rule="nonzero" d="M12 20h1.5v7H12zM12 30h1.5v7H12zM9 20h1.5v7H9zM9 30h1.5v7H9zM6 30h1.5v7H6zM12 10h1.5v7H12z"/></g></svg>',
+        'lock': '<svg width="24" height="24"><path d="M16.3 11c.2 0 .3 0 .5.2l.2.6v7.4c0 .3 0 .4-.2.6l-.6.2H7.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6v-7.4c0-.3 0-.4.2-.6l.5-.2H8V8c0-.8.3-1.5.9-2.1.6-.6 1.3-.9 2.1-.9h2c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v3h.3zM10 8v3h4V8a1 1 0 0 0-.3-.7A1 1 0 0 0 13 7h-2a1 1 0 0 0-.7.3 1 1 0 0 0-.3.7z" fill-rule="evenodd"/></svg>',
+        'ltr': '<svg width="24" height="24"><path d="M11 5h7a1 1 0 0 1 0 2h-1v11a1 1 0 0 1-2 0V7h-2v11a1 1 0 0 1-2 0v-6c-.5 0-1 0-1.4-.3A3.4 3.4 0 0 1 7.8 10a3.3 3.3 0 0 1 0-2.8 3.4 3.4 0 0 1 1.8-1.8L11 5zM4.4 16.2L6.2 15l-1.8-1.2a1 1 0 0 1 1.2-1.6l3 2a1 1 0 0 1 0 1.6l-3 2a1 1 0 1 1-1.2-1.6z" fill-rule="evenodd"/></svg>',
+        'more-drawer': '<svg width="24" height="24"><path d="M6 10a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm12 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm-6 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2z" fill-rule="nonzero"/></svg>',
+        'new-document': '<svg width="24" height="24"><path d="M14.4 3H7a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V7.6L14.4 3zM17 19H7V5h6v4h4v10z" fill-rule="nonzero"/></svg>',
+        'new-tab': '<svg width="24" height="24"><path d="M15 13l2-2v8H5V7h8l-2 2H7v8h8v-4zm4-8v5.5l-2-2-5.6 5.5H10v-1.4L15.5 7l-2-2H19z" fill-rule="evenodd"/></svg>',
+        'non-breaking': '<svg width="24" height="24"><path d="M11 11H8a1 1 0 1 1 0-2h3V6c0-.6.4-1 1-1s1 .4 1 1v3h3c.6 0 1 .4 1 1s-.4 1-1 1h-3v3c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-3zm10 4v5H3v-5c0-.6.4-1 1-1s1 .4 1 1v3h14v-3c0-.6.4-1 1-1s1 .4 1 1z" fill-rule="evenodd"/></svg>',
+        'notice': '<svg width="24" height="24"><path d="M17.8 9.8L15.4 4 20 8.5v7L15.5 20h-7L4 15.5v-7L8.5 4h7l2.3 5.8zm0 0l2.2 5.7-2.3-5.8zM13 17v-2h-2v2h2zm0-4V7h-2v6h2z" fill-rule="evenodd"/></svg>',
+        'ordered-list': '<svg width="24" height="24"><path d="M10 17h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 1 1 0-2zM6 4v3.5c0 .3-.2.5-.5.5a.5.5 0 0 1-.5-.5V5h-.5a.5.5 0 0 1 0-1H6zm-1 8.8l.2.2h1.3c.3 0 .5.2.5.5s-.2.5-.5.5H4.9a1 1 0 0 1-.9-1V13c0-.4.3-.8.6-1l1.2-.4.2-.3a.2.2 0 0 0-.2-.2H4.5a.5.5 0 0 1-.5-.5c0-.3.2-.5.5-.5h1.6c.5 0 .9.4.9 1v.1c0 .4-.3.8-.6 1l-1.2.4-.2.3zM7 17v2c0 .6-.4 1-1 1H4.5a.5.5 0 0 1 0-1h1.2c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3H4.4a.4.4 0 1 1 0-.8h1.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3H4.5a.5.5 0 1 1 0-1H6c.6 0 1 .4 1 1z" fill-rule="evenodd"/></svg>',
+        'orientation': '<svg width="24" height="24"><path d="M7.3 6.4L1 13l6.4 6.5 6.5-6.5-6.5-6.5zM3.7 13l3.6-3.7L11 13l-3.7 3.7-3.6-3.7zM12 6l2.8 2.7c.3.3.3.8 0 1-.3.4-.9.4-1.2 0L9.2 5.7a.8.8 0 0 1 0-1.2L13.6.2c.3-.3.9-.3 1.2 0 .3.3.3.8 0 1.1L12 4h1a9 9 0 1 1-4.3 16.9l1.5-1.5A7 7 0 1 0 13 6h-1z" fill-rule="nonzero"/></svg>',
+        'outdent': '<svg width="24" height="24"><path d="M7 5h12c.6 0 1 .4 1 1s-.4 1-1 1H7a1 1 0 1 1 0-2zm5 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm0 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm-5 4h12a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2zm1.6-3.8a1 1 0 0 1-1.2 1.6l-3-2a1 1 0 0 1 0-1.6l3-2a1 1 0 0 1 1.2 1.6L6.8 12l1.8 1.2z" fill-rule="evenodd"/></svg>',
+        'page-break': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M5 11c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h1c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2zm4 0c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h1c.6 0 1 .4 1 1s-.4 1-1 1h-1a1 1 0 0 1 0-2zm4 0c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zM7 3v5h10V3c0-.6.4-1 1-1s1 .4 1 1v7H5V3c0-.6.4-1 1-1s1 .4 1 1zM6 22a1 1 0 0 1-1-1v-7h14v7c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-5H7v5c0 .6-.4 1-1 1z"/></g></svg>',
+        'paragraph': '<svg width="24" height="24"><path d="M10 5h7a1 1 0 0 1 0 2h-1v11a1 1 0 0 1-2 0V7h-2v11a1 1 0 0 1-2 0v-6c-.5 0-1 0-1.4-.3A3.4 3.4 0 0 1 6.8 10a3.3 3.3 0 0 1 0-2.8 3.4 3.4 0 0 1 1.8-1.8L10 5z" fill-rule="evenodd"/></svg>',
+        'paste-text': '<svg width="24" height="24"><path d="M18 9V5h-2v1c0 .6-.4 1-1 1H9a1 1 0 0 1-1-1V5H6v13h3V9h9zM9 20H6a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.2A3 3 0 0 1 12 1a3 3 0 0 1 2.8 2H18a2 2 0 0 1 2 2v4h1v12H9v-1zm1.5-9.5v9h9v-9h-9zM12 3a1 1 0 0 0-1 1c0 .5.4 1 1 1s1-.5 1-1-.4-1-1-1zm0 9h6v2h-.5l-.5-1h-1v4h.8v1h-3.6v-1h.8v-4h-1l-.5 1H12v-2z" fill-rule="nonzero"/></svg>',
+        'paste': '<svg width="24" height="24"><path d="M18 9V5h-2v1c0 .6-.4 1-1 1H9a1 1 0 0 1-1-1V5H6v13h3V9h9zM9 20H6a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.2A3 3 0 0 1 12 1a3 3 0 0 1 2.8 2H18a2 2 0 0 1 2 2v4h1v12H9v-1zm1.5-9.5v9h9v-9h-9zM12 3a1 1 0 0 0-1 1c0 .5.4 1 1 1s1-.5 1-1-.4-1-1-1z" fill-rule="nonzero"/></svg>',
+        'permanent-pen': '<svg width="24" height="24"><path d="M10.5 17.5L8 20H3v-3l3.5-3.5a2 2 0 0 1 0-3L14 3l1 1-7.3 7.3a1 1 0 0 0 0 1.4l3.6 3.6c.4.4 1 .4 1.4 0L20 9l1 1-7.6 7.6a2 2 0 0 1-2.8 0l-.1-.1z" fill-rule="nonzero"/></svg>',
+        'plus': '<svg width="24" height="24"><g fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke="#000" stroke-width="2"><path d="M12 5v14M5 12h14"/></g></svg>',
+        'preferences': '<svg width="24" height="24"><path d="M20.1 13.5l-1.9.2a5.8 5.8 0 0 1-.6 1.5l1.2 1.5c.4.4.3 1 0 1.4l-.7.7a1 1 0 0 1-1.4 0l-1.5-1.2a6.2 6.2 0 0 1-1.5.6l-.2 1.9c0 .5-.5.9-1 .9h-1a1 1 0 0 1-1-.9l-.2-1.9a5.8 5.8 0 0 1-1.5-.6l-1.5 1.2a1 1 0 0 1-1.4 0l-.7-.7a1 1 0 0 1 0-1.4l1.2-1.5a6.2 6.2 0 0 1-.6-1.5l-1.9-.2a1 1 0 0 1-.9-1v-1c0-.5.4-1 .9-1l1.9-.2a5.8 5.8 0 0 1 .6-1.5L5.2 7.3a1 1 0 0 1 0-1.4l.7-.7a1 1 0 0 1 1.4 0l1.5 1.2a6.2 6.2 0 0 1 1.5-.6l.2-1.9c0-.5.5-.9 1-.9h1c.5 0 1 .4 1 .9l.2 1.9a5.8 5.8 0 0 1 1.5.6l1.5-1.2a1 1 0 0 1 1.4 0l.7.7c.3.4.4 1 0 1.4l-1.2 1.5a6.2 6.2 0 0 1 .6 1.5l1.9.2c.5 0 .9.5.9 1v1c0 .5-.4 1-.9 1zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill-rule="evenodd"/></svg>',
+        'preview': '<svg width="24" height="24"><path d="M3.5 12.5c.5.8 1.1 1.6 1.8 2.3 2 2 4.2 3.2 6.7 3.2s4.7-1.2 6.7-3.2a16.2 16.2 0 0 0 2.1-2.8 15.7 15.7 0 0 0-2.1-2.8c-2-2-4.2-3.2-6.7-3.2a9.3 9.3 0 0 0-6.7 3.2A16.2 16.2 0 0 0 3.2 12c0 .2.2.3.3.5zm-2.4-1l.7-1.2L4 7.8C6.2 5.4 8.9 4 12 4c3 0 5.8 1.4 8.1 3.8a18.2 18.2 0 0 1 2.8 3.7v1l-.7 1.2-2.1 2.5c-2.3 2.4-5 3.8-8.1 3.8-3 0-5.8-1.4-8.1-3.8a18.2 18.2 0 0 1-2.8-3.7 1 1 0 0 1 0-1zm12-3.3a2 2 0 1 0 2.7 2.6 4 4 0 1 1-2.6-2.6z" fill-rule="nonzero"/></svg>',
+        'print': '<svg width="24" height="24"><path d="M18 8H6a3 3 0 0 0-3 3v6h2v3h14v-3h2v-6a3 3 0 0 0-3-3zm-1 10H7v-4h10v4zm.5-5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm.5-8H6v2h12V5z" fill-rule="nonzero"/></svg>',
+        'quote': '<svg width="24" height="24"><path d="M7.5 17h.9c.4 0 .7-.2.9-.6L11 13V8c0-.6-.4-1-1-1H6a1 1 0 0 0-1 1v4c0 .6.4 1 1 1h2l-1.3 2.7a1 1 0 0 0 .8 1.3zm8 0h.9c.4 0 .7-.2.9-.6L19 13V8c0-.6-.4-1-1-1h-4a1 1 0 0 0-1 1v4c0 .6.4 1 1 1h2l-1.3 2.7a1 1 0 0 0 .8 1.3z" fill-rule="nonzero"/></svg>',
+        'redo': '<svg width="24" height="24"><path d="M17.6 10H12c-2.8 0-4.4 1.4-4.9 3.5-.4 2 .3 4 1.4 4.6a1 1 0 1 1-1 1.8c-2-1.2-2.9-4.1-2.3-6.8.6-3 3-5.1 6.8-5.1h5.6l-3.3-3.3a1 1 0 1 1 1.4-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3z" fill-rule="nonzero"/></svg>',
+        'reload': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M5 22.1l-1.2-4.7v-.2a1 1 0 0 1 1-1l5 .4a1 1 0 1 1-.2 2l-2.2-.2a7.8 7.8 0 0 0 8.4.2 7.5 7.5 0 0 0 3.5-6.4 1 1 0 1 1 2 0 9.5 9.5 0 0 1-4.5 8 9.9 9.9 0 0 1-10.2 0l.4 1.4a1 1 0 1 1-2 .5zM13.6 7.4c0-.5.5-1 1-.9l2.8.2a8 8 0 0 0-9.5-1 7.5 7.5 0 0 0-3.6 7 1 1 0 0 1-2 0 9.5 9.5 0 0 1 4.5-8.6 10 10 0 0 1 10.9.3l-.3-1a1 1 0 0 1 2-.5l1.1 4.8a1 1 0 0 1-1 1.2l-5-.4a1 1 0 0 1-.9-1z"/></g></svg>',
+        'remove-formatting': '<svg width="24" height="24"><path d="M13.2 6a1 1 0 0 1 0 .2l-2.6 10a1 1 0 0 1-1 .8h-.2a.8.8 0 0 1-.8-1l2.6-10H8a1 1 0 1 1 0-2h9a1 1 0 0 1 0 2h-3.8zM5 18h7a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm13 1.5L16.5 18 15 19.5a.7.7 0 0 1-1-1l1.5-1.5-1.5-1.5a.7.7 0 0 1 1-1l1.5 1.5 1.5-1.5a.7.7 0 0 1 1 1L17.5 17l1.5 1.5a.7.7 0 0 1-1 1z" fill-rule="evenodd"/></svg>',
+        'remove': '<svg width="24" height="24"><path d="M16 7h3a1 1 0 0 1 0 2h-1v9a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9H5a1 1 0 1 1 0-2h3V6a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1zm-2 0V6c0-.6-.4-1-1-1h-2a1 1 0 0 0-1 1v1h4zm2 2H8v9c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V9zm-7 3a1 1 0 0 1 2 0v4a1 1 0 0 1-2 0v-4zm4 0a1 1 0 0 1 2 0v4a1 1 0 0 1-2 0v-4z" fill-rule="nonzero"/></svg>',
+        'resize-handle': '<svg width="10" height="10"><g fill-rule="nonzero"><path d="M8.1 1.1A.5.5 0 1 1 9 2l-7 7A.5.5 0 1 1 1 8l7-7zM8.1 5.1A.5.5 0 1 1 9 6l-3 3A.5.5 0 1 1 5 8l3-3z"/></g></svg>',
+        'resize': '<svg width="24" height="24"><path d="M4 5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h6c.3 0 .5.1.7.3.2.2.3.4.3.7 0 .3-.1.5-.3.7a1 1 0 0 1-.7.3H7.4L18 16.6V13c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3.3 0 .5.1.7.3.2.2.3.4.3.7v6c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3h-6a1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h3.6L6 7.4V11c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3 1 1 0 0 1-.7-.3A1 1 0 0 1 4 11V5z" fill-rule="evenodd"/></svg>',
+        'restore-draft': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M17 13c0 .6-.4 1-1 1h-4V8c0-.6.4-1 1-1s1 .4 1 1v4h2c.6 0 1 .4 1 1z"/><path d="M4.7 10H9a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v3l2.5-2.4a9.2 9.2 0 0 1 10.8-1.5A9 9 0 0 1 13.4 21c-2.4.1-4.7-.7-6.5-2.2a1 1 0 1 1 1.3-1.5 7.2 7.2 0 0 0 11.6-3.7 7 7 0 0 0-3.5-7.7A7.2 7.2 0 0 0 8 7L4.7 10z" fill-rule="nonzero"/></g></svg>',
+        'rotate-left': '<svg width="24" height="24"><path d="M4.7 10H9a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v3l2.5-2.4a9.2 9.2 0 0 1 10.8-1.5A9 9 0 0 1 13.4 21c-2.4.1-4.7-.7-6.5-2.2a1 1 0 1 1 1.3-1.5 7.2 7.2 0 0 0 11.6-3.7 7 7 0 0 0-3.5-7.7A7.2 7.2 0 0 0 8 7L4.7 10z" fill-rule="nonzero"/></svg>',
+        'rotate-right': '<svg width="24" height="24"><path d="M20 8V5a1 1 0 0 1 2 0v6c0 .6-.4 1-1 1h-6a1 1 0 0 1 0-2h4.3L16 7A7.2 7.2 0 0 0 7.7 6a7 7 0 0 0 3 13.1c1.9.1 3.7-.5 5-1.7a1 1 0 0 1 1.4 1.5A9.2 9.2 0 0 1 2.2 14c-.9-3.9 1-8 4.5-9.9 3.5-1.9 8-1.3 10.8 1.5L20 8z" fill-rule="nonzero"/></svg>',
+        'rtl': '<svg width="24" height="24"><path d="M8 5h8v2h-2v12h-2V7h-2v12H8v-7c-.5 0-1 0-1.4-.3A3.4 3.4 0 0 1 4.8 10a3.3 3.3 0 0 1 0-2.8 3.4 3.4 0 0 1 1.8-1.8L8 5zm12 11.2a1 1 0 1 1-1 1.6l-3-2a1 1 0 0 1 0-1.6l3-2a1 1 0 1 1 1 1.6L18.4 15l1.8 1.2z" fill-rule="evenodd"/></svg>',
+        'save': '<svg width="24" height="24"><path d="M5 16h14a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2c0-1.1.9-2 2-2zm0 2v2h14v-2H5zm10 0h2v2h-2v-2zm-4-6.4L8.7 9.3a1 1 0 1 0-1.4 1.4l4 4c.4.4 1 .4 1.4 0l4-4a1 1 0 1 0-1.4-1.4L13 11.6V4a1 1 0 0 0-2 0v7.6z" fill-rule="nonzero"/></svg>',
+        'search': '<svg width="24" height="24"><path d="M16 17.3a8 8 0 1 1 1.4-1.4l4.3 4.4a1 1 0 0 1-1.4 1.4l-4.4-4.3zm-5-.3a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill-rule="nonzero"/></svg>',
+        'select-all': '<svg width="24" height="24"><path d="M3 5h2V3a2 2 0 0 0-2 2zm0 8h2v-2H3v2zm4 8h2v-2H7v2zM3 9h2V7H3v2zm10-6h-2v2h2V3zm6 0v2h2a2 2 0 0 0-2-2zM5 21v-2H3c0 1.1.9 2 2 2zm-2-4h2v-2H3v2zM9 3H7v2h2V3zm2 18h2v-2h-2v2zm8-8h2v-2h-2v2zm0 8a2 2 0 0 0 2-2h-2v2zm0-12h2V7h-2v2zm0 8h2v-2h-2v2zm-4 4h2v-2h-2v2zm0-16h2V3h-2v2zM7 17h10V7H7v10zm2-8h6v6H9V9z" fill-rule="nonzero"/></svg>',
+        'selected': '<svg width="24" height="24"><path fill-rule="nonzero" d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2zm3.6 10.9L7 12.3a.7.7 0 0 0-1 1L9.6 17 18 8.6a.7.7 0 0 0 0-1 .7.7 0 0 0-1 0l-7.4 7.3z"/></svg>',
+        'settings': '<svg width="24" height="24"><path d="M11 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8v.3c0 .2 0 .3-.2.5l-.6.2H7.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6V8H5a1 1 0 1 1 0-2h2v-.3c0-.2 0-.3.2-.5l.5-.2h2.5c.3 0 .4 0 .6.2l.2.5V6zM8 8h2V6H8v2zm9 2.8v.2h2c.6 0 1 .4 1 1s-.4 1-1 1h-2v.3c0 .2 0 .3-.2.5l-.6.2h-2.4c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6V13H5a1 1 0 0 1 0-2h8v-.3c0-.2 0-.3.2-.5l.6-.2h2.4c.3 0 .4 0 .6.2l.2.6zM14 13h2v-2h-2v2zm-3 2.8v.2h8c.6 0 1 .4 1 1s-.4 1-1 1h-8v.3c0 .2 0 .3-.2.5l-.6.2H7.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6V18H5a1 1 0 0 1 0-2h2v-.3c0-.2 0-.3.2-.5l.5-.2h2.5c.3 0 .4 0 .6.2l.2.6zM8 18h2v-2H8v2z" fill-rule="evenodd"/></svg>',
+        'sharpen': '<svg width="24" height="24"><path d="M16 6l4 4-8 9-8-9 4-4h8zm-4 10.2l5.5-6.2-.1-.1H12v-.3h5.1l-.2-.2H12V9h4.6l-.2-.2H12v-.3h4.1l-.2-.2H12V8h3.6l-.2-.2H8.7L6.5 10l.1.1H12v.3H6.9l.2.2H12v.3H7.3l.2.2H12v.3H7.7l.3.2h4v.3H8.2l.2.2H12v.3H8.6l.3.2H12v.3H9l.3.2H12v.3H9.5l.2.2H12v.3h-2l.2.2H12v.3h-1.6l.2.2H12v.3h-1.1l.2.2h.9v.3h-.7l.2.2h.5v.3h-.3l.3.2z" fill-rule="evenodd"/></svg>',
+        'sourcecode': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M9.8 15.7c.3.3.3.8 0 1-.3.4-.9.4-1.2 0l-4.4-4.1a.8.8 0 0 1 0-1.2l4.4-4.2c.3-.3.9-.3 1.2 0 .3.3.3.8 0 1.1L6 12l3.8 3.7zM14.2 15.7c-.3.3-.3.8 0 1 .4.4.9.4 1.2 0l4.4-4.1c.3-.3.3-.9 0-1.2l-4.4-4.2a.8.8 0 0 0-1.2 0c-.3.3-.3.8 0 1.1L18 12l-3.8 3.7z"/></g></svg>',
+        'spell-check': '<svg width="24" height="24"><path d="M6 8v3H5V5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h2c.3 0 .5.1.7.3.2.2.3.4.3.7v6H8V8H6zm0-3v2h2V5H6zm13 0h-3v5h3v1h-3a1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7V5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h3v1zm-5 1.5l-.1.7c-.1.2-.3.3-.6.3.3 0 .5.1.6.3l.1.7V10c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3h-3V4h3c.3 0 .5.1.7.3.2.2.3.4.3.7v1.5zM13 10V8h-2v2h2zm0-3V5h-2v2h2zm3 5l1 1-6.5 7L7 15.5l1.3-1 2.2 2.2L16 12z" fill-rule="evenodd"/></svg>',
+        'strike-through': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M15.6 8.5c-.5-.7-1-1.1-1.3-1.3-.6-.4-1.3-.6-2-.6-2.7 0-2.8 1.7-2.8 2.1 0 1.6 1.8 2 3.2 2.3 4.4.9 4.6 2.8 4.6 3.9 0 1.4-.7 4.1-5 4.1A6.2 6.2 0 0 1 7 16.4l1.5-1.1c.4.6 1.6 2 3.7 2 1.6 0 2.5-.4 3-1.2.4-.8.3-2-.8-2.6-.7-.4-1.6-.7-2.9-1-1-.2-3.9-.8-3.9-3.6C7.6 6 10.3 5 12.4 5c2.9 0 4.2 1.6 4.7 2.4l-1.5 1.1z"/><path d="M5 11h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2z" fill-rule="nonzero"/></g></svg>',
+        'subscript': '<svg width="24" height="24"><path d="M10.4 10l4.6 4.6-1.4 1.4L9 11.4 4.4 16 3 14.6 7.6 10 3 5.4 4.4 4 9 8.6 13.6 4 15 5.4 10.4 10zM21 19h-5v-1l1-.8 1.7-1.6c.3-.4.5-.8.5-1.2 0-.3 0-.6-.2-.7-.2-.2-.5-.3-.9-.3a2 2 0 0 0-.8.2l-.7.3-.4-1.1 1-.6 1.2-.2c.8 0 1.4.3 1.8.7.4.4.6.9.6 1.5s-.2 1.1-.5 1.6a8 8 0 0 1-1.3 1.3l-.6.6h2.6V19z" fill-rule="nonzero"/></svg>',
+        'superscript': '<svg width="24" height="24"><path d="M15 9.4L10.4 14l4.6 4.6-1.4 1.4L9 15.4 4.4 20 3 18.6 7.6 14 3 9.4 4.4 8 9 12.6 13.6 8 15 9.4zm5.9 1.6h-5v-1l1-.8 1.7-1.6c.3-.5.5-.9.5-1.3 0-.3 0-.5-.2-.7-.2-.2-.5-.3-.9-.3l-.8.2-.7.4-.4-1.2c.2-.2.5-.4 1-.5.3-.2.8-.2 1.2-.2.8 0 1.4.2 1.8.6.4.4.6 1 .6 1.6 0 .5-.2 1-.5 1.5l-1.3 1.4-.6.5h2.6V11z" fill-rule="nonzero"/></svg>',
+        'table-cell-properties': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm10 10h-4v3h4v-3zm0-8h-4v3h4V7zM9 7H5v3h4V7zm-4 4v3h4v-3H5zm10 0v3h4v-3h-4zm0-1h4V7h-4v3zM5 15v3h4v-3H5zm10 3h4v-3h-4v3z" fill-rule="evenodd"/></svg>',
+        'table-cell-select-all': '<svg width="24" height="24"><path d="M12.5 5.5v6h6v-6h-6zm-1 0h-6v6h6v-6zm1 13h6v-6h-6v6zm-1 0v-6h-6v6h6zm-7-14h15v15h-15v-15z" fill-rule="nonzero"/></svg>',
+        'table-cell-select-inner': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M5.5 5.5v13h13v-13h-13zm-1-1h15v15h-15v-15z" opacity=".2"/><path d="M11.5 11.5v-7h1v7h7v1h-7v7h-1v-7h-7v-1h7z"/></g></svg>',
+        'table-delete-column': '<svg width="24" height="24"><path d="M9 11.2l1 1v.2l-1 1v-2.2zm5 1l1-1v2.2l-1-1v-.2zM20 5v14H4V5h16zm-1 2h-4v.8l-.2-.2-.8.8V7h-4v1.4l-.8-.8-.2.2V7H5v11h4v-1.8l.5.5.5-.4V18h4v-1.8l.8.8.2-.3V18h4V7zm-3.9 3.4l-1.8 1.9 1.8 1.9c.4.3.4.9 0 1.2-.3.3-.8.3-1.2 0L12 13.5l-1.8 1.9a.8.8 0 0 1-1.2 0 .9.9 0 0 1 0-1.2l1.8-1.9-1.9-2a.9.9 0 0 1 1.2-1.2l2 2 1.8-1.8c.3-.4.9-.4 1.2 0a.8.8 0 0 1 0 1.1z" fill-rule="evenodd"/></svg>',
+        'table-delete-row': '<svg width="24" height="24"><path d="M16.7 8.8l1.1 1.2-2.4 2.5L18 15l-1.2 1.2-2.5-2.5-2.4 2.5-1.3-1.2 2.5-2.5-2.5-2.5 1.2-1.3 2.6 2.6 2.4-2.5zM4 5h16v14H4V5zm15 5V7H5v3h4.8l1 1H5v3h5.8l-1 1H5v3h14v-3h-.4l-1-1H19v-3h-1.3l1-1h.3z" fill-rule="evenodd"/></svg>',
+        'table-delete-table': '<svg width="24" height="26"><path d="M4 6h16v14H4V6zm1 2v11h14V8H5zm11.7 8.7l-1.5 1.5L12 15l-3.3 3.2-1.4-1.5 3.2-3.2-3.3-3.2 1.5-1.5L12 12l3.2-3.2 1.5 1.5-3.2 3.2 3.2 3.2z" fill-rule="evenodd"/></svg>',
+        'table-insert-column-after': '<svg width="24" height="24"><path d="M14.3 9c.4 0 .7.3.7.6v2.2h2.1c.4 0 .7.3.7.7 0 .4-.3.7-.7.7H15v2.2c0 .3-.3.6-.7.6a.7.7 0 0 1-.6-.6v-2.2h-2.2a.7.7 0 0 1 0-1.4h2.2V9.6c0-.3.3-.6.6-.6zM4 5h16v14H4V5zm5 13v-3H5v3h4zm0-4v-3H5v3h4zm0-4V7H5v3h4zm10 8V7h-9v11h9z" fill-rule="evenodd"/></svg>',
+        'table-insert-column-before': '<svg width="24" height="24"><path d="M9.7 16a.7.7 0 0 1-.7-.6v-2.2H6.9a.7.7 0 0 1 0-1.4H9V9.6c0-.3.3-.6.7-.6.3 0 .6.3.6.6v2.2h2.2c.4 0 .8.3.8.7 0 .4-.4.7-.8.7h-2.2v2.2c0 .3-.3.6-.6.6zM4 5h16v14H4V5zm10 13V7H5v11h9zm5 0v-3h-4v3h4zm0-4v-3h-4v3h4zm0-4V7h-4v3h4z" fill-rule="evenodd"/></svg>',
+        'table-insert-row-above': '<svg width="24" height="24"><path d="M14.8 10.5c0 .3-.2.5-.5.5h-1.8v1.8c0 .3-.2.5-.5.5a.5.5 0 0 1-.5-.6V11H9.7a.5.5 0 0 1 0-1h1.8V8.3c0-.3.2-.6.5-.6s.5.3.5.6V10h1.8c.3 0 .5.2.5.5zM4 5h16v14H4V5zm5 13v-3H5v3h4zm5 0v-3h-4v3h4zm5 0v-3h-4v3h4zm0-4V7H5v7h14z" fill-rule="evenodd"/></svg>',
+        'table-insert-row-after': '<svg width="24" height="24"><path d="M9.2 14.5c0-.3.2-.5.5-.5h1.8v-1.8c0-.3.2-.5.5-.5s.5.2.5.6V14h1.8c.3 0 .5.2.5.5s-.2.5-.5.5h-1.8v1.7c0 .3-.2.6-.5.6a.5.5 0 0 1-.5-.6V15H9.7a.5.5 0 0 1-.5-.5zM4 5h16v14H4V5zm6 2v3h4V7h-4zM5 7v3h4V7H5zm14 11v-7H5v7h14zm0-8V7h-4v3h4z" fill-rule="evenodd"/></svg>',
+        'table-left-header': '<svg width="24" height="24"><path d="M4 5h16v13H4V5zm10 12v-3h-4v3h4zm0-4v-3h-4v3h4zm0-4V6h-4v3h4zm5 8v-3h-4v3h4zm0-4v-3h-4v3h4zm0-4V6h-4v3h4z" fill-rule="evenodd"/></svg>',
+        'table-merge-cells': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm6 13h9v-7h-9v7zm4-11h-4v3h4V7zM9 7H5v3h4V7zm-4 4v3h4v-3H5zm10-1h4V7h-4v3zM5 15v3h4v-3H5z" fill-rule="evenodd"/></svg>',
+        'table-row-properties': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm10 10h-4v3h4v-3zm0-8h-4v3h4V7zM9 7H5v3h4V7zm6 3h4V7h-4v3zM5 15v3h4v-3H5zm10 3h4v-3h-4v3z" fill-rule="evenodd"/></svg>',
+        'table-split-cells': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm6 2v3h4V7h-4zM9 18v-3H5v3h4zm0-4v-3H5v3h4zm0-4V7H5v3h4zm10 8v-7h-9v7h9zm0-8V7h-4v3h4zm-3.5 4.5l1.5 1.6c.3.2.3.7 0 1-.2.2-.7.2-1 0l-1.5-1.6-1.6 1.5c-.2.3-.7.3-1 0a.7.7 0 0 1 0-1l1.6-1.5-1.5-1.6a.7.7 0 0 1 1-1l1.5 1.6 1.6-1.5c.2-.3.7-.3 1 0 .2.2.2.7 0 1l-1.6 1.5z" fill-rule="evenodd"/></svg>',
+        'table-top-header': '<svg width="24" height="24"><path d="M4 5h16v13H4V5zm5 12v-3H5v3h4zm0-4v-3H5v3h4zm5 4v-3h-4v3h4zm0-4v-3h-4v3h4zm5 4v-3h-4v3h4zm0-4v-3h-4v3h4z" fill-rule="evenodd"/></svg>',
+        'table': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm6 9h4v-3h-4v3zm4 1h-4v3h4v-3zm0-8h-4v3h4V7zM9 7H5v3h4V7zm-4 4v3h4v-3H5zm10 0v3h4v-3h-4zm0-1h4V7h-4v3zM5 15v3h4v-3H5zm10 3h4v-3h-4v3z" fill-rule="evenodd"/></svg>',
+        'template': '<svg width="24" height="24"><path d="M19 19v-1H5v1h14zM9 16v-4a5 5 0 1 1 6 0v4h4a2 2 0 0 1 2 2v3H3v-3c0-1.1.9-2 2-2h4zm4 0v-5l.8-.6a3 3 0 1 0-3.6 0l.8.6v5h2z" fill-rule="nonzero"/></svg>',
+        'temporary-placeholder': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M9 7.6V6h2.5V4.5a.5.5 0 1 1 1 0V6H15v1.6a8 8 0 1 1-6 0zm-2.6 5.3a.5.5 0 0 0 .3.6c.3 0 .6 0 .6-.3l.1-.2a5 5 0 0 1 3.3-2.8c.3-.1.4-.4.4-.6-.1-.3-.4-.5-.6-.4a6 6 0 0 0-4.1 3.7z"/><circle cx="14" cy="4" r="1"/><circle cx="12" cy="2" r="1"/><circle cx="10" cy="4" r="1"/></g></svg>',
+        'text-color': '<svg width="24" height="24"><g fill-rule="evenodd"><path id="tox-icon-text-color__color" d="M3 18h18v3H3z"/><path d="M8.7 16h-.8a.5.5 0 0 1-.5-.6l2.7-9c.1-.3.3-.4.5-.4h2.8c.2 0 .4.1.5.4l2.7 9a.5.5 0 0 1-.5.6h-.8a.5.5 0 0 1-.4-.4l-.7-2.2c0-.3-.3-.4-.5-.4h-3.4c-.2 0-.4.1-.5.4l-.7 2.2c0 .3-.2.4-.4.4zm2.6-7.6l-.6 2a.5.5 0 0 0 .5.6h1.6a.5.5 0 0 0 .5-.6l-.6-2c0-.3-.3-.4-.5-.4h-.4c-.2 0-.4.1-.5.4z"/></g></svg>',
+        'toc': '<svg width="24" height="24"><path d="M5 5c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 1 1 0-2zm3 0h11c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 1 1 0-2zm-3 8c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h11c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2zm0-4c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 1 1 0-2zm3 0h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm-3 8c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
+        'translate': '<svg width="24" height="24"><path d="M12.7 14.3l-.3.7-.4.7-2.2-2.2-3.1 3c-.3.4-.8.4-1 0a.7.7 0 0 1 0-1l3.1-3A12.4 12.4 0 0 1 6.7 9H8a10.1 10.1 0 0 0 1.7 2.4c.5-.5 1-1.1 1.4-1.8l.9-2H4.7a.7.7 0 1 1 0-1.5h4.4v-.7c0-.4.3-.8.7-.8.4 0 .7.4.7.8v.7H15c.4 0 .8.3.8.7 0 .4-.4.8-.8.8h-1.4a12.3 12.3 0 0 1-1 2.4 13.5 13.5 0 0 1-1.7 2.3l1.9 1.8zm4.3-3l2.7 7.3a.5.5 0 0 1-.4.7 1 1 0 0 1-1-.7l-.6-1.5h-3.4l-.6 1.5a1 1 0 0 1-1 .7.5.5 0 0 1-.4-.7l2.7-7.4a1 1 0 1 1 2 0zm-2.2 4.4h2.4L16 12.5l-1.2 3.2z" fill-rule="evenodd"/></svg>',
+        'underline': '<svg width="24" height="24"><path d="M16 5c.6 0 1 .4 1 1v5.5a4 4 0 0 1-.4 1.8l-1 1.4a5.3 5.3 0 0 1-5.5 1 5 5 0 0 1-1.6-1c-.5-.4-.8-.9-1.1-1.4a4 4 0 0 1-.4-1.8V6c0-.6.4-1 1-1s1 .4 1 1v5.5c0 .3 0 .6.2 1l.6.7a3.3 3.3 0 0 0 2.2.8 3.4 3.4 0 0 0 2.2-.8c.3-.2.4-.5.6-.8l.2-.9V6c0-.6.4-1 1-1zM8 17h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
+        'undo': '<svg width="24" height="24"><path d="M6.4 8H12c3.7 0 6.2 2 6.8 5.1.6 2.7-.4 5.6-2.3 6.8a1 1 0 0 1-1-1.8c1.1-.6 1.8-2.7 1.4-4.6-.5-2.1-2.1-3.5-4.9-3.5H6.4l3.3 3.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 1.4L6.4 8z" fill-rule="nonzero"/></svg>',
+        'unlink': '<svg width="24" height="24"><path d="M6.2 12.3a1 1 0 0 1 1.4 1.4l-2 2a2 2 0 1 0 2.6 2.8l4.8-4.8a1 1 0 0 0 0-1.4 1 1 0 1 1 1.4-1.3 2.9 2.9 0 0 1 0 4L9.6 20a3.9 3.9 0 0 1-5.5-5.5l2-2zm11.6-.6a1 1 0 0 1-1.4-1.4l2.1-2a2 2 0 1 0-2.7-2.8L11 10.3a1 1 0 0 0 0 1.4A1 1 0 1 1 9.6 13a2.9 2.9 0 0 1 0-4L14.4 4a3.9 3.9 0 0 1 5.5 5.5l-2 2zM7.6 6.3a.8.8 0 0 1-1 1.1L3.3 4.2a.7.7 0 1 1 1-1l3.2 3.1zM5.1 8.6a.8.8 0 0 1 0 1.5H3a.8.8 0 0 1 0-1.5H5zm5-3.5a.8.8 0 0 1-1.5 0V3a.8.8 0 0 1 1.5 0V5zm6 11.8a.8.8 0 0 1 1-1l3.2 3.2a.8.8 0 0 1-1 1L16 17zm-2.2 2a.8.8 0 0 1 1.5 0V21a.8.8 0 0 1-1.5 0V19zm5-3.5a.7.7 0 1 1 0-1.5H21a.8.8 0 0 1 0 1.5H19z" fill-rule="nonzero"/></svg>',
+        'unlock': '<svg width="24" height="24"><path d="M16 5c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v3h-2V8a1 1 0 0 0-.3-.7A1 1 0 0 0 16 7h-2a1 1 0 0 0-.7.3 1 1 0 0 0-.3.7v3h.3c.2 0 .3 0 .5.2l.2.6v7.4c0 .3 0 .4-.2.6l-.6.2H4.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6v-7.4c0-.3 0-.4.2-.6l.5-.2H11V8c0-.8.3-1.5.9-2.1.6-.6 1.3-.9 2.1-.9h2z" fill-rule="evenodd"/></svg>',
+        'unordered-list': '<svg width="24" height="24"><path d="M11 5h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zM4.5 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1zm0 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1zm0 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1z" fill-rule="evenodd"/></svg>',
+        'unselected': '<svg width="24" height="24"><path fill-rule="nonzero" d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2zm0 1a1 1 0 0 0-1 1v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H6z"/></svg>',
+        'upload': '<svg width="24" height="24"><path d="M18 19v-2a1 1 0 0 1 2 0v3c0 .6-.4 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v2h12zM11 6.4L8.7 8.7a1 1 0 0 1-1.4-1.4l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 1 1-1.4 1.4L13 6.4V16a1 1 0 0 1-2 0V6.4z" fill-rule="nonzero"/></svg>',
+        'user': '<svg width="24" height="24"><path d="M12 24a12 12 0 1 1 0-24 12 12 0 0 1 0 24zm-8.7-5.3a11 11 0 0 0 17.4 0C19.4 16.3 14.6 15 12 15c-2.6 0-7.4 1.3-8.7 3.7zM12 13c2.2 0 4-2 4-4.5S14.2 4 12 4 8 6 8 8.5 9.8 13 12 13z" fill-rule="nonzero"/></svg>',
+        'warning': '<svg width="24" height="24"><path d="M19.8 18.3c.2.5.3.9 0 1.2-.1.3-.5.5-1 .5H5.2c-.5 0-.9-.2-1-.5-.3-.3-.2-.7 0-1.2L11 4.7l.5-.5.5-.2c.2 0 .3 0 .5.2.2 0 .3.3.5.5l6.8 13.6zM12 18c.3 0 .5-.1.7-.3.2-.2.3-.4.3-.7a1 1 0 0 0-.3-.7 1 1 0 0 0-.7-.3 1 1 0 0 0-.7.3 1 1 0 0 0-.3.7c0 .3.1.5.3.7.2.2.4.3.7.3zm.7-3l.3-4a1 1 0 0 0-.3-.7 1 1 0 0 0-.7-.3 1 1 0 0 0-.7.3 1 1 0 0 0-.3.7l.3 4h1.4z" fill-rule="evenodd"/></svg>',
+        'zoom-in': '<svg width="24" height="24"><path d="M16 17.3a8 8 0 1 1 1.4-1.4l4.3 4.4a1 1 0 0 1-1.4 1.4l-4.4-4.3zm-5-.3a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm-1-9a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0V8zm-2 4a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2H8z" fill-rule="nonzero"/></svg>',
+        'zoom-out': '<svg width="24" height="24"><path d="M16 17.3a8 8 0 1 1 1.4-1.4l4.3 4.4a1 1 0 0 1-1.4 1.4l-4.4-4.3zm-5-.3a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm-3-5a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2H8z" fill-rule="nonzero"/></svg>'
+      };
+    };
+
     var CreateIconManager = function () {
       var lookup = {};
       var add = function (id, iconPack) {
@@ -84139,16 +86401,16 @@ var silver = (function (domGlobals) {
     };
     var IconManager = CreateIconManager();
 
-    var PluginManager$1 = AddOnManager.PluginManager;
+    var PluginManager$1 = AddOnManager$1.PluginManager;
 
-    var ThemeManager = AddOnManager.ThemeManager;
+    var ThemeManager = AddOnManager$1.ThemeManager;
 
     function XMLHttpRequest () {
       var f = Global$1.getOrDie('XMLHttpRequest');
       return new f();
     }
 
-    function Uploader (uploadStatus, settings) {
+    function Uploader(uploadStatus, settings) {
       var pendingPromises = {};
       var pathJoin = function (path1, path2) {
         if (path1) {
@@ -84431,7 +86693,7 @@ var silver = (function (domGlobals) {
     var getAllImages = function (elm) {
       return elm ? from$1(elm.getElementsByTagName('img')) : [];
     };
-    function ImageScanner (uploadStatus, blobCache) {
+    function ImageScanner(uploadStatus, blobCache) {
       var cachedPromises = {};
       var findAll = function (elm, predicate) {
         var images;
@@ -84504,7 +86766,7 @@ var silver = (function (domGlobals) {
     };
     var Uuid = { uuid: uuid };
 
-    function BlobCache () {
+    var BlobCache = function () {
       var cache = [];
       var mimeToExt = function (mime) {
         var mimes = {
@@ -84589,7 +86851,7 @@ var silver = (function (domGlobals) {
         removeByUri: removeByUri,
         destroy: destroy
       };
-    }
+    };
 
     function UploadStatus () {
       var PENDING = 1, UPLOADED = 2;
@@ -84637,7 +86899,7 @@ var silver = (function (domGlobals) {
       };
     }
 
-    function EditorUpload (editor) {
+    var EditorUpload = function (editor) {
       var blobCache = BlobCache();
       var uploader, imageScanner;
       var uploadStatus = UploadStatus();
@@ -84794,7 +87056,7 @@ var silver = (function (domGlobals) {
           return match;
         });
       };
-      editor.on('setContent', function () {
+      editor.on('SetContent', function () {
         if (Settings.isAutomaticUploadsEnabled(editor)) {
           uploadImagesAuto();
         } else {
@@ -84804,7 +87066,7 @@ var silver = (function (domGlobals) {
       editor.on('RawSaveContent', function (e) {
         e.content = replaceBlobUris(e.content);
       });
-      editor.on('getContent', function (e) {
+      editor.on('GetContent', function (e) {
         if (e.source_view || e.format === 'raw') {
           return;
         }
@@ -84832,7 +87094,7 @@ var silver = (function (domGlobals) {
         scanForImages: scanForImages,
         destroy: destroy
       };
-    }
+    };
 
     var dropLast = function (xs) {
       return xs.slice(0, -1);
@@ -84918,7 +87180,7 @@ var silver = (function (domGlobals) {
             continue;
           }
           if (!rootBlockNode) {
-            rootBlockNode = dom.create(forcedRootBlock, editor.settings.forced_root_block_attrs);
+            rootBlockNode = dom.create(forcedRootBlock, Settings.getForcedRootBlockAttrs(editor));
             node.parentNode.insertBefore(rootBlockNode, node);
             wrapped = true;
           }
@@ -85037,75 +87299,63 @@ var silver = (function (domGlobals) {
       return sel && sel.rangeCount > 0;
     };
 
-    function NodeChange (editor) {
-      var lastRng, lastPath = [];
-      var isSameElementPath = function (startElm) {
-        var i, currentPath;
-        currentPath = editor.$(startElm).parentsUntil(editor.getBody()).add(startElm);
-        if (currentPath.length === lastPath.length) {
-          for (i = currentPath.length; i >= 0; i--) {
-            if (currentPath[i] !== lastPath[i]) {
-              break;
+    var NodeChange = function () {
+      function NodeChange(editor) {
+        this.lastPath = [];
+        this.editor = editor;
+        var lastRng;
+        var self = this;
+        if (!('onselectionchange' in editor.getDoc())) {
+          editor.on('NodeChange click mouseup keyup focus', function (e) {
+            var nativeRng, fakeRng;
+            nativeRng = editor.selection.getRng();
+            fakeRng = {
+              startContainer: nativeRng.startContainer,
+              startOffset: nativeRng.startOffset,
+              endContainer: nativeRng.endContainer,
+              endOffset: nativeRng.endOffset
+            };
+            if (e.type === 'nodechange' || !RangeCompare.isEq(fakeRng, lastRng)) {
+              editor.fire('SelectionChange');
+            }
+            lastRng = fakeRng;
+          });
+        }
+        editor.on('contextmenu', function () {
+          editor.fire('SelectionChange');
+        });
+        editor.on('SelectionChange', function () {
+          var startElm = editor.selection.getStart(true);
+          if (!startElm || !Env.range && editor.selection.isCollapsed()) {
+            return;
+          }
+          if (hasAnyRanges(editor) && !self.isSameElementPath(startElm) && editor.dom.isChildOf(startElm, editor.getBody())) {
+            editor.nodeChanged({ selectionChange: true });
+          }
+        });
+        editor.on('mouseup', function (e) {
+          if (!e.isDefaultPrevented() && hasAnyRanges(editor)) {
+            if (editor.selection.getNode().nodeName === 'IMG') {
+              Delay.setEditorTimeout(editor, function () {
+                editor.nodeChanged();
+              });
+            } else {
+              editor.nodeChanged();
             }
           }
-          if (i === -1) {
-            lastPath = currentPath;
-            return true;
-          }
-        }
-        lastPath = currentPath;
-        return false;
-      };
-      if (!('onselectionchange' in editor.getDoc())) {
-        editor.on('NodeChange Click MouseUp KeyUp Focus', function (e) {
-          var nativeRng, fakeRng;
-          nativeRng = editor.selection.getRng();
-          fakeRng = {
-            startContainer: nativeRng.startContainer,
-            startOffset: nativeRng.startOffset,
-            endContainer: nativeRng.endContainer,
-            endOffset: nativeRng.endOffset
-          };
-          if (e.type === 'nodechange' || !RangeCompare.isEq(fakeRng, lastRng)) {
-            editor.fire('SelectionChange');
-          }
-          lastRng = fakeRng;
         });
       }
-      editor.on('contextmenu', function () {
-        editor.fire('SelectionChange');
-      });
-      editor.on('SelectionChange', function () {
-        var startElm = editor.selection.getStart(true);
-        if (!startElm || !Env.range && editor.selection.isCollapsed()) {
-          return;
-        }
-        if (hasAnyRanges(editor) && !isSameElementPath(startElm) && editor.dom.isChildOf(startElm, editor.getBody())) {
-          editor.nodeChanged({ selectionChange: true });
-        }
-      });
-      editor.on('MouseUp', function (e) {
-        if (!e.isDefaultPrevented() && hasAnyRanges(editor)) {
-          if (editor.selection.getNode().nodeName === 'IMG') {
-            Delay.setEditorTimeout(editor, function () {
-              editor.nodeChanged();
-            });
-          } else {
-            editor.nodeChanged();
-          }
-        }
-      });
-      this.nodeChanged = function (args) {
-        var selection = editor.selection;
+      NodeChange.prototype.nodeChanged = function (args) {
+        var selection = this.editor.selection;
         var node, parents, root;
-        if (editor.initialized && selection && !editor.settings.disable_nodechange && !editor.readonly) {
-          root = editor.getBody();
+        if (this.editor.initialized && selection && !this.editor.settings.disable_nodechange && !this.editor.readonly) {
+          root = this.editor.getBody();
           node = selection.getStart(true) || root;
-          if (node.ownerDocument !== editor.getDoc() || !editor.dom.isChildOf(node, root)) {
+          if (node.ownerDocument !== this.editor.getDoc() || !this.editor.dom.isChildOf(node, root)) {
             node = root;
           }
           parents = [];
-          editor.dom.getParent(node, function (node) {
+          this.editor.dom.getParent(node, function (node) {
             if (node === root) {
               return true;
             }
@@ -85114,10 +87364,28 @@ var silver = (function (domGlobals) {
           args = args || {};
           args.element = node;
           args.parents = parents;
-          editor.fire('NodeChange', args);
+          this.editor.fire('NodeChange', args);
         }
       };
-    }
+      NodeChange.prototype.isSameElementPath = function (startElm) {
+        var i, currentPath;
+        currentPath = this.editor.$(startElm).parentsUntil(this.editor.getBody()).add(startElm);
+        if (currentPath.length === this.lastPath.length) {
+          for (i = currentPath.length; i >= 0; i--) {
+            if (currentPath[i] !== this.lastPath[i]) {
+              break;
+            }
+          }
+          if (i === -1) {
+            this.lastPath = currentPath;
+            return true;
+          }
+        }
+        this.lastPath = currentPath;
+        return false;
+      };
+      return NodeChange;
+    }();
 
     var getAbsolutePosition = function (elm) {
       var doc, docElem, win, clientRect;
@@ -85191,10 +87459,7 @@ var silver = (function (domGlobals) {
       if (targetElement === dragElement || editor.dom.isChildOf(targetElement, dragElement)) {
         return false;
       }
-      if (isContentEditableFalse$6(targetElement)) {
-        return false;
-      }
-      return true;
+      return !isContentEditableFalse$6(targetElement);
     };
     var cloneElement = function (elm) {
       var cloneElm = elm.cloneNode(true);
@@ -85920,7 +88185,7 @@ var silver = (function (domGlobals) {
             break;
           }
         });
-        editor.on('getSelectionRange', function (e) {
+        editor.on('GetSelectionRange', function (e) {
           var rng = e.range;
           if (selectedContentEditableNode) {
             if (!selectedContentEditableNode.parentNode) {
@@ -85932,7 +88197,7 @@ var silver = (function (domGlobals) {
             e.range = rng;
           }
         });
-        editor.on('setSelectionRange', function (e) {
+        editor.on('SetSelectionRange', function (e) {
           var rng;
           rng = setContentEditableSelection(e.range, e.forward);
           if (rng) {
@@ -86354,7 +88619,7 @@ var silver = (function (domGlobals) {
       isEq: isEq$2
     };
 
-    function UndoManager (editor) {
+    var UndoManager = function (editor) {
       var self = this, index = 0, data = [], beforeBookmark, isFirstTypedCharacter, locks = 0;
       var isUnlocked = function () {
         return locks === 0;
@@ -86393,12 +88658,12 @@ var silver = (function (domGlobals) {
           addNonTypingUndoLevel(e);
         }
       });
-      editor.on('ObjectResizeStart Cut', function () {
+      editor.on('ObjectResizeStart cut', function () {
         self.beforeChange();
       });
       editor.on('SaveContent ObjectResized blur', addNonTypingUndoLevel);
-      editor.on('DragEnd', addNonTypingUndoLevel);
-      editor.on('KeyUp', function (e) {
+      editor.on('dragend', addNonTypingUndoLevel);
+      editor.on('keyup', function (e) {
         var keyCode = e.keyCode;
         if (e.isDefaultPrevented()) {
           return;
@@ -86423,7 +88688,7 @@ var silver = (function (domGlobals) {
           editor.nodeChanged();
         }
       });
-      editor.on('KeyDown', function (e) {
+      editor.on('keydown', function (e) {
         var keyCode = e.keyCode;
         if (e.isDefaultPrevented()) {
           return;
@@ -86442,7 +88707,7 @@ var silver = (function (domGlobals) {
           isFirstTypedCharacter = true;
         }
       });
-      editor.on('MouseDown', function (e) {
+      editor.on('mousedown', function (e) {
         if (self.typing) {
           addNonTypingUndoLevel(e);
         }
@@ -86535,7 +88800,7 @@ var silver = (function (domGlobals) {
             level = data[--index];
             Levels.applyToEditor(editor, level, true);
             setDirty(true);
-            editor.fire('undo', { level: level });
+            editor.fire('Undo', { level: level });
           }
           return level;
         },
@@ -86545,7 +88810,7 @@ var silver = (function (domGlobals) {
             level = data[++index];
             Levels.applyToEditor(editor, level, false);
             setDirty(true);
-            editor.fire('redo', { level: level });
+            editor.fire('Redo', { level: level });
           }
           return level;
         },
@@ -86555,6 +88820,10 @@ var silver = (function (domGlobals) {
           self.typing = false;
           self.data = data;
           editor.fire('ClearUndos');
+        },
+        reset: function () {
+          self.clear();
+          self.add();
         },
         hasUndo: function () {
           return index > 0 || self.typing && data[0] && !Levels.isEq(Levels.createFromEditor(editor), data[0]);
@@ -86589,7 +88858,7 @@ var silver = (function (domGlobals) {
         }
       };
       return self;
-    }
+    };
 
     var getLastChildren$1 = function (elm) {
       var children = [];
@@ -86602,7 +88871,7 @@ var silver = (function (domGlobals) {
     };
     var removeTrailingBr = function (elm) {
       var allBrs = descendants$1(elm, 'br');
-      var brs = filter(getLastChildren$1(elm).slice(-1), isBr);
+      var brs = filter(getLastChildren$1(elm).slice(-1), isBr$1);
       if (allBrs.length === brs.length) {
         each(brs, remove$1);
       }
@@ -86612,7 +88881,7 @@ var silver = (function (domGlobals) {
       append(elm, Element.fromHtml('<br data-mce-bogus="1">'));
     };
     var isPaddingContents = function (elm) {
-      return isText(elm) ? get$5(elm) === '\xA0' : isBr(elm);
+      return isText(elm) ? get$5(elm) === '\xA0' : isBr$1(elm);
     };
     var isPaddedElement = function (elm) {
       return filter(children(elm), isPaddingContents).length === 1;
@@ -86620,7 +88889,7 @@ var silver = (function (domGlobals) {
     var trimBlockTrailingBr = function (elm) {
       lastChild(elm).each(function (lastChild) {
         prevSibling(lastChild).each(function (lastChildPrevSibling) {
-          if (isBlock(elm) && isBr(lastChild) && isBlock(lastChildPrevSibling)) {
+          if (isBlock(elm) && isBr$1(lastChild) && isBlock(lastChildPrevSibling)) {
             remove$1(lastChild);
           }
         });
@@ -86822,7 +89091,6 @@ var silver = (function (domGlobals) {
         endOffset: endOffset
       };
     };
-    var SplitRange = { split: split$1 };
 
     var isCollapsibleWhitespace = function (c) {
       return ' \f\n\r\t\x0B'.indexOf(c) !== -1;
@@ -86904,7 +89172,7 @@ var silver = (function (domGlobals) {
     var isBogus$2 = NodeType.hasAttribute('data-mce-bogus');
     var isBogusAll$1 = NodeType.hasAttributeValue('data-mce-bogus', 'all');
     var isEmptyNode = function (targetNode) {
-      var walker, node, brCount = 0;
+      var node, brCount = 0;
       if (isContent$1(targetNode, targetNode)) {
         return false;
       } else {
@@ -86912,7 +89180,7 @@ var silver = (function (domGlobals) {
         if (!node) {
           return true;
         }
-        walker = new TreeWalker(node, targetNode);
+        var walker = new TreeWalker(node, targetNode);
         do {
           if (isBogusAll$1(node)) {
             node = walker.next(true);
@@ -87101,9 +89369,8 @@ var silver = (function (domGlobals) {
       return getEmptyCaretContainers(node).length > 0;
     };
     var findFirstTextNode = function (node) {
-      var walker;
       if (node) {
-        walker = new TreeWalker(node, node);
+        var walker = new TreeWalker(node, node);
         for (node = walker.current(); node; node = walker.next()) {
           if (node.nodeType === 3) {
             return node;
@@ -87197,7 +89464,7 @@ var silver = (function (domGlobals) {
     var applyCaretFormat = function (editor, name, vars) {
       var rng, caretContainer, textNode, offset, bookmark, container, text;
       var selection = editor.selection;
-      rng = selection.getRng(true);
+      rng = selection.getRng();
       offset = rng.startOffset;
       container = rng.startContainer;
       text = container.nodeValue;
@@ -87210,7 +89477,7 @@ var silver = (function (domGlobals) {
         bookmark = selection.getBookmark();
         rng.collapse(true);
         rng = ExpandRange.expandRng(editor, rng, editor.formatter.get(name));
-        rng = SplitRange.split(rng);
+        rng = split$1(rng);
         editor.formatter.apply(name, vars, rng);
         selection.moveToBookmark(bookmark);
       } else {
@@ -87259,7 +89526,7 @@ var silver = (function (domGlobals) {
         bookmark = selection.getBookmark();
         rng.collapse(true);
         var expandedRng = ExpandRange.expandRng(editor, rng, editor.formatter.get(name), true);
-        expandedRng = SplitRange.split(expandedRng);
+        expandedRng = split$1(expandedRng);
         editor.formatter.remove(name, vars, expandedRng);
         selection.moveToBookmark(bookmark);
       } else {
@@ -87666,7 +89933,7 @@ var silver = (function (domGlobals) {
         var commonAncestorContainer = rng.commonAncestorContainer;
         rng = ExpandRange.expandRng(ed, rng, formatList, true);
         if (format.split) {
-          rng = SplitRange.split(rng);
+          rng = split$1(rng);
           startContainer = getContainer(ed, rng, true);
           endContainer = getContainer(ed, rng);
           if (startContainer !== endContainer) {
@@ -88499,7 +90766,7 @@ var silver = (function (domGlobals) {
     };
     var DefaultFormats = { get: get$6 };
 
-    function FormatRegistry (editor) {
+    function FormatRegistry(editor) {
       var formats = {};
       var get = function (name) {
         return name ? formats[name] : formats;
@@ -88784,7 +91051,7 @@ var silver = (function (domGlobals) {
       selectorToHtml: selectorToHtml
     };
 
-    var toggle = function (editor, formats, name, vars, node) {
+    var toggle$1 = function (editor, formats, name, vars, node) {
       var fmt = formats.get(name);
       if (MatchFormat.match(editor, name, vars, node) && (!('toggle' in fmt[0]) || fmt[0].toggle)) {
         RemoveFormat.remove(editor, name, vars, node);
@@ -88792,7 +91059,7 @@ var silver = (function (domGlobals) {
         ApplyFormat.applyFormat(editor, name, vars, node);
       }
     };
-    var ToggleFormat = { toggle: toggle };
+    var ToggleFormat = { toggle: toggle$1 };
 
     var setup$6 = function (editor) {
       editor.addShortcut('meta+b', '', 'Bold');
@@ -88823,7 +91090,7 @@ var silver = (function (domGlobals) {
     };
     var FormatShortcuts = { setup: setup$6 };
 
-    function Formatter (editor) {
+    var Formatter = function (editor) {
       var formats = FormatRegistry(editor);
       var formatChangeState = Cell(null);
       FormatShortcuts.setup(editor);
@@ -88843,7 +91110,7 @@ var silver = (function (domGlobals) {
         formatChanged: curry(formatChanged, editor, formatChangeState),
         getCssText: curry(Preview.getCssText, editor)
       };
-    }
+    };
 
     var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
     var shallow$1 = function (old, nu) {
@@ -88874,7 +91141,7 @@ var silver = (function (domGlobals) {
         var i = nodes.length, node;
         while (i--) {
           node = nodes[i];
-          node.attr('tabindex', node.attributes.map['data-mce-tabindex']);
+          node.attr('tabindex', node.attr('data-mce-tabindex'));
           node.attr(name, null);
         }
       });
@@ -88885,12 +91152,12 @@ var silver = (function (domGlobals) {
         var urlConverterScope = settings.url_converter_scope;
         while (i--) {
           node = nodes[i];
-          value = node.attributes.map[internalName];
+          value = node.attr(internalName);
           if (value !== undefined) {
             node.attr(name, value.length > 0 ? value : null);
             node.attr(internalName, null);
           } else {
-            value = node.attributes.map[name];
+            value = node.attr(name);
             if (name === 'style') {
               value = dom.serializeStyle(dom.parseStyle(value), node.name);
             } else if (urlConverter) {
@@ -88915,7 +91182,7 @@ var silver = (function (domGlobals) {
         var i = nodes.length, node;
         while (i--) {
           node = nodes[i];
-          if (node.attributes.map['data-mce-type'] === 'bookmark' && !args.cleanup) {
+          if (node.attr('data-mce-type') === 'bookmark' && !args.cleanup) {
             var hasChildren = Option.from(node.firstChild).exists(function (firstChild) {
               return !Zwsp.isZwsp(firstChild.value);
             });
@@ -88982,7 +91249,7 @@ var silver = (function (domGlobals) {
           if (node.type === 7) {
             node.remove();
           } else if (node.type === 1) {
-            if (name === 'input' && !('type' in node.attributes.map)) {
+            if (name === 'input' && !node.attr('type')) {
               node.attr('type', 'text');
             }
           }
@@ -89298,7 +91565,7 @@ var silver = (function (domGlobals) {
     };
 
     var makeMap$4 = Tools.makeMap, each$f = Tools.each, explode$2 = Tools.explode, extend$2 = Tools.extend;
-    function DomParser (settings, schema) {
+    var DomParser = function (settings, schema) {
       if (schema === void 0) {
         schema = Schema();
       }
@@ -89697,7 +91964,7 @@ var silver = (function (domGlobals) {
                 isInWhiteSpacePreservedElement = false;
               }
               if (elementRule.removeEmpty && isEmpty$2(schema, nonEmptyElements, whiteSpaceElements, node)) {
-                if (!node.attributes.map.name && !node.attr('id')) {
+                if (!node.attr('name') && !node.attr('id')) {
                   tempNode = node.parent;
                   if (blockElements[node.name]) {
                     node.empty().remove();
@@ -89729,6 +91996,9 @@ var silver = (function (domGlobals) {
         }
         if (!args.invalid) {
           for (name in matchedNodes) {
+            if (!matchedNodes.hasOwnProperty(name)) {
+              continue;
+            }
             list = nodeFilters[name];
             nodes = matchedNodes[name];
             fi = nodes.length;
@@ -89771,7 +92041,7 @@ var silver = (function (domGlobals) {
       register$2(exports, settings);
       LegacyFilter.register(exports, settings);
       return exports;
-    }
+    };
 
     var addTempAttr = function (htmlParser, tempAttrs, name) {
       if (Tools.inArray(tempAttrs, name) === -1) {
@@ -89810,7 +92080,7 @@ var silver = (function (domGlobals) {
       var content = serializeNode(settings, schema, rootNode);
       return postProcess$1(editor, args, content);
     };
-    function DomSerializer (settings, editor) {
+    var DomSerializer = function (settings, editor) {
       var dom, schema, htmlParser;
       var tempAttrs = ['data-mce-selected'];
       dom = editor && editor.dom ? editor.dom : DOMUtils$1.DOM;
@@ -89842,9 +92112,9 @@ var silver = (function (domGlobals) {
           return tempAttrs;
         }
       };
-    }
+    };
 
-    function Serializer$1 (settings, editor) {
+    var Serializer$1 = function (settings, editor) {
       var domSerializer = DomSerializer(settings, editor);
       return {
         schema: domSerializer.schema,
@@ -89856,7 +92126,7 @@ var silver = (function (domGlobals) {
         addTempAttr: domSerializer.addTempAttr,
         getTempAttrs: domSerializer.getTempAttrs
       };
-    }
+    };
 
     function BookmarkManager(selection) {
       return {
@@ -90251,7 +92521,7 @@ var silver = (function (domGlobals) {
         elm: elm,
         alignToTop: alignToTop
       };
-      editor.fire('scrollIntoView', scrollEvent);
+      editor.fire('ScrollIntoView', scrollEvent);
       return scrollEvent.isDefaultPrevented();
     };
     var scrollElementIntoView = function (editor, elm, alignToTop) {
@@ -90548,8 +92818,7 @@ var silver = (function (domGlobals) {
       return filter(MultiRange.getSelectedNodes(ranges), isTableCell);
     };
     var getCellsFromElement = function (elm) {
-      var selectedCells = descendants$1(elm, 'td[data-mce-selected],th[data-mce-selected]');
-      return selectedCells;
+      return descendants$1(elm, 'td[data-mce-selected],th[data-mce-selected]');
     };
     var getCellsFromElementOrRanges = function (ranges, element) {
       var selectedCells = getCellsFromElement(element);
@@ -90737,15 +93006,15 @@ var silver = (function (domGlobals) {
       return false;
     };
     var findTextNodeRelative = function (dom, isAfterNode, collapsed, left, startNode) {
-      var walker, lastInlineElement, parentBlockContainer;
+      var lastInlineElement;
       var body = dom.getRoot();
       var node;
       var nonEmptyElementsMap = dom.schema.getNonEmptyElements();
-      parentBlockContainer = dom.getParent(startNode.parentNode, dom.isBlock) || body;
+      var parentBlockContainer = dom.getParent(startNode.parentNode, dom.isBlock) || body;
       if (left && NodeType.isBr(startNode) && isAfterNode && dom.isEmpty(parentBlockContainer)) {
         return Option.some(CaretPosition(startNode.parentNode, dom.nodeIndex(startNode)));
       }
-      walker = new TreeWalker(startNode, parentBlockContainer);
+      var walker = new TreeWalker(startNode, parentBlockContainer);
       while (node = walker[left ? 'prev' : 'next']()) {
         if (dom.getContentEditableParent(node) === 'false' || isCeFalseCaretContainer(node, body)) {
           return Option.none();
@@ -90767,7 +93036,7 @@ var silver = (function (domGlobals) {
       return Option.none();
     };
     var normalizeEndPoint = function (dom, collapsed, start, rng) {
-      var container, offset, walker;
+      var container, offset;
       var body = dom.getRoot();
       var node, nonEmptyElementsMap;
       var directionLeft, isAfterNode, normalized = false;
@@ -90810,7 +93079,7 @@ var silver = (function (domGlobals) {
           }
           if (container.hasChildNodes() && isTable$3(container) === false) {
             node = container;
-            walker = new TreeWalker(container, body);
+            var walker = new TreeWalker(container, body);
             do {
               if (NodeType.isContentEditableFalse(node) || isCaretContainer(node)) {
                 normalized = false;
@@ -92689,7 +94958,7 @@ var silver = (function (domGlobals) {
     var trimBr = function (first, block) {
       CaretFinder.positionIn(first, block.dom()).map(function (position) {
         return position.getNode();
-      }).map(Element.fromDom).filter(isBr).each(remove$1);
+      }).map(Element.fromDom).filter(isBr$1).each(remove$1);
     };
     var mergeBlockInto = function (rootNode, fromBlock, toBlock) {
       trimBr(true, fromBlock);
@@ -92760,7 +95029,7 @@ var silver = (function (domGlobals) {
     var BlockRangeDelete = { backspaceDelete: backspaceDelete$1 };
 
     var isBr$5 = function (pos) {
-      return getElementFromPosition(pos).exists(isBr);
+      return getElementFromPosition(pos).exists(isBr$1);
     };
     var findBr = function (forward, root, pos) {
       var parentBlocks = filter(Parents.parentsAndSelf(Element.fromDom(pos.container()), root), isBlock);
@@ -92768,10 +95037,10 @@ var silver = (function (domGlobals) {
       return CaretFinder.fromPosition(forward, scope.dom(), pos).filter(isBr$5);
     };
     var isBeforeBr = function (root, pos) {
-      return getElementFromPosition(pos).exists(isBr) || findBr(true, root, pos).isSome();
+      return getElementFromPosition(pos).exists(isBr$1) || findBr(true, root, pos).isSome();
     };
     var isAfterBr = function (root, pos) {
-      return getElementFromPrevPosition(pos).exists(isBr) || findBr(false, root, pos).isSome();
+      return getElementFromPrevPosition(pos).exists(isBr$1) || findBr(false, root, pos).isSome();
     };
     var findPreviousBr = curry(findBr, false);
     var findNextBr = curry(findBr, true);
@@ -93091,7 +95360,7 @@ var silver = (function (domGlobals) {
       }
       return false;
     };
-    var InlineBoundaryDelete = { backspaceDelete: backspaceDelete$4 };
+    var BoundaryDelete = { backspaceDelete: backspaceDelete$4 };
 
     var getParentInlines = function (rootElm, startElm) {
       var parents = Parents.parentsAndSelf(startElm, rootElm);
@@ -93390,11 +95659,11 @@ var silver = (function (domGlobals) {
         },
         {
           keyCode: VK.BACKSPACE,
-          action: MatchKeys.action(InlineBoundaryDelete.backspaceDelete, editor, caret, false)
+          action: MatchKeys.action(BoundaryDelete.backspaceDelete, editor, caret, false)
         },
         {
           keyCode: VK.DELETE,
-          action: MatchKeys.action(InlineBoundaryDelete.backspaceDelete, editor, caret, true)
+          action: MatchKeys.action(BoundaryDelete.backspaceDelete, editor, caret, true)
         },
         {
           keyCode: VK.BACKSPACE,
@@ -93475,7 +95744,7 @@ var silver = (function (domGlobals) {
       }
     };
     var moveToCaretPosition = function (editor, root) {
-      var walker, node, rng, lastNode = root, tempElm;
+      var node, rng, lastNode = root;
       var dom = editor.dom;
       var moveCaretBeforeOnEnterElementsMap = editor.schema.getMoveCaretBeforeOnEnterElements();
       if (!root) {
@@ -93490,7 +95759,7 @@ var silver = (function (domGlobals) {
       rng = dom.createRng();
       root.normalize();
       if (root.hasChildNodes()) {
-        walker = new TreeWalker(root, root);
+        var walker = new TreeWalker(root, root);
         while (node = walker.current()) {
           if (NodeType.isText(node)) {
             rng.setStart(node, 0);
@@ -93524,7 +95793,6 @@ var silver = (function (domGlobals) {
         }
       }
       editor.selection.setRng(rng);
-      dom.remove(tempElm);
       editor.selection.scrollIntoView(root);
     };
     var getEditableRoot = function (dom, node) {
@@ -93816,8 +96084,8 @@ var silver = (function (domGlobals) {
         return block;
       };
       var isCaretAtStartOrEndOfBlock = function (start) {
-        var walker, node, name, normalizedOffset;
-        normalizedOffset = normalizeZwspOffset(start, container, offset);
+        var node, name;
+        var normalizedOffset = normalizeZwspOffset(start, container, offset);
         if (NodeType.isText(container) && (start ? normalizedOffset > 0 : normalizedOffset < container.nodeValue.length)) {
           return false;
         }
@@ -93830,7 +96098,7 @@ var silver = (function (domGlobals) {
         if (containerAndSiblingName(container, 'TABLE') || containerAndSiblingName(container, 'HR')) {
           return isAfterLastNodeInContainer && !start || !isAfterLastNodeInContainer && start;
         }
-        walker = new TreeWalker(container, parentBlock);
+        var walker = new TreeWalker(container, parentBlock);
         if (NodeType.isText(container)) {
           if (start && normalizedOffset === 0) {
             walker.prev();
@@ -94554,7 +96822,7 @@ var silver = (function (domGlobals) {
     };
     var KeyboardOverrides = { setup: setup$e };
 
-    function Quirks (editor) {
+    var Quirks = function (editor) {
       var each = Tools.each;
       var BACKSPACE = VK.BACKSPACE, DELETE = VK.DELETE, dom = editor.dom, selection = editor.selection, settings = editor.settings, parser = editor.parser;
       var isGecko = Env.gecko, isIE = Env.ie, isWebKit = Env.webkit;
@@ -94798,7 +97066,7 @@ var silver = (function (domGlobals) {
           }
         };
         if (!settings.readonly) {
-          editor.on('BeforeExecCommand MouseDown', setOpts);
+          editor.on('BeforeExecCommand mousedown', setOpts);
         }
       };
       var addBrAfterLastLinks = function () {
@@ -94873,7 +97141,8 @@ var silver = (function (domGlobals) {
           editor.on('keydown', function (e) {
             if (VK.metaKeyPressed(e) && !e.shiftKey && (e.keyCode === 37 || e.keyCode === 39)) {
               e.preventDefault();
-              editor.selection.getSel().modify('move', e.keyCode === 37 ? 'backward' : 'forward', 'lineboundary');
+              var selection_1 = editor.selection.getSel();
+              selection_1.modify('move', e.keyCode === 37 ? 'backward' : 'forward', 'lineboundary');
             }
           });
         }
@@ -94931,7 +97200,7 @@ var silver = (function (domGlobals) {
       var isHidden = function () {
         var sel;
         if (!isGecko || editor.removed) {
-          return 0;
+          return false;
         }
         sel = editor.selection.getSel();
         return !sel || !sel.rangeCount || sel.rangeCount === 0;
@@ -94979,7 +97248,7 @@ var silver = (function (domGlobals) {
         refreshContentEditable: refreshContentEditable,
         isHidden: isHidden
       };
-    }
+    };
 
     var isTextBlockNode = function (node) {
       return NodeType.isElement(node) && isTextBlock(Element.fromDom(node));
@@ -95059,7 +97328,7 @@ var silver = (function (domGlobals) {
           node = nodes[i];
           value = node.attr(name);
           internalName = 'data-mce-' + name;
-          if (!node.attributes.map[internalName]) {
+          if (!node.attr(internalName)) {
             if (value.indexOf('data:') === 0 || value.indexOf('blob:') === 0) {
               continue;
             }
@@ -95181,7 +97450,6 @@ var silver = (function (domGlobals) {
         url_converter: editor.convertURL,
         url_converter_scope: editor,
         hex_colors: settings.force_hex_style_colors,
-        class_filter: settings.class_filter,
         update_styles: true,
         root_element: editor.inline ? editor.getBody() : null,
         collect: function () {
@@ -95342,154 +97610,6 @@ var silver = (function (domGlobals) {
       editor.contentCSS = editor.contentCSS.concat(getContentCssUrls(editor));
     };
 
-    var getAll = function () {
-      return {
-        'accessibility-check': '<svg width="24" height="24"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.1.9-2 2-2zm8 7h-5v12c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-5c0-.6-.4-1-1-1a1 1 0 0 0-1 1v5c0 .6-.4 1-1 1a1 1 0 0 1-1-1V9H4a1 1 0 1 1 0-2h16c.6 0 1 .4 1 1s-.4 1-1 1z" fill-rule="nonzero"/></svg>',
-        'align-center': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm3 4h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 1 1 0-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2zm-3-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
-        'align-justify': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
-        'align-left': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 4h8c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2zm0-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
-        'align-none': '<svg width="24" height="24"><path d="M14.2 5L13 7H5a1 1 0 1 1 0-2h9.2zm4 0h.8a1 1 0 0 1 0 2h-2l1.2-2zm-6.4 4l-1.2 2H5a1 1 0 0 1 0-2h6.8zm4 0H19a1 1 0 0 1 0 2h-4.4l1.2-2zm-6.4 4l-1.2 2H5a1 1 0 0 1 0-2h4.4zm4 0H19a1 1 0 0 1 0 2h-6.8l1.2-2zM7 17l-1.2 2H5a1 1 0 0 1 0-2h2zm4 0h8a1 1 0 0 1 0 2H9.8l1.2-2zm5.2-13.5l1.3.7-9.7 16.3-1.3-.7 9.7-16.3z" fill-rule="evenodd"/></svg>',
-        'align-right': '<svg width="24" height="24"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 1 1 0-2zm6 4h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm-6-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
-        'arrow-left': '<svg width="24" height="24"><path d="M5.6 13l12 6a1 1 0 0 0 1.4-1V6a1 1 0 0 0-1.4-.9l-12 6a1 1 0 0 0 0 1.8z" fill-rule="evenodd"/></svg>',
-        'arrow-right': '<svg width="24" height="24"><path d="M18.5 13l-12 6A1 1 0 0 1 5 18V6a1 1 0 0 1 1.4-.9l12 6a1 1 0 0 1 0 1.8z" fill-rule="evenodd"/></svg>',
-        'bold': '<svg width="24" height="24"><path d="M7.8 19c-.3 0-.5 0-.6-.2l-.2-.5V5.7c0-.2 0-.4.2-.5l.6-.2h5c1.5 0 2.7.3 3.5 1 .7.6 1.1 1.4 1.1 2.5a3 3 0 0 1-.6 1.9c-.4.6-1 1-1.6 1.2.4.1.9.3 1.3.6s.8.7 1 1.2c.4.4.5 1 .5 1.6 0 1.3-.4 2.3-1.3 3-.8.7-2.1 1-3.8 1H7.8zm5-8.3c.6 0 1.2-.1 1.6-.5.4-.3.6-.7.6-1.3 0-1.1-.8-1.7-2.3-1.7H9.3v3.5h3.4zm.5 6c.7 0 1.3-.1 1.7-.4.4-.4.6-.9.6-1.5s-.2-1-.7-1.4c-.4-.3-1-.4-2-.4H9.4v3.8h4z" fill-rule="evenodd"/></svg>',
-        'bookmark': '<svg width="24" height="24"><path d="M6 4v17l6-4 6 4V4c0-.6-.4-1-1-1H7a1 1 0 0 0-1 1z" fill-rule="nonzero"/></svg>',
-        'border-width': '<svg width="24" height="24"><path d="M5 14.8h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm-.5 3.7h15c.3 0 .5.2.5.5s-.2.5-.5.5h-15a.5.5 0 1 1 0-1zm.5-8.3h14c.6 0 1 .4 1 1v1c0 .5-.4 1-1 1H5a1 1 0 0 1-1-1v-1c0-.6.4-1 1-1zm0-5.7h14c.6 0 1 .4 1 1v2c0 .6-.4 1-1 1H5a1 1 0 0 1-1-1v-2c0-.6.4-1 1-1z" fill-rule="evenodd"/></svg>',
-        'brightness': '<svg width="24" height="24"><path d="M12 17c.3 0 .5.1.7.3.2.2.3.4.3.7v1c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3 1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7v-1c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3zm0-10a1 1 0 0 1-.7-.3A1 1 0 0 1 11 6V5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3.3 0 .5.1.7.3.2.2.3.4.3.7v1c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3zm7 4c.3 0 .5.1.7.3.2.2.3.4.3.7 0 .3-.1.5-.3.7a1 1 0 0 1-.7.3h-1a1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h1zM7 12c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3H5a1 1 0 0 1-.7-.3A1 1 0 0 1 4 12c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h1c.3 0 .5.1.7.3.2.2.3.4.3.7zm10 3.5l.7.8c.2.1.3.4.3.6 0 .3-.1.6-.3.8a1 1 0 0 1-.8.3 1 1 0 0 1-.6-.3l-.8-.7a1 1 0 0 1-.3-.8c0-.2.1-.5.3-.7a1 1 0 0 1 1.4 0zm-10-7l-.7-.8a1 1 0 0 1-.3-.6c0-.3.1-.6.3-.8.2-.2.5-.3.8-.3.2 0 .5.1.7.3l.7.7c.2.2.3.5.3.8 0 .2-.1.5-.3.7a1 1 0 0 1-.7.3 1 1 0 0 1-.8-.3zm10 0a1 1 0 0 1-.8.3 1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7c0-.3.1-.6.3-.8l.8-.7c.1-.2.4-.3.6-.3.3 0 .6.1.8.3.2.2.3.5.3.8 0 .2-.1.5-.3.7l-.7.7zm-10 7c.2-.2.5-.3.8-.3.2 0 .5.1.7.3a1 1 0 0 1 0 1.4l-.8.8a1 1 0 0 1-.6.3 1 1 0 0 1-.8-.3 1 1 0 0 1-.3-.8c0-.2.1-.5.3-.6l.7-.8zM12 8a4 4 0 0 1 3.7 2.4 4 4 0 0 1 0 3.2A4 4 0 0 1 12 16a4 4 0 0 1-3.7-2.4 4 4 0 0 1 0-3.2A4 4 0 0 1 12 8zm0 6.5c.7 0 1.3-.2 1.8-.7.5-.5.7-1.1.7-1.8s-.2-1.3-.7-1.8c-.5-.5-1.1-.7-1.8-.7s-1.3.2-1.8.7c-.5.5-.7 1.1-.7 1.8s.2 1.3.7 1.8c.5.5 1.1.7 1.8.7z" fill-rule="evenodd"/></svg>',
-        'browse': '<svg width="24" height="24"><path d="M19 4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4v-2h4V8H5v10h4v2H5a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h14zm-8 9.4l-2.3 2.3a1 1 0 1 1-1.4-1.4l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1-1.4 1.4L13 13.4V20a1 1 0 0 1-2 0v-6.6z" fill-rule="nonzero"/></svg>',
-        'cancel': '<svg width="24" height="24"><path d="M12 4.6a7.4 7.4 0 1 1 0 14.8 7.4 7.4 0 0 1 0-14.8zM12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 8L14.8 8l1 1.1-2.7 2.8 2.7 2.7-1.1 1.1-2.7-2.7-2.7 2.7-1-1.1 2.6-2.7-2.7-2.7 1-1.1 2.8 2.7z" fill-rule="nonzero"/></svg>',
-        'change-case': '<svg width="24" height="24"><path d="M18.4 18.2v-.6c-.5.8-1.3 1.2-2.4 1.2-2.2 0-3.3-1.6-3.3-4.8 0-3.1 1-4.7 3.3-4.7 1.1 0 1.8.3 2.4 1.1v-.6c0-.5.4-.8.8-.8s.8.3.8.8v8.4c0 .5-.4.8-.8.8a.8.8 0 0 1-.8-.8zm-2-7.4c-1.3 0-1.8.9-1.8 3.2 0 2.4.5 3.3 1.7 3.3 1.3 0 1.8-.9 1.8-3.2 0-2.4-.5-3.3-1.7-3.3zM10 15.7H5.5l-.8 2.6a1 1 0 0 1-1 .7h-.2a.7.7 0 0 1-.7-1l4-12a1 1 0 1 1 2 0l4 12a.7.7 0 0 1-.8 1h-.2a1 1 0 0 1-1-.7l-.8-2.6zm-.3-1.5l-2-6.5-1.9 6.5h3.9z" fill-rule="evenodd"/></svg>',
-        'character-count': '<svg width="24" height="24"><path d="M4 11.5h16v1H4v-1zm4.8-6.8V10H7.7V5.8h-1v-1h2zM11 8.3V9h2v1h-3V7.7l2-1v-.9h-2v-1h3v2.4l-2 1zm6.3-3.4V10h-3.1V9h2.1V8h-2.1V6.8h2.1v-1h-2.1v-1h3.1zM5.8 16.4c0-.5.2-.8.5-1 .2-.2.6-.3 1.2-.3l.8.1c.2 0 .4.2.5.3l.4.4v2.8l.2.3H8.2v-.1-.2l-.6.3H7c-.4 0-.7 0-1-.2a1 1 0 0 1-.3-.9c0-.3 0-.6.3-.8.3-.2.7-.4 1.2-.4l.6-.2h.3v-.2l-.1-.2a.8.8 0 0 0-.5-.1 1 1 0 0 0-.4 0l-.3.4h-1zm2.3.8h-.2l-.2.1-.4.1a1 1 0 0 0-.4.2l-.2.2.1.3.5.1h.4l.4-.4v-.6zm2-3.4h1.2v1.7l.5-.3h.5c.5 0 .9.1 1.2.5.3.4.5.8.5 1.4 0 .6-.2 1.1-.5 1.5-.3.4-.7.6-1.3.6l-.6-.1-.4-.4v.4h-1.1v-5.4zm1.1 3.3c0 .3 0 .6.2.8a.7.7 0 0 0 1.2 0l.2-.8c0-.4 0-.6-.2-.8a.7.7 0 0 0-.6-.3l-.6.3-.2.8zm6.1-.5c0-.2 0-.3-.2-.4a.8.8 0 0 0-.5-.2c-.3 0-.5.1-.6.3l-.2.9c0 .3 0 .6.2.8.1.2.3.3.6.3.2 0 .4 0 .5-.2l.2-.4h1.1c0 .5-.3.8-.6 1.1a2 2 0 0 1-1.3.4c-.5 0-1-.2-1.3-.6a2 2 0 0 1-.5-1.4c0-.6.1-1.1.5-1.5.3-.4.8-.5 1.4-.5.5 0 1 0 1.2.3.4.3.5.7.5 1.2h-1v-.1z" fill-rule="evenodd"/></svg>',
-        'checklist': '<svg width="24" height="24"><path d="M11 17h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8a1 1 0 0 1 0 2h-8a1 1 0 0 1 0-2zM7.2 16c.2-.4.6-.5.9-.3.3.2.4.6.2 1L6 20c-.2.3-.7.4-1 0l-1.3-1.3a.7.7 0 0 1 0-1c.3-.2.7-.2 1 0l.7.9 1.7-2.8zm0-6c.2-.4.6-.5.9-.3.3.2.4.6.2 1L6 14c-.2.3-.7.4-1 0l-1.3-1.3a.7.7 0 0 1 0-1c.3-.2.7-.2 1 0l.7.9 1.7-2.8zm0-6c.2-.4.6-.5.9-.3.3.2.4.6.2 1L6 8c-.2.3-.7.4-1 0L3.8 6.9a.7.7 0 0 1 0-1c.3-.2.7-.2 1 0l.7.9 1.7-2.8z" fill-rule="evenodd"/></svg>',
-        'checkmark': '<svg width="24" height="24"><path d="M18.2 5.4a1 1 0 0 1 1.6 1.2l-8 12a1 1 0 0 1-1.5.1l-5-5a1 1 0 1 1 1.4-1.4l4.1 4.1 7.4-11z" fill-rule="nonzero"/></svg>',
-        'chevron-down': '<svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"/></svg>',
-        'chevron-left': '<svg width="10" height="10"><path d="M7.8 1.3L4 5l3.8 3.7c.3.3.3.8 0 1-.4.4-.9.4-1.2 0L2.2 5.7a.8.8 0 0 1 0-1.2L6.6.2C7 0 7.4 0 7.8.2c.3.3.3.8 0 1.1z" fill-rule="nonzero"/></svg>',
-        'chevron-right': '<svg width="10" height="10"><path d="M2.2 1.3a.8.8 0 0 1 0-1c.4-.4.9-.4 1.2 0l4.4 4.1c.3.4.3.9 0 1.2L3.4 9.8c-.3.3-.8.3-1.2 0a.8.8 0 0 1 0-1.1L6 5 2.2 1.3z" fill-rule="nonzero"/></svg>',
-        'chevron-up': '<svg width="10" height="10"><path d="M8.7 7.8L5 4 1.3 7.8c-.3.3-.8.3-1 0a.8.8 0 0 1 0-1.2l4.1-4.4c.3-.3.9-.3 1.2 0l4.2 4.4c.3.3.3.9 0 1.2-.3.3-.8.3-1.1 0z" fill-rule="nonzero"/></svg>',
-        'close': '<svg width="24" height="24"><path d="M17.3 8.2L13.4 12l3.9 3.8a1 1 0 0 1-1.5 1.5L12 13.4l-3.8 3.9a1 1 0 0 1-1.5-1.5l3.9-3.8-3.9-3.8a1 1 0 0 1 1.5-1.5l3.8 3.9 3.8-3.9a1 1 0 0 1 1.5 1.5z" fill-rule="evenodd"/></svg>',
-        'code-sample': '<svg width="24" height="26"><path d="M7.1 11a2.8 2.8 0 0 1-.8 2 2.8 2.8 0 0 1 .8 2v1.7c0 .3.1.6.4.8.2.3.5.4.8.4.3 0 .4.2.4.4v.8c0 .2-.1.4-.4.4-.7 0-1.4-.3-2-.8-.5-.6-.8-1.3-.8-2V15c0-.3-.1-.6-.4-.8-.2-.3-.5-.4-.8-.4a.4.4 0 0 1-.4-.4v-.8c0-.2.2-.4.4-.4.3 0 .6-.1.8-.4.3-.2.4-.5.4-.8V9.3c0-.7.3-1.4.8-2 .6-.5 1.3-.8 2-.8.3 0 .4.2.4.4v.8c0 .2-.1.4-.4.4-.3 0-.6.1-.8.4-.3.2-.4.5-.4.8V11zm9.8 0V9.3c0-.3-.1-.6-.4-.8-.2-.3-.5-.4-.8-.4a.4.4 0 0 1-.4-.4V7c0-.2.1-.4.4-.4.7 0 1.4.3 2 .8.5.6.8 1.3.8 2V11c0 .3.1.6.4.8.2.3.5.4.8.4.2 0 .4.2.4.4v.8c0 .2-.2.4-.4.4-.3 0-.6.1-.8.4-.3.2-.4.5-.4.8v1.7c0 .7-.3 1.4-.8 2-.6.5-1.3.8-2 .8a.4.4 0 0 1-.4-.4v-.8c0-.2.1-.4.4-.4.3 0 .6-.1.8-.4.3-.2.4-.5.4-.8V15a2.8 2.8 0 0 1 .8-2 2.8 2.8 0 0 1-.8-2zm-3.3-.4c0 .4-.1.8-.5 1.1-.3.3-.7.5-1.1.5-.4 0-.8-.2-1.1-.5-.4-.3-.5-.7-.5-1.1 0-.5.1-.9.5-1.2.3-.3.7-.4 1.1-.4.4 0 .8.1 1.1.4.4.3.5.7.5 1.2zM12 13c.4 0 .8.1 1.1.5.4.3.5.7.5 1.1 0 1-.1 1.6-.5 2a3 3 0 0 1-1.1 1c-.4.3-.8.4-1.1.4a.5.5 0 0 1-.5-.5V17a3 3 0 0 0 1-.2l.6-.6c-.6 0-1-.2-1.3-.5-.2-.3-.3-.7-.3-1 0-.5.1-1 .5-1.2.3-.4.7-.5 1.1-.5z" fill-rule="evenodd"/></svg>',
-        'color-levels': '<svg width="24" height="24"><path d="M17.5 11.4A9 9 0 0 1 18 14c0 .5 0 1-.2 1.4 0 .4-.3.9-.5 1.3a6.2 6.2 0 0 1-3.7 3 5.7 5.7 0 0 1-3.2 0A5.9 5.9 0 0 1 7.6 18a6.2 6.2 0 0 1-1.4-2.6 6.7 6.7 0 0 1 0-2.8c0-.4.1-.9.3-1.3a13.6 13.6 0 0 1 2.3-4A20 20 0 0 1 12 4a26.4 26.4 0 0 1 3.2 3.4 18.2 18.2 0 0 1 2.3 4zm-2 4.5c.4-.7.5-1.4.5-2a7.3 7.3 0 0 0-1-3.2c.2.6.2 1.2.2 1.9a4.5 4.5 0 0 1-1.3 3 5.3 5.3 0 0 1-2.3 1.5 4.9 4.9 0 0 1-2 .1 4.3 4.3 0 0 0 2.4.8 4 4 0 0 0 2-.6 4 4 0 0 0 1.5-1.5z" fill-rule="evenodd"/></svg>',
-        'color-picker': '<svg width="24" height="24"><path d="M12 3a9 9 0 0 0 0 18 1.5 1.5 0 0 0 1.1-2.5c-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill-rule="nonzero"/></svg>',
-        'color-swatch-remove-color': '<svg width="24" height="24"><path stroke="#000" stroke-width="2" d="M21 3L3 21" fill-rule="evenodd"/></svg>',
-        'color-swatch': '<svg width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="1" fill-rule="evenodd"/></svg>',
-        'comment': '<svg width="24" height="24"><path d="M9 19l3-2h7c.6 0 1-.4 1-1V6c0-.6-.4-1-1-1H5a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h4v2zm-2 4v-4H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-6.4L7 23z" fill-rule="nonzero"/></svg>',
-        'contrast': '<svg width="24" height="24"><path d="M12 4a7.8 7.8 0 0 1 5.7 2.3A8 8 0 1 1 12 4zm-6 8a6 6 0 0 0 6 6V6a6 6 0 0 0-6 6z" fill-rule="evenodd"/></svg>',
-        'copy': '<svg width="24" height="24"><path d="M16 3H6a2 2 0 0 0-2 2v11h2V5h10V3zm1 4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9c0-1.2.9-2 2-2h7zm0 12V9h-7v10h7z" fill-rule="nonzero"/></svg>',
-        'crop': '<svg width="24" height="24"><path d="M17 8v7h2c.6 0 1 .4 1 1s-.4 1-1 1h-2v2c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-2H7V9H5a1 1 0 1 1 0-2h2V5c0-.6.4-1 1-1s1 .4 1 1v2h7l3-3 1 1-3 3zM9 9v5l5-5H9zm1 6h5v-5l-5 5z" fill-rule="evenodd"/></svg>',
-        'cut': '<svg width="24" height="24"><path d="M18 15c.6.7 1 1.4 1 2.3 0 .8-.2 1.5-.7 2l-.8.5-1 .2c-.4 0-.8 0-1.2-.3a3.9 3.9 0 0 1-2.1-2.2c-.2-.5-.3-1-.2-1.5l-1-1-1 1c0 .5 0 1-.2 1.5-.1.5-.4 1-.9 1.4-.3.4-.7.6-1.2.8l-1.2.3c-.4 0-.7 0-1-.2-.3 0-.6-.3-.8-.5-.5-.5-.8-1.2-.7-2 0-.9.4-1.6 1-2.2A3.7 3.7 0 0 1 8.6 14H9l1-1-4-4-.5-1a3.3 3.3 0 0 1 0-2c0-.4.3-.7.5-1l6 6 6-6 .5 1a3.3 3.3 0 0 1 0 2c0 .4-.3.7-.5 1l-4 4 1 1h.5c.4 0 .8 0 1.2.3.5.2.9.4 1.2.8zm-8.5 2.2l.1-.4v-.3-.4a1 1 0 0 0-.2-.5 1 1 0 0 0-.4-.2 1.6 1.6 0 0 0-.8 0 2.6 2.6 0 0 0-.8.3 2.5 2.5 0 0 0-.9 1.1l-.1.4v.7l.2.5.5.2h.7a2.5 2.5 0 0 0 .8-.3 2.8 2.8 0 0 0 1-1zm2.5-2.8c.4 0 .7-.1 1-.4.3-.3.4-.6.4-1s-.1-.7-.4-1c-.3-.3-.6-.4-1-.4s-.7.1-1 .4c-.3.3-.4.6-.4 1s.1.7.4 1c.3.3.6.4 1 .4zm5.4 4l.2-.5v-.4-.3a2.6 2.6 0 0 0-.3-.8 2.4 2.4 0 0 0-.7-.7 2.5 2.5 0 0 0-.8-.3 1.5 1.5 0 0 0-.8 0 1 1 0 0 0-.4.2 1 1 0 0 0-.2.5 1.5 1.5 0 0 0 0 .7v.4l.3.4.3.4a2.8 2.8 0 0 0 .8.5l.4.1h.7l.5-.2z" fill-rule="evenodd"/></svg>',
-        'document-properties': '<svg width="24" height="24"><path d="M14.4 3H7a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V7.6L14.4 3zM17 19H7V5h6v4h4v10z" fill-rule="nonzero"/></svg>',
-        'drag': '<svg width="24" height="24"><path d="M13 5h2v2h-2V5zm0 4h2v2h-2V9zM9 9h2v2H9V9zm4 4h2v2h-2v-2zm-4 0h2v2H9v-2zm0 4h2v2H9v-2zm4 0h2v2h-2v-2zM9 5h2v2H9V5z" fill-rule="evenodd"/></svg>',
-        'duplicate': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M16 3v2H6v11H4V5c0-1.1.9-2 2-2h10zm3 8h-2V9h-7v10h9a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9c0-1.2.9-2 2-2h7a2 2 0 0 1 2 2v2z"/><path d="M17 14h1a1 1 0 0 1 0 2h-1v1a1 1 0 0 1-2 0v-1h-1a1 1 0 0 1 0-2h1v-1a1 1 0 0 1 2 0v1z"/></g></svg>',
-        'edit-image': '<svg width="24" height="24"><path d="M18 16h2V7a2 2 0 0 0-2-2H7v2h11v9zM6 17h15a1 1 0 0 1 0 2h-1v1a1 1 0 0 1-2 0v-1H6a2 2 0 0 1-2-2V7H3a1 1 0 1 1 0-2h1V4a1 1 0 1 1 2 0v13zm3-5.3l1.3 2 3-4.7 3.7 6H7l2-3.3z" fill-rule="nonzero"/></svg>',
-        'embed-page': '<svg width="24" height="24"><path d="M19 6V5H5v14h2A13 13 0 0 1 19 6zm0 1.4c-.8.8-1.6 2.4-2.2 4.6H19V7.4zm0 5.6h-2.4c-.4 1.8-.6 3.8-.6 6h3v-6zm-4 6c0-2.2.2-4.2.6-6H13c-.7 1.8-1.1 3.8-1.1 6h3zm-4 0c0-2.2.4-4.2 1-6H9.6A12 12 0 0 0 8 19h3zM4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm11.8 9c.4-1.9 1-3.4 1.8-4.5a9.2 9.2 0 0 0-4 4.5h2.2zm-3.4 0a12 12 0 0 1 2.8-4 12 12 0 0 0-5 4h2.2z" fill-rule="nonzero"/></svg>',
-        'embed': '<svg width="24" height="24"><path d="M4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm1 2v14h14V5H5zm4.8 2.6l5.6 4a.5.5 0 0 1 0 .8l-5.6 4A.5.5 0 0 1 9 16V8a.5.5 0 0 1 .8-.4z" fill-rule="nonzero"/></svg>',
-        'emoji': '<svg width="24" height="24"><path d="M9 11c.6 0 1-.4 1-1s-.4-1-1-1a1 1 0 0 0-1 1c0 .6.4 1 1 1zm6 0c.6 0 1-.4 1-1s-.4-1-1-1a1 1 0 0 0-1 1c0 .6.4 1 1 1zm-3 5.5c2.1 0 4-1.5 4.4-3.5H7.6c.5 2 2.3 3.5 4.4 3.5zM12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13z" fill-rule="nonzero"/></svg>',
-        'fill': '<svg width="24" height="26"><path d="M16.6 12l-9-9-1.4 1.4 2.4 2.4-5.2 5.1c-.5.6-.5 1.6 0 2.2L9 19.6a1.5 1.5 0 0 0 2.2 0l5.5-5.5c.5-.6.5-1.6 0-2.2zM5.2 13L10 8.2l4.8 4.8H5.2zM19 14.5s-2 2.2-2 3.5c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.3-2-3.5-2-3.5z" fill-rule="nonzero"/></svg>',
-        'flip-horizontally': '<svg width="24" height="24"><path d="M14 19h2v-2h-2v2zm4-8h2V9h-2v2zM4 7v10c0 1.1.9 2 2 2h3v-2H6V7h3V5H6a2 2 0 0 0-2 2zm14-2v2h2a2 2 0 0 0-2-2zm-7 16h2V3h-2v18zm7-6h2v-2h-2v2zm-4-8h2V5h-2v2zm4 12a2 2 0 0 0 2-2h-2v2z" fill-rule="nonzero"/></svg>',
-        'flip-vertically': '<svg width="24" height="24"><path d="M5 14v2h2v-2H5zm8 4v2h2v-2h-2zm4-14H7a2 2 0 0 0-2 2v3h2V6h10v3h2V6a2 2 0 0 0-2-2zm2 14h-2v2a2 2 0 0 0 2-2zM3 11v2h18v-2H3zm6 7v2h2v-2H9zm8-4v2h2v-2h-2zM5 18c0 1.1.9 2 2 2v-2H5z" fill-rule="nonzero"/></svg>',
-        'format-painter': '<svg width="24" height="24"><path d="M18 5V4c0-.5-.4-1-1-1H5a1 1 0 0 0-1 1v4c0 .6.5 1 1 1h12c.6 0 1-.4 1-1V7h1v4H9v9c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-7h8V5h-3z" fill-rule="nonzero"/></svg>',
-        'fullscreen': '<svg width="24" height="24"><path d="M15.3 10l-1.2-1.3 2.9-3h-2.3a.9.9 0 1 1 0-1.7H19c.5 0 .9.4.9.9v4.4a.9.9 0 1 1-1.8 0V7l-2.9 3zm0 4l3 3v-2.3a.9.9 0 1 1 1.7 0V19c0 .5-.4.9-.9.9h-4.4a.9.9 0 1 1 0-1.8H17l-3-2.9 1.3-1.2zM10 15.4l-2.9 3h2.3a.9.9 0 1 1 0 1.7H5a.9.9 0 0 1-.9-.9v-4.4a.9.9 0 1 1 1.8 0V17l2.9-3 1.2 1.3zM8.7 10L5.7 7v2.3a.9.9 0 0 1-1.7 0V5c0-.5.4-.9.9-.9h4.4a.9.9 0 0 1 0 1.8H7l3 2.9-1.3 1.2z" fill-rule="nonzero"/></svg>',
-        'gamma': '<svg width="24" height="24"><path d="M4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm1 2v14h14V5H5zm6.5 11.8V14L9.2 8.7a5.1 5.1 0 0 0-.4-.8l-.1-.2H8 8v-1l.3-.1.3-.1h.7a1 1 0 0 1 .6.5l.1.3a8.5 8.5 0 0 1 .3.6l1.9 4.6 2-5.2a1 1 0 0 1 1-.6.5.5 0 0 1 .5.6L13 14v2.8a.7.7 0 0 1-1.4 0z" fill-rule="nonzero"/></svg>',
-        'help': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M12 5.5a6.5 6.5 0 0 0-6 9 6.3 6.3 0 0 0 1.4 2l1 1a6.3 6.3 0 0 0 3.6 1 6.5 6.5 0 0 0 6-9 6.3 6.3 0 0 0-1.4-2l-1-1a6.3 6.3 0 0 0-3.6-1zM12 4a7.8 7.8 0 0 1 5.7 2.3A8 8 0 1 1 12 4z"/><path d="M9.6 9.7a.7.7 0 0 1-.7-.8c0-1.1 1.5-1.8 3.2-1.8 1.8 0 3.2.8 3.2 2.4 0 1.4-.4 2.1-1.5 2.8-.2 0-.3.1-.3.2a2 2 0 0 0-.8.8.8.8 0 0 1-1.4-.6c.3-.7.8-1 1.3-1.5l.4-.2c.7-.4.8-.6.8-1.5 0-.5-.6-.9-1.7-.9-.5 0-1 .1-1.4.3-.2 0-.3.1-.3.2v-.2c0 .4-.4.8-.8.8z" fill-rule="nonzero"/><circle cx="12" cy="16" r="1"/></g></svg>',
-        'highlight-bg-color': '<svg width="24" height="24"><g fill-rule="evenodd"><path id="tox-icon-highlight-bg-color__color" d="M3 18h18v3H3z"/><path fill-rule="nonzero" d="M7.7 16.7H3l3.3-3.3-.7-.8L10.2 8l4 4.1-4 4.2c-.2.2-.6.2-.8 0l-.6-.7-1.1 1.1zm5-7.5L11 7.4l3-2.9a2 2 0 0 1 2.6 0L18 6c.7.7.7 2 0 2.7l-2.9 2.9-1.8-1.8-.5-.6"/></g></svg>',
-        'home': '<svg width="24" height="24"><path fill-rule="nonzero" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>',
-        'horizontal-rule': '<svg width="24" height="24"><path d="M4 11h16v2H4z" fill-rule="evenodd"/></svg>',
-        'image-options': '<svg width="24" height="24"><path d="M6 10a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm12 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm-6 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2z" fill-rule="nonzero"/></svg>',
-        'image': '<svg width="24" height="24"><path d="M5 15.7l3.3-3.2c.3-.3.7-.3 1 0L12 15l4.1-4c.3-.4.8-.4 1 0l2 1.9V5H5v10.7zM5 18V19h3l2.8-2.9-2-2L5 17.9zm14-3l-2.5-2.4-6.4 6.5H19v-4zM4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V4c0-.6.4-1 1-1zm6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill-rule="nonzero"/></svg>',
-        'indent': '<svg width="24" height="24"><path d="M7 5h12c.6 0 1 .4 1 1s-.4 1-1 1H7a1 1 0 1 1 0-2zm5 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm0 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm-5 4h12a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2zm-2.6-3.8L6.2 12l-1.8-1.2a1 1 0 0 1 1.2-1.6l3 2a1 1 0 0 1 0 1.6l-3 2a1 1 0 1 1-1.2-1.6z" fill-rule="evenodd"/></svg>',
-        'indeterminate': '<svg width="24" height="24"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zM9 11a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2H9z" fill-rule="evenodd"/></svg>',
-        'info': '<svg width="24" height="24"><path d="M12 4a7.8 7.8 0 0 1 5.7 2.3A8 8 0 1 1 12 4zm-1 3v2h2V7h-2zm3 10v-1h-1v-5h-3v1h1v4h-1v1h4z" fill-rule="evenodd"/></svg>',
-        'insert-character': '<svg width="24" height="24"><path d="M15 18h4l1-2v4h-6v-3.3l1.4-1a6 6 0 0 0 1.8-2.9 6.3 6.3 0 0 0-.1-4.1 5.8 5.8 0 0 0-3-3.2c-.6-.3-1.3-.5-2.1-.5a5.1 5.1 0 0 0-3.9 1.8 6.3 6.3 0 0 0-1.3 6 6.2 6.2 0 0 0 1.8 3l1.4.9V20H4v-4l1 2h4v-.5l-2-1L5.4 15A6.5 6.5 0 0 1 4 11c0-1 .2-1.9.6-2.7A7 7 0 0 1 6.3 6C7.1 5.4 8 5 9 4.5c1-.3 2-.5 3.1-.5a8.8 8.8 0 0 1 5.7 2 7 7 0 0 1 1.7 2.3 6 6 0 0 1 .2 4.8c-.2.7-.6 1.3-1 1.9a7.6 7.6 0 0 1-3.6 2.5v.5z" fill-rule="evenodd"/></svg>',
-        'insert-time': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M12 19a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm0 2a9 9 0 1 1 0-18 9 9 0 0 1 0 18z"/><path d="M16 12h-3V7c0-.6-.4-1-1-1a1 1 0 0 0-1 1v7h5c.6 0 1-.4 1-1s-.4-1-1-1z"/></g></svg>',
-        'invert': '<svg width="24" height="24"><path d="M18 19.3L16.5 18a5.8 5.8 0 0 1-3.1 1.9 6.1 6.1 0 0 1-5.5-1.6A5.8 5.8 0 0 1 6 14v-.3l.1-1.2A13.9 13.9 0 0 1 7.7 9l-3-3 .7-.8 2.8 2.9 9 8.9 1.5 1.6-.7.6zm0-5.5v.3l-.1 1.1-.4 1-1.2-1.2a4.3 4.3 0 0 0 .2-1v-.2c0-.4 0-.8-.2-1.3l-.5-1.4a14.8 14.8 0 0 0-3-4.2L12 6a26.1 26.1 0 0 0-2.2 2.5l-1-1a20.9 20.9 0 0 1 2.9-3.3L12 4l1 .8a22.2 22.2 0 0 1 4 5.4c.6 1.2 1 2.4 1 3.6z" fill-rule="evenodd"/></svg>',
-        'italic': '<svg width="24" height="24"><path d="M16.7 4.7l-.1.9h-.3c-.6 0-1 0-1.4.3-.3.3-.4.6-.5 1.1l-2.1 9.8v.6c0 .5.4.8 1.4.8h.2l-.2.8H8l.2-.8h.2c1.1 0 1.8-.5 2-1.5l2-9.8.1-.5c0-.6-.4-.8-1.4-.8h-.3l.2-.9h5.8z" fill-rule="evenodd"/></svg>',
-        'line': '<svg width="24" height="24"><path d="M15 9l-8 8H4v-3l8-8 3 3zm1-1l-3-3 1-1h1c-.2 0 0 0 0 0l2 2s0 .2 0 0v1l-1 1zM4 18h16v2H4v-2z" fill-rule="evenodd"/></svg>',
-        'link': '<svg width="24" height="24"><path d="M6.2 12.3a1 1 0 0 1 1.4 1.4l-2.1 2a2 2 0 1 0 2.7 2.8l4.8-4.8a1 1 0 0 0 0-1.4 1 1 0 1 1 1.4-1.3 2.9 2.9 0 0 1 0 4L9.6 20a3.9 3.9 0 0 1-5.5-5.5l2-2zm11.6-.6a1 1 0 0 1-1.4-1.4l2-2a2 2 0 1 0-2.6-2.8L11 10.3a1 1 0 0 0 0 1.4A1 1 0 1 1 9.6 13a2.9 2.9 0 0 1 0-4L14.4 4a3.9 3.9 0 0 1 5.5 5.5l-2 2z" fill-rule="nonzero"/></svg>',
-        'list-bull-circle': '<svg width="48" height="48"><g fill-rule="evenodd"><path d="M11 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM11 26a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM11 36a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill-rule="nonzero"/><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/></g></svg>',
-        'list-bull-default': '<svg width="48" height="48"><g fill-rule="evenodd"><circle cx="11" cy="14" r="3"/><circle cx="11" cy="24" r="3"/><circle cx="11" cy="34" r="3"/><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/></g></svg>',
-        'list-bull-square': '<svg width="48" height="48"><g fill-rule="evenodd"><path d="M8 11h6v6H8zM8 21h6v6H8zM8 31h6v6H8z"/><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/></g></svg>',
-        'list-num-default': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M10 17v-4.8l-1.5 1v-1.1l1.6-1h1.2V17h-1.2zm3.6.1c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .7.3.7.7 0 .4-.2.7-.7.7zm-5 5.7c0-1.2.8-2 2.1-2s2.1.8 2.1 1.8c0 .7-.3 1.2-1.4 2.2l-1.1 1v.2h2.6v1H8.6v-.9l2-1.9c.8-.8 1-1.1 1-1.5 0-.5-.4-.8-1-.8-.5 0-.9.3-.9.9H8.5zm6.3 4.3c-.5 0-.7-.3-.7-.7 0-.4.2-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zM10 34.4v-1h.7c.6 0 1-.3 1-.8 0-.4-.4-.7-1-.7s-1 .3-1 .8H8.6c0-1.1 1-1.8 2.2-1.8 1.3 0 2.1.6 2.1 1.6 0 .7-.4 1.2-1 1.3v.1c.8.1 1.3.7 1.3 1.4 0 1-1 1.9-2.4 1.9-1.3 0-2.2-.8-2.3-2h1.2c0 .6.5 1 1.1 1 .7 0 1-.4 1-1 0-.5-.3-.8-1-.8h-.7zm4.7 2.7c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .8.3.8.7 0 .4-.3.7-.8.7z"/></g></svg>',
-        'list-num-lower-alpha': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M10.3 15.2c.5 0 1-.4 1-.9V14h-1c-.5.1-.8.3-.8.6 0 .4.3.6.8.6zm-.4.9c-1 0-1.5-.6-1.5-1.4 0-.8.6-1.3 1.7-1.4h1.1v-.4c0-.4-.2-.6-.7-.6-.5 0-.8.1-.9.4h-1c0-.8.8-1.4 2-1.4 1.1 0 1.8.6 1.8 1.6V16h-1.1v-.6h-.1c-.2.4-.7.7-1.3.7zm4.6 0c-.5 0-.7-.3-.7-.7 0-.4.2-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm-3.2 10c-.6 0-1.2-.3-1.4-.8v.7H8.5v-6.3H10v2.5c.3-.5.8-.9 1.4-.9 1.2 0 1.9 1 1.9 2.4 0 1.5-.7 2.4-1.9 2.4zm-.4-3.7c-.7 0-1 .5-1 1.3s.3 1.4 1 1.4c.6 0 1-.6 1-1.4 0-.8-.4-1.3-1-1.3zm4 3.7c-.5 0-.7-.3-.7-.7 0-.4.2-.7.7-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm-2.2 7h-1.2c0-.5-.4-.8-.9-.8-.6 0-1 .5-1 1.4 0 1 .4 1.4 1 1.4.5 0 .8-.2 1-.7h1c0 1-.8 1.7-2 1.7-1.4 0-2.2-.9-2.2-2.4s.8-2.4 2.2-2.4c1.2 0 2 .7 2 1.7zm1.8 3c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7z"/></g></svg>',
-        'list-num-lower-greek': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M10.5 15c.7 0 1-.5 1-1.3s-.3-1.3-1-1.3c-.5 0-.9.5-.9 1.3s.4 1.4 1 1.4zm-.3 1c-1.1 0-1.8-.8-1.8-2.3 0-1.5.7-2.4 1.8-2.4.7 0 1.1.4 1.3 1h.1v-.9h1.2v3.2c0 .4.1.5.4.5h.2v.9h-.6c-.6 0-1-.2-1.1-.7h-.1c-.2.4-.7.8-1.4.8zm5 .1c-.5 0-.8-.3-.8-.7 0-.4.3-.7.7-.7.5 0 .8.3.8.7 0 .4-.3.7-.8.7zm-4.9 7v-1h.3c.6 0 1-.2 1-.7 0-.5-.4-.8-1-.8-.5 0-.8.3-.8 1v2.2c0 .8.4 1.3 1.1 1.3.6 0 1-.4 1-1s-.5-1-1.3-1h-.3zM8.6 22c0-1.5.7-2.3 2-2.3 1.2 0 2 .6 2 1.6 0 .6-.3 1-.8 1.3.8.3 1.3.8 1.3 1.7 0 1.2-.8 1.9-1.9 1.9-.6 0-1.1-.3-1.3-.8v2.2H8.5V22zm6.2 4.2c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .7.3.7.7 0 .4-.2.7-.7.7zm-4.5 8.5L8 30h1.4l1.7 3.5 1.7-3.5h1.1l-2.2 4.6v.1c.5.8.7 1.4.7 1.8 0 .4-.1.8-.4 1-.2.2-.6.3-1 .3-.9 0-1.3-.4-1.3-1.2 0-.5.2-1 .5-1.7l.1-.2zm.7 1a2 2 0 0 0-.4.9c0 .3.1.4.4.4.3 0 .4-.1.4-.4 0-.2-.1-.6-.4-1zm4.5.5c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7z"/></g></svg>',
-        'list-num-lower-roman': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M15.1 16v-1.2h1.3V16H15zm0 10v-1.2h1.3V26H15zm0 10v-1.2h1.3V36H15z"/><path fill-rule="nonzero" d="M12 21h1.5v5H12zM12 31h1.5v5H12zM9 21h1.5v5H9zM9 31h1.5v5H9zM6 31h1.5v5H6zM12 11h1.5v5H12zM12 19h1.5v1H12zM12 29h1.5v1H12zM9 19h1.5v1H9zM9 29h1.5v1H9zM6 29h1.5v1H6zM12 9h1.5v1H12z"/></g></svg>',
-        'list-num-upper-alpha': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M12.6 17l-.5-1.4h-2L9.5 17H8.3l2-6H12l2 6h-1.3zM11 12.3l-.7 2.3h1.6l-.8-2.3zm4.7 4.8c-.4 0-.7-.3-.7-.7 0-.4.3-.7.7-.7.5 0 .7.3.7.7 0 .4-.2.7-.7.7zM11.4 27H8.7v-6h2.6c1.2 0 1.9.6 1.9 1.5 0 .6-.5 1.2-1 1.3.7.1 1.3.7 1.3 1.5 0 1-.8 1.7-2 1.7zM10 22v1.5h1c.6 0 1-.3 1-.8 0-.4-.4-.7-1-.7h-1zm0 4H11c.7 0 1.1-.3 1.1-.8 0-.6-.4-.9-1.1-.9H10V26zm5.4 1.1c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7zm-4.1 10c-1.8 0-2.8-1.1-2.8-3.1s1-3.1 2.8-3.1c1.4 0 2.5.9 2.6 2.2h-1.3c0-.7-.6-1.1-1.3-1.1-1 0-1.6.7-1.6 2s.6 2 1.6 2c.7 0 1.2-.4 1.4-1h1.2c-.1 1.3-1.2 2.2-2.6 2.2zm4.5 0c-.5 0-.8-.3-.8-.7 0-.4.3-.7.8-.7.4 0 .7.3.7.7 0 .4-.3.7-.7.7z"/></g></svg>',
-        'list-num-upper-roman': '<svg width="48" height="48"><g fill-rule="evenodd"><path opacity=".2" d="M18 12h22v4H18zM18 22h22v4H18zM18 32h22v4H18z"/><path d="M15.1 17v-1.2h1.3V17H15zm0 10v-1.2h1.3V27H15zm0 10v-1.2h1.3V37H15z"/><path fill-rule="nonzero" d="M12 20h1.5v7H12zM12 30h1.5v7H12zM9 20h1.5v7H9zM9 30h1.5v7H9zM6 30h1.5v7H6zM12 10h1.5v7H12z"/></g></svg>',
-        'lock': '<svg width="24" height="24"><path d="M16.3 11c.2 0 .3 0 .5.2l.2.6v7.4c0 .3 0 .4-.2.6l-.6.2H7.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6v-7.4c0-.3 0-.4.2-.6l.5-.2H8V8c0-.8.3-1.5.9-2.1.6-.6 1.3-.9 2.1-.9h2c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v3h.3zM10 8v3h4V8a1 1 0 0 0-.3-.7A1 1 0 0 0 13 7h-2a1 1 0 0 0-.7.3 1 1 0 0 0-.3.7z" fill-rule="evenodd"/></svg>',
-        'ltr': '<svg width="24" height="24"><path d="M11 5h7a1 1 0 0 1 0 2h-1v11a1 1 0 0 1-2 0V7h-2v11a1 1 0 0 1-2 0v-6c-.5 0-1 0-1.4-.3A3.4 3.4 0 0 1 7.8 10a3.3 3.3 0 0 1 0-2.8 3.4 3.4 0 0 1 1.8-1.8L11 5zM4.4 16.2L6.2 15l-1.8-1.2a1 1 0 0 1 1.2-1.6l3 2a1 1 0 0 1 0 1.6l-3 2a1 1 0 1 1-1.2-1.6z" fill-rule="evenodd"/></svg>',
-        'more-drawer': '<svg width="24" height="24"><path d="M6 10a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm12 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2zm-6 0a2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2z" fill-rule="nonzero"/></svg>',
-        'new-document': '<svg width="24" height="24"><path d="M14.4 3H7a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V7.6L14.4 3zM17 19H7V5h6v4h4v10z" fill-rule="nonzero"/></svg>',
-        'new-tab': '<svg width="24" height="24"><path d="M15 13l2-2v8H5V7h8l-2 2H7v8h8v-4zm4-8v5.5l-2-2-5.6 5.5H10v-1.4L15.5 7l-2-2H19z" fill-rule="evenodd"/></svg>',
-        'non-breaking': '<svg width="24" height="24"><path d="M11 11H8a1 1 0 1 1 0-2h3V6c0-.6.4-1 1-1s1 .4 1 1v3h3c.6 0 1 .4 1 1s-.4 1-1 1h-3v3c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-3zm10 4v5H3v-5c0-.6.4-1 1-1s1 .4 1 1v3h14v-3c0-.6.4-1 1-1s1 .4 1 1z" fill-rule="evenodd"/></svg>',
-        'notice': '<svg width="24" height="24"><path d="M17.8 9.8L15.4 4 20 8.5v7L15.5 20h-7L4 15.5v-7L8.5 4h7l2.3 5.8zm0 0l2.2 5.7-2.3-5.8zM13 17v-2h-2v2h2zm0-4V7h-2v6h2z" fill-rule="evenodd"/></svg>',
-        'ordered-list': '<svg width="24" height="24"><path d="M10 17h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 1 1 0-2zM6 4v3.5c0 .3-.2.5-.5.5a.5.5 0 0 1-.5-.5V5h-.5a.5.5 0 0 1 0-1H6zm-1 8.8l.2.2h1.3c.3 0 .5.2.5.5s-.2.5-.5.5H4.9a1 1 0 0 1-.9-1V13c0-.4.3-.8.6-1l1.2-.4.2-.3a.2.2 0 0 0-.2-.2H4.5a.5.5 0 0 1-.5-.5c0-.3.2-.5.5-.5h1.6c.5 0 .9.4.9 1v.1c0 .4-.3.8-.6 1l-1.2.4-.2.3zM7 17v2c0 .6-.4 1-1 1H4.5a.5.5 0 0 1 0-1h1.2c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3H4.4a.4.4 0 1 1 0-.8h1.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3H4.5a.5.5 0 1 1 0-1H6c.6 0 1 .4 1 1z" fill-rule="evenodd"/></svg>',
-        'orientation': '<svg width="24" height="24"><path d="M7.3 6.4L1 13l6.4 6.5 6.5-6.5-6.5-6.5zM3.7 13l3.6-3.7L11 13l-3.7 3.7-3.6-3.7zM12 6l2.8 2.7c.3.3.3.8 0 1-.3.4-.9.4-1.2 0L9.2 5.7a.8.8 0 0 1 0-1.2L13.6.2c.3-.3.9-.3 1.2 0 .3.3.3.8 0 1.1L12 4h1a9 9 0 1 1-4.3 16.9l1.5-1.5A7 7 0 1 0 13 6h-1z" fill-rule="nonzero"/></svg>',
-        'outdent': '<svg width="24" height="24"><path d="M7 5h12c.6 0 1 .4 1 1s-.4 1-1 1H7a1 1 0 1 1 0-2zm5 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm0 4h7c.6 0 1 .4 1 1s-.4 1-1 1h-7a1 1 0 0 1 0-2zm-5 4h12a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2zm1.6-3.8a1 1 0 0 1-1.2 1.6l-3-2a1 1 0 0 1 0-1.6l3-2a1 1 0 0 1 1.2 1.6L6.8 12l1.8 1.2z" fill-rule="evenodd"/></svg>',
-        'page-break': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M5 11c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h1c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2zm4 0c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h1c.6 0 1 .4 1 1s-.4 1-1 1h-1a1 1 0 0 1 0-2zm4 0c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zM7 3v5h10V3c0-.6.4-1 1-1s1 .4 1 1v7H5V3c0-.6.4-1 1-1s1 .4 1 1zM6 22a1 1 0 0 1-1-1v-7h14v7c0 .6-.4 1-1 1a1 1 0 0 1-1-1v-5H7v5c0 .6-.4 1-1 1z"/></g></svg>',
-        'paragraph': '<svg width="24" height="24"><path d="M10 5h7a1 1 0 0 1 0 2h-1v11a1 1 0 0 1-2 0V7h-2v11a1 1 0 0 1-2 0v-6c-.5 0-1 0-1.4-.3A3.4 3.4 0 0 1 6.8 10a3.3 3.3 0 0 1 0-2.8 3.4 3.4 0 0 1 1.8-1.8L10 5z" fill-rule="evenodd"/></svg>',
-        'paste-text': '<svg width="24" height="24"><path d="M18 9V5h-2v1c0 .6-.4 1-1 1H9a1 1 0 0 1-1-1V5H6v13h3V9h9zM9 20H6a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.2A3 3 0 0 1 12 1a3 3 0 0 1 2.8 2H18a2 2 0 0 1 2 2v4h1v12H9v-1zm1.5-9.5v9h9v-9h-9zM12 3a1 1 0 0 0-1 1c0 .5.4 1 1 1s1-.5 1-1-.4-1-1-1zm0 9h6v2h-.5l-.5-1h-1v4h.8v1h-3.6v-1h.8v-4h-1l-.5 1H12v-2z" fill-rule="nonzero"/></svg>',
-        'paste': '<svg width="24" height="24"><path d="M18 9V5h-2v1c0 .6-.4 1-1 1H9a1 1 0 0 1-1-1V5H6v13h3V9h9zM9 20H6a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.2A3 3 0 0 1 12 1a3 3 0 0 1 2.8 2H18a2 2 0 0 1 2 2v4h1v12H9v-1zm1.5-9.5v9h9v-9h-9zM12 3a1 1 0 0 0-1 1c0 .5.4 1 1 1s1-.5 1-1-.4-1-1-1z" fill-rule="nonzero"/></svg>',
-        'permanent-pen': '<svg width="24" height="24"><path d="M10.5 17.5L8 20H3v-3l3.5-3.5a2 2 0 0 1 0-3L14 3l1 1-7.3 7.3a1 1 0 0 0 0 1.4l3.6 3.6c.4.4 1 .4 1.4 0L20 9l1 1-7.6 7.6a2 2 0 0 1-2.8 0l-.1-.1z" fill-rule="nonzero"/></svg>',
-        'plus': '<svg width="24" height="24"><g fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke="#000" stroke-width="2"><path d="M12 5v14M5 12h14"/></g></svg>',
-        'preferences': '<svg width="24" height="24"><path d="M20.1 13.5l-1.9.2a5.8 5.8 0 0 1-.6 1.5l1.2 1.5c.4.4.3 1 0 1.4l-.7.7a1 1 0 0 1-1.4 0l-1.5-1.2a6.2 6.2 0 0 1-1.5.6l-.2 1.9c0 .5-.5.9-1 .9h-1a1 1 0 0 1-1-.9l-.2-1.9a5.8 5.8 0 0 1-1.5-.6l-1.5 1.2a1 1 0 0 1-1.4 0l-.7-.7a1 1 0 0 1 0-1.4l1.2-1.5a6.2 6.2 0 0 1-.6-1.5l-1.9-.2a1 1 0 0 1-.9-1v-1c0-.5.4-1 .9-1l1.9-.2a5.8 5.8 0 0 1 .6-1.5L5.2 7.3a1 1 0 0 1 0-1.4l.7-.7a1 1 0 0 1 1.4 0l1.5 1.2a6.2 6.2 0 0 1 1.5-.6l.2-1.9c0-.5.5-.9 1-.9h1c.5 0 1 .4 1 .9l.2 1.9a5.8 5.8 0 0 1 1.5.6l1.5-1.2a1 1 0 0 1 1.4 0l.7.7c.3.4.4 1 0 1.4l-1.2 1.5a6.2 6.2 0 0 1 .6 1.5l1.9.2c.5 0 .9.5.9 1v1c0 .5-.4 1-.9 1zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill-rule="evenodd"/></svg>',
-        'preview': '<svg width="24" height="24"><path d="M3.5 12.5c.5.8 1.1 1.6 1.8 2.3 2 2 4.2 3.2 6.7 3.2s4.7-1.2 6.7-3.2a16.2 16.2 0 0 0 2.1-2.8 15.7 15.7 0 0 0-2.1-2.8c-2-2-4.2-3.2-6.7-3.2a9.3 9.3 0 0 0-6.7 3.2A16.2 16.2 0 0 0 3.2 12c0 .2.2.3.3.5zm-2.4-1l.7-1.2L4 7.8C6.2 5.4 8.9 4 12 4c3 0 5.8 1.4 8.1 3.8a18.2 18.2 0 0 1 2.8 3.7v1l-.7 1.2-2.1 2.5c-2.3 2.4-5 3.8-8.1 3.8-3 0-5.8-1.4-8.1-3.8a18.2 18.2 0 0 1-2.8-3.7 1 1 0 0 1 0-1zm12-3.3a2 2 0 1 0 2.7 2.6 4 4 0 1 1-2.6-2.6z" fill-rule="nonzero"/></svg>',
-        'print': '<svg width="24" height="24"><path d="M18 8H6a3 3 0 0 0-3 3v6h2v3h14v-3h2v-6a3 3 0 0 0-3-3zm-1 10H7v-4h10v4zm.5-5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm.5-8H6v2h12V5z" fill-rule="nonzero"/></svg>',
-        'quote': '<svg width="24" height="24"><path d="M7.5 17h.9c.4 0 .7-.2.9-.6L11 13V8c0-.6-.4-1-1-1H6a1 1 0 0 0-1 1v4c0 .6.4 1 1 1h2l-1.3 2.7a1 1 0 0 0 .8 1.3zm8 0h.9c.4 0 .7-.2.9-.6L19 13V8c0-.6-.4-1-1-1h-4a1 1 0 0 0-1 1v4c0 .6.4 1 1 1h2l-1.3 2.7a1 1 0 0 0 .8 1.3z" fill-rule="nonzero"/></svg>',
-        'redo': '<svg width="24" height="24"><path d="M17.6 10H12c-2.8 0-4.4 1.4-4.9 3.5-.4 2 .3 4 1.4 4.6a1 1 0 1 1-1 1.8c-2-1.2-2.9-4.1-2.3-6.8.6-3 3-5.1 6.8-5.1h5.6l-3.3-3.3a1 1 0 1 1 1.4-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3z" fill-rule="nonzero"/></svg>',
-        'reload': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M5 22.1l-1.2-4.7v-.2a1 1 0 0 1 1-1l5 .4a1 1 0 1 1-.2 2l-2.2-.2a7.8 7.8 0 0 0 8.4.2 7.5 7.5 0 0 0 3.5-6.4 1 1 0 1 1 2 0 9.5 9.5 0 0 1-4.5 8 9.9 9.9 0 0 1-10.2 0l.4 1.4a1 1 0 1 1-2 .5zM13.6 7.4c0-.5.5-1 1-.9l2.8.2a8 8 0 0 0-9.5-1 7.5 7.5 0 0 0-3.6 7 1 1 0 0 1-2 0 9.5 9.5 0 0 1 4.5-8.6 10 10 0 0 1 10.9.3l-.3-1a1 1 0 0 1 2-.5l1.1 4.8a1 1 0 0 1-1 1.2l-5-.4a1 1 0 0 1-.9-1z"/></g></svg>',
-        'remove-formatting': '<svg width="24" height="24"><path d="M13.2 6a1 1 0 0 1 0 .2l-2.6 10a1 1 0 0 1-1 .8h-.2a.8.8 0 0 1-.8-1l2.6-10H8a1 1 0 1 1 0-2h9a1 1 0 0 1 0 2h-3.8zM5 18h7a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm13 1.5L16.5 18 15 19.5a.7.7 0 0 1-1-1l1.5-1.5-1.5-1.5a.7.7 0 0 1 1-1l1.5 1.5 1.5-1.5a.7.7 0 0 1 1 1L17.5 17l1.5 1.5a.7.7 0 0 1-1 1z" fill-rule="evenodd"/></svg>',
-        'remove': '<svg width="24" height="24"><path d="M16 7h3a1 1 0 0 1 0 2h-1v9a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V9H5a1 1 0 1 1 0-2h3V6a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v1zm-2 0V6c0-.6-.4-1-1-1h-2a1 1 0 0 0-1 1v1h4zm2 2H8v9c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V9zm-7 3a1 1 0 0 1 2 0v4a1 1 0 0 1-2 0v-4zm4 0a1 1 0 0 1 2 0v4a1 1 0 0 1-2 0v-4z" fill-rule="nonzero"/></svg>',
-        'resize-handle': '<svg width="10" height="10"><g fill-rule="nonzero"><path d="M8.1 1.1A.5.5 0 1 1 9 2l-7 7A.5.5 0 1 1 1 8l7-7zM8.1 5.1A.5.5 0 1 1 9 6l-3 3A.5.5 0 1 1 5 8l3-3z"/></g></svg>',
-        'resize': '<svg width="24" height="24"><path d="M4 5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h6c.3 0 .5.1.7.3.2.2.3.4.3.7 0 .3-.1.5-.3.7a1 1 0 0 1-.7.3H7.4L18 16.6V13c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3.3 0 .5.1.7.3.2.2.3.4.3.7v6c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3h-6a1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h3.6L6 7.4V11c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3 1 1 0 0 1-.7-.3A1 1 0 0 1 4 11V5z" fill-rule="evenodd"/></svg>',
-        'restore-draft': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M17 13c0 .6-.4 1-1 1h-4V8c0-.6.4-1 1-1s1 .4 1 1v4h2c.6 0 1 .4 1 1z"/><path d="M4.7 10H9a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v3l2.5-2.4a9.2 9.2 0 0 1 10.8-1.5A9 9 0 0 1 13.4 21c-2.4.1-4.7-.7-6.5-2.2a1 1 0 1 1 1.3-1.5 7.2 7.2 0 0 0 11.6-3.7 7 7 0 0 0-3.5-7.7A7.2 7.2 0 0 0 8 7L4.7 10z" fill-rule="nonzero"/></g></svg>',
-        'rotate-left': '<svg width="24" height="24"><path d="M4.7 10H9a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v3l2.5-2.4a9.2 9.2 0 0 1 10.8-1.5A9 9 0 0 1 13.4 21c-2.4.1-4.7-.7-6.5-2.2a1 1 0 1 1 1.3-1.5 7.2 7.2 0 0 0 11.6-3.7 7 7 0 0 0-3.5-7.7A7.2 7.2 0 0 0 8 7L4.7 10z" fill-rule="nonzero"/></svg>',
-        'rotate-right': '<svg width="24" height="24"><path d="M20 8V5a1 1 0 0 1 2 0v6c0 .6-.4 1-1 1h-6a1 1 0 0 1 0-2h4.3L16 7A7.2 7.2 0 0 0 7.7 6a7 7 0 0 0 3 13.1c1.9.1 3.7-.5 5-1.7a1 1 0 0 1 1.4 1.5A9.2 9.2 0 0 1 2.2 14c-.9-3.9 1-8 4.5-9.9 3.5-1.9 8-1.3 10.8 1.5L20 8z" fill-rule="nonzero"/></svg>',
-        'rtl': '<svg width="24" height="24"><path d="M8 5h8v2h-2v12h-2V7h-2v12H8v-7c-.5 0-1 0-1.4-.3A3.4 3.4 0 0 1 4.8 10a3.3 3.3 0 0 1 0-2.8 3.4 3.4 0 0 1 1.8-1.8L8 5zm12 11.2a1 1 0 1 1-1 1.6l-3-2a1 1 0 0 1 0-1.6l3-2a1 1 0 1 1 1 1.6L18.4 15l1.8 1.2z" fill-rule="evenodd"/></svg>',
-        'save': '<svg width="24" height="24"><path d="M5 16h14a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2c0-1.1.9-2 2-2zm0 2v2h14v-2H5zm10 0h2v2h-2v-2zm-4-6.4L8.7 9.3a1 1 0 1 0-1.4 1.4l4 4c.4.4 1 .4 1.4 0l4-4a1 1 0 1 0-1.4-1.4L13 11.6V4a1 1 0 0 0-2 0v7.6z" fill-rule="nonzero"/></svg>',
-        'search': '<svg width="24" height="24"><path d="M16 17.3a8 8 0 1 1 1.4-1.4l4.3 4.4a1 1 0 0 1-1.4 1.4l-4.4-4.3zm-5-.3a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill-rule="nonzero"/></svg>',
-        'select-all': '<svg width="24" height="24"><path d="M3 5h2V3a2 2 0 0 0-2 2zm0 8h2v-2H3v2zm4 8h2v-2H7v2zM3 9h2V7H3v2zm10-6h-2v2h2V3zm6 0v2h2a2 2 0 0 0-2-2zM5 21v-2H3c0 1.1.9 2 2 2zm-2-4h2v-2H3v2zM9 3H7v2h2V3zm2 18h2v-2h-2v2zm8-8h2v-2h-2v2zm0 8a2 2 0 0 0 2-2h-2v2zm0-12h2V7h-2v2zm0 8h2v-2h-2v2zm-4 4h2v-2h-2v2zm0-16h2V3h-2v2zM7 17h10V7H7v10zm2-8h6v6H9V9z" fill-rule="nonzero"/></svg>',
-        'selected': '<svg width="24" height="24"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zm-2.4-6.1L7 12.3a.7.7 0 0 0-1 1L9.6 17 18 8.6a.7.7 0 0 0 0-1 .7.7 0 0 0-1 0l-7.4 7.3z" fill-rule="evenodd"/></svg>',
-        'settings': '<svg width="24" height="24"><path d="M11 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8v.3c0 .2 0 .3-.2.5l-.6.2H7.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6V8H5a1 1 0 1 1 0-2h2v-.3c0-.2 0-.3.2-.5l.5-.2h2.5c.3 0 .4 0 .6.2l.2.5V6zM8 8h2V6H8v2zm9 2.8v.2h2c.6 0 1 .4 1 1s-.4 1-1 1h-2v.3c0 .2 0 .3-.2.5l-.6.2h-2.4c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6V13H5a1 1 0 0 1 0-2h8v-.3c0-.2 0-.3.2-.5l.6-.2h2.4c.3 0 .4 0 .6.2l.2.6zM14 13h2v-2h-2v2zm-3 2.8v.2h8c.6 0 1 .4 1 1s-.4 1-1 1h-8v.3c0 .2 0 .3-.2.5l-.6.2H7.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6V18H5a1 1 0 0 1 0-2h2v-.3c0-.2 0-.3.2-.5l.5-.2h2.5c.3 0 .4 0 .6.2l.2.6zM8 18h2v-2H8v2z" fill-rule="evenodd"/></svg>',
-        'sharpen': '<svg width="24" height="24"><path d="M16 6l4 4-8 9-8-9 4-4h8zm-4 10.2l5.5-6.2-.1-.1H12v-.3h5.1l-.2-.2H12V9h4.6l-.2-.2H12v-.3h4.1l-.2-.2H12V8h3.6l-.2-.2H8.7L6.5 10l.1.1H12v.3H6.9l.2.2H12v.3H7.3l.2.2H12v.3H7.7l.3.2h4v.3H8.2l.2.2H12v.3H8.6l.3.2H12v.3H9l.3.2H12v.3H9.5l.2.2H12v.3h-2l.2.2H12v.3h-1.6l.2.2H12v.3h-1.1l.2.2h.9v.3h-.7l.2.2h.5v.3h-.3l.3.2z" fill-rule="evenodd"/></svg>',
-        'sourcecode': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M9.8 15.7c.3.3.3.8 0 1-.3.4-.9.4-1.2 0l-4.4-4.1a.8.8 0 0 1 0-1.2l4.4-4.2c.3-.3.9-.3 1.2 0 .3.3.3.8 0 1.1L6 12l3.8 3.7zM14.2 15.7c-.3.3-.3.8 0 1 .4.4.9.4 1.2 0l4.4-4.1c.3-.3.3-.9 0-1.2l-4.4-4.2a.8.8 0 0 0-1.2 0c-.3.3-.3.8 0 1.1L18 12l-3.8 3.7z"/></g></svg>',
-        'spell-check': '<svg width="24" height="24"><path d="M6 8v3H5V5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h2c.3 0 .5.1.7.3.2.2.3.4.3.7v6H8V8H6zm0-3v2h2V5H6zm13 0h-3v5h3v1h-3a1 1 0 0 1-.7-.3 1 1 0 0 1-.3-.7V5c0-.3.1-.5.3-.7.2-.2.4-.3.7-.3h3v1zm-5 1.5l-.1.7c-.1.2-.3.3-.6.3.3 0 .5.1.6.3l.1.7V10c0 .3-.1.5-.3.7a1 1 0 0 1-.7.3h-3V4h3c.3 0 .5.1.7.3.2.2.3.4.3.7v1.5zM13 10V8h-2v2h2zm0-3V5h-2v2h2zm3 5l1 1-6.5 7L7 15.5l1.3-1 2.2 2.2L16 12z" fill-rule="evenodd"/></svg>',
-        'strike-through': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M15.6 8.5c-.5-.7-1-1.1-1.3-1.3-.6-.4-1.3-.6-2-.6-2.7 0-2.8 1.7-2.8 2.1 0 1.6 1.8 2 3.2 2.3 4.4.9 4.6 2.8 4.6 3.9 0 1.4-.7 4.1-5 4.1A6.2 6.2 0 0 1 7 16.4l1.5-1.1c.4.6 1.6 2 3.7 2 1.6 0 2.5-.4 3-1.2.4-.8.3-2-.8-2.6-.7-.4-1.6-.7-2.9-1-1-.2-3.9-.8-3.9-3.6C7.6 6 10.3 5 12.4 5c2.9 0 4.2 1.6 4.7 2.4l-1.5 1.1z"/><path d="M5 11h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2z" fill-rule="nonzero"/></g></svg>',
-        'subscript': '<svg width="24" height="24"><path d="M10.4 10l4.6 4.6-1.4 1.4L9 11.4 4.4 16 3 14.6 7.6 10 3 5.4 4.4 4 9 8.6 13.6 4 15 5.4 10.4 10zM21 19h-5v-1l1-.8 1.7-1.6c.3-.4.5-.8.5-1.2 0-.3 0-.6-.2-.7-.2-.2-.5-.3-.9-.3a2 2 0 0 0-.8.2l-.7.3-.4-1.1 1-.6 1.2-.2c.8 0 1.4.3 1.8.7.4.4.6.9.6 1.5s-.2 1.1-.5 1.6a8 8 0 0 1-1.3 1.3l-.6.6h2.6V19z" fill-rule="nonzero"/></svg>',
-        'superscript': '<svg width="24" height="24"><path d="M15 9.4L10.4 14l4.6 4.6-1.4 1.4L9 15.4 4.4 20 3 18.6 7.6 14 3 9.4 4.4 8 9 12.6 13.6 8 15 9.4zm5.9 1.6h-5v-1l1-.8 1.7-1.6c.3-.5.5-.9.5-1.3 0-.3 0-.5-.2-.7-.2-.2-.5-.3-.9-.3l-.8.2-.7.4-.4-1.2c.2-.2.5-.4 1-.5.3-.2.8-.2 1.2-.2.8 0 1.4.2 1.8.6.4.4.6 1 .6 1.6 0 .5-.2 1-.5 1.5l-1.3 1.4-.6.5h2.6V11z" fill-rule="nonzero"/></svg>',
-        'table-cell-properties': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm10 10h-4v3h4v-3zm0-8h-4v3h4V7zM9 7H5v3h4V7zm-4 4v3h4v-3H5zm10 0v3h4v-3h-4zm0-1h4V7h-4v3zM5 15v3h4v-3H5zm10 3h4v-3h-4v3z" fill-rule="evenodd"/></svg>',
-        'table-cell-select-all': '<svg width="24" height="24"><path d="M12.5 5.5v6h6v-6h-6zm-1 0h-6v6h6v-6zm1 13h6v-6h-6v6zm-1 0v-6h-6v6h6zm-7-14h15v15h-15v-15z" fill-rule="nonzero"/></svg>',
-        'table-cell-select-inner': '<svg width="24" height="24"><g fill-rule="nonzero"><path d="M5.5 5.5v13h13v-13h-13zm-1-1h15v15h-15v-15z" opacity=".2"/><path d="M11.5 11.5v-7h1v7h7v1h-7v7h-1v-7h-7v-1h7z"/></g></svg>',
-        'table-delete-column': '<svg width="24" height="24"><path d="M9 11.2l1 1v.2l-1 1v-2.2zm5 1l1-1v2.2l-1-1v-.2zM20 5v14H4V5h16zm-1 2h-4v.8l-.2-.2-.8.8V7h-4v1.4l-.8-.8-.2.2V7H5v11h4v-1.8l.5.5.5-.4V18h4v-1.8l.8.8.2-.3V18h4V7zm-3.9 3.4l-1.8 1.9 1.8 1.9c.4.3.4.9 0 1.2-.3.3-.8.3-1.2 0L12 13.5l-1.8 1.9a.8.8 0 0 1-1.2 0 .9.9 0 0 1 0-1.2l1.8-1.9-1.9-2a.9.9 0 0 1 1.2-1.2l2 2 1.8-1.8c.3-.4.9-.4 1.2 0a.8.8 0 0 1 0 1.1z" fill-rule="evenodd"/></svg>',
-        'table-delete-row': '<svg width="24" height="24"><path d="M16.7 8.8l1.1 1.2-2.4 2.5L18 15l-1.2 1.2-2.5-2.5-2.4 2.5-1.3-1.2 2.5-2.5-2.5-2.5 1.2-1.3 2.6 2.6 2.4-2.5zM4 5h16v14H4V5zm15 5V7H5v3h4.8l1 1H5v3h5.8l-1 1H5v3h14v-3h-.4l-1-1H19v-3h-1.3l1-1h.3z" fill-rule="evenodd"/></svg>',
-        'table-delete-table': '<svg width="24" height="26"><path d="M4 6h16v14H4V6zm1 2v11h14V8H5zm11.7 8.7l-1.5 1.5L12 15l-3.3 3.2-1.4-1.5 3.2-3.2-3.3-3.2 1.5-1.5L12 12l3.2-3.2 1.5 1.5-3.2 3.2 3.2 3.2z" fill-rule="evenodd"/></svg>',
-        'table-insert-column-after': '<svg width="24" height="24"><path d="M14.3 9c.4 0 .7.3.7.6v2.2h2.1c.4 0 .7.3.7.7 0 .4-.3.7-.7.7H15v2.2c0 .3-.3.6-.7.6a.7.7 0 0 1-.6-.6v-2.2h-2.2a.7.7 0 0 1 0-1.4h2.2V9.6c0-.3.3-.6.6-.6zM4 5h16v14H4V5zm5 13v-3H5v3h4zm0-4v-3H5v3h4zm0-4V7H5v3h4zm10 8V7h-9v11h9z" fill-rule="evenodd"/></svg>',
-        'table-insert-column-before': '<svg width="24" height="24"><path d="M9.7 16a.7.7 0 0 1-.7-.6v-2.2H6.9a.7.7 0 0 1 0-1.4H9V9.6c0-.3.3-.6.7-.6.3 0 .6.3.6.6v2.2h2.2c.4 0 .8.3.8.7 0 .4-.4.7-.8.7h-2.2v2.2c0 .3-.3.6-.6.6zM4 5h16v14H4V5zm10 13V7H5v11h9zm5 0v-3h-4v3h4zm0-4v-3h-4v3h4zm0-4V7h-4v3h4z" fill-rule="evenodd"/></svg>',
-        'table-insert-row-above': '<svg width="24" height="24"><path d="M14.8 10.5c0 .3-.2.5-.5.5h-1.8v1.8c0 .3-.2.5-.5.5a.5.5 0 0 1-.5-.6V11H9.7a.5.5 0 0 1 0-1h1.8V8.3c0-.3.2-.6.5-.6s.5.3.5.6V10h1.8c.3 0 .5.2.5.5zM4 5h16v14H4V5zm5 13v-3H5v3h4zm5 0v-3h-4v3h4zm5 0v-3h-4v3h4zm0-4V7H5v7h14z" fill-rule="evenodd"/></svg>',
-        'table-insert-row-after': '<svg width="24" height="24"><path d="M9.2 14.5c0-.3.2-.5.5-.5h1.8v-1.8c0-.3.2-.5.5-.5s.5.2.5.6V14h1.8c.3 0 .5.2.5.5s-.2.5-.5.5h-1.8v1.7c0 .3-.2.6-.5.6a.5.5 0 0 1-.5-.6V15H9.7a.5.5 0 0 1-.5-.5zM4 5h16v14H4V5zm6 2v3h4V7h-4zM5 7v3h4V7H5zm14 11v-7H5v7h14zm0-8V7h-4v3h4z" fill-rule="evenodd"/></svg>',
-        'table-left-header': '<svg width="24" height="24"><path d="M4 5h16v13H4V5zm10 12v-3h-4v3h4zm0-4v-3h-4v3h4zm0-4V6h-4v3h4zm5 8v-3h-4v3h4zm0-4v-3h-4v3h4zm0-4V6h-4v3h4z" fill-rule="evenodd"/></svg>',
-        'table-merge-cells': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm6 13h9v-7h-9v7zm4-11h-4v3h4V7zM9 7H5v3h4V7zm-4 4v3h4v-3H5zm10-1h4V7h-4v3zM5 15v3h4v-3H5z" fill-rule="evenodd"/></svg>',
-        'table-row-properties': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm10 10h-4v3h4v-3zm0-8h-4v3h4V7zM9 7H5v3h4V7zm6 3h4V7h-4v3zM5 15v3h4v-3H5zm10 3h4v-3h-4v3z" fill-rule="evenodd"/></svg>',
-        'table-split-cells': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm6 2v3h4V7h-4zM9 18v-3H5v3h4zm0-4v-3H5v3h4zm0-4V7H5v3h4zm10 8v-7h-9v7h9zm0-8V7h-4v3h4zm-3.5 4.5l1.5 1.6c.3.2.3.7 0 1-.2.2-.7.2-1 0l-1.5-1.6-1.6 1.5c-.2.3-.7.3-1 0a.7.7 0 0 1 0-1l1.6-1.5-1.5-1.6a.7.7 0 0 1 1-1l1.5 1.6 1.6-1.5c.2-.3.7-.3 1 0 .2.2.2.7 0 1l-1.6 1.5z" fill-rule="evenodd"/></svg>',
-        'table-top-header': '<svg width="24" height="24"><path d="M4 5h16v13H4V5zm5 12v-3H5v3h4zm0-4v-3H5v3h4zm5 4v-3h-4v3h4zm0-4v-3h-4v3h4zm5 4v-3h-4v3h4zm0-4v-3h-4v3h4z" fill-rule="evenodd"/></svg>',
-        'table': '<svg width="24" height="24"><path d="M4 5h16v14H4V5zm6 9h4v-3h-4v3zm4 1h-4v3h4v-3zm0-8h-4v3h4V7zM9 7H5v3h4V7zm-4 4v3h4v-3H5zm10 0v3h4v-3h-4zm0-1h4V7h-4v3zM5 15v3h4v-3H5zm10 3h4v-3h-4v3z" fill-rule="evenodd"/></svg>',
-        'template': '<svg width="24" height="24"><path d="M19 19v-1H5v1h14zM9 16v-4a5 5 0 1 1 6 0v4h4a2 2 0 0 1 2 2v3H3v-3c0-1.1.9-2 2-2h4zm4 0v-5l.8-.6a3 3 0 1 0-3.6 0l.8.6v5h2z" fill-rule="nonzero"/></svg>',
-        'temporary-placeholder': '<svg width="24" height="24"><g fill-rule="evenodd"><path d="M9 7.6V6h2.5V4.5a.5.5 0 1 1 1 0V6H15v1.6a8 8 0 1 1-6 0zm-2.6 5.3a.5.5 0 0 0 .3.6c.3 0 .6 0 .6-.3l.1-.2a5 5 0 0 1 3.3-2.8c.3-.1.4-.4.4-.6-.1-.3-.4-.5-.6-.4a6 6 0 0 0-4.1 3.7z"/><circle cx="14" cy="4" r="1"/><circle cx="12" cy="2" r="1"/><circle cx="10" cy="4" r="1"/></g></svg>',
-        'text-color': '<svg width="24" height="24"><g fill-rule="evenodd"><path id="tox-icon-text-color__color" d="M3 18h18v3H3z"/><path d="M8.7 16h-.8a.5.5 0 0 1-.5-.6l2.7-9c.1-.3.3-.4.5-.4h2.8c.2 0 .4.1.5.4l2.7 9a.5.5 0 0 1-.5.6h-.8a.5.5 0 0 1-.4-.4l-.7-2.2c0-.3-.3-.4-.5-.4h-3.4c-.2 0-.4.1-.5.4l-.7 2.2c0 .3-.2.4-.4.4zm2.6-7.6l-.6 2a.5.5 0 0 0 .5.6h1.6a.5.5 0 0 0 .5-.6l-.6-2c0-.3-.3-.4-.5-.4h-.4c-.2 0-.4.1-.5.4z"/></g></svg>',
-        'toc': '<svg width="24" height="24"><path d="M5 5c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 1 1 0-2zm3 0h11c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 1 1 0-2zm-3 8c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h11c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2zm0-4c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 1 1 0-2zm3 0h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm-3 8c.6 0 1 .4 1 1s-.4 1-1 1a1 1 0 0 1 0-2zm3 0h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
-        'translate': '<svg width="24" height="24"><path d="M12.7 14.3l-.3.7-.4.7-2.2-2.2-3.1 3c-.3.4-.8.4-1 0a.7.7 0 0 1 0-1l3.1-3A12.4 12.4 0 0 1 6.7 9H8a10.1 10.1 0 0 0 1.7 2.4c.5-.5 1-1.1 1.4-1.8l.9-2H4.7a.7.7 0 1 1 0-1.5h4.4v-.7c0-.4.3-.8.7-.8.4 0 .7.4.7.8v.7H15c.4 0 .8.3.8.7 0 .4-.4.8-.8.8h-1.4a12.3 12.3 0 0 1-1 2.4 13.5 13.5 0 0 1-1.7 2.3l1.9 1.8zm4.3-3l2.7 7.3a.5.5 0 0 1-.4.7 1 1 0 0 1-1-.7l-.6-1.5h-3.4l-.6 1.5a1 1 0 0 1-1 .7.5.5 0 0 1-.4-.7l2.7-7.4a1 1 0 1 1 2 0zm-2.2 4.4h2.4L16 12.5l-1.2 3.2z" fill-rule="evenodd"/></svg>',
-        'underline': '<svg width="24" height="24"><path d="M16 5c.6 0 1 .4 1 1v5.5a4 4 0 0 1-.4 1.8l-1 1.4a5.3 5.3 0 0 1-5.5 1 5 5 0 0 1-1.6-1c-.5-.4-.8-.9-1.1-1.4a4 4 0 0 1-.4-1.8V6c0-.6.4-1 1-1s1 .4 1 1v5.5c0 .3 0 .6.2 1l.6.7a3.3 3.3 0 0 0 2.2.8 3.4 3.4 0 0 0 2.2-.8c.3-.2.4-.5.6-.8l.2-.9V6c0-.6.4-1 1-1zM8 17h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 0 1 0-2z" fill-rule="evenodd"/></svg>',
-        'undo': '<svg width="24" height="24"><path d="M6.4 8H12c3.7 0 6.2 2 6.8 5.1.6 2.7-.4 5.6-2.3 6.8a1 1 0 0 1-1-1.8c1.1-.6 1.8-2.7 1.4-4.6-.5-2.1-2.1-3.5-4.9-3.5H6.4l3.3 3.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 1.4L6.4 8z" fill-rule="nonzero"/></svg>',
-        'unlink': '<svg width="24" height="24"><path d="M6.2 12.3a1 1 0 0 1 1.4 1.4l-2 2a2 2 0 1 0 2.6 2.8l4.8-4.8a1 1 0 0 0 0-1.4 1 1 0 1 1 1.4-1.3 2.9 2.9 0 0 1 0 4L9.6 20a3.9 3.9 0 0 1-5.5-5.5l2-2zm11.6-.6a1 1 0 0 1-1.4-1.4l2.1-2a2 2 0 1 0-2.7-2.8L11 10.3a1 1 0 0 0 0 1.4A1 1 0 1 1 9.6 13a2.9 2.9 0 0 1 0-4L14.4 4a3.9 3.9 0 0 1 5.5 5.5l-2 2zM7.6 6.3a.8.8 0 0 1-1 1.1L3.3 4.2a.7.7 0 1 1 1-1l3.2 3.1zM5.1 8.6a.8.8 0 0 1 0 1.5H3a.8.8 0 0 1 0-1.5H5zm5-3.5a.8.8 0 0 1-1.5 0V3a.8.8 0 0 1 1.5 0V5zm6 11.8a.8.8 0 0 1 1-1l3.2 3.2a.8.8 0 0 1-1 1L16 17zm-2.2 2a.8.8 0 0 1 1.5 0V21a.8.8 0 0 1-1.5 0V19zm5-3.5a.7.7 0 1 1 0-1.5H21a.8.8 0 0 1 0 1.5H19z" fill-rule="nonzero"/></svg>',
-        'unlock': '<svg width="24" height="24"><path d="M16 5c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v3h-2V8a1 1 0 0 0-.3-.7A1 1 0 0 0 16 7h-2a1 1 0 0 0-.7.3 1 1 0 0 0-.3.7v3h.3c.2 0 .3 0 .5.2l.2.6v7.4c0 .3 0 .4-.2.6l-.6.2H4.8c-.3 0-.4 0-.6-.2a.7.7 0 0 1-.2-.6v-7.4c0-.3 0-.4.2-.6l.5-.2H11V8c0-.8.3-1.5.9-2.1.6-.6 1.3-.9 2.1-.9h2z" fill-rule="evenodd"/></svg>',
-        'unordered-list': '<svg width="24" height="24"><path d="M11 5h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zm0 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 0 1 0-2zM4.5 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1zm0 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1zm0 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1z" fill-rule="evenodd"/></svg>',
-        'unselected': '<svg width="24" height="24"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zm0-1a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" fill-rule="evenodd"/></svg>',
-        'upload': '<svg width="24" height="24"><path d="M18 19v-2a1 1 0 0 1 2 0v3c0 .6-.4 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v2h12zM11 6.4L8.7 8.7a1 1 0 0 1-1.4-1.4l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 1 1-1.4 1.4L13 6.4V16a1 1 0 0 1-2 0V6.4z" fill-rule="nonzero"/></svg>',
-        'user': '<svg width="24" height="24"><path d="M12 24a12 12 0 1 1 0-24 12 12 0 0 1 0 24zm-8.7-5.3a11 11 0 0 0 17.4 0C19.4 16.3 14.6 15 12 15c-2.6 0-7.4 1.3-8.7 3.7zM12 13c2.2 0 4-2 4-4.5S14.2 4 12 4 8 6 8 8.5 9.8 13 12 13z" fill-rule="nonzero"/></svg>',
-        'warning': '<svg width="24" height="24"><path d="M19.8 18.3c.2.5.3.9 0 1.2-.1.3-.5.5-1 .5H5.2c-.5 0-.9-.2-1-.5-.3-.3-.2-.7 0-1.2L11 4.7l.5-.5.5-.2c.2 0 .3 0 .5.2.2 0 .3.3.5.5l6.8 13.6zM12 18c.3 0 .5-.1.7-.3.2-.2.3-.4.3-.7a1 1 0 0 0-.3-.7 1 1 0 0 0-.7-.3 1 1 0 0 0-.7.3 1 1 0 0 0-.3.7c0 .3.1.5.3.7.2.2.4.3.7.3zm.7-3l.3-4a1 1 0 0 0-.3-.7 1 1 0 0 0-.7-.3 1 1 0 0 0-.7.3 1 1 0 0 0-.3.7l.3 4h1.4z" fill-rule="evenodd"/></svg>',
-        'zoom-in': '<svg width="24" height="24"><path d="M16 17.3a8 8 0 1 1 1.4-1.4l4.3 4.4a1 1 0 0 1-1.4 1.4l-4.4-4.3zm-5-.3a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm-1-9a1 1 0 0 1 2 0v6a1 1 0 0 1-2 0V8zm-2 4a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2H8z" fill-rule="nonzero"/></svg>',
-        'zoom-out': '<svg width="24" height="24"><path d="M16 17.3a8 8 0 1 1 1.4-1.4l4.3 4.4a1 1 0 0 1-1.4 1.4l-4.4-4.3zm-5-.3a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm-3-5a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2H8z" fill-rule="nonzero"/></svg>'
-      };
-    };
-
     var DOM$4 = DOMUtils$1.DOM;
     var initPlugin = function (editor, initializedPlugins, plugin) {
       var Plugin = PluginManager$1.get(plugin);
@@ -95552,7 +97672,8 @@ var silver = (function (domGlobals) {
     };
     var renderFromThemeFunc = function (editor) {
       var elm = editor.getElement();
-      var info = editor.settings.theme(editor, elm);
+      var theme = editor.settings.theme;
+      var info = theme(editor, elm);
       if (info.editorContainer.nodeType) {
         info.editorContainer.id = info.editorContainer.id || editor.id + '_parent';
       }
@@ -95578,11 +97699,11 @@ var silver = (function (domGlobals) {
       return editor.inline ? createThemeFalseResult(null) : renderThemeFalseIframe(targetElement);
     };
     var renderThemeUi = function (editor) {
-      var settings = editor.settings, elm = editor.getElement();
+      var elm = editor.getElement();
       editor.orgDisplay = elm.style.display;
-      if (isString(settings.theme)) {
+      if (isString(editor.settings.theme)) {
         return renderFromLoadedTheme(editor);
-      } else if (isFunction(settings.theme)) {
+      } else if (isFunction(editor.settings.theme)) {
         return renderFromThemeFunc(editor);
       } else {
         return renderThemeFalse(editor);
@@ -95733,7 +97854,7 @@ var silver = (function (domGlobals) {
         };
         DOM$5.bind(form, 'submit reset', editor.formEventDelegate);
         editor.on('reset', function () {
-          editor.setContent(editor.startContent, { format: 'raw' });
+          editor.resetContent();
         });
         if (settings.submit_patch && !form.submit.nodeType && !form.submit.length && !form._mceOldSubmit) {
           form._mceOldSubmit = form.submit;
@@ -95777,12 +97898,6 @@ var silver = (function (domGlobals) {
     };
     var Render = { render: render };
 
-    var setEditorCommandState = function (editor, cmd, state) {
-      try {
-        editor.getDoc().execCommand(cmd, false, state);
-      } catch (ex) {
-      }
-    };
     var toggleClass = function (elm, cls, state) {
       if (has$2(elm, cls) && state === false) {
         remove$4(elm, cls);
@@ -95790,40 +97905,103 @@ var silver = (function (domGlobals) {
         add$3(elm, cls);
       }
     };
-    var toggleReadOnly = function (editor, state) {
-      toggleClass(Element.fromDom(editor.getBody()), 'mce-content-readonly', state);
-      if (state) {
-        editor.selection.controlSelection.hideResizeRect();
-        editor.readonly = true;
-        editor.getBody().contentEditable = 'false';
-      } else {
-        editor.readonly = false;
-        editor.getBody().contentEditable = 'true';
-        setEditorCommandState(editor, 'StyleWithCSS', false);
-        setEditorCommandState(editor, 'enableInlineTableEditing', false);
-        setEditorCommandState(editor, 'enableObjectResizing', false);
-        editor.focus();
-        editor.nodeChanged();
-      }
-    };
-    var setMode = function (editor, mode) {
-      if (mode === getMode(editor)) {
-        return;
-      }
-      if (editor.initialized) {
-        toggleReadOnly(editor, mode === 'readonly');
-      } else {
-        editor.on('init', function () {
-          toggleReadOnly(editor, mode === 'readonly');
+    var create$3 = function (editor) {
+      var activeMode = 'design';
+      var defaultModes = [
+        'design',
+        'readonly'
+      ];
+      var availableModes = {
+        design: {
+          activate: noop,
+          deactivate: noop,
+          editorReadOnly: false
+        },
+        readonly: {
+          activate: noop,
+          deactivate: noop,
+          editorReadOnly: true
+        }
+      };
+      var setEditorCommandState = function (cmd, state) {
+        try {
+          editor.getDoc().execCommand(cmd, false, state);
+        } catch (ex) {
+        }
+      };
+      var toggleReadOnly = function (state) {
+        toggleClass(Element.fromDom(editor.getBody()), 'mce-content-readonly', state);
+        if (state) {
+          editor.selection.controlSelection.hideResizeRect();
+          editor.readonly = true;
+          editor.getBody().contentEditable = 'false';
+        } else {
+          editor.readonly = false;
+          editor.getBody().contentEditable = 'true';
+          setEditorCommandState('StyleWithCSS', false);
+          setEditorCommandState('enableInlineTableEditing', false);
+          setEditorCommandState('enableObjectResizing', false);
+          editor.focus();
+          editor.nodeChanged();
+        }
+      };
+      var switchToMode = function (mode) {
+        var oldMode = availableModes[activeMode];
+        var newMode = availableModes[mode];
+        try {
+          newMode.activate();
+        } catch (e) {
+          domGlobals.console.error('problem while activating editor mode ' + mode + ':', e);
+          return;
+        }
+        oldMode.deactivate();
+        if (oldMode.editorReadOnly !== newMode.editorReadOnly) {
+          toggleReadOnly(newMode.editorReadOnly);
+        }
+        activeMode = mode;
+        Events.fireSwitchMode(editor, mode);
+      };
+      var set = function (mode) {
+        if (mode === activeMode) {
+          return;
+        } else if (!has(availableModes, mode)) {
+          throw new Error('Editor mode \'' + mode + '\' is invalid');
+        }
+        if (editor.initialized) {
+          switchToMode(mode);
+        } else {
+          editor.on('init', function () {
+            return switchToMode(mode);
+          });
+        }
+      };
+      var get = function () {
+        return activeMode;
+      };
+      var isReadOnly = function () {
+        return editor.readonly === true;
+      };
+      var register = function (mode, api) {
+        if (contains(defaultModes, mode)) {
+          throw new Error('Cannot override default mode ' + mode);
+        }
+        availableModes[mode] = __assign({}, api, {
+          deactivate: function () {
+            try {
+              api.deactivate();
+            } catch (e) {
+              domGlobals.console.error('problem while deactivating editor mode ' + mode + ':');
+              domGlobals.console.error(e);
+            }
+          }
         });
-      }
-      Events.fireSwitchMode(editor, mode);
-    };
-    var getMode = function (editor) {
-      return editor.readonly ? 'readonly' : 'design';
-    };
-    var isReadOnly = function (editor) {
-      return editor.readonly === true;
+      };
+      return {
+        isReadOnly: isReadOnly,
+        set: set,
+        get: get,
+        register: register
+      };
     };
 
     var hasOnlyOneChild$1 = function (node) {
@@ -96275,7 +98453,7 @@ var silver = (function (domGlobals) {
         return;
       } else if (CefBoundaryDelete.backspaceDelete(editor, false)) {
         return;
-      } else if (InlineBoundaryDelete.backspaceDelete(editor, false)) {
+      } else if (BoundaryDelete.backspaceDelete(editor, false)) {
         return;
       } else if (BlockBoundaryDelete.backspaceDelete(editor, false)) {
         return;
@@ -96295,7 +98473,7 @@ var silver = (function (domGlobals) {
         return;
       } else if (CefBoundaryDelete.backspaceDelete(editor, true)) {
         return;
-      } else if (InlineBoundaryDelete.backspaceDelete(editor, true)) {
+      } else if (BoundaryDelete.backspaceDelete(editor, true)) {
         return;
       } else if (BlockBoundaryDelete.backspaceDelete(editor, true)) {
         return;
@@ -96426,7 +98604,7 @@ var silver = (function (domGlobals) {
       return isNaN(number) ? 0 : number;
     };
     var getIndentStyleName = function (useMargin, element) {
-      var indentStyleName = useMargin || isTable(element) ? 'margin' : 'padding';
+      var indentStyleName = useMargin || isTable$1(element) ? 'margin' : 'padding';
       var suffix = get$2(element, 'direction') === 'rtl' ? '-right' : '-left';
       return indentStyleName + suffix;
     };
@@ -96480,32 +98658,30 @@ var silver = (function (domGlobals) {
       });
     };
 
-    var each$g = Tools.each, extend$3 = Tools.extend;
+    var each$g = Tools.each;
     var map$3 = Tools.map, inArray$2 = Tools.inArray;
-    function EditorCommands (editor) {
-      var dom, selection, formatter;
-      var commands = {
-        state: {},
-        exec: {},
-        value: {}
-      };
-      var bookmark;
-      editor.on('PreInit', function () {
-        dom = editor.dom;
-        selection = editor.selection;
-        formatter = editor.formatter;
-      });
-      var execCommand = function (command, ui, value, args) {
+    var EditorCommands = function () {
+      function EditorCommands(editor) {
+        this.commands = {
+          state: {},
+          exec: {},
+          value: {}
+        };
+        this.editor = editor;
+        this.setupCommands(editor);
+      }
+      EditorCommands.prototype.execCommand = function (command, ui, value, args) {
         var func, customCommand, state = false;
-        if (editor.removed) {
+        var self = this;
+        if (self.editor.removed) {
           return;
         }
         if (!/^(mceAddUndoLevel|mceEndUndoLevel|mceBeginUndoLevel|mceRepaint)$/.test(command) && (!args || !args.skip_focus)) {
-          editor.focus();
+          self.editor.focus();
         } else {
-          SelectionBookmark.restore(editor);
+          SelectionBookmark.restore(self.editor);
         }
-        args = editor.fire('BeforeExecCommand', {
+        args = self.editor.fire('BeforeExecCommand', {
           command: command,
           ui: ui,
           value: value
@@ -96514,18 +98690,18 @@ var silver = (function (domGlobals) {
           return false;
         }
         customCommand = command.toLowerCase();
-        if (func = commands.exec[customCommand]) {
+        if (func = self.commands.exec[customCommand]) {
           func(customCommand, ui, value);
-          editor.fire('ExecCommand', {
+          self.editor.fire('ExecCommand', {
             command: command,
             ui: ui,
             value: value
           });
           return true;
         }
-        each$g(editor.plugins, function (p) {
+        each$g(this.editor.plugins, function (p) {
           if (p.execCommand && p.execCommand(command, ui, value)) {
-            editor.fire('ExecCommand', {
+            self.editor.fire('ExecCommand', {
               command: command,
               ui: ui,
               value: value
@@ -96537,8 +98713,8 @@ var silver = (function (domGlobals) {
         if (state) {
           return state;
         }
-        if (editor.theme && editor.theme.execCommand && editor.theme.execCommand(command, ui, value)) {
-          editor.fire('ExecCommand', {
+        if (self.editor.theme && self.editor.theme.execCommand && self.editor.theme.execCommand(command, ui, value)) {
+          self.editor.fire('ExecCommand', {
             command: command,
             ui: ui,
             value: value
@@ -96546,11 +98722,11 @@ var silver = (function (domGlobals) {
           return true;
         }
         try {
-          state = editor.getDoc().execCommand(command, ui, value);
+          state = self.editor.getDoc().execCommand(command, ui, value);
         } catch (ex) {
         }
         if (state) {
-          editor.fire('ExecCommand', {
+          self.editor.fire('ExecCommand', {
             command: command,
             ui: ui,
             value: value
@@ -96559,384 +98735,385 @@ var silver = (function (domGlobals) {
         }
         return false;
       };
-      var queryCommandState = function (command) {
+      EditorCommands.prototype.queryCommandState = function (command) {
         var func;
-        if (editor.quirks.isHidden() || editor.removed) {
+        if (this.editor.quirks.isHidden() || this.editor.removed) {
           return;
         }
         command = command.toLowerCase();
-        if (func = commands.state[command]) {
+        if (func = this.commands.state[command]) {
           return func(command);
         }
         try {
-          return editor.getDoc().queryCommandState(command);
+          return this.editor.getDoc().queryCommandState(command);
         } catch (ex) {
         }
         return false;
       };
-      var queryCommandValue = function (command) {
+      EditorCommands.prototype.queryCommandValue = function (command) {
         var func;
-        if (editor.quirks.isHidden() || editor.removed) {
+        if (this.editor.quirks.isHidden() || this.editor.removed) {
           return;
         }
         command = command.toLowerCase();
-        if (func = commands.value[command]) {
+        if (func = this.commands.value[command]) {
           return func(command);
         }
         try {
-          return editor.getDoc().queryCommandValue(command);
+          return this.editor.getDoc().queryCommandValue(command);
         } catch (ex) {
         }
       };
-      var addCommands = function (commandList, type) {
+      EditorCommands.prototype.addCommands = function (commandList, type) {
+        var self = this;
         type = type || 'exec';
         each$g(commandList, function (callback, command) {
           each$g(command.toLowerCase().split(','), function (command) {
-            commands[type][command] = callback;
+            self.commands[type][command] = callback;
           });
         });
       };
-      var addCommand = function (command, callback, scope) {
+      EditorCommands.prototype.addCommand = function (command, callback, scope) {
+        var _this = this;
         command = command.toLowerCase();
-        commands.exec[command] = function (command, ui, value, args) {
-          return callback.call(scope || editor, ui, value, args);
+        this.commands.exec[command] = function (command, ui, value, args) {
+          return callback.call(scope || _this.editor, ui, value, args);
         };
       };
-      var queryCommandSupported = function (command) {
+      EditorCommands.prototype.queryCommandSupported = function (command) {
         command = command.toLowerCase();
-        if (commands.exec[command]) {
+        if (this.commands.exec[command]) {
           return true;
         }
         try {
-          return editor.getDoc().queryCommandSupported(command);
+          return this.editor.getDoc().queryCommandSupported(command);
         } catch (ex) {
         }
         return false;
       };
-      var addQueryStateHandler = function (command, callback, scope) {
+      EditorCommands.prototype.addQueryStateHandler = function (command, callback, scope) {
+        var _this = this;
         command = command.toLowerCase();
-        commands.state[command] = function () {
-          return callback.call(scope || editor);
+        this.commands.state[command] = function () {
+          return callback.call(scope || _this.editor);
         };
       };
-      var addQueryValueHandler = function (command, callback, scope) {
+      EditorCommands.prototype.addQueryValueHandler = function (command, callback, scope) {
+        var _this = this;
         command = command.toLowerCase();
-        commands.value[command] = function () {
-          return callback.call(scope || editor);
+        this.commands.value[command] = function () {
+          return callback.call(scope || _this.editor);
         };
       };
-      var hasCustomCommand = function (command) {
+      EditorCommands.prototype.hasCustomCommand = function (command) {
         command = command.toLowerCase();
-        return !!commands.exec[command];
+        return !!this.commands.exec[command];
       };
-      extend$3(this, {
-        execCommand: execCommand,
-        queryCommandState: queryCommandState,
-        queryCommandValue: queryCommandValue,
-        queryCommandSupported: queryCommandSupported,
-        addCommands: addCommands,
-        addCommand: addCommand,
-        addQueryStateHandler: addQueryStateHandler,
-        addQueryValueHandler: addQueryValueHandler,
-        hasCustomCommand: hasCustomCommand
-      });
-      var execNativeCommand = function (command, ui, value) {
+      EditorCommands.prototype.execNativeCommand = function (command, ui, value) {
         if (ui === undefined) {
           ui = false;
         }
         if (value === undefined) {
           value = null;
         }
-        return editor.getDoc().execCommand(command, ui, value);
+        return this.editor.getDoc().execCommand(command, ui, value);
       };
-      var isFormatMatch = function (name) {
-        return formatter.match(name);
+      EditorCommands.prototype.isFormatMatch = function (name) {
+        return this.editor.formatter.match(name);
       };
-      var toggleFormat = function (name, value) {
-        formatter.toggle(name, value ? { value: value } : undefined);
-        editor.nodeChanged();
+      EditorCommands.prototype.toggleFormat = function (name, value) {
+        this.editor.formatter.toggle(name, value ? { value: value } : undefined);
+        this.editor.nodeChanged();
       };
-      var storeSelection = function (type) {
-        bookmark = selection.getBookmark(type);
+      EditorCommands.prototype.storeSelection = function (type) {
+        this.selectionBookmark = this.editor.selection.getBookmark(type);
       };
-      var restoreSelection = function () {
-        selection.moveToBookmark(bookmark);
+      EditorCommands.prototype.restoreSelection = function () {
+        this.editor.selection.moveToBookmark(this.selectionBookmark);
       };
-      addCommands({
-        'mceResetDesignMode,mceBeginUndoLevel': function () {
-        },
-        'mceEndUndoLevel,mceAddUndoLevel': function () {
-          editor.undoManager.add();
-        },
-        'Cut,Copy,Paste': function (command) {
-          var doc = editor.getDoc();
-          var failed;
-          try {
-            execNativeCommand(command);
-          } catch (ex) {
-            failed = true;
-          }
-          if (command === 'paste' && !doc.queryCommandEnabled(command)) {
-            failed = true;
-          }
-          if (failed || !doc.queryCommandSupported(command)) {
-            var msg = editor.translate('Your browser doesn\'t support direct access to the clipboard. ' + 'Please use the Ctrl+X/C/V keyboard shortcuts instead.');
-            if (Env.mac) {
-              msg = msg.replace(/Ctrl\+/g, '\u2318+');
+      EditorCommands.prototype.setupCommands = function (editor) {
+        var self = this;
+        this.addCommands({
+          'mceResetDesignMode,mceBeginUndoLevel': function () {
+          },
+          'mceEndUndoLevel,mceAddUndoLevel': function () {
+            editor.undoManager.add();
+          },
+          'Cut,Copy,Paste': function (command) {
+            var doc = editor.getDoc();
+            var failed;
+            try {
+              self.execNativeCommand(command);
+            } catch (ex) {
+              failed = true;
             }
-            editor.notificationManager.open({
-              text: msg,
-              type: 'error'
+            if (command === 'paste' && !doc.queryCommandEnabled(command)) {
+              failed = true;
+            }
+            if (failed || !doc.queryCommandSupported(command)) {
+              var msg = editor.translate('Your browser doesn\'t support direct access to the clipboard. ' + 'Please use the Ctrl+X/C/V keyboard shortcuts instead.');
+              if (Env.mac) {
+                msg = msg.replace(/Ctrl\+/g, '\u2318+');
+              }
+              editor.notificationManager.open({
+                text: msg,
+                type: 'error'
+              });
+            }
+          },
+          'unlink': function () {
+            if (editor.selection.isCollapsed()) {
+              var elm = editor.dom.getParent(editor.selection.getStart(), 'a');
+              if (elm) {
+                editor.dom.remove(elm, true);
+              }
+              return;
+            }
+            editor.formatter.remove('link');
+          },
+          'JustifyLeft,JustifyCenter,JustifyRight,JustifyFull,JustifyNone': function (command) {
+            var align = command.substring(7);
+            if (align === 'full') {
+              align = 'justify';
+            }
+            each$g('left,center,right,justify'.split(','), function (name) {
+              if (align !== name) {
+                editor.formatter.remove('align' + name);
+              }
             });
-          }
-        },
-        'unlink': function () {
-          if (selection.isCollapsed()) {
-            var elm = editor.dom.getParent(editor.selection.getStart(), 'a');
-            if (elm) {
-              editor.dom.remove(elm, true);
+            if (align !== 'none') {
+              self.toggleFormat('align' + align);
             }
-            return;
-          }
-          formatter.remove('link');
-        },
-        'JustifyLeft,JustifyCenter,JustifyRight,JustifyFull,JustifyNone': function (command) {
-          var align = command.substring(7);
-          if (align === 'full') {
-            align = 'justify';
-          }
-          each$g('left,center,right,justify'.split(','), function (name) {
-            if (align !== name) {
-              formatter.remove('align' + name);
+          },
+          'InsertUnorderedList,InsertOrderedList': function (command) {
+            var listElm, listParent;
+            self.execNativeCommand(command);
+            listElm = editor.dom.getParent(editor.selection.getNode(), 'ol,ul');
+            if (listElm) {
+              listParent = listElm.parentNode;
+              if (/^(H[1-6]|P|ADDRESS|PRE)$/.test(listParent.nodeName)) {
+                self.storeSelection();
+                editor.dom.split(listParent, listElm);
+                self.restoreSelection();
+              }
             }
-          });
-          if (align !== 'none') {
-            toggleFormat('align' + align);
-          }
-        },
-        'InsertUnorderedList,InsertOrderedList': function (command) {
-          var listElm, listParent;
-          execNativeCommand(command);
-          listElm = dom.getParent(selection.getNode(), 'ol,ul');
-          if (listElm) {
-            listParent = listElm.parentNode;
-            if (/^(H[1-6]|P|ADDRESS|PRE)$/.test(listParent.nodeName)) {
-              storeSelection();
-              dom.split(listParent, listElm);
-              restoreSelection();
+          },
+          'Bold,Italic,Underline,Strikethrough,Superscript,Subscript': function (command) {
+            self.toggleFormat(command);
+          },
+          'ForeColor,HiliteColor': function (command, ui, value) {
+            self.toggleFormat(command, value);
+          },
+          'FontName': function (command, ui, value) {
+            fontNameAction(editor, value);
+          },
+          'FontSize': function (command, ui, value) {
+            fontSizeAction(editor, value);
+          },
+          'RemoveFormat': function (command) {
+            editor.formatter.remove(command);
+          },
+          'mceBlockQuote': function () {
+            self.toggleFormat('blockquote');
+          },
+          'FormatBlock': function (command, ui, value) {
+            return self.toggleFormat(value || 'p');
+          },
+          'mceCleanup': function () {
+            var bookmark = editor.selection.getBookmark();
+            editor.setContent(editor.getContent());
+            editor.selection.moveToBookmark(bookmark);
+          },
+          'mceRemoveNode': function (command, ui, value) {
+            var node = value || editor.selection.getNode();
+            if (node !== editor.getBody()) {
+              self.storeSelection();
+              editor.dom.remove(node, true);
+              self.restoreSelection();
             }
-          }
-        },
-        'Bold,Italic,Underline,Strikethrough,Superscript,Subscript': function (command) {
-          toggleFormat(command);
-        },
-        'ForeColor,HiliteColor': function (command, ui, value) {
-          toggleFormat(command, value);
-        },
-        'FontName': function (command, ui, value) {
-          fontNameAction(editor, value);
-        },
-        'FontSize': function (command, ui, value) {
-          fontSizeAction(editor, value);
-        },
-        'RemoveFormat': function (command) {
-          formatter.remove(command);
-        },
-        'mceBlockQuote': function () {
-          toggleFormat('blockquote');
-        },
-        'FormatBlock': function (command, ui, value) {
-          return toggleFormat(value || 'p');
-        },
-        'mceCleanup': function () {
-          var bookmark = selection.getBookmark();
-          editor.setContent(editor.getContent());
-          selection.moveToBookmark(bookmark);
-        },
-        'mceRemoveNode': function (command, ui, value) {
-          var node = value || selection.getNode();
-          if (node !== editor.getBody()) {
-            storeSelection();
-            editor.dom.remove(node, true);
-            restoreSelection();
-          }
-        },
-        'mceSelectNodeDepth': function (command, ui, value) {
-          var counter = 0;
-          dom.getParent(selection.getNode(), function (node) {
-            if (node.nodeType === 1 && counter++ === value) {
-              selection.select(node);
-              return false;
+          },
+          'mceSelectNodeDepth': function (command, ui, value) {
+            var counter = 0;
+            editor.dom.getParent(editor.selection.getNode(), function (node) {
+              if (node.nodeType === 1 && counter++ === value) {
+                editor.selection.select(node);
+                return false;
+              }
+            }, editor.getBody());
+          },
+          'mceSelectNode': function (command, ui, value) {
+            editor.selection.select(value);
+          },
+          'mceInsertContent': function (command, ui, value) {
+            InsertContent.insertAtCaret(editor, value);
+          },
+          'mceInsertRawHTML': function (command, ui, value) {
+            editor.selection.setContent('tiny_mce_marker');
+            var content = editor.getContent();
+            editor.setContent(content.replace(/tiny_mce_marker/g, function () {
+              return value;
+            }));
+          },
+          'mceInsertNewLine': function (command, ui, value) {
+            InsertNewLine.insert(editor, value);
+          },
+          'mceToggleFormat': function (command, ui, value) {
+            self.toggleFormat(value);
+          },
+          'mceSetContent': function (command, ui, value) {
+            editor.setContent(value);
+          },
+          'Indent,Outdent': function (command) {
+            handle(editor, command);
+          },
+          'mceRepaint': function () {
+          },
+          'InsertHorizontalRule': function () {
+            editor.execCommand('mceInsertContent', false, '<hr />');
+          },
+          'mceToggleVisualAid': function () {
+            editor.hasVisual = !editor.hasVisual;
+            editor.addVisual();
+          },
+          'mceReplaceContent': function (command, ui, value) {
+            editor.execCommand('mceInsertContent', false, value.replace(/\{\$selection\}/g, editor.selection.getContent({ format: 'text' })));
+          },
+          'mceInsertLink': function (command, ui, value) {
+            var anchor;
+            if (typeof value === 'string') {
+              value = { href: value };
             }
-          }, editor.getBody());
-        },
-        'mceSelectNode': function (command, ui, value) {
-          selection.select(value);
-        },
-        'mceInsertContent': function (command, ui, value) {
-          InsertContent.insertAtCaret(editor, value);
-        },
-        'mceInsertRawHTML': function (command, ui, value) {
-          selection.setContent('tiny_mce_marker');
-          var content = editor.getContent();
-          editor.setContent(content.replace(/tiny_mce_marker/g, function () {
-            return value;
-          }));
-        },
-        'mceInsertNewLine': function (command, ui, value) {
-          InsertNewLine.insert(editor, value);
-        },
-        'mceToggleFormat': function (command, ui, value) {
-          toggleFormat(value);
-        },
-        'mceSetContent': function (command, ui, value) {
-          editor.setContent(value);
-        },
-        'Indent,Outdent': function (command) {
-          handle(editor, command);
-        },
-        'mceRepaint': function () {
-        },
-        'InsertHorizontalRule': function () {
-          editor.execCommand('mceInsertContent', false, '<hr />');
-        },
-        'mceToggleVisualAid': function () {
-          editor.hasVisual = !editor.hasVisual;
-          editor.addVisual();
-        },
-        'mceReplaceContent': function (command, ui, value) {
-          editor.execCommand('mceInsertContent', false, value.replace(/\{\$selection\}/g, selection.getContent({ format: 'text' })));
-        },
-        'mceInsertLink': function (command, ui, value) {
-          var anchor;
-          if (typeof value === 'string') {
-            value = { href: value };
+            anchor = editor.dom.getParent(editor.selection.getNode(), 'a');
+            value.href = value.href.replace(' ', '%20');
+            if (!anchor || !value.href) {
+              editor.formatter.remove('link');
+            }
+            if (value.href) {
+              editor.formatter.apply('link', value, anchor);
+            }
+          },
+          'selectAll': function () {
+            var editingHost = editor.dom.getParent(editor.selection.getStart(), NodeType.isContentEditableTrue);
+            if (editingHost) {
+              var rng = editor.dom.createRng();
+              rng.selectNodeContents(editingHost);
+              editor.selection.setRng(rng);
+            }
+          },
+          'delete': function () {
+            DeleteCommands.deleteCommand(editor);
+          },
+          'forwardDelete': function () {
+            DeleteCommands.forwardDeleteCommand(editor);
+          },
+          'mceNewDocument': function () {
+            editor.setContent('');
+          },
+          'InsertLineBreak': function (command, ui, value) {
+            InsertBr.insert(editor, value);
+            return true;
           }
-          anchor = dom.getParent(selection.getNode(), 'a');
-          value.href = value.href.replace(' ', '%20');
-          if (!anchor || !value.href) {
-            formatter.remove('link');
-          }
-          if (value.href) {
-            formatter.apply('link', value, anchor);
-          }
-        },
-        'selectAll': function () {
-          var editingHost = dom.getParent(selection.getStart(), NodeType.isContentEditableTrue);
-          if (editingHost) {
-            var rng = dom.createRng();
-            rng.selectNodeContents(editingHost);
-            selection.setRng(rng);
-          }
-        },
-        'delete': function () {
-          DeleteCommands.deleteCommand(editor);
-        },
-        'forwardDelete': function () {
-          DeleteCommands.forwardDeleteCommand(editor);
-        },
-        'mceNewDocument': function () {
-          editor.setContent('');
-        },
-        'InsertLineBreak': function (command, ui, value) {
-          InsertBr.insert(editor, value);
-          return true;
-        }
-      });
-      var alignStates = function (name) {
-        return function () {
-          var nodes = selection.isCollapsed() ? [dom.getParent(selection.getNode(), dom.isBlock)] : selection.getSelectedBlocks();
-          var matches = map$3(nodes, function (node) {
-            return !!formatter.matchNode(node, name);
-          });
-          return inArray$2(matches, true) !== -1;
+        });
+        var alignStates = function (name) {
+          return function () {
+            var nodes = editor.selection.isCollapsed() ? [editor.dom.getParent(editor.selection.getNode(), editor.dom.isBlock)] : editor.selection.getSelectedBlocks();
+            var matches = map$3(nodes, function (node) {
+              return !!editor.formatter.matchNode(node, name);
+            });
+            return inArray$2(matches, true) !== -1;
+          };
         };
+        self.addCommands({
+          'JustifyLeft': alignStates('alignleft'),
+          'JustifyCenter': alignStates('aligncenter'),
+          'JustifyRight': alignStates('alignright'),
+          'JustifyFull': alignStates('alignjustify'),
+          'Bold,Italic,Underline,Strikethrough,Superscript,Subscript': function (command) {
+            return self.isFormatMatch(command);
+          },
+          'mceBlockQuote': function () {
+            return self.isFormatMatch('blockquote');
+          },
+          'Outdent': function () {
+            return canOutdent(editor);
+          },
+          'InsertUnorderedList,InsertOrderedList': function (command) {
+            var list = editor.dom.getParent(editor.selection.getNode(), 'ul,ol');
+            return list && (command === 'insertunorderedlist' && list.tagName === 'UL' || command === 'insertorderedlist' && list.tagName === 'OL');
+          }
+        }, 'state');
+        self.addCommands({
+          Undo: function () {
+            editor.undoManager.undo();
+          },
+          Redo: function () {
+            editor.undoManager.redo();
+          }
+        });
+        self.addQueryValueHandler('FontName', function () {
+          return fontNameQuery(editor);
+        }, this);
+        self.addQueryValueHandler('FontSize', function () {
+          return fontSizeQuery(editor);
+        }, this);
       };
-      addCommands({
-        'JustifyLeft': alignStates('alignleft'),
-        'JustifyCenter': alignStates('aligncenter'),
-        'JustifyRight': alignStates('alignright'),
-        'JustifyFull': alignStates('alignjustify'),
-        'Bold,Italic,Underline,Strikethrough,Superscript,Subscript': function (command) {
-          return isFormatMatch(command);
-        },
-        'mceBlockQuote': function () {
-          return isFormatMatch('blockquote');
-        },
-        'Outdent': function () {
-          return canOutdent(editor);
-        },
-        'InsertUnorderedList,InsertOrderedList': function (command) {
-          var list = dom.getParent(selection.getNode(), 'ul,ol');
-          return list && (command === 'insertunorderedlist' && list.tagName === 'UL' || command === 'insertorderedlist' && list.tagName === 'OL');
-        }
-      }, 'state');
-      addCommands({
-        Undo: function () {
-          editor.undoManager.undo();
-        },
-        Redo: function () {
-          editor.undoManager.redo();
-        }
-      });
-      addQueryValueHandler('FontName', function () {
-        return fontNameQuery(editor);
-      }, this);
-      addQueryValueHandler('FontSize', function () {
-        return fontSizeQuery(editor);
-      }, this);
-    }
+      return EditorCommands;
+    }();
 
     var nativeEvents = Tools.makeMap('focus blur focusin focusout click dblclick mousedown mouseup mousemove mouseover beforepaste paste cut copy selectionchange ' + 'mouseout mouseenter mouseleave wheel keydown keypress keyup input contextmenu dragstart dragend dragover ' + 'draggesture dragdrop drop drag submit ' + 'compositionstart compositionend compositionupdate touchstart touchmove touchend', ' ');
-    var Dispatcher = function (settings) {
-      var self = this;
-      var scope, bindings = {}, toggleEvent;
-      var returnFalse = function () {
-        return false;
+    var returnFalse$1 = function () {
+      return false;
+    };
+    var returnTrue$1 = function () {
+      return true;
+    };
+    var EventDispatcher = function () {
+      function EventDispatcher(settings) {
+        this.bindings = {};
+        this.settings = settings || {};
+        this.scope = this.settings.scope || this;
+        this.toggleEvent = this.settings.toggleEvent || returnFalse$1;
+      }
+      EventDispatcher.isNative = function (name) {
+        return !!nativeEvents[name.toLowerCase()];
       };
-      var returnTrue = function () {
-        return true;
-      };
-      settings = settings || {};
-      scope = settings.scope || self;
-      toggleEvent = settings.toggleEvent || returnFalse;
-      var fire = function (name, args) {
+      EventDispatcher.prototype.fire = function (name, args) {
         var handlers, i, l, callback;
         name = name.toLowerCase();
         args = args || {};
         args.type = name;
         if (!args.target) {
-          args.target = scope;
+          args.target = this.scope;
         }
         if (!args.preventDefault) {
           args.preventDefault = function () {
-            args.isDefaultPrevented = returnTrue;
+            args.isDefaultPrevented = returnTrue$1;
           };
           args.stopPropagation = function () {
-            args.isPropagationStopped = returnTrue;
+            args.isPropagationStopped = returnTrue$1;
           };
           args.stopImmediatePropagation = function () {
-            args.isImmediatePropagationStopped = returnTrue;
+            args.isImmediatePropagationStopped = returnTrue$1;
           };
-          args.isDefaultPrevented = returnFalse;
-          args.isPropagationStopped = returnFalse;
-          args.isImmediatePropagationStopped = returnFalse;
+          args.isDefaultPrevented = returnFalse$1;
+          args.isPropagationStopped = returnFalse$1;
+          args.isImmediatePropagationStopped = returnFalse$1;
         }
-        if (settings.beforeFire) {
-          settings.beforeFire(args);
+        if (this.settings.beforeFire) {
+          this.settings.beforeFire(args);
         }
-        handlers = bindings[name];
+        handlers = this.bindings[name];
         if (handlers) {
           for (i = 0, l = handlers.length; i < l; i++) {
             callback = handlers[i];
             if (callback.once) {
-              off(name, callback.func);
+              this.off(name, callback.func);
             }
             if (args.isImmediatePropagationStopped()) {
               args.stopPropagation();
               return args;
             }
-            if (callback.func.call(scope, args) === false) {
+            if (callback.func.call(this.scope, args) === false) {
               args.preventDefault();
               return args;
             }
@@ -96944,48 +99121,48 @@ var silver = (function (domGlobals) {
         }
         return args;
       };
-      var on = function (name, callback, prepend, extra) {
+      EventDispatcher.prototype.on = function (name, callback, prepend, extra) {
         var handlers, names, i;
         if (callback === false) {
-          callback = returnFalse;
+          callback = returnFalse$1;
         }
         if (callback) {
-          callback = { func: callback };
+          var wrappedCallback = { func: callback };
           if (extra) {
-            Tools.extend(callback, extra);
+            Tools.extend(wrappedCallback, extra);
           }
           names = name.toLowerCase().split(' ');
           i = names.length;
           while (i--) {
             name = names[i];
-            handlers = bindings[name];
+            handlers = this.bindings[name];
             if (!handlers) {
-              handlers = bindings[name] = [];
-              toggleEvent(name, true);
+              handlers = this.bindings[name] = [];
+              this.toggleEvent(name, true);
             }
             if (prepend) {
-              handlers.unshift(callback);
+              handlers.unshift(wrappedCallback);
             } else {
-              handlers.push(callback);
+              handlers.push(wrappedCallback);
             }
           }
         }
-        return self;
+        return this;
       };
-      var off = function (name, callback) {
+      EventDispatcher.prototype.off = function (name, callback) {
         var i, handlers, bindingName, names, hi;
         if (name) {
           names = name.toLowerCase().split(' ');
           i = names.length;
           while (i--) {
             name = names[i];
-            handlers = bindings[name];
+            handlers = this.bindings[name];
             if (!name) {
-              for (bindingName in bindings) {
-                toggleEvent(bindingName, false);
-                delete bindings[bindingName];
+              for (bindingName in this.bindings) {
+                this.toggleEvent(bindingName, false);
+                delete this.bindings[bindingName];
               }
-              return self;
+              return this;
             }
             if (handlers) {
               if (!callback) {
@@ -96995,47 +99172,40 @@ var silver = (function (domGlobals) {
                 while (hi--) {
                   if (handlers[hi].func === callback) {
                     handlers = handlers.slice(0, hi).concat(handlers.slice(hi + 1));
-                    bindings[name] = handlers;
+                    this.bindings[name] = handlers;
                   }
                 }
               }
               if (!handlers.length) {
-                toggleEvent(name, false);
-                delete bindings[name];
+                this.toggleEvent(name, false);
+                delete this.bindings[name];
               }
             }
           }
         } else {
-          for (name in bindings) {
-            toggleEvent(name, false);
+          for (name in this.bindings) {
+            this.toggleEvent(name, false);
           }
-          bindings = {};
+          this.bindings = {};
         }
-        return self;
+        return this;
       };
-      var once = function (name, callback, prepend) {
-        return on(name, callback, prepend, { once: true });
+      EventDispatcher.prototype.once = function (name, callback, prepend) {
+        return this.on(name, callback, prepend, { once: true });
       };
-      var has = function (name) {
+      EventDispatcher.prototype.has = function (name) {
         name = name.toLowerCase();
-        return !(!bindings[name] || bindings[name].length === 0);
+        return !(!this.bindings[name] || this.bindings[name].length === 0);
       };
-      self.fire = fire;
-      self.on = on;
-      self.off = off;
-      self.once = once;
-      self.has = has;
-    };
-    Dispatcher.isNative = function (name) {
-      return !!nativeEvents[name.toLowerCase()];
-    };
+      return EventDispatcher;
+    }();
 
     var getEventDispatcher = function (obj) {
       if (!obj._eventDispatcher) {
-        obj._eventDispatcher = new Dispatcher({
+        obj._eventDispatcher = new EventDispatcher({
           scope: obj,
           toggleEvent: function (name, state) {
-            if (Dispatcher.isNative(name) && obj.toggleNativeEvent) {
+            if (EventDispatcher.isNative(name) && obj.toggleNativeEvent) {
               obj.toggleNativeEvent(name, state);
             }
           }
@@ -97049,15 +99219,15 @@ var silver = (function (domGlobals) {
         if (self.removed && name !== 'remove' && name !== 'detach') {
           return args;
         }
-        args = getEventDispatcher(self).fire(name, args, bubble);
+        var dispatcherArgs = getEventDispatcher(self).fire(name, args);
         if (bubble !== false && self.parent) {
           var parent = self.parent();
-          while (parent && !args.isPropagationStopped()) {
-            parent.fire(name, args, false);
+          while (parent && !dispatcherArgs.isPropagationStopped()) {
+            parent.fire(name, dispatcherArgs, false);
             parent = parent.parent();
           }
         }
-        return args;
+        return dispatcherArgs;
       },
       on: function (name, callback, prepend) {
         return getEventDispatcher(this).on(name, callback, prepend);
@@ -97096,7 +99266,7 @@ var silver = (function (domGlobals) {
     var fireEvent = function (editor, eventName, e) {
       if (isListening(editor)) {
         editor.fire(eventName, e);
-      } else if (isReadOnly(editor)) {
+      } else if (editor.readonly) {
         e.preventDefault();
       }
     };
@@ -97148,7 +99318,7 @@ var silver = (function (domGlobals) {
         editor.delegates[eventName] = delegate;
       }
     };
-    var EditorObservable = {
+    var EditorObservable = __assign({}, Observable, {
       bindPendingEventDelegates: function () {
         var self = this;
         Tools.each(self._pendingNativeEvents, function (name) {
@@ -97196,9 +99366,7 @@ var silver = (function (domGlobals) {
           dom.unbind(self.getContainer());
         }
       }
-    };
-    EditorObservable = Tools.extend({}, Observable, EditorObservable);
-    var EditorObservable$1 = EditorObservable;
+    });
 
     var each$h = Tools.each, explode$3 = Tools.explode;
     var keyCodeLookup = {
@@ -97216,11 +99384,62 @@ var silver = (function (domGlobals) {
       f12: 123
     };
     var modifierNames = Tools.makeMap('alt,ctrl,shift,meta,access');
-    function Shortcuts (editor) {
-      var self = this;
-      var shortcuts = {};
-      var pendingPatterns = [];
-      var parseShortcut = function (pattern) {
+    var Shortcuts = function () {
+      function Shortcuts(editor) {
+        this.shortcuts = {};
+        this.pendingPatterns = [];
+        this.editor = editor;
+        var self = this;
+        editor.on('keyup keypress keydown', function (e) {
+          if ((self.hasModifier(e) || self.isFunctionKey(e)) && !e.isDefaultPrevented()) {
+            each$h(self.shortcuts, function (shortcut) {
+              if (self.matchShortcut(e, shortcut)) {
+                self.pendingPatterns = shortcut.subpatterns.slice(0);
+                if (e.type === 'keydown') {
+                  self.executeShortcutAction(shortcut);
+                }
+                return true;
+              }
+            });
+            if (self.matchShortcut(e, self.pendingPatterns[0])) {
+              if (self.pendingPatterns.length === 1) {
+                if (e.type === 'keydown') {
+                  self.executeShortcutAction(self.pendingPatterns[0]);
+                }
+              }
+              self.pendingPatterns.shift();
+            }
+          }
+        });
+      }
+      Shortcuts.prototype.add = function (pattern, desc, cmdFunc, scope) {
+        var self = this;
+        var cmd;
+        cmd = cmdFunc;
+        if (typeof cmdFunc === 'string') {
+          cmdFunc = function () {
+            self.editor.execCommand(cmd, false, null);
+          };
+        } else if (Tools.isArray(cmd)) {
+          cmdFunc = function () {
+            self.editor.execCommand(cmd[0], cmd[1], cmd[2]);
+          };
+        }
+        each$h(explode$3(Tools.trim(pattern.toLowerCase())), function (pattern) {
+          var shortcut = self.createShortcut(pattern, desc, cmdFunc, scope);
+          self.shortcuts[shortcut.id] = shortcut;
+        });
+        return true;
+      };
+      Shortcuts.prototype.remove = function (pattern) {
+        var shortcut = this.createShortcut(pattern);
+        if (this.shortcuts[shortcut.id]) {
+          delete this.shortcuts[shortcut.id];
+          return true;
+        }
+        return false;
+      };
+      Shortcuts.prototype.parseShortcut = function (pattern) {
         var id, key;
         var shortcut = {};
         each$h(explode$3(pattern, '+'), function (value) {
@@ -97262,25 +99481,25 @@ var silver = (function (domGlobals) {
         }
         return shortcut;
       };
-      var createShortcut = function (pattern, desc, cmdFunc, scope) {
+      Shortcuts.prototype.createShortcut = function (pattern, desc, cmdFunc, scope) {
         var shortcuts;
-        shortcuts = Tools.map(explode$3(pattern, '>'), parseShortcut);
+        shortcuts = Tools.map(explode$3(pattern, '>'), this.parseShortcut);
         shortcuts[shortcuts.length - 1] = Tools.extend(shortcuts[shortcuts.length - 1], {
           func: cmdFunc,
-          scope: scope || editor
+          scope: scope || this.editor
         });
         return Tools.extend(shortcuts[0], {
-          desc: editor.translate(desc),
+          desc: this.editor.translate(desc),
           subpatterns: shortcuts.slice(1)
         });
       };
-      var hasModifier = function (e) {
+      Shortcuts.prototype.hasModifier = function (e) {
         return e.altKey || e.ctrlKey || e.metaKey;
       };
-      var isFunctionKey = function (e) {
+      Shortcuts.prototype.isFunctionKey = function (e) {
         return e.type === 'keydown' && e.keyCode >= 112 && e.keyCode <= 123;
       };
-      var matchShortcut = function (e, shortcut) {
+      Shortcuts.prototype.matchShortcut = function (e, shortcut) {
         if (!shortcut) {
           return false;
         }
@@ -97296,57 +99515,11 @@ var silver = (function (domGlobals) {
         }
         return false;
       };
-      var executeShortcutAction = function (shortcut) {
+      Shortcuts.prototype.executeShortcutAction = function (shortcut) {
         return shortcut.func ? shortcut.func.call(shortcut.scope) : null;
       };
-      editor.on('keyup keypress keydown', function (e) {
-        if ((hasModifier(e) || isFunctionKey(e)) && !e.isDefaultPrevented()) {
-          each$h(shortcuts, function (shortcut) {
-            if (matchShortcut(e, shortcut)) {
-              pendingPatterns = shortcut.subpatterns.slice(0);
-              if (e.type === 'keydown') {
-                executeShortcutAction(shortcut);
-              }
-              return true;
-            }
-          });
-          if (matchShortcut(e, pendingPatterns[0])) {
-            if (pendingPatterns.length === 1) {
-              if (e.type === 'keydown') {
-                executeShortcutAction(pendingPatterns[0]);
-              }
-            }
-            pendingPatterns.shift();
-          }
-        }
-      });
-      self.add = function (pattern, desc, cmdFunc, scope) {
-        var cmd;
-        cmd = cmdFunc;
-        if (typeof cmdFunc === 'string') {
-          cmdFunc = function () {
-            editor.execCommand(cmd, false, null);
-          };
-        } else if (Tools.isArray(cmd)) {
-          cmdFunc = function () {
-            editor.execCommand(cmd[0], cmd[1], cmd[2]);
-          };
-        }
-        each$h(explode$3(Tools.trim(pattern.toLowerCase())), function (pattern) {
-          var shortcut = createShortcut(pattern, desc, cmdFunc, scope);
-          shortcuts[shortcut.id] = shortcut;
-        });
-        return true;
-      };
-      self.remove = function (pattern) {
-        var shortcut = createShortcut(pattern);
-        if (shortcuts[shortcut.id]) {
-          delete shortcuts[shortcut.id];
-          return true;
-        }
-        return false;
-      };
-    }
+      return Shortcuts;
+    }();
 
     var each$i = Tools.each, trim$4 = Tools.trim;
     var queryParts = 'source protocol authority userInfo user password host port relative path directory file query anchor'.split(' ');
@@ -97356,95 +99529,119 @@ var silver = (function (domGlobals) {
       https: 443,
       mailto: 25
     };
-    var URI = function (url, settings) {
-      var self = this;
-      var baseUri, baseUrl;
-      url = trim$4(url);
-      settings = self.settings = settings || {};
-      baseUri = settings.base_uri;
-      if (/^([\w\-]+):([^\/]{2})/i.test(url) || /^\s*#/.test(url)) {
-        self.source = url;
-        return;
+    var URI = function () {
+      function URI(url, settings) {
+        url = trim$4(url);
+        this.settings = settings || {};
+        var baseUri = this.settings.base_uri;
+        var self = this;
+        if (/^([\w\-]+):([^\/]{2})/i.test(url) || /^\s*#/.test(url)) {
+          self.source = url;
+          return;
+        }
+        var isProtocolRelative = url.indexOf('//') === 0;
+        if (url.indexOf('/') === 0 && !isProtocolRelative) {
+          url = (baseUri ? baseUri.protocol || 'http' : 'http') + '://mce_host' + url;
+        }
+        if (!/^[\w\-]*:?\/\//.test(url)) {
+          var baseUrl = this.settings.base_uri ? this.settings.base_uri.path : new URI(domGlobals.document.location.href).directory;
+          if (this.settings.base_uri.protocol == '') {
+            url = '//mce_host' + self.toAbsPath(baseUrl, url);
+          } else {
+            var match = /([^#?]*)([#?]?.*)/.exec(url);
+            url = (baseUri && baseUri.protocol || 'http') + '://mce_host' + self.toAbsPath(baseUrl, match[1]) + match[2];
+          }
+        }
+        url = url.replace(/@@/g, '(mce_at)');
+        var urlMatch = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@\/]*):?([^:@\/]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/.exec(url);
+        each$i(queryParts, function (v, i) {
+          var part = urlMatch[i];
+          if (part) {
+            part = part.replace(/\(mce_at\)/g, '@@');
+          }
+          self[v] = part;
+        });
+        if (baseUri) {
+          if (!self.protocol) {
+            self.protocol = baseUri.protocol;
+          }
+          if (!self.userInfo) {
+            self.userInfo = baseUri.userInfo;
+          }
+          if (!self.port && self.host === 'mce_host') {
+            self.port = baseUri.port;
+          }
+          if (!self.host || self.host === 'mce_host') {
+            self.host = baseUri.host;
+          }
+          self.source = '';
+        }
+        if (isProtocolRelative) {
+          self.protocol = '';
+        }
       }
-      var isProtocolRelative = url.indexOf('//') === 0;
-      if (url.indexOf('/') === 0 && !isProtocolRelative) {
-        url = (baseUri ? baseUri.protocol || 'http' : 'http') + '://mce_host' + url;
-      }
-      if (!/^[\w\-]*:?\/\//.test(url)) {
-        baseUrl = settings.base_uri ? settings.base_uri.path : new URI(domGlobals.document.location.href).directory;
-        if (settings.base_uri.protocol == '') {
-          url = '//mce_host' + self.toAbsPath(baseUrl, url);
+      URI.parseDataUri = function (uri) {
+        var type;
+        var uriComponents = decodeURIComponent(uri).split(',');
+        var matches = /data:([^;]+)/.exec(uriComponents[0]);
+        if (matches) {
+          type = matches[1];
+        }
+        return {
+          type: type,
+          data: uriComponents[1]
+        };
+      };
+      URI.getDocumentBaseUrl = function (loc) {
+        var baseUrl;
+        if (loc.protocol.indexOf('http') !== 0 && loc.protocol !== 'file:') {
+          baseUrl = loc.href;
         } else {
-          url = /([^#?]*)([#?]?.*)/.exec(url);
-          url = (baseUri && baseUri.protocol || 'http') + '://mce_host' + self.toAbsPath(baseUrl, url[1]) + url[2];
+          baseUrl = loc.protocol + '//' + loc.host + loc.pathname;
         }
-      }
-      url = url.replace(/@@/g, '(mce_at)');
-      url = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@\/]*):?([^:@\/]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/.exec(url);
-      each$i(queryParts, function (v, i) {
-        var part = url[i];
-        if (part) {
-          part = part.replace(/\(mce_at\)/g, '@@');
+        if (/^[^:]+:\/\/\/?[^\/]+\//.test(baseUrl)) {
+          baseUrl = baseUrl.replace(/[\?#].*$/, '').replace(/[\/\\][^\/]+$/, '');
+          if (!/[\/\\]$/.test(baseUrl)) {
+            baseUrl += '/';
+          }
         }
-        self[v] = part;
-      });
-      if (baseUri) {
-        if (!self.protocol) {
-          self.protocol = baseUri.protocol;
-        }
-        if (!self.userInfo) {
-          self.userInfo = baseUri.userInfo;
-        }
-        if (!self.port && self.host === 'mce_host') {
-          self.port = baseUri.port;
-        }
-        if (!self.host || self.host === 'mce_host') {
-          self.host = baseUri.host;
-        }
-        self.source = '';
-      }
-      if (isProtocolRelative) {
-        self.protocol = '';
-      }
-    };
-    URI.prototype = {
-      setPath: function (path) {
-        var self = this;
-        path = /^(.*?)\/?(\w+)?$/.exec(path);
-        self.path = path[0];
-        self.directory = path[1];
-        self.file = path[2];
-        self.source = '';
-        self.getURI();
-      },
-      toRelative: function (uri) {
-        var self = this;
+        return baseUrl;
+      };
+      URI.prototype.setPath = function (path) {
+        var pathMatch = /^(.*?)\/?(\w+)?$/.exec(path);
+        this.path = pathMatch[0];
+        this.directory = pathMatch[1];
+        this.file = pathMatch[2];
+        this.source = '';
+        this.getURI();
+      };
+      URI.prototype.toRelative = function (uri) {
         var output;
         if (uri === './') {
           return uri;
         }
-        uri = new URI(uri, { base_uri: self });
-        if (uri.host !== 'mce_host' && self.host !== uri.host && uri.host || self.port !== uri.port || self.protocol !== uri.protocol && uri.protocol !== '') {
-          return uri.getURI();
+        var relativeUri = new URI(uri, { base_uri: this });
+        if (relativeUri.host !== 'mce_host' && this.host !== relativeUri.host && relativeUri.host || this.port !== relativeUri.port || this.protocol !== relativeUri.protocol && relativeUri.protocol !== '') {
+          return relativeUri.getURI();
         }
-        var tu = self.getURI(), uu = uri.getURI();
+        var tu = this.getURI(), uu = relativeUri.getURI();
         if (tu === uu || tu.charAt(tu.length - 1) === '/' && tu.substr(0, tu.length - 1) === uu) {
           return tu;
         }
-        output = self.toRelPath(self.path, uri.path);
-        if (uri.query) {
-          output += '?' + uri.query;
+        output = this.toRelPath(this.path, relativeUri.path);
+        if (relativeUri.query) {
+          output += '?' + relativeUri.query;
         }
-        if (uri.anchor) {
-          output += '#' + uri.anchor;
+        if (relativeUri.anchor) {
+          output += '#' + relativeUri.anchor;
         }
         return output;
-      },
-      toAbsolute: function (uri, noHost) {
-        uri = new URI(uri, { base_uri: this });
-        return uri.getURI(noHost && this.isSameOrigin(uri));
-      },
-      isSameOrigin: function (uri) {
+      };
+      URI.prototype.toAbsolute = function (uri, noHost) {
+        var absoluteUri = new URI(uri, { base_uri: this });
+        return absoluteUri.getURI(noHost && this.isSameOrigin(absoluteUri));
+      };
+      URI.prototype.isSameOrigin = function (uri) {
         if (this.host == uri.host && this.protocol == uri.protocol) {
           if (this.port == uri.port) {
             return true;
@@ -97455,23 +99652,22 @@ var silver = (function (domGlobals) {
           }
         }
         return false;
-      },
-      toRelPath: function (base, path) {
+      };
+      URI.prototype.toRelPath = function (base, path) {
         var items, breakPoint = 0, out = '', i, l;
-        base = base.substring(0, base.lastIndexOf('/'));
-        base = base.split('/');
+        var normalizedBase = base.substring(0, base.lastIndexOf('/')).split('/');
         items = path.split('/');
-        if (base.length >= items.length) {
-          for (i = 0, l = base.length; i < l; i++) {
-            if (i >= items.length || base[i] !== items[i]) {
+        if (normalizedBase.length >= items.length) {
+          for (i = 0, l = normalizedBase.length; i < l; i++) {
+            if (i >= items.length || normalizedBase[i] !== items[i]) {
               breakPoint = i + 1;
               break;
             }
           }
         }
-        if (base.length < items.length) {
+        if (normalizedBase.length < items.length) {
           for (i = 0, l = items.length; i < l; i++) {
-            if (i >= base.length || base[i] !== items[i]) {
+            if (i >= normalizedBase.length || normalizedBase[i] !== items[i]) {
               breakPoint = i + 1;
               break;
             }
@@ -97480,7 +99676,7 @@ var silver = (function (domGlobals) {
         if (breakPoint === 1) {
           return path;
         }
-        for (i = 0, l = base.length - (breakPoint - 1); i < l; i++) {
+        for (i = 0, l = normalizedBase.length - (breakPoint - 1); i < l; i++) {
           out += '../';
         }
         for (i = breakPoint - 1, l = items.length; i < l; i++) {
@@ -97491,23 +99687,23 @@ var silver = (function (domGlobals) {
           }
         }
         return out;
-      },
-      toAbsPath: function (base, path) {
+      };
+      URI.prototype.toAbsPath = function (base, path) {
         var i, nb = 0, o = [], tr, outPath;
         tr = /\/$/.test(path) ? '/' : '';
-        base = base.split('/');
-        path = path.split('/');
-        each$i(base, function (k) {
+        var normalizedBase = base.split('/');
+        var normalizedPath = path.split('/');
+        each$i(normalizedBase, function (k) {
           if (k) {
             o.push(k);
           }
         });
-        base = o;
-        for (i = path.length - 1, o = []; i >= 0; i--) {
-          if (path[i].length === 0 || path[i] === '.') {
+        normalizedBase = o;
+        for (i = normalizedPath.length - 1, o = []; i >= 0; i--) {
+          if (normalizedPath[i].length === 0 || normalizedPath[i] === '.') {
             continue;
           }
-          if (path[i] === '..') {
+          if (normalizedPath[i] === '..') {
             nb++;
             continue;
           }
@@ -97515,13 +99711,13 @@ var silver = (function (domGlobals) {
             nb--;
             continue;
           }
-          o.push(path[i]);
+          o.push(normalizedPath[i]);
         }
-        i = base.length - nb;
+        i = normalizedBase.length - nb;
         if (i <= 0) {
           outPath = o.reverse().join('/');
         } else {
-          outPath = base.slice(0, i).join('/') + '/' + o.reverse().join('/');
+          outPath = normalizedBase.slice(0, i).join('/') + '/' + o.reverse().join('/');
         }
         if (outPath.indexOf('/') !== 0) {
           outPath = '/' + outPath;
@@ -97530,71 +99726,47 @@ var silver = (function (domGlobals) {
           outPath += tr;
         }
         return outPath;
-      },
-      getURI: function (noProtoHost) {
+      };
+      URI.prototype.getURI = function (noProtoHost) {
+        if (noProtoHost === void 0) {
+          noProtoHost = false;
+        }
         var s;
-        var self = this;
-        if (!self.source || noProtoHost) {
+        if (!this.source || noProtoHost) {
           s = '';
           if (!noProtoHost) {
-            if (self.protocol) {
-              s += self.protocol + '://';
+            if (this.protocol) {
+              s += this.protocol + '://';
             } else {
               s += '//';
             }
-            if (self.userInfo) {
-              s += self.userInfo + '@';
+            if (this.userInfo) {
+              s += this.userInfo + '@';
             }
-            if (self.host) {
-              s += self.host;
+            if (this.host) {
+              s += this.host;
             }
-            if (self.port) {
-              s += ':' + self.port;
+            if (this.port) {
+              s += ':' + this.port;
             }
           }
-          if (self.path) {
-            s += self.path;
+          if (this.path) {
+            s += this.path;
           }
-          if (self.query) {
-            s += '?' + self.query;
+          if (this.query) {
+            s += '?' + this.query;
           }
-          if (self.anchor) {
-            s += '#' + self.anchor;
+          if (this.anchor) {
+            s += '#' + this.anchor;
           }
-          self.source = s;
+          this.source = s;
         }
-        return self.source;
-      }
-    };
-    URI.parseDataUri = function (uri) {
-      var type, matches;
-      uri = decodeURIComponent(uri).split(',');
-      matches = /data:([^;]+)/.exec(uri[0]);
-      if (matches) {
-        type = matches[1];
-      }
-      return {
-        type: type,
-        data: uri[1]
+        return this.source;
       };
-    };
-    URI.getDocumentBaseUrl = function (loc) {
-      var baseUrl;
-      if (loc.protocol.indexOf('http') !== 0 && loc.protocol !== 'file:') {
-        baseUrl = loc.href;
-      } else {
-        baseUrl = loc.protocol + '//' + loc.host + loc.pathname;
-      }
-      if (/^[^:]+:\/\/\/?[^\/]+\//.test(baseUrl)) {
-        baseUrl = baseUrl.replace(/[\?#].*$/, '').replace(/[\/\\][^\/]+$/, '');
-        if (!/[\/\\]$/.test(baseUrl)) {
-          baseUrl += '/';
-        }
-      }
-      return baseUrl;
-    };
+      return URI;
+    }();
 
-    var create$3 = function () {
+    var create$4 = function () {
       var buttons = {};
       var menuItems = {};
       var popups = {};
@@ -97639,7 +99811,7 @@ var silver = (function (domGlobals) {
     };
 
     var registry = function () {
-      var bridge = create$3();
+      var bridge = create$4();
       return {
         addAutocompleter: bridge.addAutocompleter,
         addButton: bridge.addButton,
@@ -97659,59 +99831,62 @@ var silver = (function (domGlobals) {
     };
 
     var DOM$7 = DOMUtils$1.DOM;
-    var extend$4 = Tools.extend, each$j = Tools.each;
+    var extend$3 = Tools.extend, each$j = Tools.each;
     var resolve$4 = Tools.resolve;
     var ie$2 = Env.ie;
-    var Editor = function (id, settings, editorManager) {
-      var self = this;
-      var documentBaseUrl = self.documentBaseUrl = editorManager.documentBaseURL;
-      var baseUri = editorManager.baseURI;
-      settings = getEditorSettings(self, id, documentBaseUrl, editorManager.defaultSettings, settings);
-      self.settings = settings;
-      AddOnManager.languageLoad = settings.language_load;
-      AddOnManager.baseURL = editorManager.baseURL;
-      self.id = id;
-      self.setDirty(false);
-      self.plugins = {};
-      self.documentBaseURI = new URI(settings.document_base_url, { base_uri: baseUri });
-      self.baseURI = baseUri;
-      self.contentCSS = [];
-      self.contentStyles = [];
-      self.shortcuts = new Shortcuts(self);
-      self.loadedCSS = {};
-      self.editorCommands = new EditorCommands(self);
-      self.suffix = editorManager.suffix;
-      self.editorManager = editorManager;
-      self.inline = settings.inline;
-      self.buttons = {};
-      self.menuItems = {};
-      if (settings.cache_suffix) {
-        Env.cacheSuffix = settings.cache_suffix.replace(/^[\?\&]+/, '');
+    var Editor = function () {
+      function Editor(id, settings, editorManager) {
+        var _this = this;
+        this.plugins = {};
+        this.contentCSS = [];
+        this.contentStyles = [];
+        this.loadedCSS = {};
+        this.isNotDirty = false;
+        this.editorManager = editorManager;
+        this.documentBaseUrl = editorManager.documentBaseURL;
+        this.baseUri = editorManager.baseURI;
+        extend$3(this, EditorObservable);
+        this.settings = getEditorSettings(this, id, this.documentBaseUrl, editorManager.defaultSettings, settings);
+        AddOnManager$1.languageLoad = this.settings.language_load;
+        AddOnManager$1.baseURL = editorManager.baseURL;
+        this.id = id;
+        this.setDirty(false);
+        this.documentBaseURI = new URI(this.settings.document_base_url, { base_uri: this.baseUri });
+        this.baseURI = this.baseUri;
+        this.inline = this.settings.inline;
+        this.suffix = editorManager.suffix;
+        this.shortcuts = new Shortcuts(this);
+        this.editorCommands = new EditorCommands(this);
+        if (this.settings.cache_suffix) {
+          Env.cacheSuffix = this.settings.cache_suffix.replace(/^[\?\&]+/, '');
+        }
+        if (this.settings.override_viewport === false) {
+          Env.overrideViewPort = false;
+        }
+        this.ui = { registry: registry() };
+        var self = this;
+        var modeInstance = create$3(self);
+        this.mode = modeInstance;
+        this.setMode = modeInstance.set;
+        editorManager.fire('SetupEditor', { editor: this });
+        this.execCallback('setup', this);
+        this.$ = DomQuery.overrideDefaults(function () {
+          return {
+            context: _this.inline ? _this.getBody() : _this.getDoc(),
+            element: _this.getBody()
+          };
+        });
       }
-      if (settings.override_viewport === false) {
-        Env.overrideViewPort = false;
-      }
-      self.ui = { registry: registry() };
-      editorManager.fire('SetupEditor', { editor: self });
-      self.execCallback('setup', self);
-      self.$ = DomQuery.overrideDefaults(function () {
-        return {
-          context: self.inline ? self.getBody() : self.getDoc(),
-          element: self.getBody()
-        };
-      });
-    };
-    Editor.prototype = {
-      render: function () {
+      Editor.prototype.render = function () {
         Render.render(this);
-      },
-      focus: function (skipFocus) {
+      };
+      Editor.prototype.focus = function (skipFocus) {
         EditorFocus.focus(this, skipFocus);
-      },
-      hasFocus: function () {
+      };
+      Editor.prototype.hasFocus = function () {
         return EditorFocus.hasFocus(this);
-      },
-      execCallback: function (name) {
+      };
+      Editor.prototype.execCallback = function (name) {
         var x = [];
         for (var _i = 1; _i < arguments.length; _i++) {
           x[_i - 1] = arguments[_i];
@@ -97736,58 +99911,46 @@ var silver = (function (domGlobals) {
           };
         }
         return callback.apply(scope || self, Array.prototype.slice.call(arguments, 1));
-      },
-      translate: function (text) {
+      };
+      Editor.prototype.translate = function (text) {
         return I18n.translate(text);
-      },
-      getParam: function (name, defaultVal, type) {
+      };
+      Editor.prototype.getParam = function (name, defaultVal, type) {
         return getParam(this, name, defaultVal, type);
-      },
-      nodeChanged: function (args) {
+      };
+      Editor.prototype.nodeChanged = function (args) {
         this._nodeChangeDispatcher.nodeChanged(args);
-      },
-      addButton: function () {
-        throw new Error('editor.addButton has been removed in tinymce 5x, use editor.ui.registry.addButton or editor.ui.registry.addToggleButton or editor.ui.registry.addSplitButton instead');
-      },
-      addSidebar: function () {
-        throw new Error('editor.addSidebar has been removed in tinymce 5x, use editor.ui.registry.addSidebar instead');
-      },
-      addMenuItem: function () {
-        throw new Error('editor.addMenuItem has been removed in tinymce 5x, use editor.ui.registry.addMenuItem instead');
-      },
-      addContextToolbar: function () {
-        throw new Error('editor.addContextToolbar has been removed in tinymce 5x, use editor.ui.registry.addContextToolbar instead');
-      },
-      addCommand: function (name, callback, scope) {
+      };
+      Editor.prototype.addCommand = function (name, callback, scope) {
         this.editorCommands.addCommand(name, callback, scope);
-      },
-      addQueryStateHandler: function (name, callback, scope) {
+      };
+      Editor.prototype.addQueryStateHandler = function (name, callback, scope) {
         this.editorCommands.addQueryStateHandler(name, callback, scope);
-      },
-      addQueryValueHandler: function (name, callback, scope) {
+      };
+      Editor.prototype.addQueryValueHandler = function (name, callback, scope) {
         this.editorCommands.addQueryValueHandler(name, callback, scope);
-      },
-      addShortcut: function (pattern, desc, cmdFunc, scope) {
+      };
+      Editor.prototype.addShortcut = function (pattern, desc, cmdFunc, scope) {
         this.shortcuts.add(pattern, desc, cmdFunc, scope);
-      },
-      execCommand: function (cmd, ui, value, args) {
+      };
+      Editor.prototype.execCommand = function (cmd, ui, value, args) {
         return this.editorCommands.execCommand(cmd, ui, value, args);
-      },
-      queryCommandState: function (cmd) {
+      };
+      Editor.prototype.queryCommandState = function (cmd) {
         return this.editorCommands.queryCommandState(cmd);
-      },
-      queryCommandValue: function (cmd) {
+      };
+      Editor.prototype.queryCommandValue = function (cmd) {
         return this.editorCommands.queryCommandValue(cmd);
-      },
-      queryCommandSupported: function (cmd) {
+      };
+      Editor.prototype.queryCommandSupported = function (cmd) {
         return this.editorCommands.queryCommandSupported(cmd);
-      },
-      show: function () {
+      };
+      Editor.prototype.show = function () {
         var self = this;
         if (self.hidden) {
           self.hidden = false;
           if (self.inline) {
-            self.getBody().contentEditable = true;
+            self.getBody().contentEditable = 'true';
           } else {
             DOM$7.show(self.getContainer());
             DOM$7.hide(self.id);
@@ -97795,8 +99958,8 @@ var silver = (function (domGlobals) {
           self.load();
           self.fire('show');
         }
-      },
-      hide: function () {
+      };
+      Editor.prototype.hide = function () {
         var self = this, doc = self.getDoc();
         if (!self.hidden) {
           if (ie$2 && doc && !self.inline) {
@@ -97804,7 +99967,7 @@ var silver = (function (domGlobals) {
           }
           self.save();
           if (self.inline) {
-            self.getBody().contentEditable = false;
+            self.getBody().contentEditable = 'false';
             if (self === self.editorManager.focusedEditor) {
               self.editorManager.focusedEditor = null;
             }
@@ -97815,17 +99978,17 @@ var silver = (function (domGlobals) {
           self.hidden = true;
           self.fire('hide');
         }
-      },
-      isHidden: function () {
+      };
+      Editor.prototype.isHidden = function () {
         return !!this.hidden;
-      },
-      setProgressState: function (state, time) {
+      };
+      Editor.prototype.setProgressState = function (state, time) {
         this.fire('ProgressState', {
           state: state,
           time: time
         });
-      },
-      load: function (args) {
+      };
+      Editor.prototype.load = function (args) {
         var self = this;
         var elm = self.getElement(), html;
         if (self.removed) {
@@ -97834,7 +99997,8 @@ var silver = (function (domGlobals) {
         if (elm) {
           args = args || {};
           args.load = true;
-          html = self.setContent(elm.value !== undefined ? elm.value : elm.innerHTML, args);
+          var value = elm.value;
+          html = self.setContent(value !== undefined ? value : elm.innerHTML, args);
           args.element = elm;
           if (!args.no_events) {
             self.fire('LoadContent', args);
@@ -97842,8 +100006,8 @@ var silver = (function (domGlobals) {
           args.element = elm = null;
           return html;
         }
-      },
-      save: function (args) {
+      };
+      Editor.prototype.save = function (args) {
         var self = this;
         var elm = self.getElement(), html, form;
         if (!elm || !self.initialized || self.removed) {
@@ -97880,49 +100044,56 @@ var silver = (function (domGlobals) {
           self.setDirty(false);
         }
         return html;
-      },
-      setContent: function (content, args) {
+      };
+      Editor.prototype.setContent = function (content, args) {
         return setContent(this, content, args);
-      },
-      getContent: function (args) {
+      };
+      Editor.prototype.getContent = function (args) {
         return getContent(this, args);
-      },
-      insertContent: function (content, args) {
+      };
+      Editor.prototype.insertContent = function (content, args) {
         if (args) {
-          content = extend$4({ content: content }, args);
+          content = extend$3({ content: content }, args);
         }
         this.execCommand('mceInsertContent', false, content);
-      },
-      isDirty: function () {
+      };
+      Editor.prototype.resetContent = function (initialContent) {
+        if (initialContent === undefined) {
+          setContent(this, this.startContent, { format: 'raw' });
+        } else {
+          setContent(this, initialContent);
+        }
+        this.undoManager.reset();
+        this.setDirty(false);
+        this.nodeChanged();
+      };
+      Editor.prototype.isDirty = function () {
         return !this.isNotDirty;
-      },
-      setDirty: function (state) {
+      };
+      Editor.prototype.setDirty = function (state) {
         var oldState = !this.isNotDirty;
         this.isNotDirty = !state;
         if (state && state !== oldState) {
           this.fire('dirty');
         }
-      },
-      setMode: function (mode) {
-        setMode(this, mode);
-      },
-      getContainer: function () {
+      };
+      Editor.prototype.getContainer = function () {
         var self = this;
         if (!self.container) {
           self.container = DOM$7.get(self.editorContainer || self.id + '_parent');
         }
         return self.container;
-      },
-      getContentAreaContainer: function () {
+      };
+      Editor.prototype.getContentAreaContainer = function () {
         return this.contentAreaContainer;
-      },
-      getElement: function () {
+      };
+      Editor.prototype.getElement = function () {
         if (!this.targetElm) {
           this.targetElm = DOM$7.get(this.id);
         }
         return this.targetElm;
-      },
-      getWin: function () {
+      };
+      Editor.prototype.getWin = function () {
         var self = this;
         var elm;
         if (!self.contentWindow) {
@@ -97932,8 +100103,8 @@ var silver = (function (domGlobals) {
           }
         }
         return self.contentWindow;
-      },
-      getDoc: function () {
+      };
+      Editor.prototype.getDoc = function () {
         var self = this;
         var win;
         if (!self.contentDocument) {
@@ -97943,12 +100114,12 @@ var silver = (function (domGlobals) {
           }
         }
         return self.contentDocument;
-      },
-      getBody: function () {
+      };
+      Editor.prototype.getBody = function () {
         var doc = this.getDoc();
         return this.bodyElement || (doc ? doc.body : null);
-      },
-      convertURL: function (url, name, elm) {
+      };
+      Editor.prototype.convertURL = function (url, name, elm) {
         var self = this, settings = self.settings;
         if (settings.urlconverter_callback) {
           return self.execCallback('urlconverter_callback', url, elm, true, name);
@@ -97961,8 +100132,8 @@ var silver = (function (domGlobals) {
         }
         url = self.documentBaseURI.toAbsolute(url, settings.remove_script_host);
         return url;
-      },
-      addVisual: function (elm) {
+      };
+      Editor.prototype.addVisual = function (elm) {
         var self = this;
         var settings = self.settings;
         var dom = self.dom;
@@ -98000,21 +100171,33 @@ var silver = (function (domGlobals) {
           element: elm,
           hasVisual: self.hasVisual
         });
-      },
-      remove: function () {
+      };
+      Editor.prototype.remove = function () {
         remove$6(this);
-      },
-      destroy: function (automatic) {
+      };
+      Editor.prototype.destroy = function (automatic) {
         destroy(this, automatic);
-      },
-      uploadImages: function (callback) {
+      };
+      Editor.prototype.uploadImages = function (callback) {
         return this.editorUpload.uploadImages(callback);
-      },
-      _scanForImages: function () {
+      };
+      Editor.prototype._scanForImages = function () {
         return this.editorUpload.scanForImages();
-      }
-    };
-    extend$4(Editor.prototype, EditorObservable$1);
+      };
+      Editor.prototype.addButton = function () {
+        throw new Error('editor.addButton has been removed in tinymce 5x, use editor.ui.registry.addButton or editor.ui.registry.addToggleButton or editor.ui.registry.addSplitButton instead');
+      };
+      Editor.prototype.addSidebar = function () {
+        throw new Error('editor.addSidebar has been removed in tinymce 5x, use editor.ui.registry.addSidebar instead');
+      };
+      Editor.prototype.addMenuItem = function () {
+        throw new Error('editor.addMenuItem has been removed in tinymce 5x, use editor.ui.registry.addMenuItem instead');
+      };
+      Editor.prototype.addContextToolbar = function () {
+        throw new Error('editor.addContextToolbar has been removed in tinymce 5x, use editor.ui.registry.addContextToolbar instead');
+      };
+      return Editor;
+    }();
 
     var isEditorUIElement = function (elm) {
       return elm.className.toString().indexOf('tox-') !== -1 || elm.className.toString().indexOf('mce-') !== -1;
@@ -98050,7 +100233,7 @@ var silver = (function (domGlobals) {
       } else {
         registerMouseUp(editor, throttledStore);
       }
-      editor.on('keyup nodechange', function (e) {
+      editor.on('keyup NodeChange', function (e) {
         if (!isManualNodeChange(e)) {
           SelectionBookmark.store(editor);
         }
@@ -98152,8 +100335,8 @@ var silver = (function (domGlobals) {
     };
 
     var DOM$9 = DOMUtils$1.DOM;
-    var explode$4 = Tools.explode, each$k = Tools.each, extend$5 = Tools.extend;
-    var instanceCounter = 0, beforeUnloadDelegate, EditorManager, boundGlobalEvents = false;
+    var explode$4 = Tools.explode, each$k = Tools.each, extend$4 = Tools.extend;
+    var instanceCounter = 0, beforeUnloadDelegate, boundGlobalEvents = false;
     var legacyEditors = [];
     var editors = [];
     var isValidLegacyKey = function (id) {
@@ -98212,15 +100395,21 @@ var silver = (function (domGlobals) {
       }
       return editor;
     };
-    EditorManager = {
+    var EditorManager = __assign({}, Observable, {
+      _beforeUnloadHandler: null,
+      baseURI: null,
+      baseURL: null,
       defaultSettings: {},
+      documentBaseURL: null,
+      suffix: null,
       $: DomQuery,
       majorVersion: '5',
-      minorVersion: '0.3',
-      releaseDate: '2019-03-19',
+      minorVersion: '0.4',
+      releaseDate: '2019-04-23',
       editors: legacyEditors,
       i18n: I18n,
       activeEditor: null,
+      focusedEditor: null,
       settings: {},
       setup: function () {
         var self = this;
@@ -98277,7 +100466,7 @@ var silver = (function (domGlobals) {
         this.defaultSettings = defaultSettings;
         var pluginBaseUrls = defaultSettings.plugin_base_urls;
         for (var name in pluginBaseUrls) {
-          AddOnManager.PluginManager.urls[name] = pluginBaseUrls[name];
+          AddOnManager$1.PluginManager.urls[name] = pluginBaseUrls[name];
         }
       },
       init: function (settings) {
@@ -98387,7 +100576,7 @@ var silver = (function (domGlobals) {
             each$k(settings.types, function (type) {
               Tools.each(targets, function (elm) {
                 if (DOM$9.is(elm, type.selector)) {
-                  createEditor(createId(elm), extend$5({}, settings, type), elm);
+                  createEditor(createId(elm), extend$4({}, settings, type), elm);
                   return false;
                 }
                 return true;
@@ -98549,16 +100738,14 @@ var silver = (function (domGlobals) {
         }
         this.activeEditor = editor;
       }
-    };
-    extend$5(EditorManager, Observable);
+    });
     EditorManager.setup();
-    var EditorManager$1 = EditorManager;
 
     function RangeUtils(dom) {
       var walk = function (rng, callback) {
         return RangeWalk.walk(dom, rng, callback);
       };
-      var split = SplitRange.split;
+      var split = split$1;
       var normalize = function (rng) {
         return NormalizeRange.normalize(dom, rng).fold(constant(false), function (normalizedRng) {
           rng.setStart(normalizedRng.startContainer, normalizedRng.startOffset);
@@ -98614,7 +100801,7 @@ var silver = (function (domGlobals) {
       if (rel[4] === 'c') {
         x -= round$2(w / 2);
       }
-      return create$4(x, y, w, h);
+      return create$5(x, y, w, h);
     };
     var findBestRelativePosition = function (rect, targetRect, constrainRect, rels) {
       var pos, i;
@@ -98627,7 +100814,7 @@ var silver = (function (domGlobals) {
       return null;
     };
     var inflate = function (rect, w, h) {
-      return create$4(rect.x - w, rect.y - h, rect.w + w * 2, rect.h + h * 2);
+      return create$5(rect.x - w, rect.y - h, rect.w + w * 2, rect.h + h * 2);
     };
     var intersect = function (rect, cropRect) {
       var x1, y1, x2, y2;
@@ -98638,7 +100825,7 @@ var silver = (function (domGlobals) {
       if (x2 - x1 < 0 || y2 - y1 < 0) {
         return null;
       }
-      return create$4(x1, y1, x2 - x1, y2 - y1);
+      return create$5(x1, y1, x2 - x1, y2 - y1);
     };
     var clamp$1 = function (rect, clampRect, fixedSize) {
       var underflowX1, underflowY1, overflowX2, overflowY2, x1, y1, x2, y2, cx2, cy2;
@@ -98662,9 +100849,9 @@ var silver = (function (domGlobals) {
       }
       x2 -= overflowX2;
       y2 -= overflowY2;
-      return create$4(x1, y1, x2 - x1, y2 - y1);
+      return create$5(x1, y1, x2 - x1, y2 - y1);
     };
-    var create$4 = function (x, y, w, h) {
+    var create$5 = function (x, y, w, h) {
       return {
         x: x,
         y: y,
@@ -98673,7 +100860,7 @@ var silver = (function (domGlobals) {
       };
     };
     var fromClientRect = function (clientRect) {
-      return create$4(clientRect.left, clientRect.top, clientRect.width, clientRect.height);
+      return create$5(clientRect.left, clientRect.top, clientRect.width, clientRect.height);
     };
     var Rect = {
       inflate: inflate,
@@ -98681,11 +100868,11 @@ var silver = (function (domGlobals) {
       findBestRelativePosition: findBestRelativePosition,
       intersect: intersect,
       clamp: clamp$1,
-      create: create$4,
+      create: create$5,
       fromClientRect: fromClientRect
     };
 
-    var each$l = Tools.each, extend$6 = Tools.extend;
+    var each$l = Tools.each, extend$5 = Tools.extend;
     var extendClass, initializing;
     var Class = function () {
     };
@@ -98765,7 +100952,7 @@ var silver = (function (domGlobals) {
         });
       }
       if (prop.Defaults && _super.Defaults) {
-        prop.Defaults = extend$6({}, _super.Defaults, prop.Defaults);
+        prop.Defaults = extend$5({}, _super.Defaults, prop.Defaults);
       }
       for (name in prop) {
         member = prop[name];
@@ -98934,7 +101121,7 @@ var silver = (function (domGlobals) {
         return '\\u' + '0000'.substring(hexCode.length) + hexCode;
       });
     };
-    var JSON$1 = {
+    var JSONUtils = {
       serialize: serialize,
       parse: function (text) {
         try {
@@ -98964,7 +101151,7 @@ var silver = (function (domGlobals) {
       }
     };
 
-    var XHR = {
+    var XHR = __assign({}, Observable, {
       send: function (settings) {
         var xhr, count = 0;
         var ready = function () {
@@ -98982,7 +101169,7 @@ var silver = (function (domGlobals) {
         settings.scope = settings.scope || this;
         settings.success_scope = settings.success_scope || settings.scope;
         settings.error_scope = settings.error_scope || settings.scope;
-        settings.async = settings.async === false ? false : true;
+        settings.async = settings.async !== false;
         settings.data = settings.data || '';
         XHR.fire('beforeInitialize', { settings: settings });
         xhr = XMLHttpRequest();
@@ -99014,48 +101201,48 @@ var silver = (function (domGlobals) {
           Delay.setTimeout(ready, 10);
         }
       }
-    };
-    Tools.extend(XHR, Observable);
+    });
 
-    var extend$7 = Tools.extend;
-    var JSONRequest = function (settings) {
-      this.settings = extend$7({}, settings);
-      this.count = 0;
-    };
-    JSONRequest.sendRPC = function (o) {
-      return new JSONRequest().send(o);
-    };
-    JSONRequest.prototype = {
-      send: function (args) {
+    var extend$6 = Tools.extend;
+    var JSONRequest = function () {
+      function JSONRequest(settings) {
+        this.settings = extend$6({}, settings);
+        this.count = 0;
+      }
+      JSONRequest.sendRPC = function (o) {
+        return new JSONRequest().send(o);
+      };
+      JSONRequest.prototype.send = function (args) {
         var ecb = args.error, scb = args.success;
-        args = extend$7(this.settings, args);
-        args.success = function (c, x) {
-          c = JSON$1.parse(c);
+        var xhrArgs = extend$6(this.settings, args);
+        xhrArgs.success = function (c, x) {
+          c = JSONUtils.parse(c);
           if (typeof c === 'undefined') {
             c = { error: 'JSON Parse error.' };
           }
           if (c.error) {
-            ecb.call(args.error_scope || args.scope, c.error, x);
+            ecb.call(xhrArgs.error_scope || xhrArgs.scope, c.error, x);
           } else {
-            scb.call(args.success_scope || args.scope, c.result);
+            scb.call(xhrArgs.success_scope || xhrArgs.scope, c.result);
           }
         };
-        args.error = function (ty, x) {
+        xhrArgs.error = function (ty, x) {
           if (ecb) {
-            ecb.call(args.error_scope || args.scope, ty, x);
+            ecb.call(xhrArgs.error_scope || xhrArgs.scope, ty, x);
           }
         };
-        args.data = JSON$1.serialize({
+        xhrArgs.data = JSONUtils.serialize({
           id: args.id || 'c' + this.count++,
           method: args.method,
           params: args.params
         });
-        args.content_type = 'application/json';
-        XHR.send(args);
-      }
-    };
+        xhrArgs.content_type = 'application/json';
+        XHR.send(xhrArgs);
+      };
+      return JSONRequest;
+    }();
 
-    var create$5 = function () {
+    var create$6 = function () {
       return function () {
         var data = {};
         var keys = [];
@@ -99098,11 +101285,10 @@ var silver = (function (domGlobals) {
     try {
       localStorage = domGlobals.window.localStorage;
     } catch (e) {
-      localStorage = create$5();
+      localStorage = create$6();
     }
     var LocalStorage = localStorage;
 
-    var tinymce = EditorManager$1;
     var publicApi = {
       geom: { Rect: Rect },
       util: {
@@ -99112,11 +101298,11 @@ var silver = (function (domGlobals) {
         VK: VK,
         URI: URI,
         Class: Class,
-        EventDispatcher: Dispatcher,
+        EventDispatcher: EventDispatcher,
         Observable: Observable,
         I18n: I18n,
         XHR: XHR,
-        JSON: JSON$1,
+        JSON: JSONUtils,
         JSONRequest: JSONRequest,
         JSONP: JSONP,
         LocalStorage: LocalStorage,
@@ -99147,22 +101333,22 @@ var silver = (function (domGlobals) {
         Serializer: Serializer
       },
       Env: Env,
-      AddOnManager: AddOnManager,
+      AddOnManager: AddOnManager$1,
       Annotator: Annotator,
       Formatter: Formatter,
       UndoManager: UndoManager,
       EditorCommands: EditorCommands,
       WindowManager: WindowManager,
       NotificationManager: NotificationManager,
-      EditorObservable: EditorObservable$1,
+      EditorObservable: EditorObservable,
       Shortcuts: Shortcuts,
       Editor: Editor,
       FocusManager: FocusManager,
-      EditorManager: EditorManager$1,
+      EditorManager: EditorManager,
       DOM: DOMUtils$1.DOM,
       ScriptLoader: ScriptLoader.ScriptLoader,
-      PluginManager: AddOnManager.PluginManager,
-      ThemeManager: AddOnManager.ThemeManager,
+      PluginManager: AddOnManager$1.PluginManager,
+      ThemeManager: AddOnManager$1.ThemeManager,
       IconManager: IconManager,
       trim: Tools.trim,
       isArray: Tools.isArray,
@@ -99186,8 +101372,7 @@ var silver = (function (domGlobals) {
       isGecko: Env.gecko,
       isMac: Env.mac
     };
-    tinymce = Tools.extend(tinymce, publicApi);
-    var Tinymce = tinymce;
+    var tinymce = Tools.extend(EditorManager, publicApi);
 
     var exportToModuleLoaders = function (tinymce) {
       if (true) {
@@ -99201,8 +101386,8 @@ var silver = (function (domGlobals) {
       window.tinymce = tinymce;
       window.tinyMCE = tinymce;
     };
-    exportToWindowGlobal(Tinymce);
-    exportToModuleLoaders(Tinymce);
+    exportToWindowGlobal(tinymce);
+    exportToModuleLoaders(tinymce);
 
 }(window));
 })();
@@ -110565,7 +112750,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   //     height: 150,   //set editable area's height
   //     codemirror: { // codemirror options
   //         theme: 'monokai'
-  //     }
+  //  }
   // });
   tinymce.init({
     selector: "textarea",
@@ -110744,8 +112929,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\admin-etnias\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\admin-etnias\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Freddy\projects\homestead\codigo\admin-etnias\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Freddy\projects\homestead\codigo\admin-etnias\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

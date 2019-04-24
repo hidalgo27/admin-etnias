@@ -467,6 +467,7 @@ function buscar_servicios(ruc_rs){
          });
     }
 }
+
 function enviar_datos_editar(valor1,valor2){
     // tinymce.triggerSave();
     if($('#'+valor1+'_asociacion_id').val()==''){

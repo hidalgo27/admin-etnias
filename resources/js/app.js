@@ -45,7 +45,7 @@ $(document).ready(function (){
     //     height: 150,   //set editable area's height
     //     codemirror: { // codemirror options
     //         theme: 'monokai'
-    //     }
+    //  }
     // });
 
        tinymce.init({

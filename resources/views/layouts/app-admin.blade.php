@@ -21,8 +21,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
-
             <div id="wrapper" class="toggled">
 
                 <!-- Sidebar -->
@@ -38,12 +36,32 @@
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         </div>
-                        <div class="col-11">
+                        <div class="col-8">
                             <nav  aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     @yield('breadcrumb')
                                 </ol>
                             </nav>
+                        </div>
+                        <div class="col-3">
+                            <div class="dropdown">
+                                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->email }} <span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Editar</a>
+                                  <a class="dropdown-item" href="{{ route('logout') }}"
+                                      onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                      {{ __('Cerrar') }}
+                                  </a>
+
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                      @csrf
+                                  </form>
+                                </div>
+                              </div>
+
                         </div>
                     </div>
 

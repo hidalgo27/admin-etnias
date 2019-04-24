@@ -44,8 +44,16 @@
                 <img alt="Brand" src="{{asset("images/img/etnias-peru.png")}}" class="w-75">
             </a>
             <a href="#!" >
-                <b class="text-primary text-13">Usuario del sistema</b>
-                <span class="text-primary">(Administrador)</span>
+                <b class="text-primary text-13">
+                    {{ Auth::user()->email }}
+                </b>
+                <span class="text-success">(
+                  @if(Auth::user()->hasRole('admin'))
+                    Administrador
+                  @elseif(Auth::user()->hasRole('asociacion'))
+                      Asociacion
+                  @endif
+                  )</span>
             </a>
          </li>
 
