@@ -44,15 +44,11 @@
                 <img alt="Brand" src="{{asset("images/img/etnias-peru.png")}}" class="w-75">
             </a>
             <a href="#!" >
-                <b class="text-primary text-13">
+                <b class="text-primary text-11">
                     {{ Auth::user()->email }}
                 </b>
-                <span class="text-success">(
-                  @if(Auth::user()->hasRole('admin'))
-                    Administrador
-                  @elseif(Auth::user()->hasRole('asociacion'))
-                      Asociacion
-                  @endif
+                <span class="text-success  text-11">(
+                  @if(Auth::user()->hasRole('admin')){{'Administrador'}}@elseif(Auth::user()->hasRole('asociacion')){{ 'Asociacion' }}@endif
                   )</span>
             </a>
          </li>
@@ -61,6 +57,7 @@
     <li data-toggle="collapse" data-target="#operaciones" class="collapsed">
         <a href="#" class="bg-dark text-white"><i class="fas fa-database"></i> BASE DE DATOS </a>
     </li>
+    @if(Auth::user()->hasRole('admin'))
     <ul class="sub-menu collapse menu2 @if(
       (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
@@ -93,21 +90,33 @@
         <a class="@if(url()->current()==route('solucitudes.otros.lista')) active @endif" href="{{route('solucitudes.otros.lista')}}">SOLICITUDES TRANSP.&GUIAS</a>
       </li>
     </ul>
+    @elseif(Auth::user()->hasRole('asociacion'))
+    <ul class="sub-menu collapse menu2 @if(
+      (url()->current()==route('servicios.nuevo',[Auth::user()->id])||url()->current()==route('servicios.lista',[Auth::user()->id]))
+      ) show @endif" id="operaciones">
+
+      <li data-toggle="collapse" class="active1">
+        <a class="@if(url()->current()==route('servicios.nuevo',[Auth::user()->id])||url()->current()==route('servicios.lista',[Auth::user()->id])) active @endif" href="{{route('servicios.lista',[Auth::user()->id])}}"> MIS SERVICIOS</a>
+      </li>
+
+    </ul>
+    @endif
     {{-- rutas para la base de datos --}}
     <li data-toggle="collapse" data-target="#reservas" class="collapsed">
       <a href="#" class="bg-danger text-white"><i class="fas fa-swatchbook"></i> RESERVAS </a>
-  </li>
-  <ul class="sub-menu collapse menu2 @if(
-    (url()->current()==route('reserva.lista')||url()->current()==route('reserva.detalle',[$reserva_id]))||
-    (url()->current()==route('operaciones.lista',[$f1,$f2])||url()->current()==route('operaciones.post.lista'))
-    ) show @endif" id="reservas">
-    <li data-toggle="collapse" class="active1">
-      <a class="@if(url()->current()==route('reserva.lista')||url()->current()==route('reserva.detalle',[$reserva_id])) active @endif" href="{{route('reserva.lista')}}">RESERVAS</a>
     </li>
-    <li data-toggle="collapse" class="active1">
-      <a class="@if(url()->current()==route('operaciones.lista',[$f1,$f2])||url()->current()==route('operaciones.post.lista')) active @endif" href="{{route('operaciones.lista',[$f1,$f2])}}">OPERACIONES</a>
-    </li>
-  </ul>
-
+        <ul class="sub-menu collapse menu2 @if(
+            (url()->current()==route('reserva.lista')||url()->current()==route('reserva.detalle',[$reserva_id]))||
+            (url()->current()==route('operaciones.lista',[$f1,$f2])||url()->current()==route('operaciones.post.lista'))
+            ) show @endif" id="reservas">
+            <li data-toggle="collapse" class="active1">
+            <a class="@if(url()->current()==route('reserva.lista')||url()->current()==route('reserva.detalle',[$reserva_id])) active @endif" href="{{route('reserva.lista')}}">RESERVAS</a>
+            </li>
+            @if(Auth::user()->hasRole('admin'))
+                <li data-toggle="collapse" class="active1">
+                <a class="@if(url()->current()==route('operaciones.lista',[$f1,$f2])||url()->current()==route('operaciones.post.lista')) active @endif" href="{{route('operaciones.lista',[$f1,$f2])}}">OPERACIONES</a>
+                </li>
+            @endif
+        </ul>
   </ul>
 </div>

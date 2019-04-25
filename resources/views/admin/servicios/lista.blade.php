@@ -1,9 +1,14 @@
 @extends('layouts.app-admin')
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-<li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li>
-<li class="breadcrumb-item active" aria-current="page">SERVICIOS</li>
+@if(Auth::user()->hasRole('admin'))
+    {{-- <li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li> --}}
 
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button><li class="breadcrumb-it
+    em active" aria-current="page">SERVICIOS</li>
+@elseif(Auth::user()->hasRole('asociacion'))
+    <li class="breadcrumb-item active" aria-current="page">MIS SERVICIOS</li>
+@endif
 @endsection
 @section('content')
 @php
@@ -49,8 +54,8 @@
                                 <a class="nav-item nav-link active" id="nav-actividades-tab" data-toggle="tab" href="#nav-actividades" role="tab" aria-controls="nav-actividades" aria-selected="true">ACTIVIDADES</a>
                                 <a class="nav-item nav-link" id="nav-comidas-tab" data-toggle="tab" href="#nav-comidas" role="tab" aria-controls="nav-comidas" aria-selected="false">COMIDAS</a>
                                 <a class="nav-item nav-link" id="nav-hospedaje-tab" data-toggle="tab" href="#nav-hospedaje" role="tab" aria-controls="nav-hospedaje" aria-selected="false">HOSPEDAJE</a>
-                                <a class="nav-item nav-link" id="nav-transporte-tab" data-toggle="tab" href="#nav-transporte" role="tab" aria-controls="nav-transporte" aria-selected="false">TRANSPORTE</a>
-                                <a class="nav-item nav-link" id="nav-servicios-tab" data-toggle="tab" href="#nav-servicios" role="tab" aria-controls="nav-servicios" aria-selected="false">SERVICIOS</a>
+                                {{-- <a class="nav-item nav-link" id="nav-transporte-tab" data-toggle="tab" href="#nav-transporte" role="tab" aria-controls="nav-transporte" aria-selected="false">TRANSPORTE</a>
+                                <a class="nav-item nav-link" id="nav-servicios-tab" data-toggle="tab" href="#nav-servicios" role="tab" aria-controls="nav-servicios" aria-selected="false">SERVICIOS</a> --}}
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -388,7 +393,8 @@
                                                                         <input type="hidden" name="attributo" value="a">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                                                         <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('a','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                                        <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                     <div class="col-12" id="rpt_form_a_e_{{ $item->id }}"></div>
                                                                 </form>
@@ -789,7 +795,9 @@
                                                                         <input type="hidden" name="attributo" value="c">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                                                         <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('c','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                                        <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                                        {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
+
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                     <div class="col-12" id="rpt_form_c_e_{{ $item->id }}"></div>
                                                                 </form>
@@ -946,7 +954,9 @@
                                                                         <input type="hidden" name="attributo" value="h">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                                                         <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('h','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                                        <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                                        {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
+
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                     <div class="col-12" id="rpt_form_h_e_{{ $item->id }}"></div>
                                                                 </form>
@@ -1103,7 +1113,9 @@
                                                                         <input type="hidden" name="attributo" value="t">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                                                         <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('t','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                                        <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                                        {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
+
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                     <div class="col-12" id="rpt_form_t_e_{{ $item->id }}"></div>
                                                                 </form>
@@ -1260,7 +1272,9 @@
                                                                         <input type="hidden" name="attributo" value="s">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                                                         <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('s','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
-                                                                        <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a>
+                                                                        {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
+
+                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                     <div class="col-12" id="rpt_form_s_e_{{ $item->id }}"></div>
                                                                 </form>

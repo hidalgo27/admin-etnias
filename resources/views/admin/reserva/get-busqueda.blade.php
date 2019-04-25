@@ -60,91 +60,129 @@
                             $confirmardos=0;
                             $totales=0;
                         @endphp
-                        @foreach ($item->actividades as $actividad)
-                            @if ($actividad->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
+                        @if(Auth::user()->hasRole('admin'))
+                                @foreach ($item->actividades as $actividad)
+                                    @if ($actividad->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->comidas as $comida)
+                                    @if ($comida->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->hospedajes as $hospedaje)
+                                    @if ($hospedaje->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                            @elseif(Auth::user()->hasRole('asociacion'))
+                                @foreach ($item->actividades->where('asociacion_id',Auth::user()->id) as $actividad)
+                                    @if ($actividad->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->comidas->where('asociacion_id',Auth::user()->id) as $comida)
+                                    @if ($comida->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->hospedajes->where('asociacion_id',Auth::user()->id) as $hospedaje)
+                                    @if ($hospedaje->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
                             @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->comidas as $comida)
-                            @if ($comida->estado=='1')
+
+                            {{-- @foreach ($item->transporte as $transporte_)
+                                @if ($transporte_->estado=='1')
+                                    @php
+                                        $confirmardos++;
+                                    @endphp
+                                @endif
                                 @php
-                                    $confirmardos++;
+                                    $totales++;
                                 @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->hospedajes as $hospedaje)
-                            @if ($hospedaje->estado=='1')
+                            @endforeach
+                            @foreach ($item->servicios as $servicio)
+                                @if ($servicio->estado=='1')
+                                    @php
+                                        $confirmardos++;
+                                    @endphp
+                                @endif
                                 @php
-                                    $confirmardos++;
+                                    $totales++;
                                 @endphp
+                            @endforeach --}}
+                            @if(Auth::user()->hasRole('admin'))
+                                @foreach ($item->transporte_externo as $transporte_externo_)
+                                    @if ($transporte_externo_->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->guia as $guia)
+                                    @if ($guia->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
                             @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->transporte as $transporte_)
-                            @if ($transporte_->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->servicios as $servicio)
-                            @if ($servicio->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->transporte_externo as $transporte_externo_)
-                            @if ($transporte_externo_->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->guia as $guia)
-                            @if ($guia->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @if ($confirmardos==0)
-                            <div class="row reserva-caja">
-                                <div class="col-1 px-0 text-center">
-                                    <b class="text-success">{{ $item->codigo }}</b>
-                                </div>
-                                <div class="col-6 px-0 text-center">
-                                    <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
-                                </div>
-                                <div class="col-1 px-0 text-center bg-danger">
-                                    <b class="text-white">{{ $item->nro_pax }}</b>
-                                </div>
-                                <div class="col-4 px-0 text-center  bg-secondary">
-                                    <b class="text-white">{{ $item->fecha_llegada }}</b>
-                                </div>
-                            </div>
+                            @if($totales>0)
+                                @if ($confirmardos==0)
+                                    <div class="row reserva-caja">
+                                        <div class="col-1 px-0 text-center">
+                                            <b class="text-success">{{ $item->codigo }}</b>
+                                        </div>
+                                        <div class="col-6 px-0 text-center">
+                                            <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
+                                        </div>
+                                        <div class="col-1 px-0 text-center bg-danger">
+                                            <b class="text-white">{{ $item->nro_pax }}</b>
+                                        </div>
+                                        <div class="col-4 px-0 text-center  bg-secondary">
+                                            <b class="text-white">{{ $item->fecha_llegada }}</b>
+                                        </div>
+                                    </div>
+                                @endif
                         @endif
                     @endforeach
             </div>
@@ -212,91 +250,129 @@
                             $confirmardos=0;
                             $totales=0;
                         @endphp
-                        @foreach ($item->actividades as $actividad)
-                            @if ($actividad->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
+                        @if(Auth::user()->hasRole('admin'))
+                                @foreach ($item->actividades as $actividad)
+                                    @if ($actividad->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->comidas as $comida)
+                                    @if ($comida->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->hospedajes as $hospedaje)
+                                    @if ($hospedaje->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                            @elseif(Auth::user()->hasRole('asociacion'))
+                                @foreach ($item->actividades->where('asociacion_id',Auth::user()->id) as $actividad)
+                                    @if ($actividad->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->comidas->where('asociacion_id',Auth::user()->id) as $comida)
+                                    @if ($comida->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->hospedajes->where('asociacion_id',Auth::user()->id) as $hospedaje)
+                                    @if ($hospedaje->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
                             @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->comidas as $comida)
-                            @if ($comida->estado=='1')
+
+                            {{-- @foreach ($item->transporte as $transporte_)
+                                @if ($transporte_->estado=='1')
+                                    @php
+                                        $confirmardos++;
+                                    @endphp
+                                @endif
                                 @php
-                                    $confirmardos++;
+                                    $totales++;
                                 @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->hospedajes as $hospedaje)
-                            @if ($hospedaje->estado=='1')
+                            @endforeach
+                            @foreach ($item->servicios as $servicio)
+                                @if ($servicio->estado=='1')
+                                    @php
+                                        $confirmardos++;
+                                    @endphp
+                                @endif
                                 @php
-                                    $confirmardos++;
+                                    $totales++;
                                 @endphp
+                            @endforeach --}}
+                            @if(Auth::user()->hasRole('admin'))
+                                @foreach ($item->transporte_externo as $transporte_externo_)
+                                    @if ($transporte_externo_->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->guia as $guia)
+                                    @if ($guia->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
                             @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->transporte as $transporte_)
-                            @if ($transporte_->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->servicios as $servicio)
-                            @if ($servicio->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->transporte_externo as $transporte_externo_)
-                            @if ($transporte_externo_->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @foreach ($item->guia as $guia)
-                            @if ($guia->estado=='1')
-                                @php
-                                    $confirmardos++;
-                                @endphp
-                            @endif
-                            @php
-                                $totales++;
-                            @endphp
-                        @endforeach
-                        @if ($totales>$confirmardos && $confirmardos>0)
-                            <div class="row reserva-caja">
-                                <div class="col-1 px-0 text-center">
-                                    <b class="text-success">{{ $item->codigo }}</b>
+                            @if($totales>0)
+                            @if ($totales>$confirmardos && $confirmardos>0)
+                                <div class="row reserva-caja">
+                                    <div class="col-1 px-0 text-center">
+                                        <b class="text-success">{{ $item->codigo }}</b>
+                                    </div>
+                                    <div class="col-6 px-0 text-center">
+                                        <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
+                                    </div>
+                                    <div class="col-1 px-0 text-center bg-danger">
+                                        <b class="text-white">{{ $item->nro_pax }}</b>
+                                    </div>
+                                    <div class="col-4 px-0 text-center  bg-secondary">
+                                        <b class="text-white">{{ $item->fecha_llegada }}</b>
+                                    </div>
                                 </div>
-                                <div class="col-6 px-0 text-center">
-                                    <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
-                                </div>
-                                <div class="col-1 px-0 text-center bg-danger">
-                                    <b class="text-white">{{ $item->nro_pax }}</b>
-                                </div>
-                                <div class="col-4 px-0 text-center  bg-secondary">
-                                    <b class="text-white">{{ $item->fecha_llegada }}</b>
-                                </div>
-                            </div>
+                            @endif
                         @endif
                     @endforeach
                 </div>
@@ -364,91 +440,129 @@
                         $confirmardos=0;
                         $totales=0;
                     @endphp
-                    @foreach ($item->actividades as $actividad)
-                        @if ($actividad->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @foreach ($item->comidas as $comida)
-                        @if ($comida->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @foreach ($item->hospedajes as $hospedaje)
-                        @if ($hospedaje->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @foreach ($item->transporte as $transporte_)
-                        @if ($transporte_->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @foreach ($item->servicios as $servicio)
-                        @if ($servicio->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @foreach ($item->transporte_externo as $transporte_externo_)
-                        @if ($transporte_externo_->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @foreach ($item->guia as $guia)
-                        @if ($guia->estado=='1')
-                            @php
-                                $confirmardos++;
-                            @endphp
-                        @endif
-                        @php
-                            $totales++;
-                        @endphp
-                    @endforeach
-                    @if ($totales==$confirmardos)
-                        <div class="row reserva-caja">
-                            <div class="col-1 px-0 text-center">
-                                <b class="text-success">{{ $item->codigo }}</b>
+                    @if(Auth::user()->hasRole('admin'))
+                                @foreach ($item->actividades as $actividad)
+                                    @if ($actividad->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->comidas as $comida)
+                                    @if ($comida->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->hospedajes as $hospedaje)
+                                    @if ($hospedaje->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                            @elseif(Auth::user()->hasRole('asociacion'))
+                                @foreach ($item->actividades->where('asociacion_id',Auth::user()->id) as $actividad)
+                                    @if ($actividad->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->comidas->where('asociacion_id',Auth::user()->id) as $comida)
+                                    @if ($comida->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->hospedajes->where('asociacion_id',Auth::user()->id) as $hospedaje)
+                                    @if ($hospedaje->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                            @endif
+
+                            {{-- @foreach ($item->transporte as $transporte_)
+                                @if ($transporte_->estado=='1')
+                                    @php
+                                        $confirmardos++;
+                                    @endphp
+                                @endif
+                                @php
+                                    $totales++;
+                                @endphp
+                            @endforeach
+                            @foreach ($item->servicios as $servicio)
+                                @if ($servicio->estado=='1')
+                                    @php
+                                        $confirmardos++;
+                                    @endphp
+                                @endif
+                                @php
+                                    $totales++;
+                                @endphp
+                            @endforeach --}}
+                            @if(Auth::user()->hasRole('admin'))
+                                @foreach ($item->transporte_externo as $transporte_externo_)
+                                    @if ($transporte_externo_->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                                @foreach ($item->guia as $guia)
+                                    @if ($guia->estado=='1')
+                                        @php
+                                            $confirmardos++;
+                                        @endphp
+                                    @endif
+                                    @php
+                                        $totales++;
+                                    @endphp
+                                @endforeach
+                            @endif
+                            @if($totales>0)
+                        @if ($totales==$confirmardos)
+                            <div class="row reserva-caja">
+                                <div class="col-1 px-0 text-center">
+                                    <b class="text-success">{{ $item->codigo }}</b>
+                                </div>
+                                <div class="col-6 px-0 text-center">
+                                    <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
+                                </div>
+                                <div class="col-1 px-0 text-center bg-danger">
+                                    <b class="text-white">{{ $item->nro_pax }}</b>
+                                </div>
+                                <div class="col-4 px-0 text-center  bg-secondary">
+                                    <b class="text-white">{{ $item->fecha_llegada }}</b>
+                                </div>
                             </div>
-                            <div class="col-6 px-0 text-center">
-                                <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
-                            </div>
-                            <div class="col-1 px-0 text-center bg-danger">
-                                <b class="text-white">{{ $item->nro_pax }}</b>
-                            </div>
-                            <div class="col-4 px-0 text-center  bg-secondary">
-                                <b class="text-white">{{ $item->fecha_llegada }}</b>
-                            </div>
-                        </div>
+                        @endif
                     @endif
                 @endforeach
             </div>

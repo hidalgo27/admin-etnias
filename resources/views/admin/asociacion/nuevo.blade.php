@@ -1,8 +1,13 @@
 @extends('layouts.app-admin')
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
-<li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li>
-<li class="breadcrumb-item active" aria-current="page">NUEVO</li>
+@if(Auth::user()->hasRole('admin'))
+    <li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li>
+    <li class="breadcrumb-item active" aria-current="page">NUEVO</li>
+@elseif(Auth::user()->hasRole('asociacion'))
+    <li class="breadcrumb-item active" aria-current="page">NUEVO</li>
+@endif
+
 @endsection
 @section('content')
 <div class="row">

@@ -20,7 +20,7 @@ class AsociacionController extends Controller
         $provincias =Provincia::get();
         $distritos =Distrito::get();
         $comunidades = Comunidad::get();
-        $asociaciones=Asociacion::all();
+        $asociaciones=Asociacion::where('comunidad_id','>',0)->get();
         return view('admin.asociacion.lista',compact('asociaciones','departamentos','provincias','distritos','comunidades'));
     }
     public function nuevo(){

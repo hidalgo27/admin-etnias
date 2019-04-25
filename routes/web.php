@@ -263,3 +263,10 @@ Route::get('/admin/solicitudes/otros/crear/{id}', [
     'uses' => 'SolicitudOtrosController@crear',
     'as' => 'solucitudes.otros.crear',
 ]);
+
+// rutas para una asociacion en concreto
+
+// Route::get('/admin/servicios/lista/{asociacion_id}', [
+//     'uses' => 'ServiciosController@lista',
+//     'as' => 'servicios.lista',
+// ]);

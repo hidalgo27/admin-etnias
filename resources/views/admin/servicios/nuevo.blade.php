@@ -1,10 +1,13 @@
 @extends('layouts.app-admin')
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
+@if(Auth::user()->hasRole('admin'))
 <li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li>
 <li class="breadcrumb-item"><a href="{{ route('servicios.lista',$asociacion->id) }}">SERVICIOS</a></li>
 <li class="breadcrumb-item active" aria-current="page">NUEVO</li>
-
+@elseif(Auth::user()->hasRole('asociacion'))
+<li class="breadcrumb-item active" aria-current="page">NUEVO</li>
+@endif
 @endsection
 @section('content')
 <div class="row">
@@ -55,8 +58,8 @@
                                             <a class="nav-item nav-link active" id="nav-actividades-tab" data-toggle="tab" href="#nav-actividades" role="tab" aria-controls="nav-actividades" aria-selected="true">ACTIVIDADES</a>
                                             <a class="nav-item nav-link" id="nav-comidas-tab" data-toggle="tab" href="#nav-comidas" role="tab" aria-controls="nav-comidas" aria-selected="false">COMIDAS</a>
                                             <a class="nav-item nav-link" id="nav-hospedaje-tab" data-toggle="tab" href="#nav-hospedaje" role="tab" aria-controls="nav-hospedaje" aria-selected="false">HOSPEDAJE</a>
-                                            <a class="nav-item nav-link" id="nav-transporte-tab" data-toggle="tab" href="#nav-transporte" role="tab" aria-controls="nav-transporte" aria-selected="false">TRANSPORTE</a>
-                                            <a class="nav-item nav-link" id="nav-servicios-tab" data-toggle="tab" href="#nav-servicios" role="tab" aria-controls="nav-servicios" aria-selected="false">SERVICIOS</a>
+                                            {{-- <a class="nav-item nav-link" id="nav-transporte-tab" data-toggle="tab" href="#nav-transporte" role="tab" aria-controls="nav-transporte" aria-selected="false">TRANSPORTE</a>
+                                            <a class="nav-item nav-link" id="nav-servicios-tab" data-toggle="tab" href="#nav-servicios" role="tab" aria-controls="nav-servicios" aria-selected="false">SERVICIOS</a> --}}
                                         </div>
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
