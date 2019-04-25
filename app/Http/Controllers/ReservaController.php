@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Guia;
 use App\Reserva;
 use App\Comision;
+use App\Distrito;
+use App\Comunidad;
+use App\Proveedor;
+use App\Provincia;
+use App\Departamento;
 use App\ReservaComida;
 use App\ReservaServicio;
 use App\ReservaActividad;
@@ -12,8 +18,6 @@ use App\ReservaTransporte;
 use App\TransporteExterno;
 use Illuminate\Http\Request;
 use App\ReservaTransporteExterno;
-use App\Proveedor;
-use App\Guia;
 
 class ReservaController extends Controller
 {
@@ -116,7 +120,11 @@ class ReservaController extends Controller
             // ])->get();
             $reservas_close=Reserva::get();
         // dd($reservas_close);
-        return view('admin.reserva.lista',compact('reservas_new','reservas_current','reservas_close'));
+        $departamentos =Departamento::get();
+        $provincias =Provincia::get();
+        $distritos =Distrito::get();
+        $comunidades = Comunidad::get();
+        return view('admin.reserva.lista',compact('reservas_new','reservas_current','reservas_close','departamentos','provincias','distritos','comunidades'));
     }
     public function detalle($reserva_id){
         $reserva=Reserva::findOrFail($reserva_id);

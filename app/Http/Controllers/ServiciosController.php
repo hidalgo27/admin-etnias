@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Comida;
+use App\Distrito;
 use App\Servicio;
 use App\Actividad;
 use App\Categoria;
+use App\Comunidad;
 use App\Hospedaje;
+use App\Provincia;
 use Carbon\Carbon;
 use App\Asociacion;
 use App\ComidaFoto;
 use App\Transporte;
 use App\ComidaPrecio;
+use App\Departamento;
 use App\ServicioFoto;
 use App\ActividadFoto;
 use App\HospedajeFoto;
@@ -22,10 +26,10 @@ use App\HospedajePrecio;
 use App\TransportePrecio;
 use App\ActividadDisponible;
 use Illuminate\Http\Request;
+use App\ActividadDisponibleHora;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use MaddHatter\LaravelFullcalendar\Calendar;
-use App\ActividadDisponibleHora;
 
 class ServiciosController extends Controller
 {
@@ -33,7 +37,11 @@ class ServiciosController extends Controller
     public function nuevo($asociacion_id){
         $asociacion=Asociacion::find($asociacion_id);
         $categorias=Categoria::get();
-        return view('admin.servicios.nuevo',compact('categorias','asociacion','asociacion_id'));
+        $departamentos =Departamento::get();
+        $provincias =Provincia::get();
+        $distritos =Distrito::get();
+        $comunidades = Comunidad::get();
+        return view('admin.servicios.nuevo',compact('categorias','asociacion','asociacion_id','departamentos','provincias','distritos','comunidades'));
     }
     public function buscar_asociacion($ruc_rs){
         $asociacion=Asociacion::where('ruc',$ruc_rs)->orwhere('nombre','like','%'.$ruc_rs.'%')->first();
@@ -301,7 +309,12 @@ class ServiciosController extends Controller
         $transportes=Transporte::where('asociacion_id',$asociacion_id)->get();
         $servicios=Servicio::where('asociacion_id',$asociacion_id)->get();
         $categorias=Categoria::get();
-        return view('admin.servicios.lista',compact('asociacion','actividades','comidas','hospedajes','transportes','servicios','categorias','asociacion_id'));
+
+        $departamentos =Departamento::get();
+        $provincias =Provincia::get();
+        $distritos =Distrito::get();
+        $comunidades = Comunidad::get();
+        return view('admin.servicios.lista',compact('asociacion','actividades','comidas','hospedajes','transportes','servicios','categorias','asociacion_id','departamentos','provincias','distritos','comunidades'));
     }
     public function buscar_servicios($ruc_rs){
         $asociacion=Asociacion::where('ruc',$ruc_rs)->orwhere('nombre','like','%'.$ruc_rs.'%')->first();
