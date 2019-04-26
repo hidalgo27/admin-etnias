@@ -132,7 +132,12 @@ class ReservaController extends Controller
         $transporte_externo=TransporteExterno::get();
         $guia=Guia::get();
         $proveedores=Proveedor::get();
-        return view('admin.reserva.detalle',compact('reserva','comisiones','transporte_externo','guia','proveedores','reserva_id'));
+
+        $departamentos =Departamento::get();
+        $provincias =Provincia::get();
+        $distritos =Distrito::get();
+        $comunidades = Comunidad::get();
+        return view('admin.reserva.detalle',compact('reserva','comisiones','transporte_externo','guia','proveedores','reserva_id','departamentos','provincias','distritos','comunidades'));
     }
     public function confirmar($tipo_servicio,$grupo_id,$estado){
         // try {

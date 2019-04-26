@@ -21,10 +21,16 @@ use Carbon\Carbon;
                     Nro. Pax.: <b class="text-success">{{ $reserva->nro_pax }}</b> |
                     Fecha Reserva: <b class="text-success">
                     @php
-                        $fecha_reserva = Carbon::createFromFormat("Y-m-d H:i:s", $reserva->fecha_reserva);
-                    @endphp
-                        {{ $fecha_reserva->format('d-m-Y H:i:s') }}</b> |
-                    Fecha Llegada: <b class="text-success">
+                        $fecha_reserva ='no tiene';
+                    @endphp    
+                    @if($reserva->created_at)
+                        @php
+                            $fecha_reserva = Carbon::createFromFormat("Y-m-d H:i:s", $reserva->created_at);
+                        @endphp
+                    @endif
+                    
+                    @if($reserva->created_at){{ $fecha_reserva->format('d-m-Y H:i:s') }}@endif </b> |
+                    Fecha Llegada: <b class="text-success"> 
                     @php
                         $fecha_llegada = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
                     @endphp
