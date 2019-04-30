@@ -363,7 +363,7 @@ class ServiciosController extends Controller
 
         $minimo_n=$request->input('minimo_'.$attributo.'_n_'.$id);
         $maximo_n=$request->input('maximo_'.$attributo.'_n_'.$id);
-        $precio_n=$request->input('precio_'.$attributo.'-n_'.$id);
+        $precio_n=$request->input('precio_'.$attributo.'_n_'.$id);
 
         $precio_id_e=$request->input('precio_id_e');
         $categoria_e=$request->input('categoria_e');

@@ -165,7 +165,7 @@ class AsociacionController extends Controller
         if(trim($password)!=trim($repassword)){
             return redirect()->back()->with('error','las contraseñas no coinciden, vuelva a ingresar los datos')->withInput();
         }
-        $asociacion=Asociacion::findorfail($id);
+        $asociacion=Asociacion::find($id);
         $asociacion->ruc=$ruc;
         $asociacion->nombre=$nombre;
         $asociacion->contacto=$contacto;
