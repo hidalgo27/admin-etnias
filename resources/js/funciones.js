@@ -615,7 +615,7 @@ function enviar_datos_editar(valor1,valor2){
         success:function(data){
             $('#rpt_form_'+valor1+'_'+valor2).html(data.mensaje);
             $('#rpt_form_'+valor1+'_'+valor2).addClass(data.nombre_clase);
-            $("#form_"+valor1+'_'+valor2)[0].reset();
+            // $("#form_"+valor1+'_'+valor2)[0].reset();
         }
         });
 }
