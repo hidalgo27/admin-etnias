@@ -2,10 +2,9 @@
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="#">BASE DE DATOS</a></li>
 @if(Auth::user()->hasRole('admin'))
-    {{-- <li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li> --}}
+    <li class="breadcrumb-item"><a href="{{ route('asociacion.lista') }}">ASOCIACIONES</a></li>
+    <li class="breadcrumb-item active" aria-current="page">SERVICIOS</li>
 
-                                                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button><li class="breadcrumb-it
-    em active" aria-current="page">SERVICIOS</li>
 @elseif(Auth::user()->hasRole('asociacion'))
     <li class="breadcrumb-item active" aria-current="page">MIS SERVICIOS</li>
 @endif

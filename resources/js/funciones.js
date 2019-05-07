@@ -615,7 +615,7 @@ function enviar_datos_editar(valor1,valor2){
         success:function(data){
             $('#rpt_form_'+valor1+'_'+valor2).html(data.mensaje);
             $('#rpt_form_'+valor1+'_'+valor2).addClass(data.nombre_clase);
-            $("#form_"+valor1+'_'+valor2)[0].reset();
+            // $("#form_"+valor1+'_'+valor2)[0].reset();
         }
         });
 }
@@ -1246,3 +1246,48 @@ function borrar_hora(valor1,item){
     $('#hora_'+valor1+'_'+item).remove();
 
 }
+function eliminar_administrador(id){
+
+    Swal.fire({
+        title: 'MENSAJE DEL SISTEMA',
+        text: "¿Estas seguro de borrar el administrador?",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText:'No, cancelar'
+      }).then((result) => {
+        if (result.value) {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:'get',
+                url:'/admin/administrador/delete/'+id,
+                // data:{id:id},
+                success:function(data){
+                    if(data==1){
+                        Swal.fire(
+                            'Borrado!',
+                            'El administrador ha sido borrado.',
+                            'success'
+                        );
+                        $('#row_lista_comunidades_'+id).remove();
+                    }
+                    else if(data==0){
+                        Swal.fire(
+                            'Error!',
+                            'Subo un error al borrar al administrador.',
+                            'danger'
+                        )
+                    }
+                }
+             });
+        }
+      })
+
+}
+

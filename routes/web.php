@@ -30,10 +30,36 @@ Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home_path',
 ]);
+Route::get('/crear-usuario', [
+    'uses' => 'adminController@crear_usuario',
+    'as' => 'crear_usuario_path',
+]);
 Route::get('/admin', [
     'uses' => 'adminController@index',
     'as' => 'admin_index_path',
 ]);
+//rutas para los administradores
+Route::get('/admin/administrador/nuevo', [
+    'uses' => 'AdministradorController@nuevo',
+    'as' => 'administrador_nuevo_path',
+]);
+Route::post('/admin/administrador/nuevo', [
+    'uses' => 'AdministradorController@store',
+    'as' => 'administrador_store_path',
+]);
+Route::get('/admin/administrador/lista', [
+    'uses' => 'AdministradorController@get',
+    'as' => 'administrador_lista_path',
+]);
+Route::post('/admin/administrador/editar', [
+    'uses' => 'AdministradorController@editar',
+    'as' => 'administrador_editar_path',
+]);
+Route::get('/admin/administrador/delete/{id}', [
+    'uses' => 'AdministradorController@getDelete',
+    'as' => 'administrador.lista.delete',
+]);
+
 Route::get('/admin/comunidad/nuevo', [
     'uses' => 'ComunidadController@nuevo',
     'as' => 'comunidad_nuevo_path',
@@ -83,6 +109,10 @@ Route::post('admin/{servicio}/mostrar-comunidades', [
     'uses' => 'AsociacionController@mostrarComunidades',
     'as' => 'comunidad.mostrar.comunidades',
 ]);
+Route::post('admin/comunidad/modal/mostrar-comunidades', [
+    'uses' => 'AsociacionController@mostrarComunidades',
+    'as' => 'comunidad_mostrar_comunidades_',
+]);
 Route::post('admin/comunidad/mostrar-provincias', [
     'uses' => 'ComunidadController@mostrarProvincias',
     'as' => 'comunidad_mostrar_provincias_path',
@@ -94,6 +124,10 @@ Route::post('admin/comunidad/mostrar-distritos', [
 Route::post('/admin/asociacion/editar', [
     'uses' => 'AsociacionController@editar',
     'as' => 'asociacion.editar',
+]);
+Route::post('/admin/asociacion/editar/modal', [
+    'uses' => 'AsociacionController@editar_modal',
+    'as' => 'asociacion.editar.modal',
 ]);
 Route::get('/admin/asociacion/editar/imagen/{filename}', [
     'uses' => 'AsociacionController@getFoto',

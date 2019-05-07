@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Distrito;
 use App\Comunidad;
 use App\Provincia;
@@ -77,6 +78,10 @@ class AsociacionController extends Controller
             $asociacion->descripcion=$descripcion;
             $asociacion->comunidad_id=$comunidad_id;
             $asociacion->save();
+            //le asignamos un rol "asociacion"
+            $asociacion_role = Role::where('name', 'asociacion')->first();
+            $asociacion->roles()->attach($asociacion_role);
+            
             if(!empty($portada)){
                 // foreach($fotos as $foto){
                     $asociacionfoto = new AsociacionFoto();
@@ -160,7 +165,7 @@ class AsociacionController extends Controller
         if(trim($password)!=trim($repassword)){
             return redirect()->back()->with('error','las contraseñas no coinciden, vuelva a ingresar los datos')->withInput();
         }
-        $asociacion=Asociacion::findorfail($id);
+        $asociacion=Asociacion::find($id);
         $asociacion->ruc=$ruc;
         $asociacion->nombre=$nombre;
         $asociacion->contacto=$contacto;
@@ -175,6 +180,9 @@ class AsociacionController extends Controller
         $asociacion->comunidad_id=$comunidad_id;
         $asociacion->save();
 
+        $asociacion_role = Role::where('name', 'asociacion')->first();        
+        $asociacion->roles()->detach($asociacion_role);
+        $asociacion->roles()->attach($asociacion_role);
         // borramos de la db las fotos que han sido eliminadas por el usuario
         if(isset($portada)){
             $fotos_existentes=AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','1')->get();
@@ -257,5 +265,143 @@ class AsociacionController extends Controller
             }
         }
         return redirect()->route('asociacion.lista')->with('success','Datos editados');
+    }
+    public function editar_modal(Request $request){
+
+        $id=$request->input('id');
+        $ruc=$request->input('ruc');
+        $nombre=$request->input('nombre');
+
+        $descripcion=$request->input('descripcion');
+        $contacto=$request->input('contacto');
+        $celular=$request->input('celular');
+        $email=$request->input('email');
+        $password=$request->input('password');
+        $repassword=$request->input('repassword');
+        $direccion=$request->input('direccion');
+
+        $comision=$request->input('comision');
+        $comunidad_id=$request->input('comunidad');
+        $portada_f=$request->file('portada_f');
+        $portada=$request->input('portada');
+        $miniatura_f=$request->file('miniatura_f');
+        $miniatura=$request->input('miniatura');
+        $fotos=$request->file('foto');
+        $fotosExistentes=$request->input('fotos_');
+        // dd($fotosExistentes);
+        $asociacion=Asociacion::findorfail($id);
+        if($asociacion->comunidad_id>0){
+            if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
+                return redirect()->back()->with('error','escoja un departamento, provincia, distrito y comunidad')->withInput();
+            }
+        }
+        if(trim($password)!=trim($repassword)){
+            return redirect()->back()->with('error','las contraseñas no coinciden, vuelva a ingresar los datos')->withInput();
+        }
+        if($asociacion->comunidad_id==0){
+            $ruc=$id;
+            $contacto=$nombre;
+            $comision=10;
+        }
+        
+        $asociacion->ruc=$ruc;
+        $asociacion->nombre=$nombre;
+        $asociacion->contacto=$contacto;
+        $asociacion->celular=$celular;
+        $asociacion->email=$email;
+        $asociacion->password=bcrypt($password);
+        $asociacion->password_2= $password;
+        $asociacion->direccion=$direccion;
+        // $asociacion->comision=$comision;
+        $asociacion->descripcion=$descripcion;
+        $asociacion->save();
+        $asociacion_role = Role::where('name', 'asociacion')->first();
+        
+        $asociacion->roles()->detach($asociacion_role);
+        $asociacion->roles()->attach($asociacion_role);
+        // borramos de la db las fotos que han sido eliminadas por el usuario
+        if($asociacion->comunidad_id>0){
+            if(isset($portada)){
+                $fotos_existentes=AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','1')->get();
+                foreach ($fotos_existentes as $value) {
+                    # code...
+                    if($value->id!=$portada){
+                        AsociacionFoto::find($value->id)->delete();
+                    }
+                }
+            }
+            else{
+                AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','1')->delete();
+            }
+            if(!empty($portada_f)){
+                // foreach($fotos as $foto){
+                    AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','1')->delete();
+                    $asociacionfoto = new AsociacionFoto();
+                    $asociacionfoto->asociacion_id=$asociacion->id;
+                    $asociacionfoto->save();
+
+                    $filename ='foto-'.$asociacionfoto->id.'.'.$portada_f->getClientOriginalExtension();
+                    $asociacionfoto->imagen=$filename;
+                    $asociacionfoto->estado='1';
+                    $asociacionfoto->save();
+                    Storage::disk('asociaciones')->put($filename,  File::get($portada_f));
+                // }
+            }
+            // borramos de la db las fotos que han sido eliminadas por el usuario
+            if(isset($miniatura)){
+                $fotos_existentes=AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','2')->get();
+                foreach ($fotos_existentes as $value) {
+                    # code...
+                    if($value->id!=$miniatura){
+                        AsociacionFoto::find($value->id)->delete();
+                    }
+                }
+            }
+            else{
+                AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','2')->delete();
+            }
+            if(!empty($miniatura_f)){
+                // foreach($fotos as $foto){
+                    AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','2')->delete();
+                    $asociacionfoto = new AsociacionFoto();
+                    $asociacionfoto->asociacion_id=$asociacion->id;
+                    $asociacionfoto->save();
+
+                    $filename ='foto-'.$asociacionfoto->id.'.'.$miniatura_f->getClientOriginalExtension();
+                    $asociacionfoto->imagen=$filename;
+                    $asociacionfoto->estado='2';
+                    $asociacionfoto->save();
+                    Storage::disk('asociaciones')->put($filename,  File::get($miniatura_f));
+                // }
+            }
+            // borramos de la db las fotos que han sido eliminadas por el usuario
+            if(count((array)$fotosExistentes)>0){
+                $fotos_existentes=AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','0')->get();
+                foreach ($fotos_existentes as $value) {
+                    # code...
+                    if(!in_array($value->id,$fotosExistentes)){
+                        AsociacionFoto::find($value->id)->delete();
+                    }
+                }
+            }
+            else{
+            AsociacionFoto::where('asociacion_id',$asociacion->id)->where('estado','0')->delete();
+
+            }
+            if(!empty($fotos)){
+                foreach($fotos as $foto){
+                    $asociacionfoto = new AsociacionFoto();
+                    $asociacionfoto->asociacion_id=$asociacion->id;
+                    $asociacionfoto->save();
+
+                    $filename ='foto-'.$asociacionfoto->id.'.'.$foto->getClientOriginalExtension();
+                    $asociacionfoto->imagen=$filename;
+                    $asociacionfoto->estado='0';
+                    $asociacionfoto->save();
+                    Storage::disk('asociaciones')->put($filename,  File::get($foto));
+                }
+            }
+        }
+        return redirect()->back()->with('success','Datos editados');
     }
 }

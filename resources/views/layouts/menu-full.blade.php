@@ -43,13 +43,13 @@
             <a href="#">
                 <img alt="Brand" src="{{asset("images/img/etnias-peru.png")}}" class="w-75">
             </a>
-            <a href="#!" >
-                <b class="text-primary text-11">
-                    {{ Auth::user()->email }}
-                </b>
-                <span class="text-success  text-11">(
+            <a href="#!">
+                 <b class="text-primary text-12">
+                    {{Auth::user()->nombre}}
+                </b> 
+                <b class="text-primary  text-13">Eres un(a) 
                   @if(Auth::user()->hasRole('admin')){{'Administrador'}}@elseif(Auth::user()->hasRole('asociacion')){{ 'Asociacion' }}@endif
-                  )</span>
+                  </b>
             </a>
          </li>
 
@@ -59,6 +59,7 @@
     </li>
     @if(Auth::user()->hasRole('admin'))
     <ul class="sub-menu collapse menu2 @if(
+      (url()->current()==route('administrador_lista_path')||url()->current()==route('administrador_nuevo_path'))||
       (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
       (url()->current()==route('servicios.nuevo',[$asociacion_id])||url()->current()==route('servicios.lista',[$asociacion_id]))||
@@ -66,6 +67,10 @@
       (url()->current()==route('producto.nuevo',[$categoria])||url()->current()==route('producto.lista'))||
       (url()->current()==route('solucitudes.asociacion.lista')||url()->current()==route('solucitudes.otros.lista'))
       ) show @endif" id="operaciones">
+      <li data-toggle="collapse" class="active1">
+          <a class="@if(url()->current()==route('administrador_lista_path')||url()->current()==route('administrador_nuevo_path')) active @endif" href="{{route('administrador_lista_path')}}">ADMINISTRADORES</a>
+        </li>
+      <hr>
       <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">COMUNIDADES</a>
       </li>
