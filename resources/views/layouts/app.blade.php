@@ -24,7 +24,8 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Mietnia') }}
+                    {{-- {{ config('app.name', 'Mietnia') }} --}}
+                <img src="{{asset('images/img/etnias-peru.png')}}" alt="etnias-peru" class="w-50">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

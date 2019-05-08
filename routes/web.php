@@ -14,6 +14,7 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
 //Route::get('/', [
 //    'uses' => 'HomeController@home',
 //    'as' => 'home_path',
