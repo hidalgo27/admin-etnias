@@ -168,11 +168,17 @@ use Carbon\Carbon;
                                         </td>
                                         <td>
                                             <input type="hidden" id="estado_actividad_{{ $actividad->id }}" value="{{ $actividad->estado }}">
-                                            @if ($actividad->estado==0)
+                                            <!--@if ($actividad->estado==0)
                                                 <button class="btn btn-primary btn-sm" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Confirmar</button>
                                             @elseif($actividad->estado==1)
                                                 <button class="btn btn-danger btn-sm" id="confirmar_actividad_{{ $actividad->id }}" onclick="confirmar('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val())">Cancelar</button>
-                                            @endif
+                                            @endif-->
+
+                                            <select name="estados" id="confirmar_actividad_{{ $actividad->id }}" class="form-control" onchange="confirmar_('actividad','{{ $actividad->id }}',$('#estado_actividad_{{ $actividad->id }}').val(),$(this).val())">
+                                                <option value="0" @if($actividad->estado==0) selected @endif>Pendiente</option>
+                                                <option value="1" @if($actividad->estado==1) selected @endif>Confirmar</option>
+                                                <option value="2" @if($actividad->estado==2) selected @endif>Anular</option>
+                                            </select>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -207,7 +207,10 @@ Route::get('/admin/reserva/grupo/confirmar/{tipo_servicio}/{grupo_id}/{estado}',
     'uses' => 'ReservaController@confirmar',
     'as' => 'reserva.detalle.confirmar',
 ]);
-
+Route::get('/admin/reserva/grupo/confirmar_reserva/{tipo_servicio}/{grupo_id}/{estado}/{nuevo_estado}', [
+    'uses' => 'ReservaController@confirmar_reserva',
+    'as' => 'reserva.detalle.confirmar_reserva',
+]);
 Route::post('/admin/reserva/escojer-proveedor', [
     'uses' => 'ReservaController@escojer_proveedor',
     'as' => 'reserva.detalle.escojer.proveedor',
