@@ -1066,8 +1066,8 @@ function confirmar_t_g(tipo_servicio,grupo_id,estado){
 
                 $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-dark');
                 $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-success');
-                $('#confirmar_'+tipo_servicio+'_'+grupo_id).removeClass('btn-primary');
-                $('#confirmar_'+tipo_servicio+'_'+grupo_id).removeClass('btn-danger');
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-primary');
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-danger');
 
                 $('#estado_span_'+tipo_servicio+'_'+grupo_id).addClass(data.clase_span);
                 $('#estado_span_'+tipo_servicio+'_'+grupo_id).html(data.estado_span);
@@ -1289,6 +1289,49 @@ function eliminar_administrador(id){
         }
       })
 
+}
+
+function confirmar_(tipo_servicio,grupo_id,estado,nuevo_estado){
+    console.log('tipo_servicio:'+tipo_servicio+',grupo_id:'+grupo_id+',estado:'+estado);
+    // if(estado==0)
+    //     estado=1;
+    // else if(estado==1)
+    //     estado=0;
+
+    console.log('tipo_servicio:'+tipo_servicio+',grupo_id:'+grupo_id+',estado:'+estado);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type:'get',
+        url:'/admin/reserva/grupo/confirmar_reserva/'+tipo_servicio+'/'+grupo_id+'/'+estado+'/'+nuevo_estado,
+        // data:{id:id},
+        success:function(data){
+            console.log(data);
+            if(data.rpt==1){
+                $('#estado_'+tipo_servicio+'_'+grupo_id).val(data.estado);
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-dark');
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-success');
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).removeClass('badge-danger');
+                // $('#confirmar_'+tipo_servicio+'_'+grupo_id).removeClass('btn-primary');
+                // $('#confirmar_'+tipo_servicio+'_'+grupo_id).removeClass('btn-danger');
+
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).addClass(data.clase_span);
+                $('#estado_span_'+tipo_servicio+'_'+grupo_id).html(data.estado_span);
+                // $('#confirmar_'+tipo_servicio+'_'+grupo_id).addClass(data.clase_confirmar);
+                // $('#confirmar_'+tipo_servicio+'_'+grupo_id).html(data.estado_confirmar);
+            }
+            else if(data.rpt==0){
+                Swal.fire(
+                    'Upps!',
+                    'Subo un error, vuelva a intentarlo.',
+                    'error'
+                )
+            }
+        }
+    });
 }
 
 

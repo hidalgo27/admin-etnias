@@ -22,15 +22,15 @@ use Carbon\Carbon;
                     Fecha Reserva: <b class="text-success">
                     @php
                         $fecha_reserva ='no tiene';
-                    @endphp    
+                    @endphp
                     @if($reserva->created_at)
                         @php
                             $fecha_reserva = Carbon::createFromFormat("Y-m-d H:i:s", $reserva->created_at);
                         @endphp
                     @endif
-                    
+
                     @if($reserva->created_at){{ $fecha_reserva->format('d-m-Y H:i:s') }}@endif </b> |
-                    Fecha Llegada: <b class="text-success"> 
+                    Fecha Llegada: <b class="text-success">
                     @php
                         $fecha_llegada = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
                     @endphp
@@ -213,11 +213,11 @@ use Carbon\Carbon;
                                         </td>
                                         <td>
                                             <input type="hidden" id="estado_comida_{{ $valor->id }}" value="{{ $valor->estado }}">
-                                            @if ($valor->estado==0)
-                                                <button class="btn btn-primary btn-sm" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Confirmar</button>
-                                            @elseif($valor->estado==1)
-                                                <button class="btn btn-danger btn-sm" id="confirmar_comida_{{ $valor->id }}" onclick="confirmar('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val())">Cancelar</button>
-                                            @endif
+                                            <select name="estados" id="confirmar_comida_{{ $valor->id }}" class="form-control" onchange="confirmar_('comida','{{ $valor->id }}',$('#estado_comida_{{ $valor->id }}').val(),$(this).val())">
+                                                <option value="0" @if($valor->estado==0) selected @endif>Pendiente</option>
+                                                <option value="1" @if($valor->estado==1) selected @endif>Confirmar</option>
+                                                <option value="2" @if($valor->estado==2) selected @endif>Anular</option>
+                                            </select>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -241,6 +241,7 @@ use Carbon\Carbon;
                                             {{ $valor->asociacion->nombre }}
                                             {{ $valor->asociacion->contacto }}
                                         </td>
+
                                         <td>
                                             @if ($valor->estado==0)
                                                 <span class="badge badge-dark" id="estado_span_hospedaje_{{ $valor->id }}">Pendiente</span>
@@ -252,11 +253,11 @@ use Carbon\Carbon;
                                         </td>
                                         <td>
                                             <input type="hidden" id="estado_hospedaje_{{ $valor->id }}" value="{{ $valor->estado }}">
-                                            @if ($valor->estado==0)
-                                                <button class="btn btn-primary btn-sm" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Confirmar</button>
-                                            @elseif($valor->estado==1)
-                                                <button class="btn btn-danger btn-sm" id="confirmar_hospedaje_{{ $valor->id }}" onclick="confirmar('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val())">Cancelar</button>
-                                            @endif
+                                            <select name="estados" id="confirmar_hospedaje_{{ $valor->id }}" class="form-control" onchange="confirmar_('hospedaje','{{ $valor->id }}',$('#estado_hospedaje_{{ $valor->id }}').val(),$(this).val())">
+                                                <option value="0" @if($valor->estado==0) selected @endif>Pendiente</option>
+                                                <option value="1" @if($valor->estado==1) selected @endif>Confirmar</option>
+                                                <option value="2" @if($valor->estado==2) selected @endif>Anular</option>
+                                            </select>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -9,6 +9,7 @@ use App\Distrito;
 use App\Comunidad;
 use App\Proveedor;
 use App\Provincia;
+use App\ReservaGuia;
 use App\Departamento;
 use App\ReservaComida;
 use App\ReservaServicio;
@@ -254,14 +255,14 @@ class ReservaController extends Controller
             $estado_rpt=1;
             $clase_span='badge-dark';
             $estado_span='Pendiente';
-            $clase_confirmar='btn-primary';
+            $clase_confirmar='btn-dark';
             $estado_confirmar='Confirmar';
         }
         elseif($nuevo_estado==2){
             $estado_rpt=1;
-            $clase_span='badge-dark';
-            $estado_span='Pendiente';
-            $clase_confirmar='btn-primary';
+            $clase_span='badge-danger';
+            $estado_span='Anulado';
+            $clase_confirmar='btn-danger';
             $estado_confirmar='Confirmar';
         }
 

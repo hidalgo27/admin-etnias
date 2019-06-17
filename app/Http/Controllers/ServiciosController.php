@@ -27,6 +27,7 @@ use App\TransportePrecio;
 use App\ActividadDisponible;
 use Illuminate\Http\Request;
 use App\ActividadDisponibleHora;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use MaddHatter\LaravelFullcalendar\Calendar;
@@ -111,6 +112,10 @@ class ServiciosController extends Controller
                 $actividad->disponible=$disponible;
                 $actividad->recomendaciones=$recomendaciones;
                 $actividad->asociacion_id=$asociacion_id;
+                if(!Auth::user()->hasRole('admin'))
+                    $actividad->estado='0';
+                else
+                    $actividad->estado='1';
                 $actividad->save();
                 if(!empty($foto_portada)){
 
@@ -162,16 +167,27 @@ class ServiciosController extends Controller
                     $actividad_precio->save();
 
                 }
-
-                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad guardada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                if(!Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad guardada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
+                }
+                elseif(Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad guardada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+                }
+
             }
             else if($attributo=='c'){
                 $comida=new Comida();
                 $comida->titulo=$titulo;
                 $comida->descripcion=$descripcion;
                 $comida->asociacion_id=$asociacion_id;
+                if(!Auth::user()->hasRole('admin'))
+                    $comida->estado='0';
+                else
+                    $comida->estado='1';
                 $comida->save();
                 if(!empty($fotos)){
                     foreach($fotos as $foto){
@@ -195,16 +211,28 @@ class ServiciosController extends Controller
                     $comida_precio->save();
 
                 }
-
-                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida guardada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                if(!Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida guardada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
+                }
+                elseif(Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida guardada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+                }
+
+
             }
             else if($attributo=='h'){
                 $hospedaje=new Hospedaje();
                 $hospedaje->titulo=$titulo;
                 $hospedaje->descripcion=$descripcion;
                 $hospedaje->asociacion_id=$asociacion_id;
+                if(!Auth::user()->hasRole('admin'))
+                    $hospedaje->estado='0';
+                else
+                    $hospedaje->estado='1';
                 $hospedaje->save();
                 if(!empty($fotos)){
                     foreach($fotos as $foto){
@@ -228,10 +256,18 @@ class ServiciosController extends Controller
                     $hospedaje_precio->save();
 
                 }
-
-                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje guardado correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                if(!Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje guardado correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
+                }
+                elseif(Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje guardado correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+                }
+
+
             }
             else if($attributo=='t'){
                 $transporte=new Transporte();
@@ -406,6 +442,11 @@ class ServiciosController extends Controller
                 $actividad->no_incluye=$no_incluye;
                 $actividad->disponible=$disponible;
                 $actividad->recomendaciones=$recomendaciones;
+                if(!Auth::user()->hasRole('admin'))
+                    $actividad->estado='0';
+                else
+                    $actividad->estado='1';
+
                 $actividad->save();
                 //-- agregando foto de portada
                 if(!empty($foto_portada_e)){
@@ -450,7 +491,6 @@ else{
 }
 
 if(!empty($foto_miniatura)){
-    // foreach($foto_miniatura as $foto){
         ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
         $actividadfoto = new ActividadFoto();
         $actividadfoto->actividad_id=$actividad->id;
@@ -461,7 +501,7 @@ if(!empty($foto_miniatura)){
         $actividadfoto->estado='2';
         $actividadfoto->save();
         Storage::disk('actividades')->put($filename,  File::get($foto_miniatura));
-    // }
+
 }
                 //-- agrgando galeria de fotos
                 if(!empty($fotos_e)){
@@ -525,15 +565,21 @@ if(!empty($foto_miniatura)){
                         $actividad_precio->save();
                     }
                 }
-
-                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>']);
+                if(!Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>']);
+                }
+                elseif(Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>']);
+                }
             }
             else if($attributo=='c'){
                 $actividad=Comida::FindOrFail($id);
                 $actividad->titulo=$titulo;
                 $actividad->descripcion=$descripcion;
+                if(!Auth::user()->hasRole('admin'))
+                    $actividad->estado='0';
+                else
+                    $actividad->estado='1';
                 $actividad->save();
                 if(!empty($fotos_e)){
                     $fotitos=ComidaFoto::where('comida_id',$id)->get();
@@ -595,14 +641,26 @@ if(!empty($foto_miniatura)){
                         $actividad_precio->save();
                     }
                 }
-                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                if(!Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida editada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
+                }
+                elseif(Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>']);
+                }
+
             }
             else if($attributo=='h'){
                 $actividad=Hospedaje::FindOrFail($id);
                 $actividad->titulo=$titulo;
                 $actividad->descripcion=$descripcion;
+                if(!Auth::user()->hasRole('admin'))
+                    $actividad->estado='0';
+                else
+                    $actividad->estado='1';
                 $actividad->save();
                 if(!empty($fotos_e)){
                     $fotitos=HospedajeFoto::where('hospedaje_id',$id)->get();
@@ -664,10 +722,17 @@ if(!empty($foto_miniatura)){
                         $actividad_precio->save();
                     }
                 }
+                if(!Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje editado correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>']);
+                }
+                elseif(Auth::user()->hasRole('admin')){
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>']);
+                }
 
-                return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>']);
             }
             else if($attributo=='t'){
                 $actividad=Transporte::FindOrFail($id);

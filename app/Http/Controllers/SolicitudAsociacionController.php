@@ -35,12 +35,12 @@ class SolicitudAsociacionController extends Controller
         $asociacion->password_2=$asociacion_solicitud->comunidad_id.$id.$nums;
         $asociacion->comunidad_id=$asociacion_solicitud->comunidad_id;
         $asociacion->save();
-        // $asociacion_solicitud->estado='1';
+        $asociacion_solicitud->estado='1';
         $asociacion_solicitud->save();
         // dd($asociacion);
         // enviamos el email
         Mail::send(new MailSender($asociacion,$asociacion->email));
-        
+
         return redirect()->back()->with('success','Asociacion creada con<br><b>Ruc:</b>'.$asociacion->ruc.'<br><b>Nombre:</b>'.$asociacion->nombre.'<br><b>Email:</b>'.$asociacion->email.'<br>Se envio una email a la nueva asociación.');
         // return view('admin.solicitudes.asociaciones',compact('asociacion'))->echo;
     }

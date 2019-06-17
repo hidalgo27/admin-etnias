@@ -81,7 +81,7 @@ class AsociacionController extends Controller
             //le asignamos un rol "asociacion"
             $asociacion_role = Role::where('name', 'asociacion')->first();
             $asociacion->roles()->attach($asociacion_role);
-            
+
             if(!empty($portada)){
                 // foreach($fotos as $foto){
                     $asociacionfoto = new AsociacionFoto();
@@ -180,7 +180,7 @@ class AsociacionController extends Controller
         $asociacion->comunidad_id=$comunidad_id;
         $asociacion->save();
 
-        $asociacion_role = Role::where('name', 'asociacion')->first();        
+        $asociacion_role = Role::where('name', 'asociacion')->first();
         $asociacion->roles()->detach($asociacion_role);
         $asociacion->roles()->attach($asociacion_role);
         // borramos de la db las fotos que han sido eliminadas por el usuario
@@ -303,7 +303,7 @@ class AsociacionController extends Controller
             $contacto=$nombre;
             $comision=10;
         }
-        
+
         $asociacion->ruc=$ruc;
         $asociacion->nombre=$nombre;
         $asociacion->contacto=$contacto;
@@ -316,7 +316,7 @@ class AsociacionController extends Controller
         $asociacion->descripcion=$descripcion;
         $asociacion->save();
         $asociacion_role = Role::where('name', 'asociacion')->first();
-        
+
         $asociacion->roles()->detach($asociacion_role);
         $asociacion->roles()->attach($asociacion_role);
         // borramos de la db las fotos que han sido eliminadas por el usuario

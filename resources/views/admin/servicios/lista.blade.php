@@ -65,6 +65,7 @@
                                             <th>#</th>
                                             <th>TITULO</th>
                                             <th>DESCRIPCION</th>
+                                            <th>ESTADO</th>
                                             <th>OPERACIONES</th>
                                         </tr>
                                     </thead>
@@ -80,6 +81,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $item->titulo }}</td>
                                                 <td>{!! substr($item->descripcion,0,20) !!}...</td>
+                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprovado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_actividad_{{ $item->id }}">
@@ -391,7 +393,7 @@
                                                                         {{ csrf_field() }}
                                                                         <input type="hidden" name="attributo" value="a">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('a','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('a','e_{{ $item->id }}')"><i class="fas fa-save"></i>@if(Auth::user()->hasRole('admin')) GUARDAR & APROVAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
 
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
@@ -650,6 +652,7 @@
                                                         </div>
                                                     </div>
                                                     <button class="btn btn-danger" type="button" onclick="borrar_servicio('{{ $item->id }}','a')"><i class="fas fa-trash-alt"></i></button>
+
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -664,6 +667,7 @@
                                             <th>#</th>
                                             <th>TITULO</th>
                                             <th>DESCRIPCION</th>
+                                            <th>ESTADO</th>
                                             <th>OPERACIONES</th>
                                         </tr>
                                     </thead>
@@ -679,6 +683,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $item->titulo }}</td>
                                                 <td>{{ substr($item->descripcion,0,20) }}...</td>
+                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprovado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_comida_{{ $item->id }}">
@@ -793,7 +798,7 @@
                                                                         {{ csrf_field() }}
                                                                         <input type="hidden" name="attributo" value="c">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('c','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('c','e_{{ $item->id }}')"><i class="fas fa-save"></i> @if(Auth::user()->hasRole('admin')) GUARDAR & APROVAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
                                                                         {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
 
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
@@ -823,6 +828,7 @@
                                             <th>#</th>
                                             <th>TITULO</th>
                                             <th>DESCRIPCION</th>
+                                            <th>ESTADO</th>
                                             <th>OPERACIONES</th>
                                         </tr>
                                     </thead>
@@ -838,6 +844,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $item->titulo }}</td>
                                                 <td>{{ substr($item->descripcion,0,20) }}...</td>
+                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprovado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_hospedaje_{{ $item->id }}">
@@ -952,7 +959,7 @@
                                                                         {{ csrf_field() }}
                                                                         <input type="hidden" name="attributo" value="h">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('h','e_{{ $item->id }}')"><i class="fas fa-save"></i> GUARDAR</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('h','e_{{ $item->id }}')"><i class="fas fa-save"></i> @if(Auth::user()->hasRole('admin')) GUARDAR & APROVAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
                                                                         {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
 
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
