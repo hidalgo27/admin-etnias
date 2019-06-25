@@ -235,4 +235,35 @@ class ComunidadController extends Controller
         else
             return 1;
     }
+    public function mostrar_pagina($grupo_id,$estado){
+        // try {
+            //code...
+
+                $temp=Comunidad::find($grupo_id);
+                $temp->mostrar_en_pagina=$estado;
+                $temp->save();
+
+            if($estado==0){
+                $estado_rpt=0;
+                $clase_span='badge-success';
+                $estado_span='Confirmado';
+                $clase_confirmar='btn-danger';
+                $estado_confirmar='No mostrar en pagina';
+            }
+            elseif($estado==1){
+                $estado_rpt=1;
+                $clase_span='badge-dark';
+                $estado_span='Pendiente';
+                $clase_confirmar='btn-success';
+                $estado_confirmar='Mostrar en pagina';
+            }
+
+            return response()->json(['rpt'=>'1',
+                                    'estado'=>$estado,
+                                    'clase_span'=>$clase_span,
+                                    'estado_span'=>$estado_span,
+                                    'clase_confirmar'=>$clase_confirmar,
+                                    'estado_confirmar'=>$estado_confirmar]);
+    }
+
 }

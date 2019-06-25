@@ -301,6 +301,10 @@ Route::get('/admin/solicitudes/otros/crear/{id}', [
     'uses' => 'SolicitudOtrosController@crear',
     'as' => 'solucitudes.otros.crear',
 ]);
+Route::get('/admin/comunidad/mostrar-pagina/{grupo_id}/{estado}', [
+    'uses' => 'ComunidadController@mostrar_pagina',
+    'as' => 'comunidad.mostrar.pagina',
+]);
 
 // rutas para una asociacion en concreto
 

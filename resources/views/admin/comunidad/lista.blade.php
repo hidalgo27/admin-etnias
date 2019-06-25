@@ -26,6 +26,7 @@
                                     <th>#</th>
                                     <th>LOCALIZACION</th>
                                     <th>NOMBRE</th>
+                                    <th>MOSTRAR EN PAGINA</th>
                                     <th>OPERACIONES</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,14 @@
                                             {{ $item->distrito->distrito }}
                                         </td>
                                         <td>{{ $item->nombre }}</td>
+                                        <td>
+                                            <input type="hidden" id="mostrar_en_pagina_{{ $item->id }}" value="{{ $item->mostrar_en_pagina }}">
+                                            @if ($item->mostrar_en_pagina==1)
+                                                <button class="btn btn-success btn-sm" id="confirmar_{{ $item->id }}" onclick="mostrar_pagina('{{ $item->id }}',$('#mostrar_en_pagina_{{ $item->id }}').val())">Mostrar en pagina</button>
+                                            @elseif($item->mostrar_en_pagina==0)
+                                                <button class="btn btn-danger btn-sm" id="confirmar_{{ $item->id }}" onclick="mostrar_pagina('{{ $item->id }}',$('#mostrar_en_pagina_{{ $item->id }}').val())">No mostrar en pagina</button>
+                                            @endif
+                                        </td>
                                         <td>
                                             <!-- Button trigger modal -->
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#comunidadModal_{{ $item->id }}">
