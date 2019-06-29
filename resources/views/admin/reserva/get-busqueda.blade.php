@@ -169,10 +169,10 @@
                             @if($totales>0)
                                 @if ($confirmardos==0)
                                     <div class="row reserva-caja">
-                                        <div class="col-1 px-0 text-center">
-                                            <b class="text-success">{{ $item->codigo }}</b>
+                                        <div class="col-12 text-left">
+                                            <b class="text-success">Cod:{{ $item->codigo }}</b>
                                         </div>
-                                        <div class="col-6 px-0 text-center">
+                                        <div class="col-7 px-0 text-center">
                                             <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
                                         </div>
                                         <div class="col-1 px-0 text-center bg-danger">
@@ -359,10 +359,10 @@
                             @if($totales>0)
                             @if ($totales>$confirmardos && $confirmardos>0)
                                 <div class="row reserva-caja">
-                                    <div class="col-1 px-0 text-center">
-                                        <b class="text-success">{{ $item->codigo }}</b>
+                                    <div class="col-12 text-left">
+                                        <b class="text-success">Cod:{{ $item->codigo }}</b>
                                     </div>
-                                    <div class="col-6 px-0 text-center">
+                                    <div class="col-7 px-0 text-center">
                                         <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
                                     </div>
                                     <div class="col-1 px-0 text-center bg-danger">
@@ -549,10 +549,10 @@
                             @if($totales>0)
                         @if ($totales==$confirmardos)
                             <div class="row reserva-caja">
-                                <div class="col-1 px-0 text-center">
-                                    <b class="text-success">{{ $item->codigo }}</b>
+                                <div class="col-12 text-left">
+                                    <b class="text-success">Cod:{{ $item->codigo }}</b>
                                 </div>
-                                <div class="col-6 px-0 text-center">
+                                <div class="col-7 px-0 text-center">
                                     <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
                                 </div>
                                 <div class="col-1 px-0 text-center bg-danger">

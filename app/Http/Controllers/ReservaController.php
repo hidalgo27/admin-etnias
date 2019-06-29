@@ -119,13 +119,13 @@ class ReservaController extends Controller
             //         $q->where('estado','1');
             //     }
             // ])->get();
-            $reservas_close=Reserva::get();
+            $reservas_close=Reserva::where('estado','>=','0')->get();
         // dd($reservas_close);
         $departamentos =Departamento::get();
         $provincias =Provincia::get();
         $distritos =Distrito::get();
         $comunidades = Comunidad::get();
-        return view('admin.reserva.lista',compact('reservas_new','reservas_current','reservas_close','departamentos','provincias','distritos','comunidades'));
+        return view('admin.reserva.lista',compact('reservas_close','departamentos','provincias','distritos','comunidades'));
     }
     public function detalle($reserva_id){
         $reserva=Reserva::findOrFail($reserva_id);
