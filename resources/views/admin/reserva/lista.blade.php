@@ -289,7 +289,7 @@ use Carbon\Carbon;
                                 @endphp
                                 @if(Auth::user()->hasRole('admin'))
                                 @foreach ($item->actividades as $actividad)
-                                    @if ($actividad->estado=='1')
+                                    @if ($actividad->estado=='1'||$actividad->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -299,7 +299,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->comidas as $comida)
-                                    @if ($comida->estado=='1')
+                                    @if ($comida->estado=='1'||$comida->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -309,7 +309,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->hospedajes as $hospedaje)
-                                    @if ($hospedaje->estado=='1')
+                                    @if ($hospedaje->estado=='1'||$hospedaje->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -320,7 +320,7 @@ use Carbon\Carbon;
                                 @endforeach
                             @elseif(Auth::user()->hasRole('asociacion'))
                                 @foreach ($item->actividades->where('asociacion_id',Auth::user()->id) as $actividad)
-                                    @if ($actividad->estado=='1')
+                                    @if ($actividad->estado=='1'||$actividad->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -330,7 +330,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->comidas->where('asociacion_id',Auth::user()->id) as $comida)
-                                    @if ($comida->estado=='1')
+                                    @if ($comida->estado=='1'||$comida->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -340,7 +340,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->hospedajes->where('asociacion_id',Auth::user()->id) as $hospedaje)
-                                    @if ($hospedaje->estado=='1')
+                                    @if ($hospedaje->estado=='1'||$hospedaje->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -373,7 +373,7 @@ use Carbon\Carbon;
                             @endforeach --}}
                             @if(Auth::user()->hasRole('admin'))
                                 @foreach ($item->transporte_externo as $transporte_externo_)
-                                    @if ($transporte_externo_->estado=='1')
+                                    @if ($transporte_externo_->estado=='1'||$transporte_externo_->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -383,7 +383,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->guia as $guia)
-                                    @if ($guia->estado=='1')
+                                    @if ($guia->estado=='1'||$guia->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -484,7 +484,7 @@ use Carbon\Carbon;
 
                             @if(Auth::user()->hasRole('admin'))
                                 @foreach ($item->actividades as $actividad)
-                                    @if ($actividad->estado=='1')
+                                    @if ($actividad->estado=='1'||$actividad->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -494,7 +494,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->comidas as $comida)
-                                    @if ($comida->estado=='1')
+                                    @if ($comida->estado=='1'||$comida->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -504,7 +504,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->hospedajes as $hospedaje)
-                                    @if ($hospedaje->estado=='1')
+                                    @if ($hospedaje->estado=='1'||$hospedaje->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -515,7 +515,7 @@ use Carbon\Carbon;
                                 @endforeach
                             @elseif(Auth::user()->hasRole('asociacion'))
                                 @foreach ($item->actividades->where('asociacion_id',Auth::user()->id) as $actividad)
-                                    @if ($actividad->estado=='1')
+                                    @if ($actividad->estado=='1'||$actividad->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -525,7 +525,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->comidas->where('asociacion_id',Auth::user()->id) as $comida)
-                                    @if ($comida->estado=='1')
+                                    @if ($comida->estado=='1'||$comida->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -535,7 +535,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->hospedajes->where('asociacion_id',Auth::user()->id) as $hospedaje)
-                                    @if ($hospedaje->estado=='1')
+                                    @if ($hospedaje->estado=='1'||$hospedaje->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -568,7 +568,7 @@ use Carbon\Carbon;
                             @endforeach --}}
                             @if(Auth::user()->hasRole('admin'))
                                 @foreach ($item->transporte_externo as $transporte_externo_)
-                                    @if ($transporte_externo_->estado=='1')
+                                    @if ($transporte_externo_->estado=='1'||$transporte_externo_->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
@@ -578,7 +578,7 @@ use Carbon\Carbon;
                                     @endphp
                                 @endforeach
                                 @foreach ($item->guia as $guia)
-                                    @if ($guia->estado=='1')
+                                    @if ($guia->estado=='1'||$guia->estado=='2')
                                         @php
                                             $confirmardos++;
                                         @endphp
