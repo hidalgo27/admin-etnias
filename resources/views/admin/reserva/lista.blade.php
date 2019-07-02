@@ -27,7 +27,7 @@ use Carbon\Carbon;
         <div id="rpt" class="row">
             <div class="col-4 border border-danger">
                 <div class="row bg-danger">
-                    <div class="col-3 px-0 pt-2 text-center"><b class="text-white">NUEVO</b></div>
+                    <div class="col-4 px-0 pt-2 text-center"><b class="text-white">SIN RESERVAR</b></div>
                     <div class="col-8 px-0 d-none">
                         <select class="form-control" name="filtro" id="filtro" onchange="filtro_reserva($(this).val(),'nuevo')">
                             <option value="codigo">Codigo</option>
@@ -208,6 +208,9 @@ use Carbon\Carbon;
                                     <div class="row reserva-caja {{ $clase_advertencia}}">
                                         <div class="col-12 text-left">
                                             <b class="text-success">Cod:{{ $item->codigo }}</b>
+                                            @if($item->estado=='2')
+                                                <span class="badge badge-danger text-11">Reserva cancelada !</span>
+                                            @endif
                                         </div>
                                         <div class="col-7 px-0 text-center">
                                             <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
@@ -227,7 +230,7 @@ use Carbon\Carbon;
             </div>
             <div class="col-4 border border-primary">
                 <div class="row bg-primary">
-                    <div class="col-3 px-0 pt-2 text-center"><b class="text-white">ACTUAL</b></div>
+                    <div class="col-3 px-0 pt-2 text-center"><b class="text-white">PENDIENTE</b></div>
                     <div class="col-8 px-0 d-none">
                         <select class="form-control" name="filtro" id="filtro" onchange="filtro_reserva($(this).val(),'actual')">
                             <option value="codigo">Codigo</option>
@@ -398,6 +401,9 @@ use Carbon\Carbon;
                                     <div class="row reserva-caja">
                                         <div class="col-12 text-left">
                                             <b class="text-success">Cod:{{ $item->codigo }}</b>
+                                            @if($item->estado=='2')
+                                                <span class="badge badge-danger text-11">Reserva cancelada !</span>
+                                            @endif
                                         </div>
                                         <div class="col-7 px-0 text-center">
                                             <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>
@@ -417,7 +423,7 @@ use Carbon\Carbon;
             </div>
             <div class="col-4 border border-dark">
                 <div class="row bg-dark">
-                    <div class="col-3 px-0 pt-2 text-center"><b class="text-white">CERRADO</b></div>
+                    <div class="col-3 px-0 pt-2 text-center"><b class="text-white">CONFIRMADO</b></div>
                     <div class="col-8 px-0 d-none">
                         <select class="form-control" name="filtro" id="filtro" onchange="filtro_reserva($(this).val(),'cerrado')">
                             <option value="codigo">Codigo</option>
@@ -593,6 +599,9 @@ use Carbon\Carbon;
                                     <div class="row reserva-caja">
                                         <div class="col-12 text-left">
                                             <b class="text-success">Cod:{{ $item->codigo }}</b>
+                                            @if($item->estado=='2')
+                                                <span class="badge badge-danger text-11">Reserva cancelada !</span>
+                                            @endif
                                         </div>
                                         <div class="col-7 px-0 text-center">
                                             <a href="{{ route('reserva.detalle',$item->id) }}" class=" text-decoration-none"><b class="text-primary">{{ $item->nombre }}</b></a>

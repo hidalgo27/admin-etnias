@@ -17,7 +17,7 @@ use Carbon\Carbon;
                 @endphp
                 <div class="col-12">
                     Codigo: <b class="text-success">{{ $reserva->codigo }}</b> |
-                    Titulo: <b class="text-success">{{ $reserva->nombre }}</b> |
+                    Titular: <b class="text-success">{{ $reserva->nombre }}</b> |
                     Nro. Pax.: <b class="text-success">{{ $reserva->nro_pax }}</b> |
                     Fecha Reserva: <b class="text-success">
                     @php
@@ -35,8 +35,12 @@ use Carbon\Carbon;
                         $fecha_llegada = Carbon::createFromFormat("Y-m-d", $reserva->fecha_llegada);
                     @endphp
                         {{ $fecha_llegada->format('d-m-Y')}}</b>
+
+                    @if($reserva->estado=='2')
+                        <b class="bg-danger text-white px-1">Reserva cancelada !</b>
+                    @endif
                 </div>
-                <div class="col-12">
+                <div class="col-12 d-none">
                     <b>DATOS DE LOS PASAJEROS</b>
                     <table class="table table-striped table-hover table-sm">
                         <thead>
@@ -113,7 +117,7 @@ use Carbon\Carbon;
                         </tbody>
                     </table>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-2">
                     @php
                         $total_asociacion=0;
                         $total_transporte_externo=0;
