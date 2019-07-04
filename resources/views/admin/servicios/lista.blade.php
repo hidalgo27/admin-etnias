@@ -266,7 +266,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group col-6 text-lef">
-                                                                            <p><b>FOTO DE PORTADA</b></p>
+                                                                            <p><b>FOTO DE PORTADA <span class="text-danger">(1770x900 px)</span></b></p>
                                                                             @foreach ($item->fotos->where('estado','1') as $foto)
                                                                                 @if (Storage::disk('actividades')->has($foto->imagen))
                                                                                     <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
@@ -286,12 +286,12 @@
                                                                                     <div class="input-group-prepend">
                                                                                         <div class="input-group-text">Portada</div>
                                                                                     </div>
-                                                                                    <input type="file" name="foto_portada"  class="form-control">
+                                                                                    <input id="foto_portada_e_a_e_{{ $item->id }}" type="file" name="foto_portada"  class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group col-6 text-lef">
-                                                                            <p><b>FOTO DE MINIATURA</b></p>
+                                                                            <p><b>FOTO DE MINIATURA <span class="text-danger">(550x345 px)</span></b></p>
                                                                             @foreach ($item->fotos->where('estado','2') as $foto)
                                                                                 @if (Storage::disk('actividades')->has($foto->imagen))
                                                                                     <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
@@ -311,12 +311,12 @@
                                                                                     <div class="input-group-prepend">
                                                                                         <div class="input-group-text">Miniatura</div>
                                                                                     </div>
-                                                                                    <input type="file" name="foto_miniatura"  class="form-control">
+                                                                                    <input id="foto_miniatura_a_e_{{ $item->id }}" type="file" name="foto_miniatura"  class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group col-12 text-lef">
-                                                                            <p><b>GALERIA DE FOTOS</b></p>
+                                                                            <p><b>GALERIA DE FOTOS <span class="text-danger">(1280x665 px)</span></b></p>
                                                                             @foreach ($item->fotos->where('estado','0') as $foto)
                                                                                 @if (Storage::disk('actividades')->has($foto->imagen))
                                                                                     <figure class="figure m-3" id="a_{{ $item->id.'_'.$foto->id }}">
@@ -336,7 +336,7 @@
                                                                                     <div class="input-group-prepend">
                                                                                         <div class="input-group-text">Galeria de fotos</div>
                                                                                     </div>
-                                                                                    <input type="file" name="foto[]" multiple class="form-control">
+                                                                                    <input id="foto_a_e_{{ $item->id }}" type="file" name="foto[]" multiple class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                         </div>

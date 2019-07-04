@@ -595,6 +595,15 @@ function enviar_datos_editar(valor1,valor2){
             return false;
         }
     });
+    if(!es_correcto_fotos('Para la foto de portada','foto_portada_e_'+valor1+'_'+valor2,'1770','900')){
+        return false;
+    }
+    if(!es_correcto_fotos('Para la foto de miniatura','foto_miniatura_'+valor1+'_'+valor2,'550','345')){
+        return false;
+    }
+    if(!es_correcto_fotos_galeria('Para las fotos de la galeria','foto_'+valor1+'_'+valor2,'1280','665')){
+        return false;
+    }
     $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1378,3 +1387,164 @@ function mostrar_pagina(grupo_id,estado){
         }
      });
 }
+function es_correcto_fotos(mensa,archivo,ancho,alto){
+    console.log("archivo."+archivo+",ancho:"+ancho+",alto:"+alto);
+    var o = document.getElementById(archivo);
+    var foto = o.files[0];
+    var c =0;
+
+
+    if(o.files.length!=0){
+      if (!(/\.(jpg|png)$/i).test(foto.name)) {
+
+          c=1;
+          Swal.fire(
+            'MENSAJE DEL SISTEMA',
+            ''+mensa+' ingrese una imagen con alguno de los siguientes formatos: .jpeg/.jpg/.png.',
+            'error'
+            );
+            return false;
+        //   alert('Ingrese una imagen con alguno de los siguientes formatos: .jpeg/.jpg/.png.');
+
+
+      }
+      else {
+          var img = new Image();
+          img.onload = function dimension() {
+              if (this.width.toFixed(0) != ancho && this.height.toFixed(0) != alto) {
+                c=1;
+                Swal.fire(
+                    'MENSAJE DEL SISTEMA',
+                    ''+mensa+' las medidas deben ser: ('+ancho+'x'+alto+' px). Medida de la foto que desea subir es: ('+this.width.toFixed(0)+'x'+this.height.toFixed(0)+' px)',
+                    'error'
+                    );
+                    return false;
+                // alert('Las medidas deben ser: 900 x 400');
+                // alert(c);
+              }
+            else {
+                // Swal.fire(
+                //     'MENSAJE DEL SISTEMA',
+                //     'Imagen correcta :)',
+                //     'success'
+                //     );
+                // return false;
+                    // alert('Imagen correcta :)');
+              }
+          };
+
+           img.src = URL.createObjectURL(foto);
+
+      }
+    }
+    else{
+        return true;
+    }
+    //   if(c === 1){
+    //     return false;
+    //   }
+    //   else{
+
+    //     return true;
+
+    //   }
+  }
+function es_correcto_fotos_galeria(mensa,archivo,ancho,alto){
+    console.log("archivo."+archivo+",ancho:"+ancho+",alto:"+alto);
+    var o = document.getElementById(archivo);
+    var foto = o.files;
+    var c =0;
+console.log(foto.length);
+    var total_galeria=foto.length;
+    var fotos_erradas=0;
+    //manejaremos tipo de errors 1=formato, 2=medida
+    var tipo_error=0;
+    if(foto.length!=0){
+        var imagen_con_error='';
+        for(var i=0;i<foto.length;i++){
+            console.log('nombre:'+foto[i].name);
+            if (!(/\.(jpg|png)$/i).test(foto[i].name)) {
+                tipo_error=1;
+                fotos_erradas++;
+                imagen_con_error+=foto[i].name+', ';
+
+            }
+        }
+        if(fotos_erradas>0){
+            if(tipo_error==1){
+                Swal.fire(
+                  'MENSAJE DEL SISTEMA',
+                  ''+mensa+' ingrese las imagenes con alguno de los siguientes formatos: .jpeg/.jpg/.png.'+'.Se subio ('+imagen_con_error+').',
+                  'error'
+                  );
+                  return false;
+            }
+        }
+
+        imagen_con_error='';
+        fotos_erradas=0;
+        var _URL = window.URL || window.webkitURL;
+        var DOMURL = window.URL || window.webkitURL || window;
+        var procesaImg = function(data) {
+            var img = new Image();
+            var svg = new Blob([data], {type: 'image/svg+xml'});
+            var url = DOMURL.createObjectURL(svg);
+            img.onload = function() {
+            ctx.drawImage(img, Window.posx,Window.posy);
+            DOMURL.revokeObjectURL(url);
+            imagen_con_error+='('+this.width.toFixed(0)+'x'+this.height.toFixed(0)+'), ';
+            }
+            img.src=url;
+        };
+        for(var i=0;i<foto.length;i++){
+            procesaImg(foto[i]);
+            console.log('nombre x:'+foto[i]);
+            // var img = new Image();
+            // // img.src = foto[i];
+            // img.onload = function() {
+            // // imgwidth = this.width;
+            // // imgheight = this.height;
+
+
+            // };
+
+        //    img.src = URL.createObjectURL(foto[i]);
+                // var img = (Image)foto[i];
+                // var img = new Image();
+                // img.onload = function dimension() {
+                //     if (this.width.toFixed(0) != ancho && this.height.toFixed(0) != alto) {
+                //       tipo_error=2;
+                //       fotos_erradas++;
+                //       c=1;
+                //       imagen_con_error+=this.name+'('+this.width.toFixed(0)+'x'+this.height.toFixed(0)+'), ';
+
+                //     }
+
+                // };
+
+                // img.src = URL.createObjectURL(foto[i]);
+        }
+        console.log('error:'+imagen_con_error);
+        // if(fotos_erradas>0){
+        //     if(tipo_error==2){
+        //         Swal.fire(
+        //             'MENSAJE DEL SISTEMA',
+        //             ''+mensa+' las medidas deben ser: ('+ancho+'x'+alto+' px). Medida de las fotos que desea subir es: '+imagen_con_error,
+        //             'error'
+        //             );
+        //             return false;
+        //     }
+        // }
+    }
+    else{
+        return true;
+    }
+    //   if(c === 1){
+    //     return false;
+    //   }
+    //   else{
+
+    //     return true;
+
+    //   }
+  }

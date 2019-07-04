@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'laravel') }}</title>
+    <title>{{ config('app.name', 'Mietnia') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -62,7 +62,7 @@
                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                       @csrf
                                   </form>
-                                    
+
 
                                 </div>
                               </div>
@@ -123,16 +123,16 @@
                             <label for="departamento">Departamento</label>
                             <select class="form-control" name="departamento" id="departamento" onchange="mostrar_provincias_modal($(this).val());">
                                 <option value="0">Escoja una opcion</option>
-                                
+
                                     @foreach ($departamentos as $item_)
                                         <option value="{{ $item_->id }}" @if ($item_->id==$item->comunidad->distrito->provincia->departamento_id)
                                             selected
                                         @endif>{{ $item_->departamento }}</option>
                                     @endforeach
-                                
+
                             </select>
                         </div>
-                        
+
                         <div class="form-group col-4">
                             <label for="provincia">Provicia</label>
                             <select class="form-control" name="provincia" id="provincia" onchange="mostrar_distritos_modal($(this).val());">
@@ -167,7 +167,7 @@
                             </select>
                         </div>
 
-                        
+
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group col-12 text-left">
