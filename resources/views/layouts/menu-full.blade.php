@@ -72,6 +72,9 @@
         </li>
       <hr>
       <li data-toggle="collapse" class="active1">
+        <a class="@if(url()->current()==route('categoria_lista_path')||url()->current()==route('categoria_nuevo_path')) active @endif" href="{{route('categoria_lista_path')}}">CATEGORIAS</a>
+      </li>
+      <li data-toggle="collapse" class="active1">
         <a class="@if(url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path')) active @endif" href="{{route('comunidad_lista_path')}}">COMUNIDADES</a>
       </li>
       <li data-toggle="collapse" class="active1">

@@ -234,27 +234,27 @@
                                                         <label class="sr-only" for="inlineFormInputGroupUsername">Portada</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <div class="input-group-text">Portada</div>
+                                                                <div class="input-group-text">Portada <span class="text-danger">(1770x900 px)</span></div>
                                                             </div>
-                                                            <input type="file" name="foto_portada" class="form-control">
+                                                            <input type="file" id="foto_portada_e_a_n_0" name="foto_portada" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-6 my-1">
                                                         <label class="sr-only" for="inlineFormInputGroupUsername">Miniatura</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <div class="input-group-text">Miniatura</div>
+                                                                <div class="input-group-text">Miniatura <span class="text-danger">(550x345 px)</span></div>
                                                             </div>
-                                                            <input type="file" name="foto_miniatura" class="form-control">
+                                                            <input type="file" id="foto_miniatura_a_n_0" name="foto_miniatura" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-1">
                                                         <label class="sr-only" for="inlineFormInputGroupUsername">Galeria de fotos</label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
-                                                                <div class="input-group-text">Galeria de fotos</div>
+                                                                <div class="input-group-text">Galeria de fotos <span class="text-danger">(1280x665 px)</span></div>
                                                             </div>
-                                                            <input type="file" name="foto[]" multiple class="form-control">
+                                                            <input type="file" id="foto_a_n_0" name="foto[]" multiple class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-12">

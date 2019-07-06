@@ -306,9 +306,28 @@ Route::get('/admin/comunidad/mostrar-pagina/{grupo_id}/{estado}', [
     'as' => 'comunidad.mostrar.pagina',
 ]);
 
-// rutas para una asociacion en concreto
-
-// Route::get('/admin/servicios/lista/{asociacion_id}', [
-//     'uses' => 'ServiciosController@lista',
-//     'as' => 'servicios.lista',
-// ]);
+// rutas para categorias
+Route::get('/admin/categoria/nuevo', [
+    'uses' => 'CategoriaController@nuevo',
+    'as' => 'categoria_nuevo_path',
+]);
+Route::post('/admin/categoria/nuevo', [
+    'uses' => 'CategoriaController@store',
+    'as' => 'categoria_store_path',
+]);
+Route::get('/admin/categoria/lista', [
+    'uses' => 'CategoriaController@getCategorias',
+    'as' => 'categoria_lista_path',
+]);
+Route::post('/admin/categoria/editar', [
+    'uses' => 'CategoriaController@editar',
+    'as' => 'categoria_editar_path',
+]);
+Route::get('/admin/categoria/editar/imagen/{filename}', [
+    'uses' => 'CategoriaController@getFoto',
+    'as' => 'categoria_editar_imagen_path',
+]);
+Route::get('/admin/categoria/delete/{id}', [
+    'uses' => 'CategoriaController@getDelete',
+    'as' => 'categoria.lista.delete',
+]);

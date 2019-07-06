@@ -54,6 +54,12 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'categorias' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/categorias'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
         'comunidades' => [
             'driver' => 'local',
             'root' => storage_path('app/public/comunidades'),
