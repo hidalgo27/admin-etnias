@@ -10,7 +10,7 @@
 <h2>Hola {{$asociacion->nombre}} </h2>
 <p>Te damos la bienvenida a MiEtnias estamos muy contentos de tenerte como nuestro aliado...</p>
 <p>
-    Producto de una minuciosa evaluacion a cargo de nuetro personal... 
+    Producto de una minuciosa evaluacion a cargo de nuetro personal...
 </p>
 <b>Tu cuenta de acceso es:</b>
 <table>
@@ -24,7 +24,7 @@
     </tbody>
 </table>
 <p>
-<a href="https://admin.etniasperu.travel/login" target="_blank">Ingresa a este link para empezxar a trabajar.</a>
+<a href="http://admin.mietnia.com" target="_blank">Ingresa a este link para empezar a trabajar.</a>
 </p>
 </body>
-</html>   
+</html>
