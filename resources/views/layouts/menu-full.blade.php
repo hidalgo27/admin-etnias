@@ -46,8 +46,8 @@
             <a href="#!">
                  <b class="text-primary text-12">
                     {{Auth::user()->nombre}}
-                </b> 
-                <b class="text-primary  text-13">Eres un(a) 
+                </b>
+                <b class="text-primary  text-13">Eres un(a)
                   @if(Auth::user()->hasRole('admin')){{'Administrador'}}@elseif(Auth::user()->hasRole('asociacion')){{ 'Asociacion' }}@endif
                   </b>
             </a>
@@ -60,6 +60,7 @@
     @if(Auth::user()->hasRole('admin'))
     <ul class="sub-menu collapse menu2 @if(
       (url()->current()==route('administrador_lista_path')||url()->current()==route('administrador_nuevo_path'))||
+      (url()->current()==route('categoria_lista_path')||url()->current()==route('categoria_nuevo_path'))||
       (url()->current()==route('comunidad_lista_path')||url()->current()==route('comunidad_nuevo_path'))||
       (url()->current()==route('asociacion.lista')||url()->current()==route('asociacion.nuevo'))||
       (url()->current()==route('servicios.nuevo',[$asociacion_id])||url()->current()==route('servicios.lista',[$asociacion_id]))||

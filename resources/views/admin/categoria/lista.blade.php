@@ -60,8 +60,8 @@
                                                                     <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" placeholder="Nombre de la comunidad" value="{{ $item->nombre }}">
                                                                 </div>
 
-                                                                <div class="row">
-                                                                    <div class="col-6">
+                                                                    <div class="col-12">
+                                                                        <div class="row">
                                                                         <div class="form-group col-12 text-left">
                                                                             <p><b>Foto</b></p>
 {{--                                                                            @foreach ($item->fotos->where('estado','1') as $foto)--}}
@@ -83,7 +83,7 @@
                                                                             <input type="file" name="portada_f" class="form-control">
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                    </div>
                                                             </div>
 
                                                         </div>
@@ -97,7 +97,7 @@
                                                 </form>
                                             </div>
                                             </div>
-                                            <a href="#" class="btn btn-danger" onclick="eliminar('{{ $item->id }}')"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="#" class="btn btn-danger" onclick="eliminar_categoria('{{ $item->id }}')"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     @php

@@ -1558,3 +1558,55 @@ console.log(foto.length);
 
     //   }
   }
+
+  function eliminar_categoria(id){
+
+    Swal.fire({
+        title: 'MENSAJE DEL SISTEMA',
+        text: "¿Estas seguro de borrar la categoria?",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText:'No, cancelar'
+      }).then((result) => {
+        if (result.value) {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:'get',
+                url:'/admin/categoria/delete/'+id,
+                // data:{id:id},
+                success:function(data){
+                    if(data==1){
+                        Swal.fire(
+                            'Borrado!',
+                            'La categoria ha sido borrada.',
+                            'success'
+                        );
+                        $('#row_lista_comunidades_'+id).remove();
+                    }
+                    else if(data==2){
+                        Swal.fire(
+                            'Avertencia!',
+                            'La categoria tiene actividaes relacionadas, modifique o borre las actividaes que tengan esta categoria.',
+                            'danger'
+                        )
+                    }
+                    else if(data==0){
+                        Swal.fire(
+                            'Error!',
+                            'Hubo un error al borrar la categoria.',
+                            'danger'
+                        )
+                    }
+                }
+             });
+        }
+      })
+
+}
