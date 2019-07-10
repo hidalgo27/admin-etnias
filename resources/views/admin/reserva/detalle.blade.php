@@ -134,8 +134,8 @@ use Carbon\Carbon;
                                 <th>TITULO</th>
                                 <th>PAX</th>
                                 <th>P.U.</th>
+                                <th>P.U.+COMISION(%)</th>
                                 <th>SUBTOTAL</th>
-                                <th>COMISION(%)</th>
                                 <th>ASOCIACION</th>
                                 <th>ESTADO</th>
                                 <th>OPERACIONES</th>
@@ -151,11 +151,11 @@ use Carbon\Carbon;
                                         <td><i class="fas fa-map text-primary"></i> {{ $actividad->titulo }}</td>
                                         <td class="text-center">{{ $reserva->nro_pax }}</td>
                                         <td class="text-right">{{ number_format($actividad->precio,2) }}</td>
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$actividad->precio,2) }}</td>
+                                        <td class="text-right">{{ round($actividad->precio+$actividad->precio*($actividad->asociacion->comision/100)) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*(round($actividad->precio+$actividad->precio*($actividad->asociacion->comision/100))),2) }}</td>
                                         @php
-                                            $total_comision+=$reserva->nro_pax*$actividad->precio*($actividad->asociacion->comision/100);
+                                            $total_comision+=$reserva->nro_pax*(round($actividad->precio+$actividad->precio*($actividad->asociacion->comision/100)));
                                         @endphp
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$actividad->precio*($actividad->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
                                         <td>
                                             {{ $actividad->asociacion->ruc }}
                                             {{ $actividad->asociacion->nombre }}
@@ -196,11 +196,18 @@ use Carbon\Carbon;
                                         <td><i class="fas fa-utensils text-danger"></i> {{ $valor->titulo }}</td>
                                         <td class="text-center">{{ $reserva->nro_pax }}</td>
                                         <td class="text-right">{{ number_format($valor->precio,2) }}</td>
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        <td class="text-right">{{ round($valor->precio+$valor->precio*($actividad->asociacion->comision/100)) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*(round($valor->precio+$valor->precio*($actividad->asociacion->comision/100))),2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*(round($valor->precio+$valor->precio*($actividad->asociacion->comision/100)));
+                                        @endphp
+                                        {{--  <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
                                         @php
                                             $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
                                         @endphp
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>  --}}
+
+
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
@@ -235,11 +242,16 @@ use Carbon\Carbon;
                                         <td><i class="fas fa-bed"></i> {{ $valor->titulo }}</td>
                                         <td class="text-center">{{ $reserva->nro_pax }}</td>
                                         <td class="text-right">{{ number_format($valor->precio,2) }}</td>
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
+                                        <td class="text-right">{{ round($valor->precio+$valor->precio*($actividad->asociacion->comision/100)) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*(round($valor->precio+$valor->precio*($actividad->asociacion->comision/100))),2) }}</td>
+                                        @php
+                                            $total_comision+=$reserva->nro_pax*(round($valor->precio+$valor->precio*($actividad->asociacion->comision/100)));
+                                        @endphp
+                                        {{--  <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio,2) }}</td>
                                         @php
                                             $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
                                         @endphp
-                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
+                                        <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>  --}}
                                         <td>
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
@@ -348,8 +360,8 @@ use Carbon\Carbon;
                             <tr>
                                 <td colspan="3"><b>TOTAL</b></td>
                                 <td class="text-right"><b><sup>S/.</sup> {{number_format($total_asociacion,2)}}</b></td>
-                                <td class="text-right" colspan="{{ $nro_col_span }}"> <b>+ <sup>S/.</sup> {{number_format($total_comision,2)}}</b></td>
-                                <td class="text-left"><b>= <sup>S/.</sup> {{ number_format($total_asociacion+$total_comision,2)}}</b></td>
+                                <td class="text-right" colspan="{{ $nro_col_span }}"> <b>+ <sup>S/.</sup> {{ round($total_comision)}}</b></td>
+                                <td class="text-left"><b>= <sup>S/.</sup> {{ round($total_asociacion+$total_comision)}}</b></td>
                             </tr>
                             @php
                                 $total_transporte_externo=0;
@@ -534,7 +546,7 @@ use Carbon\Carbon;
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_transporte_externo,2)}}</b></td></tr>
+                                    <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{ round($total_transporte_externo)}}</b></td></tr>
                                 @endif
                             @endif
                             @php
@@ -719,12 +731,12 @@ use Carbon\Carbon;
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{number_format($total_guia,2)}}</b></td></tr>
+                                    <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{ round($total_guia)}}</b></td></tr>
                                 @endif
                             @endif
                         </tbody>
                         <tfoot>
-                            <tr class="bg-dark text-white"><th colspan="3"><b class="text-success text-18"> GRAN TOTAL</b></th><th colspan="5"><b class="text-success text-18">{{number_format($total_asociacion+$total_comision+$total_transporte_externo+$total_guia,2)}}</b></th></tr>
+                            <tr class="bg-dark text-white"><th colspan="3"><b class="text-success text-18"> GRAN TOTAL</b></th><th colspan="5"><b class="text-success text-18">{{ number_format(round($total_asociacion+$total_comision+$total_transporte_externo+$total_guia),2)}}</b></th></tr>
                         </tfoot>
                     </table>
                 </div>
