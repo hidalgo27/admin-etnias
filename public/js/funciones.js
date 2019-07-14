@@ -1405,7 +1405,7 @@ function es_correcto_fotos(mensa,archivo,ancho,alto){
 
 
     if(o.files.length!=0){
-      if (!(/\.(jpg|png)$/i).test(foto.name)) {
+      if (!(/\.(jpeg|jpg|png)$/i).test(foto.name)) {
 
           c=1;
           Swal.fire(
@@ -1473,7 +1473,7 @@ console.log(foto.length);
         var imagen_con_error='';
         for(var i=0;i<foto.length;i++){
             console.log('nombre:'+foto[i].name);
-            if (!(/\.(jpg|png)$/i).test(foto[i].name)) {
+            if (!(/\.(jpeg|jpg|png)$/i).test(foto[i].name)) {
                 tipo_error=1;
                 fotos_erradas++;
                 imagen_con_error+=foto[i].name+', ';
