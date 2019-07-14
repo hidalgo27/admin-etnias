@@ -422,15 +422,15 @@ function enviar_datos(valor1,valor2){
         }
     });
 
-    if(!es_correcto_fotos('Para la foto de portada','foto_portada_e_'+valor1+'_'+valor2,'1770','900')){
-        return false;
-    }
-    if(!es_correcto_fotos('Para la foto de miniatura','foto_miniatura_'+valor1+'_'+valor2,'550','345')){
-        return false;
-    }
-    if(!es_correcto_fotos_galeria('Para las fotos de la galeria','foto_'+valor1+'_'+valor2,'1280','665')){
-        return false;
-    }
+    //if(!es_correcto_fotos('Para la foto de portada','foto_portada_e_'+valor1+'_'+valor2,'1770','900')){
+    //    return false;
+    //}
+    //if(!es_correcto_fotos('Para la foto de miniatura','foto_miniatura_'+valor1+'_'+valor2,'550','345')){
+    //    return false;
+    //}
+    //if(!es_correcto_fotos_galeria('Para las fotos de la galeria','foto_'+valor1+'_'+valor2,'1280','665')){
+    //    return false;
+    //}
     $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -605,15 +605,15 @@ function enviar_datos_editar(valor1,valor2){
             return false;
         }
     });
-    if(!es_correcto_fotos('Para la foto de portada','foto_portada_e_'+valor1+'_'+valor2,'1770','900')){
-        return false;
-    }
-    if(!es_correcto_fotos('Para la foto de miniatura','foto_miniatura_'+valor1+'_'+valor2,'550','345')){
-        return false;
-    }
-    if(!es_correcto_fotos_galeria('Para las fotos de la galeria','foto_'+valor1+'_'+valor2,'1280','665')){
-        return false;
-    }
+    //if(!es_correcto_fotos('Para la foto de portada','foto_portada_e_'+valor1+'_'+valor2,'1770','900')){
+    //    return false;
+    //}
+    //if(!es_correcto_fotos('Para la foto de miniatura','foto_miniatura_'+valor1+'_'+valor2,'550','345')){
+    //    return false;
+    //}
+    //if(!es_correcto_fotos_galeria('Para las fotos de la galeria','foto_'+valor1+'_'+valor2,'1280','665')){
+    //    return false;
+    //}
     $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
