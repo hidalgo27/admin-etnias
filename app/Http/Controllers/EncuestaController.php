@@ -54,7 +54,6 @@ class EncuestaController extends Controller
             $encuesta->save();
         }
         return redirect()->back()->with('success','Encuesta enviada.');
-
     }
     public function confirmar($tipo_servicio,$grupo_id,$estado){
         // try {
