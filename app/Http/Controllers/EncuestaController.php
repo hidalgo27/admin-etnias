@@ -2,47 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use App\Guia;
+use App\User;
 use App\Reserva;
-use App\Comision;
-use App\Distrito;
-use App\Comunidad;
-use App\Proveedor;
-use App\Provincia;
-use App\ReservaGuia;
-use App\Departamento;
-use App\ReservaComida;
-use App\ReservaServicio;
-use App\ReservaActividad;
-use App\ReservaHospedaje;
-use App\ReservaTransporte;
-use App\TransporteExterno;
+use App\ReservaEncuesta;
 use Illuminate\Http\Request;
-use App\ReservaTransporteExterno;
+use Illuminate\Support\Carbon;
+use App\Mail\MailSenderEncuesta;
+use Illuminate\Support\Facades\Mail;
 
-class ReservaController extends Controller
+class EncuestaController extends Controller
 {
-    //
-    public function lista(){
-        $reservas_close=Reserva::where('estado','>=','0')->get();
-        $departamentos =Departamento::get();
-        $provincias =Provincia::get();
-        $distritos =Distrito::get();
-        $comunidades = Comunidad::get();
-        return view('admin.reserva.lista',compact('reservas_close','departamentos','provincias','distritos','comunidades'));
+     //
+     public function lista(){
+        $reservas_sin_enviar=Reserva::where('estado','>=','0')->where('estado_encuesta','0')->get();
+        $reservas_enviadas=Reserva::where('estado','>=','0')->where('estado_encuesta','1')->get();
+        return view('admin.encuesta.lista',compact('reservas_sin_enviar','reservas_enviadas'));
     }
     public function detalle($reserva_id){
         $reserva=Reserva::findOrFail($reserva_id);
-        $comisiones=Comision::get();
-        $transporte_externo=TransporteExterno::get();
-        $guiado=Guia::get();
-        $proveedores=Proveedor::get();
+        return view('admin.encuesta.detalle',compact('reserva','reserva_id'));
+    }
+    public function enviar_encuesta(Request $request){
+        $reserva_id=$request->input('reserva_id');
+        $reserva=Reserva::findOrFail($reserva_id);
+        // dd($reserva);
+        $user=User::find($reserva->user_id);
+        $reserva->estado_encuesta=1;
+        $reserva->save();
+        Mail::send(new MailSenderEncuesta($reserva,$user->email));
 
-        $departamentos =Departamento::get();
-        $provincias =Provincia::get();
-        $distritos =Distrito::get();
-        $comunidades = Comunidad::get();
-        return view('admin.reserva.detalle',compact('reserva','comisiones','transporte_externo','guiado','proveedores','reserva_id','departamentos','provincias','distritos','comunidades'));
+        return redirect()->back()->with('success','Encuesta enviada.');
+
+    }
+    public function guardar_encuesta(Request $request ){
+
+        $reserva_id=base64_decode($request->input('reserva_id'));
+        $preguntas=$request->input('preguntas');
+        $pregunta_texto_id=$request->input('pregunta_texto_id');
+        $pregunta_texto=$request->input('pregunta_texto');
+        if(isset($preguntas)){
+            foreach($preguntas as $pregunta){
+                $pregunta_=explode('_',$pregunta);
+                $encuesta=ReservaEncuesta::find($pregunta_[0]);
+                $encuesta->valoracion=$pregunta_[1];
+                $encuesta->save();
+            }
+        }
+        if(isset($pregunta_texto_id)){
+            $encuesta=ReservaEncuesta::find($pregunta_texto_id);
+            $encuesta->valoracion=$pregunta_texto;
+            $encuesta->save();
+        }
+        return redirect()->back()->with('success','Encuesta enviada.');
+
     }
     public function confirmar($tipo_servicio,$grupo_id,$estado){
         // try {
@@ -223,8 +235,7 @@ class ReservaController extends Controller
         // return response()->json([$request->all()]);
         if(trim($valor)!=''){
         $reserva=Reserva::where('codigo',$valor)->orwhere('nombre','like',"%$valor%")->get();
-            return view('admin.reserva.get-busqueda',compact('reserva'));
+            return view('admin.encuesta.get-busqueda',compact('reserva'));
         }
     }
-
 }

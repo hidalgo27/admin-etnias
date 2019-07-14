@@ -331,3 +331,25 @@ Route::get('/admin/categoria/delete/{id}', [
     'uses' => 'CategoriaController@getDelete',
     'as' => 'categoria.lista.delete',
 ]);
+
+//rutas para las encuestas
+Route::get('/admin/encuesta', [
+    'uses' => 'EncuestaController@lista',
+    'as' => 'encuesta.lista',
+]);
+Route::get('/admin/encuesta/detalle/{id}', [
+    'uses' => 'EncuestaController@detalle',
+    'as' => 'encuesta.detalle',
+]);
+Route::post('/admin/encuesta/detalle/enviar/encuesta/asas', [
+    'uses' => 'EncuestaController@enviar_encuesta',
+    'as' => 'encuesta.enviar',
+]);
+Route::post('/admin/encuesta/detalle/guardar-encuesta', [
+    'uses' => 'EncuestaController@guardar_encuesta',
+    'as' => 'encuesta.guardar',
+]);
+Route::post('/admin/encuesta/get-reserva', [
+    'uses' => 'EncuestaController@getReserva',
+    'as' => 'encuesta.get',
+]);

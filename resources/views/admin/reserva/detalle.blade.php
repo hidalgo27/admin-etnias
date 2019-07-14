@@ -411,7 +411,7 @@ use Carbon\Carbon;
                             @if(Auth::user()->hasRole('admin'))
                                 @if ($reserva->transporte_externo)
                                     <thead>
-                                        <tr class="bg-dark text-white"><th colspan="11">TRANSPORTE EXTERNO</th></tr>
+                                        <tr class="bg-dark text-white"><th colspan="11">TRANSPORTE</th></tr>
                                     </thead>
                                     <thead>
                                         <tr class="bg-secondary text-white mb-0">
@@ -425,7 +425,7 @@ use Carbon\Carbon;
                                         </tr>
                                     </thead>
                                     @foreach ($reserva->transporte_externo as $valor)
-                                        @if ($valor->s_p=='PRIVADO')
+                                        {{--  @if ($valor->s_p=='PRIVADO')
                                             @php
                                                 $total_transporte_externo+=$valor->precio*$valor->pax;
                                             @endphp
@@ -433,26 +433,31 @@ use Carbon\Carbon;
                                             @php
                                                 $total_transporte_externo+=$valor->precio;
                                             @endphp
-                                        @endif
-
+                                        @endif  --}}
+                                        @php
+                                            $total_transporte_externo+=round($valor->precio);
+                                        @endphp
                                         <tr>
                                             <td colspan="2">
                                                 <i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
                                             </td>
                                             <td class="text-center">{{ $valor->pax }}</td>
                                             <td class="text-right">
-                                                @if ($valor->s_p=='PRIVADO')
+                                                {{--  @if ($valor->s_p=='PRIVADO')
                                                     {{ number_format($valor->precio,2) }}
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio/$valor->pax,2) }}
-                                                @endif
+                                                @endif  --}}
+                                                {{ number_format(round($valor->precio/$valor->pax),2) }}
+
                                             </td>
                                             <td class="text-right">
-                                                @if ($valor->s_p=='PRIVADO')
+                                                {{--  @if ($valor->s_p=='PRIVADO')
                                                     {{ number_format($valor->precio*$valor->pax,2) }}
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio,2) }}
-                                                @endif
+                                                @endif  --}}
+                                                {{ number_format(round($valor->precio),2) }}
                                             </td>
 
                                             <td colspan="4">
@@ -484,7 +489,7 @@ use Carbon\Carbon;
                                                                                 <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span>
                                                                                 <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span>
                                                                                 <span class="badge badge-primary">{{ $valor->s_p }}</span>
-                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format($valor->precio,2) }}</span>
+                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format(round($valor->precio),2) }}</span>
                                                                             <hr>
                                                                             </div>
                                                                         </div>
@@ -514,15 +519,18 @@ use Carbon\Carbon;
                                                                                                     </label>
                                                                                                 </td>
                                                                                                 <td style="width:120px">
-                                                                                                    @if ($valor->s_p=='PRIVADO')
+                                                                                                    {{--  @if ($valor->s_p=='PRIVADO')
                                                                                                         @php
                                                                                                             $precio_proveedor=number_format($transporte_externo_proveedor->precio*$valor->pax,2);
                                                                                                         @endphp
                                                                                                     @elseif ($valor->s_p=='COMPARTIDO')
+                                                                                                        @php
+                                                                                                            $precio_proveedor=number_format($transporte_externo_proveedor->precio,2);
+                                                                                                        @endphp
+                                                                                                    @endif  --}}
                                                                                                     @php
-                                                                                                        $precio_proveedor=number_format($transporte_externo_proveedor->precio,2);
+                                                                                                        $precio_proveedor=number_format(round($transporte_externo_proveedor->precio),2);
                                                                                                     @endphp
-                                                                                                    @endif
                                                                                                     <input class="form-control" type="hidden" name="proveedor_nombre_" id="proveedor_nombre_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $transporte_externo_proveedor->proveedor->nombre_comercial }}">
                                                                                                     <input class="form-control" type="number" name="precio_pago" id="precio_pago_{{ $valor->id }}_{{ $transporte_externo_proveedor->proveedor->id }}" value="{{ $precio_proveedor }}">
                                                                                                 </td>
@@ -588,7 +596,7 @@ use Carbon\Carbon;
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{ round($total_transporte_externo)}}</b></td></tr>
+                                    <tr><td colspan="3"><b>TOTAL</b></td><td class="text-right"><b><sup>S/.</sup>{{ number_format(round($total_transporte_externo),2)}}</b></td></tr>
                                 @endif
                             @endif
                             @php
@@ -611,7 +619,7 @@ use Carbon\Carbon;
                                         </tr>
                                     </thead>
                                     @foreach ($reserva->guia as $valor)
-                                        @if ($valor->s_p=='PRIVADO')
+                                        {{--  @if ($valor->s_p=='PRIVADO')
                                             @php
                                                 $total_guia+=$valor->precio*$valor->pax;
                                             @endphp
@@ -619,26 +627,30 @@ use Carbon\Carbon;
                                             @php
                                                 $total_guia+=$valor->precio;
                                             @endphp
-                                        @endif
-
+                                        @endif  --}}
+                                        @php
+                                            $total_guia+=round($valor->precio);
+                                        @endphp
                                         <tr>
                                             <td colspan="2">
                                                 <i class="fas fa-flag"></i> <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
                                             </td>
                                             <td class="text-center">{{ $valor->pax }}</td>
                                             <td class="text-right">
-                                                @if ($valor->s_p=='PRIVADO')
+                                                {{--  @if ($valor->s_p=='PRIVADO')
                                                     {{ number_format($valor->precio,2) }}
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio/$valor->pax,2) }}
-                                                @endif
+                                                @endif  --}}
+                                                {{ number_format(round($valor->precio/$valor->pax),2) }}
                                             </td>
                                             <td class="text-right">
-                                                @if ($valor->s_p=='PRIVADO')
+                                                {{--  @if ($valor->s_p=='PRIVADO')
                                                     {{ number_format($valor->precio*$valor->pax,2) }}
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio,2) }}
-                                                @endif
+                                                @endif  --}}
+                                                {{ number_format(round($valor->precio),2) }}
                                             </td>
 
                                             <td colspan="4">
@@ -669,7 +681,7 @@ use Carbon\Carbon;
                                                                                 <i class="fas fa-flag"></i>
                                                                                 <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span>
                                                                                 <span class="badge badge-primary">{{ $valor->s_p }}</span>
-                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format($valor->precio,2) }}</span>
+                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format(round($valor->precio),2) }}</span>
                                                                             <hr>
                                                                             </div>
                                                                         </div>
@@ -699,15 +711,18 @@ use Carbon\Carbon;
                                                                                                     </label>
                                                                                                 </td>
                                                                                                 <td style="width:120px">
-                                                                                                    @if ($valor->s_p=='PRIVADO')
+                                                                                                    {{--  @if ($valor->s_p=='PRIVADO')
                                                                                                         @php
                                                                                                             $precio_proveedor=number_format($guia_proveedor->precio*$valor->pax,2);
                                                                                                         @endphp
                                                                                                     @elseif ($valor->s_p=='COMPARTIDO')
+                                                                                                        @php
+                                                                                                            $precio_proveedor=number_format($guia_proveedor->precio,2);
+                                                                                                        @endphp
+                                                                                                    @endif  --}}
                                                                                                     @php
-                                                                                                        $precio_proveedor=number_format($guia_proveedor->precio,2);
+                                                                                                        $precio_proveedor=number_format(round($guia_proveedor->precio),2);
                                                                                                     @endphp
-                                                                                                    @endif
                                                                                                     <input class="form-control" type="hidden" name="proveedor_nombre_" id="proveedor_nombre_{{ $valor->id }}_{{ $guia_proveedor->proveedor->id }}" value="{{ $guia_proveedor->proveedor->nombre_comercial }}">
                                                                                                     <input class="form-control" type="number" name="precio_pago" id="precio_pago_{{ $valor->id }}_{{ $guia_proveedor->proveedor->id }}" value="{{ $precio_proveedor }}">
                                                                                                 </td>
@@ -773,7 +788,7 @@ use Carbon\Carbon;
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr><td colspan="3"></td><td class="text-right"><b><sup>S/.</sup>{{ round($total_guia)}}</b></td></tr>
+                                    <tr><td colspan="3"><b>TOTAL</b></td><td class="text-right"><b><sup>S/.</sup>{{ number_format(round($total_guia),2)}}</b></td></tr>
                                 @endif
                             @endif
                         </tbody>

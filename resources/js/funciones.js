@@ -1608,5 +1608,26 @@ console.log(foto.length);
              });
         }
       })
-
 }
+function buscar_reserva_encuesta(valorcito){
+    console.log(valorcito);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type:'POST',
+            url:'../admin/encuesta/get-reserva',
+            data:{valor:valorcito},
+            beforeSend: function() {
+                $("#rpt").html('');
+                $('#rpt').html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+            },
+            success:function(data){
+                $("#rpt").html('');
+                $("#rpt").html(data);
+            }
+        });
+    }
+

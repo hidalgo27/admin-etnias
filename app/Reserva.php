@@ -40,4 +40,8 @@ class Reserva extends Model
     {
         return $this->hasMany(ReservaGuia::class, 'reserva_id');
     }
+    public function encuestas()
+    {
+        return $this->hasMany(ReservaEncuesta::class, 'reserva_id');
+    }
 }
