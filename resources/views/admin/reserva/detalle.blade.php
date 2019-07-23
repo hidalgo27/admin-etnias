@@ -124,10 +124,11 @@ use Carbon\Carbon;
                         $total_guias=0;
                         $nro_col_span=0;
                         $total_comision=0;
+                        $comision_valor=0;
                     @endphp
                     <table class="table table-striped table-hover table-sm table-responsive">
                         <thead>
-                            <tr class="bg-dark text-white"><th colspan="11">ACTIVIDADES</th></tr>
+                            <tr class="bg-dark text-white"><th colspan="13">ACTIVIDADES</th></tr>
                         </thead>
                         <thead>
                             <tr class="bg-secondary text-white mb-0">
@@ -136,7 +137,7 @@ use Carbon\Carbon;
                                 <th colspan="2">PRECIO DE ASOCIACION</th>
                                 <th colspan="2">COMISION</th>
                                 <th colspan="2">PRECIO EN PAGINA</th>
-                                <th>ASOCIACION</th>
+                                <th colspan="3">ASOCIACION</th>
                                 <th>ESTADO</th>
                                 <th>OPERACIONES</th>
                             </tr>
@@ -149,7 +150,7 @@ use Carbon\Carbon;
                                 <th>SUBTOTAL</th>
                                 <th>P.U.</th>
                                 <th>SUBTOTAL</th>
-                                <th></th>
+                                <th colspan="3"></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -164,6 +165,7 @@ use Carbon\Carbon;
                             @if ($reserva->actividades)
                                 @foreach ($reserva->actividades as $actividad)
                                 @php
+                                    $comision_valor=$actividad->asociacion->comision;
                                     $total_asociacion+=$reserva->nro_pax*$actividad->precio;
                                     $asoc_pu=round($actividad->precio);
                                     $asoc_pu_st=$reserva->nro_pax*$asoc_pu;
@@ -185,7 +187,7 @@ use Carbon\Carbon;
                                         <td class="text-right">{{ number_format($asoc_comision_st,2) }}</td>
                                         <td class="text-right">{{ number_format($asoc_pu+$asoc_comision,2) }}</td>
                                         <td class="text-right">{{ number_format($precio_pagina_st,2) }}</td>
-                                        <td>
+                                        <td colspan="3">
                                             {{ $actividad->asociacion->ruc }}
                                             {{ $actividad->asociacion->nombre }}
                                             {{ $actividad->asociacion->contacto }}
@@ -239,7 +241,7 @@ use Carbon\Carbon;
                                         <td class="text-right">{{ number_format($asoc_comision_st,2) }}</td>
                                         <td class="text-right">{{ number_format($asoc_pu+$asoc_comision,2) }}</td>
                                         <td class="text-right">{{ number_format($precio_pagina_st,2) }}</td>
-                                        <td>
+                                        <td colspan="3">
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
                                             {{ $valor->asociacion->contacto }}
@@ -287,7 +289,7 @@ use Carbon\Carbon;
                                         <td class="text-right">{{ number_format($asoc_comision_st,2) }}</td>
                                         <td class="text-right">{{ number_format($asoc_pu+$asoc_comision,2) }}</td>
                                         <td class="text-right">{{ number_format($precio_pagina_st,2) }}</td>
-                                        <td>
+                                        <td colspan="3">
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
                                             {{ $valor->asociacion->contacto }}
@@ -327,7 +329,7 @@ use Carbon\Carbon;
                                             $total_comision+=$reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100);
                                         @endphp
                                         <td class="text-right">{{ number_format($reserva->nro_pax*$valor->precio*($valor->asociacion->comision/100),2) }} <sup class="text-success"><b>({{ $actividad->asociacion->comision }}%)</b></sup></td>
-                                        <td>
+                                        <td colspan="3">
                                             {{ $valor->asociacion->ruc }}
                                             {{ $valor->asociacion->nombre }}
                                             {{ $valor->asociacion->contacto }}
@@ -398,12 +400,12 @@ use Carbon\Carbon;
                                 <td><b>TOTAL</b></td>
                                 <td></td>
                                 <td></td>
-                                <td class="text-right"><b><sup>S/.</sup> {{ number_format($asoc_total,2)}}</b></td>
+                                <td class="text-right"><b><sup>$.</sup> {{ number_format($asoc_total,2)}}</b></td>
                                 <td></td>
-                                <td class="text-right"><b><sup>S/.</sup> {{ number_format($asoc_comision_total,2)}}</b></td>
+                                <td class="text-right"><b><sup>$.</sup> {{ number_format($asoc_comision_total,2)}}</b></td>
                                 <td></td>
-                                <td class="text-right"><b><sup>S/.</sup> {{ number_format($precio_pagina_total,2)}}</b></td>
-                                <td colspan="3"></td>
+                                <td class="text-right"><b><sup>$.</sup> {{ number_format($precio_pagina_total,2)}}</b></td>
+                                <td colspan="6"></td>
                             </tr>
                             @php
                                 $total_transporte_externo=0;
@@ -411,15 +413,29 @@ use Carbon\Carbon;
                             @if(Auth::user()->hasRole('admin'))
                                 @if ($reserva->transporte_externo)
                                     <thead>
-                                        <tr class="bg-dark text-white"><th colspan="11">TRANSPORTE</th></tr>
+                                        <tr class="bg-dark text-white"><th colspan="13">TRANSPORTE</th></tr>
                                     </thead>
                                     <thead>
                                         <tr class="bg-secondary text-white mb-0">
-                                            <th colspan="2">TITULO</th>
+                                            <th colspan="1">TITULO</th>
+                                            <th>PAX</th>
+                                            <th colspan="2" >PRECIO EN SISTEMA</th>
+                                            <th colspan="2">COMISION</th>
+                                            <th colspan="2">PRECIO EN PAGINA</th>
+                                            <th colspan="3">PROVEEDOR</th>
+                                            <th>ESTADO</th>
+                                            <th>OPERACIONES</th>
+                                        </tr>
+                                        <tr class="bg-secondary text-white mb-0">
+                                            <th colspan="1">TITULO</th>
                                             <th>PAX</th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
-                                            <th colspan="4">PROVEEDOR</th>
+                                            <th>P.U.</th>
+                                            <th>SUBTOTAL</th>
+                                            <th>P.U.</th>
+                                            <th>SUBTOTAL</th>
+                                            <th colspan="3">PROVEEDOR</th>
                                             <th>ESTADO</th>
                                             <th>OPERACIONES</th>
                                         </tr>
@@ -435,10 +451,26 @@ use Carbon\Carbon;
                                             @endphp
                                         @endif  --}}
                                         @php
-                                            $total_transporte_externo+=round($valor->precio);
+                                            $transporte_externo_pu=0;
+                                            $transporte_externo_st=0;
+                                            $transporte_externo_c_pu=0;
+                                            $transporte_externo_c_st=0;
+                                            $transporte_externo_pp_pu=0;
+                                            $transporte_externo_pp_st=0;
+
+                                            $transporte_externo_pu=round($valor->precio);
+                                            $transporte_externo_st=$transporte_externo_pu*$valor->pax;
+                                            $transporte_externo_c_pu=round($valor->precio*($comision_valor/100));
+                                            $transporte_externo_c_st=$transporte_externo_c_pu*$valor->pax;
+
+
+                                            $transporte_externo_pp_pu=$transporte_externo_pu+$transporte_externo_c_pu;
+                                            $transporte_externo_pp_st=$transporte_externo_pp_pu*$valor->pax;
+
+                                            $total_transporte_externo+=$transporte_externo_pp_st;
                                         @endphp
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="1">
                                                 <i class="fas fa-bus"></i> <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
                                             </td>
                                             <td class="text-center">{{ $valor->pax }}</td>
@@ -448,7 +480,7 @@ use Carbon\Carbon;
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio/$valor->pax,2) }}
                                                 @endif  --}}
-                                                {{ number_format(round($valor->precio/$valor->pax),2) }}
+                                                {{ number_format($transporte_externo_pu,2) }}
 
                                             </td>
                                             <td class="text-right">
@@ -457,20 +489,31 @@ use Carbon\Carbon;
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio,2) }}
                                                 @endif  --}}
-                                                {{ number_format(round($valor->precio),2) }}
+                                                {{ number_format($transporte_externo_st,2) }}
                                             </td>
-
-                                            <td colspan="4">
+                                            <td class="text-right">
+                                                {{ number_format($transporte_externo_c_pu,2) }}
+                                            </td>
+                                            <td class="text-right">
+                                                {{ number_format($transporte_externo_c_st,2) }}
+                                            </td>
+                                            <td class="text-right">
+                                                {{ number_format($transporte_externo_pp_pu,2) }}
+                                            </td>
+                                            <td class="text-right">
+                                                {{ number_format($transporte_externo_pp_st,2) }}
+                                            </td>
+                                            <td colspan="3">
                                                 <div class="row">
                                                     @if ($valor->proveedor_id>0)
                                                         @php
                                                             $objeto=$proveedores->where('id',$valor->proveedor_id)->first();
                                                         @endphp
                                                     @endif
-                                                    <div id="rpt_proveedor_TRANSPORTE_{{ $valor->id }}" class="col-5 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
-                                                    <div id="rpt_precio_pago_TRANSPORTE_{{ $valor->id }}" class="col-2  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
-                                                    <div id="rpt_fecha_pago_TRANSPORTE_{{ $valor->id }}" class="col-3  px-0">@if($valor->proveedor_id>0) {{$valor->fecha_pago}} @else Sin fecha @endif</div>
-                                                    <div class="col-2">
+                                                    <div id="rpt_proveedor_TRANSPORTE_{{ $valor->id }}" class="col-8 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
+                                                    <div id="rpt_precio_pago_TRANSPORTE_{{ $valor->id }}" class="col-4  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
+                                                    <div id="rpt_fecha_pago_TRANSPORTE_{{ $valor->id }}" class="col-8  ">@if($valor->proveedor_id>0) {{$valor->fecha_pago}} @else Sin fecha @endif</div>
+                                                    <div class="col-4">
                                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{ $valor->id }}"><i class="fas fa-plus"></i></button>
                                                         <!-- Modal -->
                                                         <div id="myModal_{{ $valor->id }}" class="modal fade" role="dialog">
@@ -489,7 +532,7 @@ use Carbon\Carbon;
                                                                                 <span class="badge badge-success">{{ $valor->categoria }} [{{ $valor->min }} - {{ $valor->max }}]</span>
                                                                                 <span class="badge badge-secondary">{{ $valor->ruta_salida }} / {{ $valor->ruta_llegada }}</span>
                                                                                 <span class="badge badge-primary">{{ $valor->s_p }}</span>
-                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format(round($valor->precio),2) }}</span>
+                                                                                <span class="badge badge-success"><sup>$.</sup>{{ number_format(round($valor->precio),2) }}</span>
                                                                             <hr>
                                                                             </div>
                                                                         </div>
@@ -596,7 +639,7 @@ use Carbon\Carbon;
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr><td colspan="3"><b>TOTAL</b></td><td class="text-right"><b><sup>S/.</sup>{{ number_format(round($total_transporte_externo),2)}}</b></td></tr>
+                                    <tr><td colspan="3"><b>TOTAL</b></td><td class="text-right"><b><sup>$.</sup>{{ number_format(round($total_transporte_externo),2)}}</b></td></tr>
                                 @endif
                             @endif
                             @php
@@ -605,15 +648,29 @@ use Carbon\Carbon;
                             @if(Auth::user()->hasRole('admin'))
                                 @if ($reserva->guia)
                                     <thead>
-                                        <tr class="bg-dark text-white"><th colspan="11">GUIADO</th></tr>
+                                        <tr class="bg-dark text-white"><th colspan="13">GUIADO</th></tr>
                                     </thead>
                                     <thead>
                                         <tr class="bg-secondary text-white mb-0">
-                                            <th colspan="2">TITULO</th>
+                                            <th colspan="1">TITULO</th>
+                                            <th>PAX</th>
+                                            <th colspan="2" >PRECIO EN SISTEMA</th>
+                                            <th colspan="2">COMISION</th>
+                                            <th colspan="2">PRECIO EN PAGINA</th>
+                                            <th colspan="3">PROVEEDOR</th>
+                                            <th>ESTADO</th>
+                                            <th>OPERACIONES</th>
+                                        </tr>
+                                        <tr class="bg-secondary text-white mb-0">
+                                            <th colspan="1">TITULO</th>
                                             <th>PAX</th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
-                                            <th colspan="4">PROVEEDOR</th>
+                                            <th>P.U.</th>
+                                            <th>SUBTOTAL</th>
+                                            <th>P.U.</th>
+                                            <th>SUBTOTAL</th>
+                                            <th colspan="3">PROVEEDOR</th>
                                             <th>ESTADO</th>
                                             <th>OPERACIONES</th>
                                         </tr>
@@ -629,41 +686,86 @@ use Carbon\Carbon;
                                             @endphp
                                         @endif  --}}
                                         @php
-                                            $total_guia+=round($valor->precio);
+                                            $guia_pu=0;
+                                            $guia_st=0;
+                                            $guia_c_pu=0;
+                                            $guia_c_st=0;
+                                            $guia_pp_pu=0;
+                                            $guia_pp_st=0;
+
+                                            $guia_pu=round($valor->precio);
+                                            $guia_st=$guia_pu*$valor->pax;
+                                            $guia_c_pu=round($valor->precio*($comision_valor/100));
+                                            $guia_c_st=$guia_c_pu*$valor->pax;
+
+
+                                            $guia_pp_pu=$guia_pu+$guia_c_pu;
+                                            $guia_pp_st=$guia_pp_pu*$valor->pax;
+
+                                            $total_guia+=$guia_pp_st;
+
                                         @endphp
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="1">
                                                 <i class="fas fa-flag"></i> <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span> <span class="badge badge-primary">{{ $valor->s_p }}</span>
                                             </td>
                                             <td class="text-center">{{ $valor->pax }}</td>
-                                            <td class="text-right">
+                                            {{-- <td class="text-right"> --}}
                                                 {{--  @if ($valor->s_p=='PRIVADO')
                                                     {{ number_format($valor->precio,2) }}
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio/$valor->pax,2) }}
                                                 @endif  --}}
-                                                {{ number_format(round($valor->precio/$valor->pax),2) }}
+                                                {{-- {{ number_format(round($valor->precio/$valor->pax),2) }}
                                             </td>
-                                            <td class="text-right">
+                                            <td class="text-right"> --}}
                                                 {{--  @if ($valor->s_p=='PRIVADO')
                                                     {{ number_format($valor->precio*$valor->pax,2) }}
                                                 @elseif ($valor->s_p=='COMPARTIDO')
                                                 {{ number_format($valor->precio,2) }}
                                                 @endif  --}}
-                                                {{ number_format(round($valor->precio),2) }}
-                                            </td>
+                                                {{-- {{ number_format(round($valor->precio),2) }}
+                                            </td> --}}
+                                            <td class="text-right">
+                                                    {{--  @if ($valor->s_p=='PRIVADO')
+                                                        {{ number_format($valor->precio,2) }}
+                                                    @elseif ($valor->s_p=='COMPARTIDO')
+                                                    {{ number_format($valor->precio/$valor->pax,2) }}
+                                                    @endif  --}}
+                                                    {{ number_format($guia_pu,2) }}
 
-                                            <td colspan="4">
+                                                </td>
+                                                <td class="text-right">
+                                                    {{--  @if ($valor->s_p=='PRIVADO')
+                                                        {{ number_format($valor->precio*$valor->pax,2) }}
+                                                    @elseif ($valor->s_p=='COMPARTIDO')
+                                                    {{ number_format($valor->precio,2) }}
+                                                    @endif  --}}
+                                                    {{ number_format($guia_st,2) }}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{ number_format($guia_c_pu,2) }}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{ number_format($guia_c_st,2) }}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{ number_format($guia_pp_pu,2) }}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{ number_format($guia_pp_st,2) }}
+                                                </td>
+                                            <td colspan="3">
                                                 <div class="row">
                                                     @if ($valor->proveedor_id>0)
                                                         @php
                                                             $objeto=$proveedores->where('id',$valor->proveedor_id)->first();
                                                         @endphp
                                                     @endif
-                                                    <div id="rpt_proveedor_GUIA_{{ $valor->id }}" class="col-5 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
-                                                    <div id="rpt_precio_pago_GUIA_{{ $valor->id }}" class="col-2  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
-                                                    <div id="rpt_fecha_pago_GUIA_{{ $valor->id }}" class="col-3  px-0">@if($valor->proveedor_id>0) {{$valor->fecha_pago}} @else Sin fecha @endif</div>
-                                                    <div class="col-2">
+                                                    <div id="rpt_proveedor_GUIA_{{ $valor->id }}" class="col-8 ">@if($valor->proveedor_id>0) {{$objeto->nombre_comercial}} @else Sin proveedor @endif</div>
+                                                    <div id="rpt_precio_pago_GUIA_{{ $valor->id }}" class="col-4  px-0">@if($valor->proveedor_id>0) {{$valor->precio_reserva}} @else 0.00 @endif</div>
+                                                    <div id="rpt_fecha_pago_GUIA_{{ $valor->id }}" class="col-8  px-0">@if($valor->proveedor_id>0) {{$valor->fecha_pago}} @else Sin fecha @endif</div>
+                                                    <div class="col-4">
                                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_g_{{ $valor->id }}"><i class="fas fa-plus"></i></button>
                                                         <!-- Modal -->
                                                         <div id="myModal_g_{{ $valor->id }}" class="modal fade" role="dialog">
@@ -681,7 +783,7 @@ use Carbon\Carbon;
                                                                                 <i class="fas fa-flag"></i>
                                                                                 <span class="badge badge-success">{{ $valor->idioma }} [{{ $valor->min }} - {{ $valor->max }}]</span>
                                                                                 <span class="badge badge-primary">{{ $valor->s_p }}</span>
-                                                                                <span class="badge badge-success"><sup>S/.</sup>{{ number_format(round($valor->precio),2) }}</span>
+                                                                                <span class="badge badge-success"><sup>$.</sup>{{ number_format(round($valor->precio),2) }}</span>
                                                                             <hr>
                                                                             </div>
                                                                         </div>
@@ -788,12 +890,12 @@ use Carbon\Carbon;
                                             </td>
                                         </tr>
                                     @endforeach
-                                    <tr><td colspan="3"><b>TOTAL</b></td><td class="text-right"><b><sup>S/.</sup>{{ number_format(round($total_guia),2)}}</b></td></tr>
+                                    <tr><td colspan="3"><b>TOTAL</b></td><td class="text-right"><b><sup>$.</sup>{{ number_format(round($total_guia),2)}}</b></td></tr>
                                 @endif
                             @endif
                         </tbody>
                         <tfoot>
-                            <tr class="bg-dark text-white"><th colspan="11"><b class="text-success text-18">TOTAL PAGADO</b> : <b class="text-success text-18">{{ number_format(round($precio_pagina_total+$total_transporte_externo+$total_guia),2)}}</b></th></tr>
+                            <tr class="bg-dark text-white"><th colspan="13"><b class="text-success text-18">TOTAL PAGADO</b> : <b class="text-success text-18">{{ number_format(round($precio_pagina_total+$total_transporte_externo+$total_guia),2)}}</b></th></tr>
                         </tfoot>
                     </table>
                 </div>
