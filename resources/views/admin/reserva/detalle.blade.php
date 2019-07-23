@@ -427,17 +427,17 @@ use Carbon\Carbon;
                                             <th>OPERACIONES</th>
                                         </tr>
                                         <tr class="bg-secondary text-white mb-0">
-                                            <th colspan="1">TITULO</th>
-                                            <th>PAX</th>
+                                            <th colspan="1"></th>
+                                            <th></th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
-                                            <th colspan="3">PROVEEDOR</th>
-                                            <th>ESTADO</th>
-                                            <th>OPERACIONES</th>
+                                            <th colspan="3"></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     @foreach ($reserva->transporte_externo as $valor)
@@ -662,17 +662,17 @@ use Carbon\Carbon;
                                             <th>OPERACIONES</th>
                                         </tr>
                                         <tr class="bg-secondary text-white mb-0">
-                                            <th colspan="1">TITULO</th>
-                                            <th>PAX</th>
+                                            <th colspan="1"></th>
+                                            <th></th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
                                             <th>P.U.</th>
                                             <th>SUBTOTAL</th>
-                                            <th colspan="3">PROVEEDOR</th>
-                                            <th>ESTADO</th>
-                                            <th>OPERACIONES</th>
+                                            <th colspan="3"></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     @foreach ($reserva->guia as $valor)
