@@ -29,8 +29,10 @@ use Illuminate\Http\Request;
 use App\ActividadDisponibleHora;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use MaddHatter\LaravelFullcalendar\Calendar;
+use App\Mail\MailSenderNotificacionAsociacion;
 
 class ServiciosController extends Controller
 {
@@ -168,7 +170,7 @@ class ServiciosController extends Controller
 
                 }
                 if(!Auth::user()->hasRole('admin')){
-                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad guardada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad guardada correctamente, comuniquese con el administrador para aprobar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
                 }
@@ -212,7 +214,7 @@ class ServiciosController extends Controller
 
                 }
                 if(!Auth::user()->hasRole('admin')){
-                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida guardada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida guardada correctamente, comuniquese con el administrador para aprobar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
                 }
@@ -257,7 +259,7 @@ class ServiciosController extends Controller
 
                 }
                 if(!Auth::user()->hasRole('admin')){
-                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje guardado correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje guardado correctamente, comuniquese con el administrador para aprobar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
                 }
@@ -406,6 +408,9 @@ class ServiciosController extends Controller
         $minimo_e=$request->input('minimo_'.$attributo.'_e_'.$id);
         $maximo_e=$request->input('maximo_'.$attributo.'_e_'.$id);
         $precio_e=$request->input('precio_'.$attributo.'_e_'.$id);
+
+        // $mail='fredy1432@gmail.com';
+        $mail='misreservas@mietnia.com';
         // $buscar_asociacion= Asociacion::FindOrFail($asociacion_id);
         // if(empty($buscar_asociacion)){
         //     return response()->json(['nombre_clase'=>'alert alert-danger alert-dismissible fade show','mensaje'=>'<strong>Oops!</strong>La asociacion no existe <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -476,33 +481,33 @@ class ServiciosController extends Controller
                         Storage::disk('actividades')->put($filename,  File::get($foto_portada));
                     // }
                 }
-//-- agregando foto de portada
-if(!empty($foto_miniatura_e)){
-    $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','2')->get();
-    foreach($fotitos as $fotito){
-        if(($fotito->id!=$foto_miniatura_e)){
-            $temp=ActividadFoto::findOrfail($fotito->id);
-            $temp->delete();
-        }
-    }
-}
-else{
-    ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
-}
+                //-- agregando foto de portada
+                if(!empty($foto_miniatura_e)){
+                    $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','2')->get();
+                    foreach($fotitos as $fotito){
+                        if(($fotito->id!=$foto_miniatura_e)){
+                            $temp=ActividadFoto::findOrfail($fotito->id);
+                            $temp->delete();
+                        }
+                    }
+                }
+                else{
+                    ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
+                }
 
-if(!empty($foto_miniatura)){
-        ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
-        $actividadfoto = new ActividadFoto();
-        $actividadfoto->actividad_id=$actividad->id;
-        $actividadfoto->save();
+                if(!empty($foto_miniatura)){
+                        ActividadFoto::where('actividad_id',$id)->where('estado','2')->delete();
+                        $actividadfoto = new ActividadFoto();
+                        $actividadfoto->actividad_id=$actividad->id;
+                        $actividadfoto->save();
 
-        $filename ='foto-'.$actividadfoto->id.'.'.$foto_miniatura->getClientOriginalExtension();
-        $actividadfoto->imagen=$filename;
-        $actividadfoto->estado='2';
-        $actividadfoto->save();
-        Storage::disk('actividades')->put($filename,  File::get($foto_miniatura));
+                        $filename ='foto-'.$actividadfoto->id.'.'.$foto_miniatura->getClientOriginalExtension();
+                        $actividadfoto->imagen=$filename;
+                        $actividadfoto->estado='2';
+                        $actividadfoto->save();
+                        Storage::disk('actividades')->put($filename,  File::get($foto_miniatura));
 
-}
+                }
                 //-- agrgando galeria de fotos
                 if(!empty($fotos_e)){
                     $fotitos=ActividadFoto::where('actividad_id',$id)->where('estado','0')->get();
@@ -566,7 +571,13 @@ if(!empty($foto_miniatura)){
                     }
                 }
                 if(!Auth::user()->hasRole('admin')){
-                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>']);
+                    $asociacion=Asociacion::findOrfail($actividad->asociacion->id);
+                    $asociacion_nombre=$asociacion->nombre;
+                    $servicio_tipo='actividad';
+                    $servicio_nombre=$actividad->titulo;
+                    // $mail='misreservas@mietnia.com';
+                    Mail::send(new MailSenderNotificacionAsociacion($asociacion_nombre,$servicio_tipo,$servicio_nombre,$mail));
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente, comuniquese con el administrador para aprobar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>']);
                 }
                 elseif(Auth::user()->hasRole('admin')){
                     return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Actividad editada correctamente. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>']);
@@ -642,7 +653,14 @@ if(!empty($foto_miniatura)){
                     }
                 }
                 if(!Auth::user()->hasRole('admin')){
-                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida editada correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    $asociacion=Asociacion::findOrfail($actividad->asociacion->id);
+                    $asociacion_nombre=$asociacion->nombre;
+                    $servicio_tipo='comida';
+                    $servicio_nombre=$actividad->titulo;
+                    // $mail='misreservas@mietnia.com';
+                    Mail::send(new MailSenderNotificacionAsociacion($asociacion_nombre,$servicio_tipo,$servicio_nombre,$mail));
+
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Comida editada correctamente, comuniquese con el administrador para aprobar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>']);
                 }
@@ -723,7 +741,14 @@ if(!empty($foto_miniatura)){
                     }
                 }
                 if(!Auth::user()->hasRole('admin')){
-                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje editado correctamente, comuniquese con el administrador para aprovar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    $asociacion=Asociacion::findOrfail($actividad->asociacion->id);
+                    $asociacion_nombre=$asociacion->nombre;
+                    $servicio_tipo='hospedaje';
+                    $servicio_nombre=$actividad->titulo;
+
+                    Mail::send(new MailSenderNotificacionAsociacion($asociacion_nombre,$servicio_tipo,$servicio_nombre,$mail));
+
+                    return response()->json(['nombre_clase'=>'alert alert-success alert-dismissible fade show','mensaje'=>'<strong>Genial!</strong>Hospedaje editado correctamente, comuniquese con el administrador para aprobar sus cambios. <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>']);
                 }

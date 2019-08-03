@@ -393,7 +393,7 @@
                                                                         {{ csrf_field() }}
                                                                         <input type="hidden" name="attributo" value="a">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('a','e_{{ $item->id }}')"><i class="fas fa-save"></i>@if(Auth::user()->hasRole('admin')) GUARDAR & APROVAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('a','e_{{ $item->id }}')"><i class="fas fa-save"></i>@if(Auth::user()->hasRole('admin')) GUARDAR & APROBAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
 
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
                                                                     </div>
@@ -798,7 +798,7 @@
                                                                         {{ csrf_field() }}
                                                                         <input type="hidden" name="attributo" value="c">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('c','e_{{ $item->id }}')"><i class="fas fa-save"></i> @if(Auth::user()->hasRole('admin')) GUARDAR & APROVAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('c','e_{{ $item->id }}')"><i class="fas fa-save"></i> @if(Auth::user()->hasRole('admin')) GUARDAR & APROBAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
                                                                         {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
 
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
@@ -959,7 +959,7 @@
                                                                         {{ csrf_field() }}
                                                                         <input type="hidden" name="attributo" value="h">
                                                                         <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('h','e_{{ $item->id }}')"><i class="fas fa-save"></i> @if(Auth::user()->hasRole('admin')) GUARDAR & APROVAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
+                                                                        <button class="btn btn-primary" type="button" onclick="enviar_datos_editar('h','e_{{ $item->id }}')"><i class="fas fa-save"></i> @if(Auth::user()->hasRole('admin')) GUARDAR & APROBAR @elseif(!Auth::user()->hasRole('admin')) GUARDAR @endif</button>
                                                                         {{-- <a href="{{ route('asociacion.lista') }}" class="btn btn-outline-primary" type="close"><i class="fas fa-close"></i> CANCELAR</a> --}}
 
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
