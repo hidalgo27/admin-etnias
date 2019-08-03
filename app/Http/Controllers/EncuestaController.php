@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Encuesta;
 use App\User;
 use App\Reserva;
 use App\ReservaEncuesta;
@@ -25,8 +26,29 @@ class EncuestaController extends Controller
     public function enviar_encuesta(Request $request){
         $reserva_id=$request->input('reserva_id');
         $reserva=Reserva::findOrFail($reserva_id);
+        $encuesta_=ReservaEncuesta::where('reserva_id',$reserva->id)->first();
+        if(!isset($encuesta_)){
+            $encuesta_modelo=Encuesta::get();
+                foreach ($encuesta_modelo->sortby('pos') as $encuesta_m){
+                    $encuesta=new ReservaEncuesta();
+                    $encuesta->pregunta=$encuesta_m->pregunta;
+                    $encuesta->pos=$encuesta_m->pos;
+                    $encuesta->estado=$encuesta_m->estado;
+                    if($encuesta_m->estado=='0'){
+                        $encuesta->valoracion=0;
+                    }
+                    else{
+                        $encuesta->valoracion='';
+                    }
+                    $encuesta->reserva_id=$reserva->id;
+                    $encuesta->save();
+                }
+        }
         // dd($reserva);
-        $user=User::find($reserva->user_id);
+
+        //dd($reserva->user_id);
+        $user=User::Find($reserva->user_id);
+        // dd($user);
         $reserva->estado_encuesta=1;
         $reserva->save();
         Mail::send(new MailSenderEncuesta($reserva,$user->email));

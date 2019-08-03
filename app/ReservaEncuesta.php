@@ -12,4 +12,5 @@ class ReservaEncuesta extends Model
     {
         return $this->belongsTo(Reserva::class, 'reserva_id');
     }
+
 }
