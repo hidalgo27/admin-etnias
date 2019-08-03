@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="784e0809-aaf1-4457-8500-ed14ab968200" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../dream/.idea/dream.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../dream/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../dream/.idea/modules.xml" afterDir="false" />
@@ -11,6 +10,7 @@
       <change afterPath="$PROJECT_DIR$/../laratter/.idea/php.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../laratter/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../laratter/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace1.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/" />
@@ -101,7 +101,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
@@ -121,8 +121,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/funciones.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="618" column="34" selection-start-line="618" selection-start-column="34" selection-end-line="618" selection-end-column="34" />
+            <state relative-caret-position="313">
+              <caret line="621" column="12" lean-forward="true" selection-start-line="621" selection-start-column="12" selection-end-line="621" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -306,6 +306,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="admin-etnias" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Hidalgo\Homestead\code\admin-etnias" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="admin-etnias" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Hidalgo\Homestead\code\admin-etnias" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -417,17 +433,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="admin-etnias" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\Hidalgo\Homestead\code\admin-etnias" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -458,16 +463,18 @@
       <option name="presentableId" value="Default" />
       <updated>1564673318044</updated>
       <workItem from="1564673334652" duration="35000" />
+      <workItem from="1564854439468" duration="1123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2012000" />
+    <option name="totallyTimeSpent" value="3135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16187595" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16414523" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -554,8 +561,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/funciones.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="618" column="34" selection-start-line="618" selection-start-column="34" selection-end-line="618" selection-end-column="34" />
+        <state relative-caret-position="313">
+          <caret line="621" column="12" lean-forward="true" selection-start-line="621" selection-start-column="12" selection-end-line="621" selection-end-column="12" />
         </state>
       </provider>
     </entry>
