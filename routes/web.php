@@ -341,7 +341,7 @@ Route::get('/admin/encuesta/detalle/{id}', [
     'uses' => 'EncuestaController@detalle',
     'as' => 'encuesta.detalle',
 ]);
-Route::post('/admin/encuesta/detalle/enviar/encuesta/asas', [
+Route::post('/admin/encuesta/detalle/enviar/encuesta/s', [
     'uses' => 'EncuestaController@enviar_encuesta',
     'as' => 'encuesta.enviar',
 ]);

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Distrito;
 use App\Proveedor;
+use App\Provincia;
+
+use App\Departamento;
 use App\SolicitudesOtros;
 use Illuminate\Http\Request;
-
 use App\Mail\MailSenderOtros;
 use Illuminate\Support\Facades\Mail;
 
@@ -14,7 +17,11 @@ class SolicitudOtrosController extends Controller
     //
     public function lista(){
         $solicitudes=SolicitudesOtros::where('estado','0')->get();
-        return view('admin.solicitudes.otros',compact('solicitudes'));
+        $departamentos=Departamento::all();
+        $provincias=Provincia::all();
+        $distritos=Distrito::all();
+
+        return view('admin.solicitudes.otros',compact('solicitudes','departamentos','provincias','distritos'));
     }
     public function crear($id){
         // $nums = range(100, 999);
@@ -24,9 +31,9 @@ class SolicitudOtrosController extends Controller
         $asociacion_solicitud=SolicitudesOtros::find($id);
         // dd($asociacion_solicitud);
         $asociacion=new Proveedor();
-        $asociacion->categoria=$asociacion_solicitud->categoria;
+        $asociacion->categoria=strtoupper($asociacion_solicitud->categoria);
         $asociacion->ruc=$asociacion_solicitud->departamento_id.$id;
-        $asociacion->razon_social='';
+        $asociacion->razon_social=$asociacion_solicitud->nombre;
         $asociacion->nombre_comercial=$asociacion_solicitud->nombre;
         $asociacion->direccion='';
         $asociacion->telefono=$asociacion_solicitud->telefono;

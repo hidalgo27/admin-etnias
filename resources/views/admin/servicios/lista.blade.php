@@ -81,7 +81,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $item->titulo }}</td>
                                                 <td>{!! substr($item->descripcion,0,20) !!}...</td>
-                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprovado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
+                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprobado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_actividad_{{ $item->id }}">
@@ -683,7 +683,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $item->titulo }}</td>
                                                 <td>{{ substr($item->descripcion,0,20) }}...</td>
-                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprovado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
+                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprobado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_comida_{{ $item->id }}">
@@ -844,7 +844,7 @@
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $item->titulo }}</td>
                                                 <td>{{ substr($item->descripcion,0,20) }}...</td>
-                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprovado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
+                                                <td>@if($item->estado==0) <span class="badge badge-danger">Falta aprobar</span> @elseif($item->estado==1) <span class="badge badge-success">Aprobado</span> <i class="fas fa-check-circle text-success"></i> @endif</td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal_hospedaje_{{ $item->id }}">

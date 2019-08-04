@@ -38,9 +38,7 @@
                             <thead >
                                 <tr>
                                     <th>#</th>
-                                    <th>DEPARTAMENTO</th>
-                                    <th>PROVINCIA</th>
-                                    <th>DISTRITO</th>
+                                    <th>LUGAR</th>
                                     <th>CATEGORIA</th>
                                     <th>NOMBRE</th>
                                     <th>EMAIL</th>
@@ -60,9 +58,11 @@
                                     @endphp
                                     <tr id="row_lista_comunidades_{{ $item->id }}">
                                         <td>{{ $i }}</td>
-                                        <td>{{ $item->departamento_id }}</td>
-                                        <td>{{ $item->provincia_id }}</td>
-                                        <td>{{ $item->distrito_id }}</td>
+                                        <td>
+                                            {{$departamentos->where('id',$item->departamento_id)->first()->departamento }}<br>
+                                            {{$provincias->where('id',$item->provincia_id)->first()->provincia }}<br>
+                                            {{$distritos->where('id',$item->distrito_id)->first()->distrito }}
+                                        </td>
                                         <td>{{ $item->categoria }}</td>
                                         <td>{{ $item->nombre }}</td>
                                         {{-- <td>{{ $item->perfil_linkedin }}</td> --}}
@@ -105,13 +105,13 @@
                                                                     <div class="col-12 my-0">
                                                                             <b class="text-secondary">Telefono:</b> {{$item->telefono}}                                                                                </div>
                                                                     <div class="col-12 my-0">
-                                                                        <b class="text-secondary">Depatemento:</b> {{$item->departamento_id}}
+                                                                        <b class="text-secondary">Depatemento:</b> {{$departamentos->where('id',$item->departamento_id)->first()->departamento }}
                                                                     </div>
                                                                     <div class="col-12 my-0">
-                                                                        <b class="text-secondary">Provincia:</b> {{$item->provincia_id}}
+                                                                        <b class="text-secondary">Provincia:</b> {{$provincias->where('id',$item->provincia_id)->first()->provincia }}
                                                                     </div>
                                                                     <div class="col-12 my-0">
-                                                                        <b class="text-secondary">Distrito:</b> {{$item->distrito_id}}
+                                                                        <b class="text-secondary">Distrito:</b> {{ $distritos->where('id',$item->distrito_id)->first()->distrito }}
                                                                     </div>
 
                                                                 </div>

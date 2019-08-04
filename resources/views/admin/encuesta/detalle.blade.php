@@ -171,7 +171,7 @@ use Carbon\Carbon;
                             <form action="{{route('encuesta.enviar') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
-                                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Enviar encuesta</button>
+                                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Generar y Enviar encuesta</button>
                             </form>
                         </div>
                     </div>
