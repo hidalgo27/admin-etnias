@@ -24,7 +24,19 @@
     </tbody>
 </table>
 <p>
-<a href="http://admin.mietnia.com" target="_blank">Ingresa a este link para empezar a trabajar.</a>
+    @php
+        $url='';
+    @endphp
+    @if(App::isLocale('en'))
+        @php
+            $url='http://admin.mietnia.com';
+        @endphp
+    @else
+        @php
+            $url='http://admin.mietnia.pe';
+        @endphp
+    @endif
+<a href="{{ $url }}" target="_blank">Ingresa a este link para empezar a trabajar.</a>
 </p>
 </body>
 </html>
