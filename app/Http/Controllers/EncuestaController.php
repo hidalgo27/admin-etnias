@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Encuesta;
 use App\User;
 use App\Reserva;
+use App\Encuesta;
 use App\ReservaEncuesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Mail\MailSenderEncuesta;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 
 class EncuestaController extends Controller
