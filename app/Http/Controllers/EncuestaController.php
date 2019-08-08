@@ -31,6 +31,14 @@ class EncuestaController extends Controller
             $encuesta_modelo=Encuesta::get();
                 foreach ($encuesta_modelo->sortby('pos') as $encuesta_m){
                     $encuesta=new ReservaEncuesta();
+                    if(App::isLocale('en')){
+                        $encuesta->pregunta=$encuesta_m->question;
+                    }
+                    else{
+                        $encuesta->pregunta=$encuesta_m->pregunta;
+                    }
+                    
+                
                     $encuesta->pregunta=$encuesta_m->pregunta;
                     $encuesta->pos=$encuesta_m->pos;
                     $encuesta->estado=$encuesta_m->estado;
