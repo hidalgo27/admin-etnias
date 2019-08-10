@@ -482,7 +482,7 @@ use Carbon\Carbon;
                             $fecha_actual=new Carbon();
                             $fecha_actual->subHour(5);
                         @endphp
-                        @foreach ($reservas_close->sortBy('fecha_llegada')->where('fecha_llegada','>',$fecha_actual) as $item)
+                        @foreach ($reservas_close->sortBy('fecha_llegada')/*->where('fecha_llegada','>',$fecha_actual)*/ as $item)
                             @php
                                 $confirmardos=0;
                                 $totales=0;
