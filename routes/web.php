@@ -237,6 +237,10 @@ Route::post('/admin/proveedor/editar', [
     'as' => 'proveedor.editar',
 ]);
 
+Route::get('/admin/proveedor/delete/{id}/{tipo}', [
+    'uses' => 'ProveedorController@getDelete',
+    'as' => 'proveedor.delete',
+]);
 // rutas para productos
 Route::get('/admin/producto/lista', [
     'uses' => 'ProductosController@lista',

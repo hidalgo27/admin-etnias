@@ -12,6 +12,7 @@ use App\GuiaProveedor;
 use App\TransporteExterno;
 use Illuminate\Http\Request;
 use App\TransporteExternoProveedor;
+use App\Reserva;
 
 class ProductosController extends Controller
 {
@@ -131,21 +132,40 @@ class ProductosController extends Controller
     }
     public function getDelete($id,$categoria){
         if($categoria=='TRANSPORTE'){
-            if(TransporteExterno::destroy($id))
-                return 1;
-            else
-                return 1;
-        }    
+            $objeto=TransporteExterno::find($id);
+            $reservas=Reserva::where('comunidad_id',$objeto->comunidad_id)
+            ->where('categoria',$objeto->categoria)
+            ->where('ruta_salida',$objeto->ruta_salida)
+            ->where('ruta_llegada',$objeto->ruta_llegada)
+            ->where('min',$objeto->min)->where('max',$objeto->max)
+            ->where('s_p',$objeto->s_p)->get();
+            if($reservas->count()==0){
+                if($objeto->delete())
+                    return 1;
+                else
+                    return 0;
+            }else
+                return 2;
+        }
         elseif($categoria=='GUIA'){
-            if(Guia::destroy($id))
-                return 1;
-            else
-                return 1;
-            
+            $objeto=Guia::find($id);
+            $reservas=Reserva::where('comunidad_id',$objeto->comunidad_id)
+            ->where('categoria',$objeto->categoria)
+            ->where('ruta_salida',$objeto->ruta_salida)
+            ->where('ruta_llegada',$objeto->ruta_llegada)
+            ->where('min',$objeto->min)->where('max',$objeto->max)
+            ->where('s_p',$objeto->s_p)->get();
+            if($reservas->count()==0){
+                if($objeto->delete())
+                    return 1;
+                else
+                    return 0;
+            }else
+                return 2;
         }
     }
     public function editar(Request $request){
-        
+
         $id=$request->input('id');
         $comunidad_id=$request->input('comunidad');
         $departamento_id=$request->input('departamento');
@@ -162,7 +182,7 @@ class ProductosController extends Controller
         // Listado de productos pro proveedor
         $proveedor_id=$request->input('proveedor_id');
         $precio_proveedor=$request->input('precio_proveedor');
-        
+
         // listado de productos por proveedor en db
         $proveedor_id_d=$request->input('proveedor_id_d');
         $precio_proveedor_d=$request->input('precio_d');
@@ -171,7 +191,7 @@ class ProductosController extends Controller
             if(trim($comunidad_id)==''||trim($comunidad_id)=='0'){
                 return redirect()->back()->with('error','escoja un departamento, provincia,distrito y comunidad')->withInput();
             }
-            
+
             $temp= TransporteExterno::find($id);
             $temp->codigo='001';
             $temp->nombre='001';
@@ -203,7 +223,7 @@ class ProductosController extends Controller
                 TransporteExternoProveedor::where('transporte_externo_id',$id)->delete();
             }
             if($proveedor_id){
-                if($precio_proveedor){    
+                if($precio_proveedor){
                     foreach($proveedor_id as $key => $value){
                         $objeto=new TransporteExternoProveedor();
                         $objeto->precio=$precio_proveedor[$key];
@@ -213,13 +233,13 @@ class ProductosController extends Controller
                     }
                 }
             }
-            return redirect()->route('producto.lista')->with('success','Datos guardados');            
+            return redirect()->route('producto.lista')->with('success','Datos guardados');
         }
         elseif($rol=='GUIA'){
             if(trim($departamento_id)==''||trim($departamento_id)=='0'){
                 return redirect()->back()->with('error','escoja un departamento,')->withInput();
             }
-           
+
             $temp= Guia::find($id);
             $temp->codigo='001';
             $temp->nombre='001';
@@ -248,8 +268,8 @@ class ProductosController extends Controller
             else{
                 GuiaProveedor::where('guia_id',$id)->delete();
             }
-            if($proveedor_id){    
-                if($precio_proveedor){   
+            if($proveedor_id){
+                if($precio_proveedor){
                     foreach($proveedor_id as $key => $value){
                         $objeto=new GuiaProveedor();
                         $objeto->precio=$precio_proveedor[$key];
@@ -259,7 +279,7 @@ class ProductosController extends Controller
                     }
                 }
             }
-            return redirect()->route('producto.lista')->with('success','Datos guardados');                
+            return redirect()->route('producto.lista')->with('success','Datos guardados');
         }
     }
 

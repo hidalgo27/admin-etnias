@@ -174,7 +174,7 @@
                                                                         <div class="modal-footer text-right">
                                                                             {{ csrf_field() }}
 
-                                                                            <input type="hidden" name="categoria" value="TRANSPORTE">
+                                                                            <input type="hidden" name="categoria" value="{{ $tipo_servicio->nombre}}">
                                                                             <input type="hidden" name="id" value="{{ $item->id }}">
                                                                             <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                                                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
@@ -183,7 +183,7 @@
                                                                 </form>
                                                             </div>
                                                             </div>
-                                                            <a href="#" class="btn btn-danger" onclick="eliminar_asociacion('{{ $item->id }}')"><i class="fas fa-trash-alt"></i></a>
+                                                            <a href="#" class="btn btn-danger" onclick="eliminar_proveedor('{{ $item->id }}','{{ $tipo_servicio->nombre }}')"><i class="fas fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
                                                     @php

@@ -108,7 +108,7 @@ function eliminar(id){
                     else if(data==0){
                         Swal.fire(
                             'Error!',
-                            'Subo un error al borrar la comunidad.',
+                            'Hubo un error al borrar la comunidad.',
                             'danger'
                         )
                     }
@@ -152,7 +152,7 @@ function eliminar_asociacion(id){
                     else if(data==0){
                         Swal.fire(
                             'Error!',
-                            'Subo un error al borrar la asociacion.',
+                            'Hubo un error al borrar la asociacion.',
                             'danger'
                         )
                     }
@@ -672,7 +672,7 @@ function borrar_servicio(id,atributo){
                     else if(data==0){
                         Swal.fire(
                             'Error!',
-                            'Subo un error al borrar el servicio.',
+                            'Hubo un error al borrar el servicio.',
                             'danger'
                         )
                     }
@@ -727,7 +727,7 @@ function confirmar(tipo_servicio,grupo_id,estado){
             else if(data.rpt==0){
                 Swal.fire(
                     'Upps!',
-                    'Subo un error, vuelva a intentarlo.',
+                    'Hubo un error, vuelva a intentarlo.',
                     'error'
                 )
             }
@@ -905,8 +905,15 @@ function eliminar_producto(id,categoria,categoria_id){
                     else if(data==0){
                         Swal.fire(
                             'Error!',
-                            'Subo un error al borrar el producto.',
+                            'Hubo un error al borrar el producto.',
                             'danger'
+                        )
+                    }
+                    else if(data==2){
+                        Swal.fire(
+                            'Opps!',
+                            'El producto esta presente an algunas reservas, no borre este producto.',
+                            'warning'
                         )
                     }
                 }
@@ -1096,7 +1103,7 @@ function confirmar_t_g(tipo_servicio,grupo_id,estado){
             else if(data.rpt==0){
                 Swal.fire(
                     'Upps!',
-                    'Subo un error, vuelva a intentarlo.',
+                    'Hubo un error, vuelva a intentarlo.',
                     'error'
                 )
             }
@@ -1299,7 +1306,7 @@ function eliminar_administrador(id){
                     else if(data==0){
                         Swal.fire(
                             'Error!',
-                            'Subo un error al borrar al administrador.',
+                            'Hubo un error al borrar al administrador.',
                             'danger'
                         )
                     }
@@ -1345,7 +1352,7 @@ function confirmar_(tipo_servicio,grupo_id,estado,nuevo_estado){
             else if(data.rpt==0){
                 Swal.fire(
                     'Upps!',
-                    'Subo un error, vuelva a intentarlo.',
+                    'Hubo un error, vuelva a intentarlo.',
                     'error'
                 )
             }
@@ -1390,7 +1397,7 @@ function mostrar_pagina(grupo_id,estado){
             else if(data.rpt==0){
                 Swal.fire(
                     'Upps!',
-                    'Subo un error, vuelva a intentarlo.',
+                    'Hubo un error, vuelva a intentarlo.',
                     'error'
                 )
             }
@@ -1610,24 +1617,80 @@ console.log(foto.length);
       })
 }
 function buscar_reserva_encuesta(valorcito){
-    console.log(valorcito);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type:'POST',
-            url:'../admin/encuesta/get-reserva',
-            data:{valor:valorcito},
-            beforeSend: function() {
-                $("#rpt").html('');
-                $('#rpt').html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
-            },
-            success:function(data){
-                $("#rpt").html('');
-                $("#rpt").html(data);
-            }
-        });
-    }
+console.log(valorcito);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type:'POST',
+        url:'../admin/encuesta/get-reserva',
+        data:{valor:valorcito},
+        beforeSend: function() {
+            $("#rpt").html('');
+            $('#rpt').html('<i class="fas fa-stroopwafel fa-spin fa-3x"></i>');
+        },
+        success:function(data){
+            $("#rpt").html('');
+            $("#rpt").html(data);
+        }
+    });
+}
+function eliminar_proveedor(id,tipo){
 
+    var texto='';
+    if(tipo=='GUIA'){
+        texto='al GUIA';
+    }
+    else if(tipo=='TRANSPORTE'){
+        texto='al TRANSPORTISTA';
+    }
+    Swal.fire({
+        title: 'MENSAJE DEL SISTEMA',
+        text: "¿Estas seguro de borrar "+texto+"?",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!',
+        cancelButtonText:'No, cancelar'
+      }).then((result) => {
+        if (result.value) {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type:'get',
+                url:'/admin/proveedor/delete/'+id+'/'+tipo,
+                // data:{id:id},
+                success:function(data){
+                    if(data==1){
+                        Swal.fire(
+                            'Borrado!',
+                            'El proveedor ha sido borrado.',
+                            'success'
+                        );
+                        $('#row_lista_asociaciones_'+id).remove();
+                    }
+                    else if(data==0){
+                        Swal.fire(
+                            'Error!',
+                            'Hubo un error al borrar al proveedor.',
+                            'danger'
+                        )
+                    }
+                    else if(data==2){
+                        Swal.fire(
+                            'Opps!',
+                            'El proveedor tiene productos, por favor borre sus productos e intentelo una vez más.',
+                            'warning'
+                        )
+                    }
+                }
+             });
+        }
+      })
+}

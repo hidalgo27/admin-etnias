@@ -9,6 +9,8 @@ use App\Provincia;
 use App\Departamento;
 use Illuminate\Http\Request;
 use App\TipoServicio;
+use App\TransporteExternoProveedor;
+use App\GuiaProveedor;
 
 class ProveedorController extends Controller
 {
@@ -82,11 +84,31 @@ class ProveedorController extends Controller
         $file = Storage::disk('asociaciones')->get($filename);
         return response($file, 200);
     }
-    public function getDelete($id){
-        if(Asociacion::destroy($id))
-            return 1;
-        else
-            return 1;
+    public function getDelete($id,$tipo){
+        $datos=null;
+        if($tipo=='TRANSPORTE'){
+            $datos=TransporteExternoProveedor::where('proveedor_id',$id)->get();
+            if($datos->count()==0){
+                if(Proveedor::destroy($id))
+                    return 1;
+                else
+                    return 0;
+            }
+            else{
+                return 2;
+            }
+        }elseif($tipo=='GUIA'){
+            $datos=GuiaProveedor::where('proveedor_id',$id)->get();
+            if($datos->count()==0){
+                if(Proveedor::destroy($id))
+                    return 1;
+                else
+                    return 0;
+            }
+            else{
+                return 2;
+            }
+        }
     }
     public function editar(Request $request){
 
