@@ -181,7 +181,7 @@ use Carbon\Carbon;
                             </table>
                         </div>
                     </div>
-                    @if($reserva->encuesta_mostrar_en_pagina==0)
+                    @if($reserva->mostrar_encuesta==0)
                         <div class="row">
                             <div class="col-12">
                                 <form action="{{route('encuesta.enviar') }}" method="POST" enctype="multipart/form-data">
