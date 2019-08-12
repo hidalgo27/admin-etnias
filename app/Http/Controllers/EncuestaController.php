@@ -40,9 +40,6 @@ class EncuestaController extends Controller
                     elseif(App::isLocale('es')){
                         $encuesta->pregunta=$encuesta_m->pregunta;
                     }
-
-
-                    $encuesta->pregunta=$encuesta_m->pregunta;
                     $encuesta->pos=$encuesta_m->pos;
                     $encuesta->estado=$encuesta_m->estado;
                     if($encuesta_m->estado=='0'){
