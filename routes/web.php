@@ -357,3 +357,7 @@ Route::post('/admin/encuesta/get-reserva', [
     'uses' => 'EncuestaController@getReserva',
     'as' => 'encuesta.get',
 ]);
+Route::get('/admin/encuesta/mostrar-encuesta/{id}/{valor}', [
+    'uses' => 'EncuestaController@mostrar_encuesta',
+    'as' => 'encuesta_mostrar_pagina.get',
+]);

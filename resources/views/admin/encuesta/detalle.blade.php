@@ -138,43 +138,60 @@ use Carbon\Carbon;
                         $nro_col_span=0;
                         $total_comision=0;
                     @endphp
-                    <table class="table table-striped table-hover table-sm table-responsive">
-                        <thead>
-                            <tr class="bg-dark text-white"><th colspan="11">ENCUESTA</th></tr>
-                        </thead>
-                        <thead>
-                            <tr class="bg-secondary text-white mb-0">
-                                <th>PREGUNTA</th>
-                                <th>VALORACION <i class="fas fa-star text-warning"></i></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($reserva->encuestas)
-                                @foreach ($reserva->encuestas as $encuesta)
-                                <tr>
-                                        <td>{{ $encuesta->pregunta }}</td>
-                                        <td>
-                                            @if($encuesta->valoracion!='0')
-                                                {{ $encuesta->valoracion }}
-                                            @else
-                                                Sin repuesta
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endif
-                        </tbody>
+                    @if($reserva->estado_encuesta==2)
 
-                    </table>
-                    <div class="div">
+                    <div class="row">
                         <div class="col-12">
-                            <form action="{{route('encuesta.enviar') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
-                                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Generar y Enviar encuesta</button>
-                            </form>
+                            <div class="btn btn-group px-0">
+                                <a href="{{ route('encuesta_mostrar_pagina.get',[$reserva->id,1]) }}" class="btn @if($reserva->mostrar_encuesta==1) btn-success @else btn-outline-success @endif">@if($reserva->mostrar_encuesta==1) <i class="fas fa-check"></i> @else <i class="fas fa-times"></i> @endif Mostrar en pagina</a>
+                                <a href="{{ route('encuesta_mostrar_pagina.get',[$reserva->id,0]) }}" class="btn @if($reserva->mostrar_encuesta==1) btn-outline-success @else btn-success @endif">@if($reserva->mostrar_encuesta==1) <i class="fas fa-times"></i> @else <i class="fas fa-check"></i> @endif Ocultar de página</a>
+                            </div>
                         </div>
                     </div>
+                    @endif
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-striped table-hover table-sm table-responsive">
+                                <thead>
+                                    <tr class="bg-dark text-white"><th colspan="11">ENCUESTA</th></tr>
+                                </thead>
+                                <thead>
+                                    <tr class="bg-secondary text-white mb-0">
+                                        <th>PREGUNTA</th>
+                                        <th>VALORACION <i class="fas fa-star text-warning"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($reserva->encuestas)
+                                        @foreach ($reserva->encuestas as $encuesta)
+                                        <tr>
+                                                <td>{{ $encuesta->pregunta }}</td>
+                                                <td>
+                                                    @if($encuesta->valoracion!='0')
+                                                        {{ $encuesta->valoracion }}
+                                                    @else
+                                                        Sin repuesta
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    @if($reserva->encuesta_mostrar_en_pagina==0)
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="{{route('encuesta.enviar') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="reserva_id" value="{{ $reserva->id }}">
+                                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Generar y Enviar encuesta</button>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
                 </div>
         </div>
     </div>

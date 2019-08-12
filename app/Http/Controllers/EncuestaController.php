@@ -18,7 +18,7 @@ class EncuestaController extends Controller
      public function lista(){
         $reservas_sin_enviar=Reserva::where('estado','>=','0')->where('estado_encuesta','0')->get();
         $reservas_enviadas=Reserva::where('estado','>=','0')->where('estado_encuesta','1')->get();
-        
+
         $reservas_respondidas=Reserva::where('estado','>=','0')->where('estado_encuesta','2')->get();
         return view('admin.encuesta.lista',compact('reservas_sin_enviar','reservas_enviadas','reservas_respondidas'));
     }
@@ -40,8 +40,8 @@ class EncuestaController extends Controller
                     else{
                         $encuesta->pregunta=$encuesta_m->pregunta;
                     }
-                    
-                
+
+
                     $encuesta->pregunta=$encuesta_m->pregunta;
                     $encuesta->pos=$encuesta_m->pos;
                     $encuesta->estado=$encuesta_m->estado;
@@ -270,4 +270,11 @@ class EncuestaController extends Controller
             return view('admin.encuesta.get-busqueda',compact('reserva'));
         }
     }
+    public function mostrar_encuesta($id,$valor){
+        $reserva=Reserva::find($id);
+        $reserva->mostrar_encuesta=$valor;
+        $reserva->save();
+        return redirect()->route('encuesta.detalle',$id);
+    }
+
 }
